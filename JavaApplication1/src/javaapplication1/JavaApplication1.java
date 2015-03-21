@@ -18,6 +18,7 @@ public class JavaApplication1 {
         System.out.println("mi proyecto");
         System.out.println("MI PROYECTO2");
         System.out.println("tercer print");
+        System.out.println("zamorator print");
     }
     
 }
