@@ -17,6 +17,7 @@ public class JavaApplication1 {
     public static void main(String[] args) {
         System.out.println("mi proyecto");
         System.out.println("MI PROYECTO2");
+        System.out.println("soy javier");
     }
     
 }
