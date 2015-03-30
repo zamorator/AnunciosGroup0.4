@@ -14,5 +14,6 @@
     <body>
         <h1>Hello World!</h1>
         <!--Prueba commit RQS -->
+        <a href="administrador/Admin_inicio.jsp">Menu admin</a>
     </body>
 </html>
