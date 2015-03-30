@@ -16,9 +16,4 @@ function main () {
 			});
 		}
 	});
- 
-	// Mostrar y ocultar 
-	$('.submenu').click(function(){
-		$(this).children('.children').slideToggle();
-	});
 }
