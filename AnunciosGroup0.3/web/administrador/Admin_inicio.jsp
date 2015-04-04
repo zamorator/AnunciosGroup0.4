@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script src="../JS/Main.js"></script>
-        <title>JSP Page</title>
+        <script src="../js/Main.js"></script>
+        <title>Inicio</title>
     </head>
     <body>
         <%@include file="../base_ag/_menu_administrador.jsp" %>    

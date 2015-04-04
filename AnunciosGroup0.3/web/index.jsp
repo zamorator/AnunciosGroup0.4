@@ -9,11 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="../JS/Main.js"></script>
+        <title>AnunciosGroup</title>
     </head>
     <body>
         <h1>Hello World!</h1>
-        <!--Prueba commit RQS -->
-        <a href="administrador/Admin_inicio.jsp">Menu admin</a>
     </body>
 </html>
