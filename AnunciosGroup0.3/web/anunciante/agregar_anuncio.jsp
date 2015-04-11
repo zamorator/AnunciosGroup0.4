@@ -1,6 +1,6 @@
 <%-- 
-    Document   : inicio
-    Created on : 28-03-2015, 9:42:25
+    Document   : agregar_anuncio
+    Created on : 11-04-2015, 12:21:24
     Author     : dzamoraf
 --%>
 
@@ -21,11 +21,16 @@
     </head>
     <body>
         <%@include file="../base_ag/_menu_anunciante.jsp" %>  
-        <div id="contenido">  
-            <ul class="nav nav-tabs nav-justified">
-                <li role="submenu" class="active"><a href="#">Mis Anuncios</a></li>
-                <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
-            </ul>
+        <div id="contenido"> 
+            <div id="submenu">
+                <ul class="nav nav-tabs nav-justified">
+                    <li role="submenu"><a href="inicio.jsp">Mis Anuncios</a></li>
+                    <li role="submenu" class="active"><a href="#">Agregar Anuncio</a></li>
+                </ul>
+            </div>
+            <div id="agregar_anuncio">
+
+            </div>
         </div>
 
 
