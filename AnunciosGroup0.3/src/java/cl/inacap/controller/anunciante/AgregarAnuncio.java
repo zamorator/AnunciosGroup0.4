@@ -5,6 +5,8 @@
  */
 package cl.inacap.controller.anunciante;
 
+import cl.inacap.dao.anunciante.AnuncioDAO;
+import cl.inacap.model.Anuncio;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -31,23 +33,13 @@ public class AgregarAnuncio extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Ingrese al servlet");
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html> ");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AgregarAnuncio</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AgregarAnuncio at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {
-            out.close();
-        }
+        System.out.println(request.getParameter("InputNombreAnuncio"));
+        System.out.println(request.getParameter("InputDescripcionAnuncio"));
+        Anuncio anuncio = new Anuncio();
+        anuncio.setNombre_anuncio(request.getParameter("InputNombreAnuncio"));
+        anuncio.setDescripcion_anuncio(request.getParameter("InputDescripcionAnuncio"));
+        AnuncioDAO anuncioDao = new AnuncioDAO();
+        anuncioDao.AgregaAnuncio(anuncio);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

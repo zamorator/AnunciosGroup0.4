@@ -29,7 +29,15 @@
                 </ul>
             </div>
             <div id="agregar_anuncio">
-                <form method="GET" action="AgregarAnuncio">
+                <form method="GET" action="${pageContext.request.contextPath}/AgregarAnuncio">
+                    <div class="form-group">
+                        <label for="InputNombreAnuncio">Nombre Anuncio</label>
+                        <input type="text" class="form-control" name="InputNombreAnuncio" id="InputNombreAnuncio" placeholder="Ingrese Nombre Anuncio">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputDescripcionAnuncio">Descripci&oacute;n Anuncio</label>
+                        <input type="text" class="form-control" name="InputDescripcionAnuncio" id="InputDescripcionAnuncio" placeholder="Ingrese Descripci&oacute;n del Anuncio">
+                    </div>
                     <button type="submit" class="btn btn-default">Agregar</button>
                 </form>
             </div>
