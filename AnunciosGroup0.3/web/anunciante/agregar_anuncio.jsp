@@ -17,18 +17,26 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="../js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/Estilos_ag.css">
+        <link rel="stylesheet" href="../css/anunciante.css">
         <title>Anunciante</title>
     </head>
     <body>
-        <%@include file="../base_ag/_menu_anunciante.jsp" %>  
-        <div id="contenido"> 
-            <div id="submenu">
+        <%@include file="../base_ag/_menu_anunciante.jsp" %> 
+
+        <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
+            <li role="presentation" class="active"><a href="#">Anuncios</a></li>
+            <li role="presentation"><a href="#">Perfil</a></li>
+            <li role="presentation"><a href="#">Ayuda</a></li>
+        </ul>
+
+        <div id="contenido" class="submenu"> 
+            <div id="submenu" class="links_submenu">
                 <ul class="nav nav-tabs nav-justified">
-                    <li role="submenu"><a href="inicio.jsp">Mis Anuncios</a></li>
+                    <li role="submenu"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
                     <li role="submenu" class="active"><a href="#">Agregar Anuncio</a></li>
                 </ul>
             </div>
-            <div id="agregar_anuncio">
+            <div id="agregar_anuncio" class="contenido">
                 <form method="GET" action="${pageContext.request.contextPath}/AgregarAnuncio">
                     <div class="form-group">
                         <label for="InputNombreAnuncio">Nombre Anuncio</label>

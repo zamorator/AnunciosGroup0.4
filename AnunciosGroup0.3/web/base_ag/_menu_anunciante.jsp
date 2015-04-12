@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="../css/cabecera_anunciante.css">
 <!DOCTYPE html>
 <html>
     <body>
@@ -37,10 +38,5 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <ul class="nav nav-pills">
-            <li role="presentation" class="active"><a href="#">Anuncios</a></li>
-            <li role="presentation"><a href="#">Perfil</a></li>
-            <li role="presentation"><a href="#">Ayuda</a></li>
-        </ul>
     </body>
 </html>
