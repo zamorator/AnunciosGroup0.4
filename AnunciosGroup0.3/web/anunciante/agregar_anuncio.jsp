@@ -29,7 +29,9 @@
                 </ul>
             </div>
             <div id="agregar_anuncio">
-
+                <form method="GET" action="AgregarAnuncio">
+                    <button type="submit" class="btn btn-default">Agregar</button>
+                </form>
             </div>
         </div>
 
