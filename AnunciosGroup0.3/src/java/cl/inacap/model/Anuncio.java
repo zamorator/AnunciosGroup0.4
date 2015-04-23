@@ -24,6 +24,8 @@ public class Anuncio {
     private int id_categiria;
     private int id_segmento_sexo;
     private int id_segmento_edad;
+    private int cantidad_cupones;
+    private int porcentaje_descuento;
 
     public int getCodigo_anuncio() {
         return codigo_anuncio;
@@ -111,6 +113,22 @@ public class Anuncio {
 
     public void setId_segmento_edad(int id_segmento_edad) {
         this.id_segmento_edad = id_segmento_edad;
+    }
+
+    public int getCantidad_cupones() {
+        return cantidad_cupones;
+    }
+
+    public void setCantidad_cupones(int cantidad_cupones) {
+        this.cantidad_cupones = cantidad_cupones;
+    }
+
+    public int getPorcentaje_descuento() {
+        return porcentaje_descuento;
+    }
+
+    public void setPorcentaje_descuento(int porcentaje_descuento) {
+        this.porcentaje_descuento = porcentaje_descuento;
     }
 
 }

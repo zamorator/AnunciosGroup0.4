@@ -11,20 +11,37 @@ import java.util.Date;
  *
  * @author zamorator
  */
-public class AGPunto {
+public class Coin {
 
-    private int id_punto;
+    private int id_coin;
     private Date fecha_incio;
     private Date fecha_termino;
-    private int estado_punto;
+    private int estado_coin;
     private String nombre_u_difusor;
+    private int id_valor_coin;
 
-    public int getId_punto() {
-        return id_punto;
+    public int getId_coin() {
+        return id_coin;
     }
 
-    public void setId_punto(int id_punto) {
-        this.id_punto = id_punto;
+    public void setId_coin(int id_coin) {
+        this.id_coin = id_coin;
+    }
+
+    public int getEstado_coin() {
+        return estado_coin;
+    }
+
+    public void setEstado_coin(int estado_coin) {
+        this.estado_coin = estado_coin;
+    }
+
+    public int getId_valor_coin() {
+        return id_valor_coin;
+    }
+
+    public void setId_valor_coin(int id_valor_coin) {
+        this.id_valor_coin = id_valor_coin;
     }
 
     public Date getFecha_incio() {
@@ -41,14 +58,6 @@ public class AGPunto {
 
     public void setFecha_termino(Date fecha_termino) {
         this.fecha_termino = fecha_termino;
-    }
-
-    public int getEstado_punto() {
-        return estado_punto;
-    }
-
-    public void setEstado_punto(int estado_punto) {
-        this.estado_punto = estado_punto;
     }
 
     public String getNombre_u_difusor() {

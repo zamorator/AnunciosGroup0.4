@@ -9,7 +9,7 @@ package cl.inacap.model;
  *
  * @author zamorator
  */
-public class RedesSociales {
+public class RedSocial {
 
     private int id_red_social;
     private String nombre_red_social;
