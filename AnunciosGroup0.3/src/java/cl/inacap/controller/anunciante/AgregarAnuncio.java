@@ -33,8 +33,6 @@ public class AgregarAnuncio extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println(request.getParameter("InputNombreAnuncio"));
-        System.out.println(request.getParameter("InputDescripcionAnuncio"));
         Anuncio anuncio = new Anuncio();
         anuncio.setNombre_anuncio(request.getParameter("InputNombreAnuncio"));
         anuncio.setDescripcion_anuncio(request.getParameter("InputDescripcionAnuncio"));

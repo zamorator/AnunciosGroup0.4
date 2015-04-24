@@ -42,8 +42,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <button type="submit" class="btn btn-default">Registro</button>
-                        <button type="submit" class="btn btn-default">Ingreso</button>
+                        <a class="btn btn-primary" href="registro_difusor.jsp">Registro</a>
+                        <a class="btn btn-primary" href="registro_difusor.jsp">Ingreso</a>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

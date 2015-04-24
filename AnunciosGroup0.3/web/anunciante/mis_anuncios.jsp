@@ -27,7 +27,7 @@
             <li role="presentation"><a href="#">Perfil</a></li>
             <li role="presentation"><a href="#">Ayuda</a></li>
         </ul>
-        <div id="contenido" class="submenu">  
+        <div class="submenu">  
             <div id="submenu" class="links_submenu">
                 <ul class="nav nav-tabs nav-justified">
                     <li role="submenu" class="active"><a href="#">Mis Anuncios</a></li>

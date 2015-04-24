@@ -37,7 +37,7 @@
                 </ul>
             </div>
             <div id="agregar_anuncio" class="contenido">
-                <form method="GET" action="${pageContext.request.contextPath}/AgregarAnuncio">
+                <form method="POST" action="${pageContext.request.contextPath}/AgregarAnuncio">
                     <div class="form-group">
                         <label for="InputNombreAnuncio">Nombre Anuncio</label>
                         <input type="text" class="form-control" name="InputNombreAnuncio" id="InputNombreAnuncio" placeholder="Ingrese Nombre Anuncio">
