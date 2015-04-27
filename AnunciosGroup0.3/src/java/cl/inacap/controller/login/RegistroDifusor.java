@@ -5,10 +5,8 @@
  */
 package cl.inacap.controller.login;
 
-import cl.inacap.dao.anunciante.AnuncioDAO;
 import cl.inacap.dao.difusor.DifusorDAO;
 import cl.inacap.model.Difusor;
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
@@ -56,6 +54,31 @@ public class RegistroDifusor extends HttpServlet {
                         difusor.setId_segmento_sexo(2); //request.getParameter("optionsRadiosSexo")
                         difusor.setPassword_difusor(request.getParameter("InputPassword"));
 
+                        
+                        if (request.getParameter("InputEdad") != null) {
+                            int edad = Integer.parseInt(request.getParameter("InputEdad"));
+                            if (edad < 19) {
+                                difusor.setId_segmento_edad(1);
+                            } else if (edad < 30) {
+                                difusor.setId_segmento_edad(2);
+                            } else if (edad < 40) {
+                                difusor.setId_segmento_edad(3);
+                            } else if (edad < 50) {
+                                difusor.setId_segmento_edad(4);
+                            } else {
+                                difusor.setId_segmento_edad(5);
+                            }
+                        }
+                        System.out.println(difusor.getId_segmento_edad());
+                        System.out.println(difusor.getId_segmento_sexo());
+
+                        /* rangos | id
+                         15 - 18 | 1
+                         19 - 29 | 2
+                         30 - 39 | 3
+                         40 - 49 | 4
+                         50 - 59 | 5
+                         */
                         difusorDao = new DifusorDAO();
                         difusorDao.AgregaDifusor(difusor);
                         response.sendRedirect("exito.jsp");
