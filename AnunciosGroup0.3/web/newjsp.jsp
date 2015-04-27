@@ -43,7 +43,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <a class="btn btn-primary" href="registro_difusor.jsp">Registro</a>
-                        <a class="btn btn-primary" href="registro_difusor.jsp">Ingreso</a>
+                        <a class="btn btn-primary" href="ingreso_difusor.jsp">Ingreso</a>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

@@ -43,43 +43,40 @@
                 <div class="form-group">
                     <label for="InputEmail">e-mail</label>
                     <input type="email" class="form-control" name="InputEmail" id="Email" placeholder="Ingrese Correo Electrónico" required="">
-                </div>                
+                </div>
                 <div class="form-group">
-                    <label for="optionsRadiosEdad">Rango Edad</label>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadiosEdad" id="Edad1" value="option1" checked>
-                            Segmento 1
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadiosEdad" id="Edad2" value="option2">
-                            Segmento 2
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadiosEdad" id="Edad3" value="option3">
-                            Segmento 3
-                        </label>
-                    </div>
+                    <label for="InputEdad">Edad</label>
+                    <input type="number" class="form-control" name="InputEdad" id="Edad" placeholder="Ingrese Edad" required="">
                 </div>
                 <div class="form-group">
                     <label for="optionsRadiosSexo">Sexo</label>
                     <div class="radio">
                         <label>
                             <input type="radio" name="optionsRadiosSexo" id="male" value="male" checked>
-                            Hombre
+                            Masculino
                         </label>
                     </div>
                     <div class="radio">
                         <label>
                             <input type="radio" name="optionsRadiosSexo" id="female" value="female">
-                            Mujer
+                            Femenino
                         </label>
                     </div>  
                 </div>
+                <p>Por favor ingresa al menos una red social</p>
+                <div class="form-group">
+                    <label for="InputFacebook">Facebook</label>
+                    <input type="text" class="form-control" name="InputFacebook" id="Facebook" placeholder="Ingresa tu usuario de Facebook">
+                </div>
+                <div class="form-group">
+                    <label for="InputTwitter">Twitter</label>
+                    <input type="text" class="form-control" name="InputTwitter" id="Twitter" placeholder="Ingresa tu usuario de Twitter">
+                </div>
+                <div class="form-group">
+                    <label for="InputGoogleplus">Google +</label>
+                    <input type="text" class="form-control" name="InputGoogleplus" id="Facebook" placeholder="Ingresa usuario de Google+">
+                </div>
+                
                 <div class="form-group">
                     <label for="InputPassword">Contraseña</label>
                     <input type="password" class="form-control" name="InputPassword" id="password" placeholder="Ingrese Contraseña" required="">

@@ -13,6 +13,7 @@ public class DifusorRedesSocialesR {
 
     private int id_red_social;
     private String nombre_u_difusor;
+    private String nombre_usuario_red_social;
 
     public int getId_red_social() {
         return id_red_social;
@@ -28,6 +29,14 @@ public class DifusorRedesSocialesR {
 
     public void setNombre_u_difusor(String nombre_u_difusor) {
         this.nombre_u_difusor = nombre_u_difusor;
+    }
+
+    public String getNombre_usuario_red_social() {
+        return nombre_usuario_red_social;
+    }
+
+    public void setNombre_usuario_red_social(String nombre_usuario_red_social) {
+        this.nombre_usuario_red_social = nombre_usuario_red_social;
     }
 
 }
