@@ -4,6 +4,9 @@
     Author     : macbookair
 --%>
 
+<%@page import="cl.inacap.dao.difusor.DifusorAnunciosDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="cl.inacap.model.Anuncio"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,6 +22,18 @@
         <link rel="stylesheet" href="../css/Estilos_ag.css">
         <link rel="stylesheet" href="../css/anunciante.css">
         <title>Difusor</title>
+        
+        <%
+            ArrayList<Anuncio> anuncios= null;
+            try{
+            anuncios = new ArrayList<Anuncio>();
+            DifusorAnunciosDAO anunciosDAO = new DifusorAnunciosDAO ();
+            anuncios = anunciosDAO.buscaranuncio();  
+            System.out.println(anuncios);
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        %>
     </head>
     <body>
         <%@include file="../base_ag/_menu_difusor.jsp" %>
@@ -34,39 +49,20 @@
             </ul>
             
             <div class="contenido" id="contenido_panel_anuncios">
+                
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
                        <!--ANUNCIO 1 --> 
+                       <% for (Anuncio a : anuncios) {%>
                       <div class="thumbnail" id="anuncios">
-                          <img src="../img/anuncios/images.jpeg" alt="...">
+                          <img src="../img/anuncios/<%= a.getImagen_anuncio() %>" alt="...">
                         <div class="caption">
-                          <h3>NOMBRE ANUNCIO</h3>
+                            <h3><%= a.getNombre_anuncio() %></h3>
                           <p>Esta es una pequeña descripcion del anuncio.</p>
                           <p><a href="#" class="btn btn-primary" role="button">Detalle</a></p>
                         </div>
                       </div>
-                    </div>
-                    <!--ANUNCIO 2 -->
-                    <div class="col-sm-6 col-md-4">
-                      <div class="thumbnail" id="anuncios">
-                        <img src="../img/anuncios/images.jpeg" alt="...">
-                        <div class="caption">
-                          <h3>NOMBRE ANUNCIO</h3>
-                          <p>Esta es una pequeña descripcion del anuncio.</p>
-                          <p><a href="#" class="btn btn-primary" role="button">Detalle</a></p>
-                        </div>
-                      </div>
-                    </div>
-                    <!--ANUNCIO 3 -->
-                    <div class="col-sm-6 col-md-4">
-                      <div class="thumbnail" id="anuncios">
-                        <img src="../img/anuncios/images.jpeg" alt="...">
-                        <div class="caption">
-                          <h3>NOMBRE ANUNCIO</h3>
-                          <p>Esta es una pequeña descripcion del anuncio.</p>
-                          <p><a href="#" class="btn btn-primary" role="button">Detalle</a></p>
-                        </div>
-                      </div>
+                        <%}%>
                     </div>
                     
                 </div>
