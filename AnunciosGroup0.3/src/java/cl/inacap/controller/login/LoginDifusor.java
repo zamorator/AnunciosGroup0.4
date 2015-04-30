@@ -5,13 +5,17 @@
  */
 package cl.inacap.controller.login;
 
+import cl.inacap.dao.difusor.DifusorDAO;
+import cl.inacap.model.Difusor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,16 +38,14 @@ public class LoginDifusor extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginDifusor</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginDifusor at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            DifusorDAO difusorDAO = new DifusorDAO();
+            Difusor difusor = new Difusor();
+            difusor = difusorDAO.IniciaSesionDifusor(request.getParameter("InputNombreDifusor"), request.getParameter("InputPassword"));
+            HttpSession session_actual = request.getSession(true);
+            session_actual.setAttribute("difusor", difusor);
+            response.sendRedirect(null);
+        } catch (Exception e) {
+            response.sendRedirect("ingreso_difusor.jsp?message=" + URLEncoder.encode("Usuario y contraseña no coinciden", "UTF-8"));
         } finally {
             out.close();
         }
