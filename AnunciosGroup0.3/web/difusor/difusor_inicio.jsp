@@ -51,21 +51,24 @@
             <div class="contenido" id="contenido_panel_anuncios">
                 
                 <div class="row">
-                    <div class="col-sm-6 col-md-4">
+                    <!--<div class="col-sm-6 col-md-4">-->
+                    <div class="col-md-12">
                        <!--ANUNCIO 1 --> 
-                       <% for (Anuncio a : anuncios) {%>
-                      <div class="thumbnail" id="anuncios">
-                          <img src="../img/anuncios/<%= a.getImagen_anuncio() %>" alt="...">
-                        <div class="caption">
-                            <h3><%= a.getNombre_anuncio() %></h3>
-                          <p>Esta es una pequeña descripcion del anuncio.</p>
-                          <p><a href="#" class="btn btn-primary" role="button">Detalle</a></p>
+                        <% for (Anuncio a : anuncios) {%>
+                        <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail" id="anuncios">
+                            <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
+                            <div class="caption">
+                              <h3><%= a.getNombre_anuncio() %></h3>
+                              <p>Esta es una pequeña descripcion del anuncio.</p>
+                              <p><a href="#" class="btn btn-primary" role="button">Detalle</a></p>
+                            </div>
                         </div>
-                      </div>
-                        <%}%>
+                        </div>
+                        <%}%>    
                     </div>
-                    
                 </div>
+                
             </div>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %>    
