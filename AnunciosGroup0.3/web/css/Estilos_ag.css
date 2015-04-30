@@ -1,54 +1,9 @@
-//dzf ajustar carrusel a cabecera fija
-
-* {
-    padding:0;
-    margin:0;
-    /*-webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;*/
-}
 
 body{
     font-family:verdana;
     background-image: url("../img/fondo.png"); 
     background-size:100% 100%; 				
     background-attachment:fixed; 
-}
-
-.menu_bar {
-    display:none;
-    margin:0;
-}
-
-.Logo{
-    color:white;
-    float:left;
-    font-family: fantasy;
-    font-size:150%;
-    padding:10px;
-}
-.login{
-    display:block;
-    width:100%;
-    height:10%;
-    position: fixed;
-    top:0;
-    background-color: rgba(0, 0, 0, .8);
-    background: rgba(0, 0, 0, .8);
-    color: rgba(0, 0, 0, .8);
-}
-.datos_login{
-    float:right;
-    width:28%;
-    font-size:80%;
-    height:100%;
-    color:white;
-}		
-
-
-header {
-    width: 100%;
-    height:9%;
 }
 
 footer{
@@ -62,143 +17,21 @@ footer{
     background: -moz-linear-gradient(top, #636363 0%, #303030 100%); 
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#636363), color-stop(100%,#303030)); 
 }
-
-section{
-    margin:auto;
-    width:60%;
-    height:100%;
-    background-color:rgba(255,255, 255, 0.9);
-    -webkit-box-shadow:1px 1px 5px 1px rgba(1,1,1,.6);
-    -moz-box-shadow:1px 1px 5px 1px rgba(1,1,1,.6);
-    box-shadow:1px 1px 5px 1px rgba(1,1,1,.6);
-    border-radius:20px;
-    position:static;
-    margin-top:5%;
+#panel_anuncios{
+    margin: auto;
+    margin:5%;
 }
 
-nav.Menu {
-    z-index:1000;
-    max-width: 1000px;
-    width:100%;
-    margin:auto;
-    margin-top:8%;
+#contenido_panel_anuncios{
+    margin: auto;
+    margin-top: 2%;
+    width:100%; 
+    background-color: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.2);
+    border-radius:10px; 
 }
 
-nav.Menu ul {
-    list-style:none;
-}
-
-nav.Menu ul li {
-    /*background:#023859;*/
-    width:32%;
-    display:inline-block;
-    position: relative;
-    border-radius:5px;
-    text-align:center;
-    background-color: rgba(0, 0, 0, .8);
-    background: rgba(0, 0, 0, .8);
-    color: rgba(0, 0, 0, .8);
-}
-
-nav.Menu ul li:hover {
-    /*background:#E6344A;*/
-    background-color: rgba(247, 168, 0, 0.9);
-    background: rgba(247, 168, 0, 0.9);
-    color: rgba(247, 168, 0, 0.9);
-}
-
-nav.Menu ul li a {
-    color:#fff;
-    display:block;
-    text-decoration:none;
-    padding: 20px;
-}
-
-nav.Menu ul li a span {
-    margin-right:10px;
-}
-
-nav.Menu ul li .caret {
-    position: relative;
-    top:3px;
-    margin-left:10px;
-    margin-right:0px;
-}
-
-.top3{
-    margin-top: 4%;
-}
-//dzf botonera de footer centrada
-.center-pills { 
-    display: inline-block; 
-}
-
-@media screen and (max-width: 800px) {
-    body {
-        padding-top:10%;
-    }
-    .login{
-        display:none;
-    }
-
-    .menu_bar {
-        display:block;
-        width:100%;
-        height:10%;
-        position: fixed;
-        top:0;
-        background-color: rgba(0, 0, 0, .8);
-        background: rgba(0, 0, 0, .8);
-        color: rgba(0, 0, 0, .8);
-    }
-
-    .menu_bar .bt-menu {
-        display: block;
-        padding: 20px;
-        color: #fff;
-        overflow: hidden;
-        font-size: 25px;
-        text-decoration: none;
-        color:white;
-        float:left;
-        font-family: fantasy;
-        font-size:150%;
-        padding:10px;
-    }
-
-    .menu_bar span {
-        float: right;
-        font-size: 40px;
-    }
-
-    header{
-        background-color: rgba(255, 255, 255, 0);
-        background: rgba(255, 255, 255, 0);
-        color: rgba(255, 255, 255, 0);
-    }	
-
-    nav.Menu {
-        width: 80%;
-        height: calc(100% - 80px);
-        position: fixed;
-        right:100%;
-        margin-top:0%;	
-    }
-
-    nav.Menu ul li {
-        text-align:left;
-        border-radius:0px;
-        width:80%;
-        display: block;
-        border-bottom:1px solid rgba(255,255,255,.5);
-    }
-
-    nav.Menu ul li a {
-        display: block;
-    }
-
-
-    nav.Menu ul li .caret {
-        float: right;
-    }
+#anuncios{
+    margin: 5% 5%;
 }
