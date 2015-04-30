@@ -87,18 +87,17 @@ public class DifusorDAO {
         try {
             con = cf.obtenerConexion();
             query = new StringBuilder();
-            query.append("SELECT * FROM `difusor` WHERE nombre_u_difusor = " + nombre + " and password_difusor = " + password);
+            query.append("SELECT * FROM `difusor` WHERE nombre_u_difusor = '" + nombre + "' and password_difusor = '" + password+ "'");
             System.out.println(query);
             pst = con.prepareStatement(query.toString());
             rs = pst.executeQuery();
             while (rs.next()) {
                 difusor = new Difusor();
-                difusor.setNombre_u_difusor(rs.getString(""));
-                difusor.setNombres(rs.getString(""));
-                difusor.setApellido_paterno_difusor(rs.getString(""));
-                difusor.setApellido_materno_difusor(rs.getString(""));
-                difusor.setPassword_difusor(rs.getString(""));
-                difusor.setEmail_difusor(rs.getString(""));
+                difusor.setNombre_u_difusor(rs.getString("NOMBRE_U_DIFUSOR"));
+                difusor.setNombres(rs.getString("NOMBRES"));
+                difusor.setApellido_paterno_difusor(rs.getString("APELLIDO_PATERNO_DIFUSOR"));
+                difusor.setApellido_materno_difusor(rs.getString("APELLIDO_MATERNO_DIFUSOR"));
+                difusor.setEmail_difusor(rs.getString("EMAIL_DIFUSOR"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
