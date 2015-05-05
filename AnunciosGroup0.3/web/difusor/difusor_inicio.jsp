@@ -4,6 +4,7 @@
     Author     : macbookair
 --%>
 
+
 <%@page import="cl.inacap.dao.difusor.DifusorAnunciosDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="cl.inacap.model.Anuncio"%>
@@ -27,7 +28,7 @@
             ArrayList<Anuncio> anuncios= null;
             try{
             anuncios = new ArrayList<Anuncio>();
-            DifusorAnunciosDAO anunciosDAO = new DifusorAnunciosDAO ();
+            DifusorAnunciosDAO anunciosDAO = new DifusorAnunciosDAO();
             anuncios = anunciosDAO.buscaranuncio();  
             System.out.println(anuncios);
             } catch(Exception e){
@@ -54,6 +55,7 @@
                     <!--<div class="col-sm-6 col-md-4">-->
                     <div class="col-md-12">
                        <!--ANUNCIO 1 --> 
+                       <% int id_modal=0; %>
                         <% for (Anuncio a : anuncios) {%>
                         <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" id="anuncios">
@@ -61,11 +63,32 @@
                             <div class="caption">
                               <h3><%= a.getNombre_anuncio() %></h3>
                               <p>Esta es una pequeña descripcion del anuncio.</p>
-                              <p><a href="#" class="btn btn-primary" role="button">Detalle</a></p>
+                             <!--VENTANA MODAL INICIO -->
+                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal%>">Detalle</button>
+                                <div class="modal fade" id="<%=id_modal %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                         <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                             <h4 class="modal-title" id="myModalLabel"> <h3><%= a.getNombre_anuncio() %></h3></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Canejar</button>
+                                            <button type="button" class="btn btn-primary">Publicar</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            <!--VENTANA MODAL FIN -->
+                              
+                              
                             </div>
                         </div>
                         </div>
-                        <%}%>    
+                        <%id_modal++;}%>    
                     </div>
                 </div>
                 
