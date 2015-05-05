@@ -23,7 +23,7 @@ public class ConnectionFactory {
     public Connection obtenerConexion() throws SQLException, ClassNotFoundException {
         con = null;
         Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost/anunciosgroup?user=admin&password=adminadmin");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/anunciosgroup?user=admin&password=adminadmin&noAccessToProcedureBodies=true");
         return con;
     }
 
