@@ -4,6 +4,7 @@
     Author     : macbookair
 --%>
 
+<%@page import="cl.inacap.model.Difusor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,11 @@
         <link rel="stylesheet" href="../css/Estilos_ag.css">
         <link rel="stylesheet" href="../css/anunciante.css">
         <title>Difusor Perfil</title>
+        
+        <%
+            HttpSession session_actual = request.getSession(true);
+            Difusor difusor = (Difusor) session_actual.getAttribute("difusor");
+        %>
     </head>
     <body>
         <%@include file="../base_ag/_menu_difusor.jsp" %>
@@ -35,30 +41,30 @@
             </ul>
             
             <div class="contenido" id="contenido_panel">
-                <form>
+                <form action="${pageContext.request.contextPath}/ActualizarPerfil" method="POST">
                     <div class="form-group" id="box_input">
                         <label for="InputNombreUAnunciante">Nombre Usuario:</label>
-                        <input type="text" class="form-control" required="">
+                        <input type="text" class="form-control" value="<%=difusor.getNombre_u_difusor() %>" required="" readonly="true" >
                     </div>
 
                     <div class="form-group" id="box_input">
                         <label for="InputNombreUAnunciante">Nombres:</label>
-                        <input type="text" class="form-control" required="">
+                        <input type="text" class="form-control" value="<%=difusor.getNombres() %>" required="">
                     </div>
 
                     <div class="form-group" id="box_input">
                         <label for="InputNombreUAnunciante">Apellido Paterno:</label>
-                        <input type="text" class="form-control" required="">
+                        <input type="text" class="form-control"  value="<%=difusor.getApellido_paterno_difusor() %>" required="">
                     </div>
 
                     <div class="form-group" id="box_input">
                         <label for="InputNombreUAnunciante">Apellido Materno:</label>
-                        <input type="text" class="form-control"  required="">
+                        <input type="text" class="form-control" value="<%=difusor.getApellido_materno_difusor() %>" required="">
                     </div>
                     
                     <div class="form-group" id="box_input">
                         <label for="InputNombreUAnunciante">Correo electronico:</label>
-                        <input type="text" class="form-control"  required="">
+                        <input type="text" class="form-control" value="<%=difusor.getEmail_difusor() %>" required="">
                     </div>
                     
                     <div class="form-group" id="box_input">
