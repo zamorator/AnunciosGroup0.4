@@ -7,6 +7,7 @@ package cl.inacap.dao.difusor;
 
 import cl.inacap.connect.ConnectionFactory;
 import cl.inacap.model.Difusor;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -108,5 +109,42 @@ public class DifusorDAO {
             cf = null;
         }
         return difusor;
+    }
+    
+    public boolean ActualizarPerfilDifusor(Difusor difusor) throws Exception{
+    
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            ResultSet rs = null;
+            boolean resp =false; 
+         try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+           
+           CallableStatement proc = con.prepareCall("{CALL SP_ACTUALIZAR_PERFIL_DIFUSOR(?,?,?,?)}");
+
+           proc.setString(1,difusor.getNombres());
+           proc.setString(2,difusor.getApellido_paterno_difusor());
+           proc.setString(3,difusor.getApellido_materno_difusor());
+           proc.setString(4,difusor.getEmail_difusor());
+           System.out.println(proc); 
+           
+           resp = proc.execute();
+            System.out.println(resp); 
+            if (resp){
+                return false;
+            }else{
+                return true;
+            }
+            
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         
     }
 }
