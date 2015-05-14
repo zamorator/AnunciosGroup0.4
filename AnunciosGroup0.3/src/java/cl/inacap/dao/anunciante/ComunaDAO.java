@@ -26,7 +26,7 @@ public class ComunaDAO {
         try {
             con = cf.obtenerConexion();
             query = new StringBuilder();
-            query.append("SELECT id_comuna, id_provincia, nombre_comuna FROM `anunciante` WHERE nombre_u_anunciante = '" + id_region + "' and password_anunciante = '" + password+ "'");
+            //query.append("SELECT id_comuna, id_provincia, nombre_comuna FROM `anunciante` WHERE nombre_u_anunciante = '" + id_region + "' and password_anunciante = '" + password+ "'");
             System.out.println(query);
             pst = con.prepareStatement(query.toString());
             rs = pst.executeQuery();
