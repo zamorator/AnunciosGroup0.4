@@ -5,8 +5,12 @@
  */
 package cl.inacap.controller.difusor;
 
+import cl.inacap.dao.difusor.DifusorDAO;
+import cl.inacap.model.Difusor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,20 +34,23 @@ public class ActualizarPerfil extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ActualizarPerfil</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ActualizarPerfil at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            Difusor difusor = new Difusor();
+            difusor.setNombre_u_difusor(request.getParameter("inputNombreusuario"));
+            difusor.setNombres(request.getParameter("inputNombres"));
+            difusor.setApellido_paterno_difusor(request.getParameter("inputApellidoPaterno"));
+            difusor.setApellido_materno_difusor(request.getParameter("inputApellidoMaterno"));
+            difusor.setEmail_difusor(request.getParameter("inputCorreo"));
+            difusor.setPassword_difusor(request.getParameter("inputPassword"));
+            
+            DifusorDAO difusordao = new DifusorDAO();
+            boolean resp = difusordao.ActualizarPerfilDifusor(difusor);
+            System.out.println(resp+"respuesta serlvet");
+            request.setAttribute("respuesta", resp);
+            response.sendRedirect("difusor/difusor_perfil.jsp");       
         } finally {
             out.close();
         }
@@ -61,7 +68,11 @@ public class ActualizarPerfil extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ActualizarPerfil.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -75,7 +86,11 @@ public class ActualizarPerfil extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ActualizarPerfil.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
