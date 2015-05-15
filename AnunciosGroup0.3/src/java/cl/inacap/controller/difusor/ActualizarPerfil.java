@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -47,10 +48,15 @@ public class ActualizarPerfil extends HttpServlet {
             difusor.setPassword_difusor(request.getParameter("inputPassword"));
             
             DifusorDAO difusordao = new DifusorDAO();
-            boolean resp = difusordao.ActualizarPerfilDifusor(difusor);
-            System.out.println(resp+"respuesta serlvet");
+            difusor = difusordao.ActualizarPerfilDifusor(difusor);
+            //System.out.println(resp+"respuesta serlvet");
+            /*
             request.setAttribute("respuesta", resp);
-            response.sendRedirect("difusor/difusor_perfil.jsp");       
+            request.getRequestDispatcher("difusor/difusor_perfil.jsp").forward(request, response);
+            */
+            HttpSession session_actual = request.getSession(true);
+            session_actual.setAttribute("difusor", difusor);
+            response.sendRedirect("difusor/difusor_perfil.jsp");
         } finally {
             out.close();
         }

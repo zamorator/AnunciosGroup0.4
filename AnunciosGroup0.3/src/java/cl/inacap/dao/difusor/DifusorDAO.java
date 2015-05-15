@@ -111,7 +111,7 @@ public class DifusorDAO {
         return difusor;
     }
     
-    public boolean ActualizarPerfilDifusor(Difusor difusor) throws Exception{
+    public Difusor ActualizarPerfilDifusor(Difusor difusor) throws Exception{
     
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
@@ -120,7 +120,8 @@ public class DifusorDAO {
          try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
-           
+           Difusor difusoractualizado = new Difusor();
+      
            CallableStatement proc = con.prepareCall("{CALL SP_ACTUALIZAR_PERFIL_DIFUSOR(?,?,?,?)}");
 
            proc.setString(1,difusor.getNombres());
@@ -132,9 +133,11 @@ public class DifusorDAO {
            resp = proc.execute();
             System.out.println(resp); 
             if (resp){
-                return false;
+                difusor = null;
+                return difusor;
             }else{
-                return true;
+                difusoractualizado = IniciaSesionDifusor(difusor.getNombre_u_difusor(),difusor.getPassword_difusor());
+                return difusor;
             }
             
         }catch (Exception ex) {                  
