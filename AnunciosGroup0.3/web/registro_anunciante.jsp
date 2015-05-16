@@ -4,6 +4,7 @@
     Author     : zamorator
 --%>
 
+<%@page import="cl.inacap.model.Provincia"%>
 <%@page import="cl.inacap.model.Comuna"%>
 <%@page import="cl.inacap.dao.anunciante.RegionDAO"%>
 <%@page import="java.util.ArrayList"%>

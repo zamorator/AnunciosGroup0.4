@@ -9,6 +9,7 @@ import cl.inacap.dao.difusor.DifusorDAO;
 import cl.inacap.model.Difusor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -39,24 +40,40 @@ public class ActualizarPerfil extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            
             Difusor difusor = new Difusor();
             difusor.setNombre_u_difusor(request.getParameter("inputNombreusuario"));
-            difusor.setNombres(request.getParameter("inputNombres"));
-            difusor.setApellido_paterno_difusor(request.getParameter("inputApellidoPaterno"));
-            difusor.setApellido_materno_difusor(request.getParameter("inputApellidoMaterno"));
-            difusor.setEmail_difusor(request.getParameter("inputCorreo"));
             difusor.setPassword_difusor(request.getParameter("inputPassword"));
             
             DifusorDAO difusordao = new DifusorDAO();
+            
+            
+            difusor = difusordao.IniciaSesionDifusor(difusor.getNombre_u_difusor(), difusor.getPassword_difusor());
+            
+            
+            if (difusor != null){
+            difusor.setNombres(request.getParameter("inputNombres"));
+            difusor.setApellido_paterno_difusor(request.getParameter("inputApellidoPaterno"));
+            difusor.setApellido_materno_difusor(request.getParameter("inputApellidoMaterno"));
+            difusor.setEmail_difusor(request.getParameter("inputCorreo"));   
             difusor = difusordao.ActualizarPerfilDifusor(difusor);
+            HttpSession session_actual = request.getSession(true);
+            session_actual.setAttribute("difusor", difusor);
+            //session_actual.setAttribute("mensaje", "Exito al actualizar perfil.");
+           // response.sendRedirect("difusor/difusor_perfil.jsp");
+            response.sendRedirect("difusor/difusor_perfil.jsp?mensajeexito=" + URLEncoder.encode("Perfil actualizado exitosamente.", "UTF-8"));
+            }else{
+            // HttpSession session_actual = request.getSession(true);   
+            // session_actual.setAttribute("mensaje", "Error al actualizar perfil");
+            // response.sendRedirect("difusor/difusor_perfil.jsp");
+            response.sendRedirect("difusor/difusor_perfil.jsp?mensajeerror=" + URLEncoder.encode("Error a actualizar perfil.", "UTF-8"));    
+            }
             //System.out.println(resp+"respuesta serlvet");
             /*
             request.setAttribute("respuesta", resp);
             request.getRequestDispatcher("difusor/difusor_perfil.jsp").forward(request, response);
             */
-            HttpSession session_actual = request.getSession(true);
-            session_actual.setAttribute("difusor", difusor);
-            response.sendRedirect("difusor/difusor_perfil.jsp");
+        
         } finally {
             out.close();
         }
