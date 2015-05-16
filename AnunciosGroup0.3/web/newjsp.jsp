@@ -88,6 +88,8 @@
                 </a>
             </div>
         </div>
+    <br/>
+        <a href="registro_administrador.jsp">link</a>
         <%@include file="base_ag/_pie_pagina.jsp" %>
     </body>
 </html>
