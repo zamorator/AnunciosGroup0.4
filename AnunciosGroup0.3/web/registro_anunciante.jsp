@@ -60,9 +60,6 @@
                 <div class="form-group">
                     <label for="InputComuna">Provincia</label>
                     <select class="form-control"  name="selectComuna" id="select-two" >
-                        <% for (Provincia p: provincia) { %>
-                        <option value="<%= p.get_Id_ %>"><%= c.getNombre_comuna()%>"></option>
-                        <% }%>
                     </select>                    
                 </div>
                 <div class="form-group">

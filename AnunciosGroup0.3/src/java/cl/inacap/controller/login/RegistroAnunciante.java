@@ -9,6 +9,8 @@ import cl.inacap.dao.anunciante.ComunaDAO;
 import cl.inacap.model.Comuna;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +40,11 @@ public class RegistroAnunciante extends HttpServlet {
         try {
             Comuna comuna = new Comuna();
             ComunaDAO comunaDao = new ComunaDAO();
+            try {
+                comuna = comunaDao.BuscarComuna(Integer.parseInt(request.getParameter(request.getParameter("InputRegion"))));
+            } catch (Exception ex) {
+                Logger.getLogger(RegistroAnunciante.class.getName()).log(Level.SEVERE, null, ex);
+            }
                     
         } finally {
             out.close();

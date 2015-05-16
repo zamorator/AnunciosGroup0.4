@@ -23,7 +23,8 @@ public class ConnectionFactory {
     public Connection obtenerConexion() throws SQLException, ClassNotFoundException {
         con = null;
         Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost/anunciosgroup?user=admin&password=adminadmin&noAccessToProcedureBodies=true");
+        //con = DriverManager.getConnection("jdbc:mysql://localhost/anunciosgroup?user=admin&password=adminadmin&noAccessToProcedureBodies=true");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/anunciosgroup?user=root&password=123456&noAccessToProcedureBodies=true");
         return con;
     }
 
@@ -39,6 +40,7 @@ public class ConnectionFactory {
                 con.close();
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
             throw new SQLException();
         }
     }

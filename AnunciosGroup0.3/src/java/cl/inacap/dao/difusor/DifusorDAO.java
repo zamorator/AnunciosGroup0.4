@@ -60,7 +60,7 @@ public class DifusorDAO {
         try {
             con = cf.obtenerConexion();
             query = new StringBuilder();
-            query.append("SELECT COUNT(*) FROM DIFUSOR WHERE nombre_u_difusor = '" + nombreDifusor + "'");
+            query.append("SELECT COUNT(*) FROM difusor WHERE nombre_u_difusor = '" + nombreDifusor + "'");
             System.out.println(query);
             pst = con.prepareStatement(query.toString());
             rs = pst.executeQuery();
