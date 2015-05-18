@@ -90,6 +90,11 @@
         </div>
     <br/>
         <a href="registro_administrador.jsp">link</a>
+        
+        <br>
+        <a class="btn btn-primary" href="registro_anunciante.jsp">Registro Nuevo Anunciante</a>
+        <a class="btn btn-primary" href="ingreso_anunciante.jsp">Ingreso Anunciantes</a>
+        <br>
         <%@include file="base_ag/_pie_pagina.jsp" %>
     </body>
 </html>

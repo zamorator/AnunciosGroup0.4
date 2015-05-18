@@ -25,8 +25,8 @@
 
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
             <li role="presentation" class="active"><a href="#">Anuncios</a></li>
-            <li role="presentation"><a href="#">Perfil</a></li>
-            <li role="presentation"><a href="#">Ayuda</a></li>
+            <li role="presentation"><a href="perfil.jsp">Perfil</a></li>
+            <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
         </ul>
 
         <div id="contenido" class="submenu"> 

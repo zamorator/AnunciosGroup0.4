@@ -1,7 +1,7 @@
 <%-- 
-    Document   : inicio
-    Created on : 28-03-2015, 9:42:25
-    Author     : dzamoraf
+    Document   : enviar_mensaje
+    Created on : 18-05-2015, 06:39:37 PM
+    Author     : zamorator <zamorator@gmail.com>
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,21 +21,23 @@
         <title>Anunciante</title>
     </head>
     <body>
-        <%@include file="../base_ag/_menu_anunciante.jsp" %>  
+        <%@include file="../base_ag/_menu_anunciante.jsp" %> 
+
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
-            <li role="presentation" class="active"><a href="#">Anuncios</a></li>
+            <li role="presentation"><a href="mis_anuncios.jsp">Anuncios</a></li>
             <li role="presentation"><a href="perfil.jsp">Perfil</a></li>
-            <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
+            <li role="presentation" class="active"><a href="#">Ayuda</a></li>
         </ul>
-        <div class="submenu">  
-            <div id="submenu" class="links_submenu">
-                <ul class="nav nav-tabs nav-justified">
-                    <li role="submenu" class="active"><a href="#">Mis Anuncios</a></li>
-                    <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
-                </ul>
-            </div>
-            <div id="mis_anuncios" class="contenido">
-                
+
+        <div id="mis_anuncios" class="contenido">
+            <div class="submenu">
+                <div id="submenu" class="links_submenu">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li role="submenu" class="active"><a href="#">Enviar Mensaje</a></li>
+                        <li role="submenu"><a href="bandeja_anunciante.jsp">Bandeja</a></li>
+                    </ul>
+                </div>
+                <h1>Enviar mensaje</h1>
             </div>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %>
