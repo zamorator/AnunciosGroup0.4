@@ -28,9 +28,25 @@
             <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
         </ul>
         <div id="mis_anuncios" class="contenido">
-            <div class="submenu">
-                <h1>contenido</h1>
-            </div>
+            <form method="POST" action="${pageContext.request.contextPath}/ActualizarAnunciante" >
+                <div class="submenu">
+                    <% if (request.getParameter("message") != null) {%>
+                    <div class="label label-success" role="alert">${param.message}</div>
+                    <% }%>
+                    <h1>Perfil</h1>
+                    <label for="InputNombreAnunciante">Nombre Usuario Anunciante</label>
+                    <input type="text" class="form-control" name="InputNombreUAnunciante" id="NombreUAnunciante">
+                    <label for="InputDireccionAnunciante">Direcc&oacute;n Anunciante</label>
+                    <input type="text" class="form-control" name="InputDireccionAnunciante" id="DireccionAnunciante">
+                    <label for="InputPasswordAnunciante">Clave</label>
+                    <input type="text" class="form-control" name="InputPasswordAnunciante" id="PasswordAnunciante">
+                    <label for="InputComunaAnunciante">Comuna</label>
+                    <input type="text" class="form-control" name="InputComunaAnunciante" id="ComunaAnunciante">
+                    <label for="InputGiroAnunciante">Giro</label>
+                    <input type="text" class="form-control" name="InputGiroAnunciante" id="GiroAnunciante">
+                </div>
+                <button type="submit">Actualizar</button>
+            </form>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %>
     </body>
