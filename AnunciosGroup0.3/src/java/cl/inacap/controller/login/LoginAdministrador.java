@@ -5,6 +5,8 @@
  */
 package cl.inacap.controller.login;
 
+import cl.inacap.dao.administrador.AdministradorDAO;
+import cl.inacap.model.Administrador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,6 +36,15 @@ public class LoginAdministrador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            Administrador administrador = new Administrador();
+            administrador.setNombre_administrador(request.getParameter("txtapellido"));
+            administrador.setNombre_u_administrador("javieru");
+            administrador.setApellido_paterno_administrador("power");
+            administrador.setApellido_materno_administrador("jay");
+            administrador.setEmail_administrador("donhuea@hotmail.com");
+            
+            AdministradorDAO administradordao = new AdministradorDAO();
+            administradordao.AgregarAdministrador(administrador);
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
