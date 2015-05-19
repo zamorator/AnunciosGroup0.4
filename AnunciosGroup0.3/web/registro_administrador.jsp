@@ -29,9 +29,38 @@
             
             <!-- <input type="text" name="txtapellido">  -->
             <!-- <button type="submit">Enviar</button> -->
-            
+            <div class="contenido" id="registro_panel">
+                            <div class="form-group">
+                                <label for="InputNombreUAdministrador">Nombre Usuario Administrador</label>
+                                <input type="text" class="form-control" name="InputNombreUAdministraodr" id="NombreUAdministrador" placeholder="Ingrese Nombre Usuario" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="InputNombres">Nombre Administrador</label>
+                                <input type="text" class="form-control" name="InputNombres" id="Nombres" placeholder="Ingrese Nombres Admin" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="InputApellidoPaterno">Apellido Paterno Admin</label>
+                                <input type="text" class="form-control" name="InputApellidoPaterno" id="ApellidoPaterno" placeholder="Ingrese Apellido Paterno" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="InputApellidoMaterno">Apellido Materno Admin</label>
+                                <input type="text" class="form-control" name="InputApellidoMaterno" id="ApellidoMaterno" placeholder="Ingrese Apellido Materno" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="InputEmail">E-mail</label>
+                                <input type="email" class="form-control" name="InputEmail" id="Email" placeholder="Ingrese Correo Electrónico" required="">
+                            </div>
+                            <div class="form-group">
+                                 <label for="InputPassword">Contraseña</label>
+                                 <input type="password" class="form-control" name="InputPassword" id="password" placeholder="Ingrese Contraseña" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="InputPassword">Repita Contraseña</label>
+                                <input type="password" class="form-control" name="InputPassword2" id="password2" placeholder="Repita Contraseña" required="">
+                            </div>
+                <button class="btn btn-default" type="submit" >Registro</button>
             
         </form>
-        <h1>Hello World!</h1>
+        <h1>Hello Madafakas!</h1>
     </body>
 </html>
