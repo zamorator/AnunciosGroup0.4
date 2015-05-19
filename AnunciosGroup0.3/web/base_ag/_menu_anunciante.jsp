@@ -19,7 +19,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="/AnunciosGroup0.3/anunciante/mis_anuncios.jsp">
                         <span>
                             <img src="../img/AG logo.png" height="30" width="30">
                         </span>
