@@ -24,7 +24,7 @@ public class ConnectionFactory {
         con = null;
         Class.forName("com.mysql.jdbc.Driver");
         //con = DriverManager.getConnection("jdbc:mysql://localhost/anunciosgroup?user=admin&password=adminadmin&noAccessToProcedureBodies=true");
-        con = DriverManager.getConnection("jdbc:mysql://localhost/anunciosgroup?user=root&password=123456&noAccessToProcedureBodies=true");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/anunciosgroup?user=admin&password=123456&noAccessToProcedureBodies=true");
         return con;
     }
 
