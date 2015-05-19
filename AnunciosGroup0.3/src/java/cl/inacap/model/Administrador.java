@@ -17,6 +17,7 @@ public class Administrador {
     private String apellido_paterno_administrador;
     private String apellido_materno_administrador;
     private String email_administrador;
+    private String password_administrador;
 
     public int getCodigo_administrador() {
         return codigo_administrador;
@@ -64,6 +65,14 @@ public class Administrador {
 
     public void setEmail_administrador(String email_administrador) {
         this.email_administrador = email_administrador;
+    }
+    
+    public String getPassword_administrador() {
+        return password_administrador;
+    }
+
+    public void setPassword_administrador(String password_administrador) {
+        this.password_administrador = password_administrador;
     }
 
 }

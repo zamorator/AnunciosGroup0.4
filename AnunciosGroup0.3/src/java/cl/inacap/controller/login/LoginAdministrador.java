@@ -37,11 +37,12 @@ public class LoginAdministrador extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             Administrador administrador = new Administrador();
-            administrador.setNombre_administrador(request.getParameter("txtapellido"));
-            administrador.setNombre_u_administrador("javieru");
+            administrador.setNombre_administrador(request.getParameter("InputNombreUAdministrador"));
+            administrador.setNombre_u_administrador("Javieru");
             administrador.setApellido_paterno_administrador("power");
             administrador.setApellido_materno_administrador("jay");
             administrador.setEmail_administrador("donhuea@hotmail.com");
+            administrador.setPassword_administrador("123456");
             
             AdministradorDAO administradordao = new AdministradorDAO();
             administradordao.AgregarAdministrador(administrador);
@@ -53,7 +54,7 @@ public class LoginAdministrador extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginAdministrador at " + request.getContextPath() + "</h1>");
-            out.println("<h2> "+request.getParameter("txtapellido") + "</h2>");
+            out.println("<h2> "+request.getParameter("InputNombreUAdministrador") + "</h2>");
             out.println("</body>");
             out.println("</html>");
         } finally {

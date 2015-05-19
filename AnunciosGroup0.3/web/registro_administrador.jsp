@@ -32,7 +32,7 @@
             <div class="contenido" id="registro_panel">
                             <div class="form-group">
                                 <label for="InputNombreUAdministrador">Nombre Usuario Administrador</label>
-                                <input type="text" class="form-control" name="InputNombreUAdministraodr" id="NombreUAdministrador" placeholder="Ingrese Nombre Usuario" required="">
+                                <input type="text" class="form-control" name="InputNombreUAdministrador" id="NombreUAdministrador" placeholder="Ingrese Nombre Usuario" required="">
                             </div>
                             <div class="form-group">
                                 <label for="InputNombres">Nombre Administrador</label>

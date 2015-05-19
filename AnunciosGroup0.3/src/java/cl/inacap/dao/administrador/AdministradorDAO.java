@@ -24,8 +24,8 @@ public class AdministradorDAO {
             con = cf.obtenerConexion();
             query = new StringBuilder();
             java.util.Date date = new java.util.Date();
-            query.append("INSERT INTO `anunciosgroup`.`administrador` (`CODIGO_ADMINISTRADOR`, `NOMBRE_U_ADMINISTRADOR`, `NOMBRE_ADMINISTRADOR`, `APELLIDO_PATERNO_ADMINISTRADOR`, `APELLIDO_MATERNO_ADMINISTRADOR`, `EMAIL_ADMINISTRADOR`) "
-                    + "VALUES (NULL, '"+ administrador.getNombre_u_administrador() +"', '"+ administrador.getNombre_administrador() +"', '"+ administrador.getApellido_paterno_administrador() +"', '"+ administrador.getApellido_materno_administrador() +"', '"+ administrador.getEmail_administrador() +"');");
+            query.append("INSERT INTO `anunciosgroup`.`administrador` (`CODIGO_ADMINISTRADOR`, `NOMBRE_U_ADMINISTRADOR`, `NOMBRE_ADMINISTRADOR`, `APELLIDO_PATERNO_ADMINISTRADOR`, `APELLIDO_MATERNO_ADMINISTRADOR`, `EMAIL_ADMINISTRADOR`, `PASSWORD_ADMINISTRADOR`) "
+                    + "VALUES (NULL, '"+ administrador.getNombre_u_administrador() +"', '"+ administrador.getNombre_administrador() +"', '"+ administrador.getApellido_paterno_administrador() +"', '"+ administrador.getApellido_materno_administrador() +"', '"+ administrador.getEmail_administrador() +"', '"+administrador.getPassword_administrador() +"' );");
             System.out.println(query);
             pst = con.prepareStatement(query.toString());
             date = null;
