@@ -19,20 +19,27 @@
         <title>Ingreso Difusor</title>
     </head>
     <body>
-        <div class="contenido">
+        
+        <%@include file="../base_ag/_menu_difusor.jsp" %>
+        <div class="contenido" id="ingreso">
+            <ul class="nav nav-tabs">
+                <li role="presentation" ><a href="newjsp.jsp">Home</a></li>
+            </ul>
             <% if (request.getParameter("message") != null) {%>
             <div class="alert alert-danger" role="alert">${param.message}</div>
             <% }%>
             <form action="${pageContext.request.contextPath}/LoginDifusor" method="POST" >
-                <div class="form-group">
-                    <label for="InputNombreDifusor">Nombre Difusor</label>
-                    <input type="text" class="form-control" name="InputNombreDifusor" id="NombreDifusor" placeholder="Ingrese Nombre Difusor" required="">
+                <div id="ingreso_datos">
+                    <div class="form-group">
+                        <label for="InputNombreDifusor">Nombre Difusor</label>
+                        <input type="text" class="form-control" name="InputNombreDifusor" id="NombreDifusor" placeholder="Ingrese Nombre Difusor" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputPassword">Contraseña</label>
+                        <input type="text" class="form-control" name="InputPassword" id="Password" placeholder="Ingrese Contraseña" required="">
+                    </div>
+                    <button class="btn btn-default" type="submit" >Ingreso</button>
                 </div>
-                <div class="form-group">
-                    <label for="InputPassword">Contraseña</label>
-                    <input type="text" class="form-control" name="InputPassword" id="Password" placeholder="Ingrese Contraseña" required="">
-                </div>
-                <button class="btn btn-default" type="submit" >Ingreso</button>
             </form>
         </div>
         <%@include file="base_ag/_pie_pagina.jsp" %>
