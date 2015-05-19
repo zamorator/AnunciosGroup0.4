@@ -44,8 +44,8 @@
                     <input type="text" class="form-control" name="InputComunaAnunciante" id="ComunaAnunciante">
                     <label for="InputGiroAnunciante">Giro</label>
                     <input type="text" class="form-control" name="InputGiroAnunciante" id="GiroAnunciante">
+                    <button type="submit">Actualizar</button>
                 </div>
-                <button type="submit">Actualizar</button>
             </form>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %>
