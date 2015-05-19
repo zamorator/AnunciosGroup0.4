@@ -44,3 +44,17 @@ footer{
 #anuncios{
     margin: 5% 5%;
 }
+
+#registro{
+ width: 50%;
+ margin:auto;
+}
+
+.avatar-seleccionar label{
+    width: 12%; 
+}
+
+.avatar-seleccionar img {
+ width: 100%;   
+    
+}
