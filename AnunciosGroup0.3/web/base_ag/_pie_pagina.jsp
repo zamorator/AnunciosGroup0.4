@@ -19,17 +19,17 @@
                 <ul class="nav nav-pills">
                     <li>
                         <a target="_blank" href="https://www.facebook.com/">
-                            <img src="img/social-icons/32px/Facebook.png" height="32px" width="32px">
+                            <img src="/AnunciosGroup0.3/img/social-icons/32px/Facebook.png" height="32px" width="32px">
                         </a>
                     </li>
                     <li>
                         <a target="_blank" href="https://twitter.com/">
-                            <img src="img/social-icons/32px/Twitter.png" height="32px" width="32px">
+                            <img src="/AnunciosGroup0.3/img/social-icons/32px/Twitter.png" height="32px" width="32px">
                         </a>
                     </li>
                     <li>
                         <a target="_blank" href="#">
-                            <img src="img/social-icons/32px/Google+.png" height="32px" width="32px">
+                            <img src="/AnunciosGroup0.3/img/social-icons/32px/GooglePlus.png" height="32px" width="32px">
                         </a>
                     </li>
                 </ul>
