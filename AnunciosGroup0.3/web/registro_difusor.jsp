@@ -19,14 +19,13 @@
         <title>Registro Difusor</title>
     </head>
     <body>
+        <%@include file="../base_ag/_menu_difusor.jsp" %>
         
-        
-        <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
-            <li role="presentation"><a href="">Inicio</a></li>
-            <li role="presentation" class="active"><a href="#">Registro</a></li>
-        </ul>
-        
+
         <div class="contenido" id="registro">
+            <ul class="nav nav-tabs">
+                <li role="presentation" ><a href="newjsp.jsp">Home</a></li>
+            </ul>
             <% if (request.getParameter("message") != null) {%>
             <div class="alert alert-danger" role="alert">${param.message}</div>
             <% }%>
