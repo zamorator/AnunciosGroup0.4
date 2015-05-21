@@ -19,6 +19,15 @@ public class Difusor {
     private int id_segmento_edad;
     private int id_segmento_sexo;
 
+    public int getId_avatar() {
+        return id_avatar;
+    }
+
+    public void setId_avatar(int id_avatar) {
+        this.id_avatar = id_avatar;
+    }
+    private int id_avatar;
+
     public String getNombre_u_difusor() {
         return nombre_u_difusor;
     }
