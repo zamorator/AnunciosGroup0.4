@@ -28,7 +28,8 @@ footer{
 }
 #panel{
     margin: auto;
-    margin:5%;
+    width: 80%;
+    padding: 2%;
 }
 
 #contenido_panel{
@@ -68,4 +69,8 @@ footer{
 
 #ingreso_datos{
     padding: 2%;  
+}
+
+.form-group label{
+    width: 45%;
 }

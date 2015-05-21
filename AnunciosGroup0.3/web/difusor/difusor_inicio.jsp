@@ -40,16 +40,16 @@
         <%@include file="../base_ag/_menu_difusor.jsp" %>
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
             <li role="presentation" class="active"><a href="#">Inicio</a></li>
-            <li role="presentation"><a href="#">Perfil</a></li>
+            <li role="presentation"><a href="difusor_perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="#">Canjear</a></li>
         </ul>
-        <div id="panel_anuncios">
+        <div id="panel">
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="#">Todos</a></li>
                 <li role="presentation"><a href="#">Mis Anuncios</a></li>
             </ul>
             
-            <div class="contenido" id="contenido_panel_anuncios">
+            <div class="contenido" id="contenido_panel">
                 
                 <div class="row">
                     <!--<div class="col-sm-6 col-md-4">-->
