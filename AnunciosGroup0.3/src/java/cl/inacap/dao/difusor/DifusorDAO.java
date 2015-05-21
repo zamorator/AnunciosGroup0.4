@@ -90,7 +90,7 @@ con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
            Difusor difusoractualizado = new Difusor();
       
-            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_DIFUSOR_LOGIN(?)}");
+            CallableStatement proc = con.prepareCall("{CALL SP_INICIAR_SESION_DIFUSOR(?)}");
             proc.setString(1,difusor.getNombre_u_difusor());
             rs = proc.executeQuery();
             while (rs.next()) {
