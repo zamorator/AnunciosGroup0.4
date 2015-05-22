@@ -22,8 +22,8 @@
         <title>Difusor Perfil</title>
         
         <%
-            HttpSession session_actual = request.getSession(true);
-            Difusor difusor = (Difusor) session_actual.getAttribute("difusor");
+            //HttpSession session_actual = request.getSession(true);
+            //Difusor difusor = (Difusor) session_actual.getAttribute("difusor");
         %>
     </head>
     <body>
@@ -51,6 +51,7 @@
                 <% }%>
                 
                 <form action="${pageContext.request.contextPath}/ActualizarPerfil" method="POST">
+     
                     <div class="form-group" id="box_input">
                         <label for="InputNombreUAnunciante">Nombre Usuario:</label>
                         <input type="text" class="form-control"  name="InputNombreUDifusor" value="<%=difusor.getNombre_u_difusor() %>" required="" readonly="true" >
@@ -80,6 +81,7 @@
                         <label for="InputNombreContraseña">Contraseña:</label>
                         <input type="text" class="form-control" name="InputNombreContrasena" placeholder="Ingrese Contraseña" required="">
                     </div>
+                    
                      <div class="form-group" id="box_input">
                         <button class="btn btn-default" id="btn_actualizar" type="submit" >Actualizar</button>
                     </div>

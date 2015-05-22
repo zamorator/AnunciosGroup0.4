@@ -86,12 +86,13 @@ public class DifusorDAO {
         Difusor difusor = null;
         try {
             con = cf.obtenerConexion();
-con = cf.obtenerConexion();
+            con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
            Difusor difusoractualizado = new Difusor();
       
-            CallableStatement proc = con.prepareCall("{CALL SP_INICIAR_SESION_DIFUSOR(?)}");
-            proc.setString(1,difusor.getNombre_u_difusor());
+            CallableStatement proc = con.prepareCall("{CALL SP_INICIAR_SESION_DIFUSOR(?,?)}");
+            proc.setString(1,nombre);
+            proc.setString(2,password);
             rs = proc.executeQuery();
             while (rs.next()) {
                 difusor = new Difusor();
@@ -100,8 +101,7 @@ con = cf.obtenerConexion();
                 difusor.setApellido_paterno_difusor(rs.getString("APELLIDO_PATERNO_DIFUSOR"));
                 difusor.setApellido_materno_difusor(rs.getString("APELLIDO_MATERNO_DIFUSOR"));
                 difusor.setEmail_difusor(rs.getString("EMAIL_DIFUSOR"));
-                difusor.setId_avatar(rs.getInt("ID_AVATAR"));
-                
+                difusor.setNombre_avatar(rs.getString("AVATAR"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -120,7 +120,7 @@ con = cf.obtenerConexion();
             ResultSet rs = null;
             boolean resp =false; 
          try {  
-            con = cf.obtenerConexion();
+           con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
            Difusor difusoractualizado = new Difusor();
       
@@ -152,4 +152,5 @@ con = cf.obtenerConexion();
         } 
          
     }
+ 
 }

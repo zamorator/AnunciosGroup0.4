@@ -40,6 +40,7 @@ public class LoginDifusor extends HttpServlet {
         try {
             DifusorDAO difusorDAO = new DifusorDAO();
             Difusor difusor = new Difusor();
+         
             difusor = difusorDAO.IniciaSesionDifusor(request.getParameter("InputNombreDifusor"), request.getParameter("InputPassword"));
             HttpSession session_actual = request.getSession(true);
             session_actual.setAttribute("difusor", difusor);

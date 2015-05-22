@@ -4,10 +4,15 @@
     Author     : macbookair
 --%>
 
+<%@page import="cl.inacap.model.Difusor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../css/cabecera_anunciante.css">
 <!DOCTYPE html>
 <html>
+            <%
+            HttpSession session_actual = request.getSession(true);
+            Difusor difusor = (Difusor) session_actual.getAttribute("difusor");
+            %>
     <body>
         <nav class="navbar navbar-default">
                     <div class="container-fluid">
@@ -33,7 +38,10 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                             <ul class="nav navbar-nav navbar-right">
-                                  
+                                <% if(difusor != null){    %>
+                                <img width="50px" src="/AnunciosGroup0.3/img/avatar/<%=difusor.getNombre_avatar()%>"
+                                     <p><%= difusor.getNombre_u_difusor() %> </p>
+                                <% }%>
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
