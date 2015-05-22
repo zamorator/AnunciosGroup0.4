@@ -42,8 +42,8 @@ public class ActualizarPerfil extends HttpServlet {
         try {
             
             Difusor difusor = new Difusor();
-            difusor.setNombre_u_difusor(request.getParameter("inputNombreusuario"));
-            difusor.setPassword_difusor(request.getParameter("inputPassword"));
+            difusor.setNombre_u_difusor(request.getParameter("InputNombreUDifusor"));
+            difusor.setPassword_difusor(request.getParameter("InputNombreContrasena"));
             
             DifusorDAO difusordao = new DifusorDAO();
             
@@ -52,10 +52,10 @@ public class ActualizarPerfil extends HttpServlet {
             
             
             if (difusor != null){
-            difusor.setNombres(request.getParameter("inputNombres"));
-            difusor.setApellido_paterno_difusor(request.getParameter("inputApellidoPaterno"));
-            difusor.setApellido_materno_difusor(request.getParameter("inputApellidoMaterno"));
-            difusor.setEmail_difusor(request.getParameter("inputCorreo"));   
+            difusor.setNombres(request.getParameter("InputNombres"));
+            difusor.setApellido_paterno_difusor(request.getParameter("InputApellidoPaterno"));
+            difusor.setApellido_materno_difusor(request.getParameter("InputApellidoMaterno"));
+            difusor.setEmail_difusor(request.getParameter("InputCorreo"));   
             difusor = difusordao.ActualizarPerfilDifusor(difusor);
             HttpSession session_actual = request.getSession(true);
             session_actual.setAttribute("difusor", difusor);

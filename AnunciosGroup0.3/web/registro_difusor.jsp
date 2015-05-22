@@ -97,31 +97,31 @@
                              <label>Seleccione su avatar</label>
                             <div class="radio avatar-seleccionar">
                                     <label>
-                                        <input type="radio" name="optionsRadiosSexo" id="male" value="Alien 3.ico"  checked="true">
+                                        <input type="radio" name="optionsRadioAvatar" id="avatar" value="1"  checked="true">
                                         <img id="img-avatar" src="img/avatar/Alien 3.ico">   
                                     </label>
                                     <label>
-                                        <input type="radio" name="optionsRadiosSexo" id="male" value="Bat.ico" >
+                                        <input type="radio" name="optionsRadioAvatar"  value="2" >
                                         <img id="img-avatar" src="img/avatar/Bat.ico">   
                                     </label>
                                     <label>
-                                        <input type="radio" name="optionsRadiosSexo" id="male" value="Devil 2.ico" >
+                                        <input type="radio" name="optionsRadioAvatar"  value="3" >
                                         <img id="img-avatar" src="img/avatar/Devil 2.ico">   
                                     </label>
                                     <label>
-                                        <input type="radio" name="optionsRadiosSexo" id="male" value="Pumpkin.ico" >
+                                        <input type="radio" name="optionsRadioAvatar"  value="4" >
                                         <img id="img-avatar" src="img/avatar/Pumpkin.ico">   
                                     </label>
                                     <label>
-                                        <input type="radio" name="optionsRadiosSexo" id="male" value="Sea Monster.ico" >
+                                        <input type="radio" name="optionsRadioAvatar" value="5" >
                                         <img id="img-avatar" src="img/avatar/Sea Monster.ico">   
                                     </label>
                                     <label>
-                                        <input type="radio" name="optionsRadiosSexo" id="male" value="Zombie Female.ico" >
+                                        <input type="radio" name="optionsRadioAvatar"  value="6" >
                                         <img id="img-avatar" src="img/avatar/Zombie Female.ico">   
                                     </label>
                                     <label>
-                                        <input type="radio" name="optionsRadiosSexo" id="male" value="Skull 2.ico" >
+                                        <input type="radio" name="optionsRadioAvatar"  value="7" >
                                         <img id="img-avatar" src="img/avatar/Skull 2.ico">   
                                     </label>      
                             </div>

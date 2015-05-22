@@ -83,7 +83,12 @@ public class RegistroDifusor extends HttpServlet {
                                     }
                                 }
                                 difusor.setPassword_difusor(request.getParameter("InputPassword"));
-
+                                
+                                System.out.println(request.getParameter("optionsRadioAvatar") + "llegue aca");
+                                if(request.getParameter("optionsRadioAvatar") != null){
+                                        difusor.setId_avatar(Integer.parseInt(request.getParameter("optionsRadioAvatar")));   
+                                }
+                                
                                 /* rangos | id
                                  15 - 18 | 1
                                  19 - 29 | 2

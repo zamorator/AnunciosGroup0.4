@@ -26,7 +26,7 @@ public class DifusorDAO {
         try {
             con = cf.obtenerConexion();
             query = new StringBuilder();
-            query.append("INSERT INTO DIFUSOR (`NOMBRE_U_DIFUSOR`, `NOMBRES`, `APELLIDO_PATERNO_DIFUSOR`, `APELLIDO_MATERNO_DIFUSOR`, `PASSWORD_DIFUSOR`, `EMAIL_DIFUSOR`, `ID_SEGMENTO_EDAD`, `ID_SEGMENTO_SEXO`) values("
+            query.append("INSERT INTO DIFUSOR (`NOMBRE_U_DIFUSOR`, `NOMBRES`, `APELLIDO_PATERNO_DIFUSOR`, `APELLIDO_MATERNO_DIFUSOR`, `PASSWORD_DIFUSOR`, `EMAIL_DIFUSOR`, `ID_SEGMENTO_EDAD`, `ID_SEGMENTO_SEXO`,`ID_AVATAR`) values("
                     + " '" + difusor.getNombre_u_difusor() + "',"
                     + " '" + difusor.getNombres() + "',"
                     + " '" + difusor.getApellido_paterno_difusor() + "',"
@@ -34,7 +34,8 @@ public class DifusorDAO {
                     + " '" + difusor.getPassword_difusor() + "',"
                     + " '" + difusor.getEmail_difusor() + "',"
                     + difusor.getId_segmento_edad() + ","
-                    + difusor.getId_segmento_sexo() + ")"
+                    + difusor.getId_segmento_sexo() + ","
+                    + difusor.getId_avatar() + ")"
             );
             System.out.println(query);
             pst = con.prepareStatement(query.toString());
@@ -81,17 +82,18 @@ public class DifusorDAO {
     public Difusor IniciaSesionDifusor(String nombre, String password) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
-        StringBuilder query = null;
         ResultSet rs = null;
         Difusor difusor = null;
         try {
             con = cf.obtenerConexion();
-            query = new StringBuilder();
-            query.append("SELECT * FROM `difusor` WHERE nombre_u_difusor = '" + nombre + "' and password_difusor = '" + password+ "'");
-            System.out.println(query);
-            pst = con.prepareStatement(query.toString());
-            rs = pst.executeQuery();
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+           Difusor difusoractualizado = new Difusor();
+      
+            CallableStatement proc = con.prepareCall("{CALL SP_INICIAR_SESION_DIFUSOR(?,?)}");
+            proc.setString(1,nombre);
+            proc.setString(2,password);
+            rs = proc.executeQuery();
             while (rs.next()) {
                 difusor = new Difusor();
                 difusor.setNombre_u_difusor(rs.getString("NOMBRE_U_DIFUSOR"));
@@ -99,13 +101,13 @@ public class DifusorDAO {
                 difusor.setApellido_paterno_difusor(rs.getString("APELLIDO_PATERNO_DIFUSOR"));
                 difusor.setApellido_materno_difusor(rs.getString("APELLIDO_MATERNO_DIFUSOR"));
                 difusor.setEmail_difusor(rs.getString("EMAIL_DIFUSOR"));
+                difusor.setNombre_avatar(rs.getString("AVATAR"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Exception();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
         return difusor;
@@ -118,7 +120,7 @@ public class DifusorDAO {
             ResultSet rs = null;
             boolean resp =false; 
          try {  
-            con = cf.obtenerConexion();
+           con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
            Difusor difusoractualizado = new Difusor();
       
@@ -150,4 +152,5 @@ public class DifusorDAO {
         } 
          
     }
+ 
 }

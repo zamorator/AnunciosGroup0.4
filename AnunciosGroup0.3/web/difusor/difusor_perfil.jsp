@@ -22,8 +22,8 @@
         <title>Difusor Perfil</title>
         
         <%
-            HttpSession session_actual = request.getSession(true);
-            Difusor difusor = (Difusor) session_actual.getAttribute("difusor");
+            //HttpSession session_actual = request.getSession(true);
+            //Difusor difusor = (Difusor) session_actual.getAttribute("difusor");
         %>
     </head>
     <body>
@@ -41,36 +41,47 @@
             </ul>
             
             <div class="contenido" id="contenido_panel">
+                
+                <% if (request.getParameter("mensajeexito") != null) {%>
+                    <div class="alert alert-success" role="alert">${param.mensajeexito}</div>
+                <% }%>
+                
+                <% if (request.getParameter("mensajeerror") != null) {%>
+                    <div class="alert alert-danger" role="alert">${param.mensajeerror}</div>
+                <% }%>
+                
                 <form action="${pageContext.request.contextPath}/ActualizarPerfil" method="POST">
+     
                     <div class="form-group" id="box_input">
                         <label for="InputNombreUAnunciante">Nombre Usuario:</label>
-                        <input type="text" class="form-control" value="<%=difusor.getNombre_u_difusor() %>" required="" readonly="true" >
+                        <input type="text" class="form-control"  name="InputNombreUDifusor" value="<%=difusor.getNombre_u_difusor() %>" required="" readonly="true" >
                     </div>
 
                     <div class="form-group" id="box_input">
-                        <label for="InputNombreUAnunciante">Nombres:</label>
-                        <input type="text" class="form-control" value="<%=difusor.getNombres() %>" required="">
+                        <label for="InputNombres">Nombres:</label>
+                        <input type="text" class="form-control"  name="InputNombres" value="<%=difusor.getNombres() %>" required="">
                     </div>
 
                     <div class="form-group" id="box_input">
-                        <label for="InputNombreUAnunciante">Apellido Paterno:</label>
-                        <input type="text" class="form-control"  value="<%=difusor.getApellido_paterno_difusor() %>" required="">
+                        <label for="InputApellidoPaterno">Apellido Paterno:</label>
+                        <input type="text" class="form-control" name="InputApellidoPaterno" value="<%=difusor.getApellido_paterno_difusor() %>" required="">
                     </div>
 
                     <div class="form-group" id="box_input">
-                        <label for="InputNombreUAnunciante">Apellido Materno:</label>
-                        <input type="text" class="form-control" value="<%=difusor.getApellido_materno_difusor() %>" required="">
+                        <label for="InputApellidoMaterno">Apellido Materno:</label>
+                        <input type="text" class="form-control" name="InputApellidoMaterno" value="<%=difusor.getApellido_materno_difusor() %>" required="">
                     </div>
                     
                     <div class="form-group" id="box_input">
-                        <label for="InputNombreUAnunciante">Correo electronico:</label>
-                        <input type="text" class="form-control" value="<%=difusor.getEmail_difusor() %>" required="">
+                        <label for="InputCorreo">Correo electronico:</label>
+                        <input type="text" class="form-control" name="InputCorreo" value="<%=difusor.getEmail_difusor() %>" required="">
                     </div>
                     
                     <div class="form-group" id="box_input">
-                        <label for="InputNombreUAnunciante">Contraseña:</label>
-                        <input type="text" class="form-control"  placeholder="Ingrese Contraseña" required="">
+                        <label for="InputNombreContraseña">Contraseña:</label>
+                        <input type="text" class="form-control" name="InputNombreContrasena" placeholder="Ingrese Contraseña" required="">
                     </div>
+                    
                      <div class="form-group" id="box_input">
                         <button class="btn btn-default" id="btn_actualizar" type="submit" >Actualizar</button>
                     </div>

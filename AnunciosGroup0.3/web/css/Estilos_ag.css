@@ -28,19 +28,24 @@ footer{
 }
 #panel{
     margin: auto;
-    margin:5%;
+    width: 80%;
+    padding: 2%;
 }
 
 #contenido_panel{
-    margin: auto;
     margin-top: 2%;
     width:100%; 
-    background-color: rgba(0, 0, 0, 0.2);
-    background: rgba(0, 0, 0, 0.2);
-    color: rgba(0, 0, 0, 0.2);
-    border-radius:10px; 
+    //background-color: rgba(0, 0, 0, 0.2);
+    //background: rgba(0, 0, 0, 0.2);
+    //color: rgba(0, 0, 0, 0.2);
+    border-radius:2px; 
+    padding:5%;
 }
 
+.form-group input{
+    
+    width: 45%;
+}
 #anuncios{
     margin: 5% 5%;
 }
@@ -68,4 +73,8 @@ footer{
 
 #ingreso_datos{
     padding: 2%;  
+}
+
+.form-group label{
+    width: 45%;
 }
