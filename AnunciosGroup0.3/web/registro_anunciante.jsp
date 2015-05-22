@@ -52,6 +52,7 @@
                 <div class="form-group">
                     <label for="InputRegion">Región</label>
                     <select class="form-control" onchange="this.form.submit()" name="select-one" id="select-one" >
+                        <option value="" selected="selected" >Seleccione Region</option>
                         <% for (Region r : regiones) {%>
                         <option value="<%= r.getRegion_id()%>"><%= r.getNombre_region()%></option>
                         <% }%>
@@ -59,14 +60,16 @@
                 </div>
                 <div class="form-group">
                     <label for="InputComuna">Provincia</label>
-                    <select class="form-control"  name="selectComuna" id="select-two" >
+                    <select class="form-control"  name="selectComuna" id="select-two" 
+                            <option value="" selected="selected">Seleccione Provincia</option>
                     </select>                    
                 </div>
                 <div class="form-group">
                     <label for="InputComuna">Comuna</label>
                     <select class="form-control"  name="selectComuna" id="select-two" >
-                        <% for (Comuna c: comunas) { %>
-                        <option value="<%= c.getId_comuna() %>"><%= c.getNombre_comuna()%>"></option>
+                        <option value="" selected="selected">Seleccione Comuna</option>
+                        <% for (Comuna c : comunas) {%>
+                            <option value="<%= c.getId_comuna()%>"><%= c.getNombre_comuna()%>"></option>
                         <% }%>
                     </select>                    
                 </div>

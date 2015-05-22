@@ -31,7 +31,7 @@
                     </button>
                     <a class="navbar-brand" href="#">
                         <span>
-                            <img src="img/AG logo.png" height="30" width="30">
+                            <img src="img/AG logo.png" height="72" width="128">
                         </span>
                         <span>
                             AnunciosGroup
@@ -61,19 +61,19 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="img/AG logo.png" height="30" width="30" align=center>
+                        <img src="img/AG logo.png" height="500" width="500" align=center>
                     </div>
 
                     <div class="item">
-                        <img src="img/AG logo.png" height="40" width="40" align=center>
+                        <img src="img/AG logo.png" height="500" width="500" align=center>
                     </div>
 
                     <div class="item">
-                        <img src="img/AG logo.png" height="50" width="50" align=center>
+                        <img src="img/AG logo.png" height="500" width="500" align=center>
                     </div>
 
                     <div class="item">
-                        <img src="img/AG logo.png" height="60" width="60" align=center>
+                        <img src="img/AG logo.png" height="500" width="500" align=center>
                     </div>
                 </div>
 
