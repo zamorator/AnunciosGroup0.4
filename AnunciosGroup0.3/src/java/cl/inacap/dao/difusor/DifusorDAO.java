@@ -102,6 +102,8 @@ public class DifusorDAO {
                 difusor.setApellido_materno_difusor(rs.getString("APELLIDO_MATERNO_DIFUSOR"));
                 difusor.setEmail_difusor(rs.getString("EMAIL_DIFUSOR"));
                 difusor.setNombre_avatar(rs.getString("AVATAR"));
+                difusor.setId_segmento_sexo(rs.getInt("ID_SEGMENTO_SEXO"));
+                difusor.setId_segmento_edad(rs.getInt("ID_SEGMENTO_EDAD"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();

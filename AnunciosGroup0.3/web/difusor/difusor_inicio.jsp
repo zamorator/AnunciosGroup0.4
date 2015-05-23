@@ -24,20 +24,27 @@
         <link rel="stylesheet" href="../css/anunciante.css">
         <title>Difusor</title>
         
+    </head>
+    <body>
+        <%@include file="../base_ag/_menu_difusor.jsp" %>
         <%
             ArrayList<Anuncio> anuncios= null;
+            ArrayList<Anuncio> anunciossugeridos =null;
+            
             try{
             anuncios = new ArrayList<Anuncio>();
+            anunciossugeridos= new ArrayList<Anuncio>();
+            
             DifusorAnunciosDAO anunciosDAO = new DifusorAnunciosDAO();
             anuncios = anunciosDAO.buscaranuncio();  
+            anunciossugeridos = anunciosDAO.buscaranunciosugerido(difusor);
+            
             System.out.println(anuncios);
             } catch(Exception e){
                 e.printStackTrace();
             }
         %>
-    </head>
-    <body>
-        <%@include file="../base_ag/_menu_difusor.jsp" %>
+        
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
             <li role="presentation" class="active"><a href="#">Inicio</a></li>
             <li role="presentation"><a href="difusor_perfil.jsp">Perfil</a></li>
@@ -52,6 +59,49 @@
             <div class="contenido" id="contenido_panel">
                 
                 <div class="row">
+                    <!-- SUGERIDOS inicio -->
+
+                 <div class="col-md-12" id="panel_sugeridos">
+                       <!--ANUNCIO 1 --> 
+                       <% int id_modal2=0; %>
+                        <% for (Anuncio b : anunciossugeridos) {%>
+                        <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail" id="anuncios">
+                            <img class="img-responsive" src="../img/anuncios/<%= b.getImagen_anuncio() %>" >
+                            <div class="caption">
+                              <h3><%= b.getNombre_anuncio() %></h3>
+                              
+                             <!--VENTANA MODAL INICIO -->
+                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
+                                <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                         <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                             <h4 class="modal-title" id="myModalLabel"> <h3><%= b.getNombre_anuncio() %></h3></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img class="img-responsive" src="../img/anuncios/<%= b.getImagen_anuncio() %>" >
+                                            <p>Esta es una pequeña descripcion del anuncio.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Canejar</button>
+                                            <button type="button" class="btn btn-primary">Publicar</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            <!--VENTANA MODAL FIN -->
+                              
+                              
+                            </div>
+                        </div>
+                        </div>
+                        <%id_modal2++;}%>    
+                    </div>
+                    
+                    
+                    <!-- SUGERIDOS fin -->
                     <!--<div class="col-sm-6 col-md-4">-->
                     <div class="col-md-12">
                        <!--ANUNCIO 1 --> 
@@ -62,7 +112,7 @@
                             <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
                             <div class="caption">
                               <h3><%= a.getNombre_anuncio() %></h3>
-                              <p>Esta es una pequeña descripcion del anuncio.</p>
+                              
                              <!--VENTANA MODAL INICIO -->
                             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -74,6 +124,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
+                                            <p>Esta es una pequeña descripcion del anuncio.</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Canejar</button>
