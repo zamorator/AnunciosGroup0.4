@@ -6,7 +6,7 @@
 package cl.inacap.dao.anunciante;
 
 import cl.inacap.connect.ConnectionFactory;
-import cl.inacap.model.Comuna;
+import cl.inacap.model.Provincia;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,30 +14,30 @@ import java.util.ArrayList;
 
 /**
  *
- * @author zamorator
+ * @author zamorator <zamorator@gmail.com>
  */
-public class ComunaDAO {
-
-    public ArrayList<Comuna> BuscarComuna(int id_provincia) throws Exception {
+public class ProvinciaDAO {
+    
+    public ArrayList<Provincia> BuscarProvincia(int id_region) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
         PreparedStatement pst = null;
         String query = null;
         ResultSet rs = null;
-        ArrayList<Comuna> comunas = null;
+        ArrayList<Provincia> provincias = null;
         try {
             con = cf.obtenerConexion();
-            query = "select id_comuna, nombre_comuna from comuna where id_provincia = " + id_provincia;
+            query = new String();
+            query = "SELECT id_provincia, nombre_provincia FROM provincia WHERE region_id = " + id_region;
             System.out.println(query);
             pst = con.prepareStatement(query);
             rs = pst.executeQuery();
-            comunas = new ArrayList<Comuna>();
+            provincias = new ArrayList<Provincia>();
             while (rs.next()) {
-                Comuna comuna = new Comuna();
-                comuna.setNombre_comuna(rs.getString("nombre_comuna"));
-                comuna.setId_comuna(rs.getInt("id_comuna"));
-//
-                comunas.add(comuna);
+                Provincia provincia = new Provincia();
+                provincia.setId_provincia(rs.getInt("id_provincia"));
+                provincia.setNombre_provincia(rs.getString("nombre_provincia"));
+                provincias.add(provincia);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -47,6 +47,6 @@ public class ComunaDAO {
             query = null;
             cf = null;
         }
-        return comunas;
+        return provincias;
     }
 }

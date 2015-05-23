@@ -43,7 +43,7 @@ footer{
 }
 
 .form-group input{
-    
+
     width: 45%;
 }
 #anuncios{
@@ -51,9 +51,9 @@ footer{
 }
 
 #registro{
- width: 50%;
- margin:auto;
- padding:2%;
+    width: 50%;
+    margin:auto;
+    padding:2%;
 }
 
 .avatar-seleccionar label{
@@ -61,14 +61,14 @@ footer{
 }
 
 .avatar-seleccionar img {
- width: 100%;   
-    
+    width: 100%;   
+
 }
 
 #ingreso{
- margin:auto;
- width: 50%;
- padding: 9%;
+    margin:auto;
+    width: 50%;
+    padding: 9%;
 }
 
 #ingreso_datos{
@@ -77,4 +77,11 @@ footer{
 
 .form-group label{
     width: 45%;
+}
+
+.ajustado{
+    margin: 10%;
+}
+.margen{
+    margin: 1%;
 }

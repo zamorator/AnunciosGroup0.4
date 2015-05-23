@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cl.inacap.controller.login;
+package cl.inacap.controller.anunciante;
 
+import cl.inacap.dao.anunciante.AnuncianteDAO;
 import cl.inacap.dao.anunciante.ComunaDAO;
+import cl.inacap.model.Anunciante;
 import cl.inacap.model.Comuna;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -38,20 +41,34 @@ public class RegistroAnunciante extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            Comuna comuna = new Comuna();
-            ComunaDAO comunaDao = new ComunaDAO();
-            try {
-                comuna = comunaDao.BuscarComuna(Integer.parseInt(request.getParameter(request.getParameter("InputRegion"))));
-            } catch (Exception ex) {
-                Logger.getLogger(RegistroAnunciante.class.getName()).log(Level.SEVERE, null, ex);
+            AnuncianteDAO anuncianteDao = new AnuncianteDAO();
+            //valido no coincida nombre
+            if (anuncianteDao.ConsultaNombreAnunciante(request.getParameter("InputNombreUAnunciante")) == 0) {
+                //valido passwords
+                if (request.getParameter("InputPassword").equals(request.getParameter("InputPassword2"))) {
+                    Anunciante anunciante = new Anunciante();
+                    anunciante.setNombre_u_anunciante(request.getParameter("InputNombreUAnunciante"));
+                    anunciante.setNombre_anunciante(request.getParameter("InputNombreAnunciante"));
+                    anunciante.setDireccion_anunciante(request.getParameter("InputDireccionAnunciante"));
+                    anunciante.setId_comuna(Integer.parseInt(request.getParameter("selectComuna")));
+                    anunciante.setPassword_anunciante(request.getParameter("Inputpassword"));
+
+                    anuncianteDao.AgregaAnunciante(anunciante);
+                    response.sendRedirect("registro_anunciante.jsp?susses=" + URLEncoder.encode("Se ha creado exitosamente un nuevo Anunciante", "UTF-8"));
+                } else {
+                    response.sendRedirect("registro_anunciante.jsp?message=" + URLEncoder.encode("Passwords no coinciden", "UTF-8"));
+                }
+            } else {
+                response.sendRedirect("registro_anunciante.jsp?message=" + URLEncoder.encode("Usuario ya Existe", "UTF-8"));
             }
-                    
+        } catch (Exception e) {
+            response.sendRedirect("registro_anunciante.jsp?message=" + URLEncoder.encode("Error al intentar registrar nuevo Anunciante", "UTF-8"));
         } finally {
             out.close();
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

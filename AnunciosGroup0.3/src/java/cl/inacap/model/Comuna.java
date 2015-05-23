@@ -13,7 +13,7 @@ public class Comuna {
 
     private int id_comuna;
     private int id_provincia;
-    private int nombre_comuna;
+    private String nombre_comuna;
 
     public int getId_comuna() {
         return id_comuna;
@@ -31,12 +31,11 @@ public class Comuna {
         this.id_provincia = id_provincia;
     }
 
-    public int getNombre_comuna() {
+    public String getNombre_comuna() {
         return nombre_comuna;
     }
 
-    public void setNombre_comuna(int nombre_comuna) {
+    public void setNombre_comuna(String nombre_comuna) {
         this.nombre_comuna = nombre_comuna;
     }
-
 }
