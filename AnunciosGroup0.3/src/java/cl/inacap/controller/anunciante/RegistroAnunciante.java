@@ -6,14 +6,10 @@
 package cl.inacap.controller.anunciante;
 
 import cl.inacap.dao.anunciante.AnuncianteDAO;
-import cl.inacap.dao.anunciante.ComunaDAO;
 import cl.inacap.model.Anunciante;
-import cl.inacap.model.Comuna;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

@@ -39,8 +39,7 @@ public class LoginAnunciante extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             AnuncianteDAO anuncianteDAO = new AnuncianteDAO();
-            Anunciante anunciante = new Anunciante();
-            anunciante = anuncianteDAO.IniciarSesionAnunciante(request.getParameter("InputNombreUAnunciante"), request.getParameter("InputPassword"));
+            Anunciante anunciante = anuncianteDAO.IniciarSesionAnunciante(request.getParameter("InputNombreUAnunciante"), request.getParameter("InputPassword"));
             HttpSession session_actual = request.getSession(true);
             session_actual.setAttribute("anunciante", anunciante);
             response.sendRedirect("anunciante/mis_anuncios.jsp");

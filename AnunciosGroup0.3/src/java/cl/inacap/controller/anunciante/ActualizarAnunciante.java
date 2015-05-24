@@ -5,9 +5,13 @@
  */
 package cl.inacap.controller.anunciante;
 
+import cl.inacap.dao.anunciante.AnuncianteDAO;
+import cl.inacap.model.Anunciante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +39,18 @@ public class ActualizarAnunciante extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            Anunciante anunciante = new Anunciante();
+            anunciante.setNombre_u_anunciante(request.getParameter("InputNombreUAnunciante"));
+            anunciante.setDireccion_anunciante(request.getParameter("InputDireccionAnunciante"));
+            anunciante.setId_comuna(Integer.parseInt(request.getParameter("selectComuna")));
+            anunciante.setPassword_anunciante(request.getParameter("InputPasswordAnunciante"));
+            AnuncianteDAO anuncianteDao = new AnuncianteDAO();
+            anuncianteDao.ActualizaAnunciante(anunciante);
+            
+            
             response.sendRedirect("anunciante/perfil.jsp?message=" + URLEncoder.encode("Perfil Actualizado", "UTF-8"));
+        } catch (Exception ex) {
+            response.sendRedirect("anunciante/perfil.jsp?message=" + URLEncoder.encode("Error al Actualizar Perfil", "UTF-8"));
         } finally {
             out.close();
         }

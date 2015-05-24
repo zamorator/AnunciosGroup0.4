@@ -63,7 +63,7 @@ public class TraerComunas extends HttpServlet {
         System.out.println("Y el Id de provincia es ... " + request.getParameter("idprovincia"));
         try {
             ComunaDAO comunaDao = new ComunaDAO();
-            List<Comuna> comunas = comunaDao.BuscarComuna(Integer.parseInt(request.getParameter("idprovincia")));
+            List<Comuna> comunas = comunaDao.BuscarComunas(Integer.parseInt(request.getParameter("idprovincia")));
             Map<String, String> options = new LinkedHashMap<String, String>();
 
             for (Comuna c : comunas) {

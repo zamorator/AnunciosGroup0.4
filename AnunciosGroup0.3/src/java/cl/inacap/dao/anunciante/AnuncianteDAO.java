@@ -37,6 +37,7 @@ public class AnuncianteDAO {
                 anunciante.setId_comuna(rs.getInt("ID_COMUNA"));
                 anunciante.setNombre_anunciante(rs.getString("NOMBRE_ANUNCIANTE"));
                 anunciante.setDireccion_anunciante(rs.getString("DIRECCION_ANUNCIANTE"));
+                anunciante.setPassword_anunciante(rs.getString("PASSWORD_ANUNCIANTE"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -104,5 +105,31 @@ public class AnuncianteDAO {
             cf = null;
         }
         return resultado;
+    }
+
+    public boolean ActualizaAnunciante(Anunciante anunciante) throws Exception {
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        PreparedStatement pst = null;
+        String query = null;
+        try {
+            con = cf.obtenerConexion();
+            query = "update anunciante set id_comuna = " + anunciante.getId_comuna() + ","
+                    + " nombre_anunciante= '" + anunciante.getNombre_anunciante() + "',"
+                    + " direccion_anunciante= '" + anunciante.getDireccion_anunciante() + "',"
+                    + " password_anunciante = '" + anunciante.getPassword_anunciante() + "'"
+                    + " where nombre_u_anunciante='" + anunciante.getNombre_u_anunciante() + "'";
+            System.out.println(query);
+            pst = con.prepareStatement(query);
+            pst.execute();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            query = null;
+            cf = null;
+        }
+        return true;
     }
 }

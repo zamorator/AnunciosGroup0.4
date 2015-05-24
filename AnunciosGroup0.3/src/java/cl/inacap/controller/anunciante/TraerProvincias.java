@@ -5,14 +5,11 @@
  */
 package cl.inacap.controller.anunciante;
 
-import cl.inacap.dao.anunciante.ComunaDAO;
 import cl.inacap.dao.anunciante.ProvinciaDAO;
-import cl.inacap.model.Comuna;
 import cl.inacap.model.Provincia;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,7 +72,7 @@ public class TraerProvincias extends HttpServlet {
         System.out.println("Y el Id de region es ... " + request.getParameter("idregion"));
         try {
             ProvinciaDAO provinciaDao = new ProvinciaDAO();
-            List<Provincia> provincias = provinciaDao.BuscarProvincia(Integer.parseInt(request.getParameter("idregion")));
+            List<Provincia> provincias = provinciaDao.BuscarProvincias(Integer.parseInt(request.getParameter("idregion")));
             Map<String, String> options = new LinkedHashMap<String, String>();
 
             for (Provincia p : provincias) {

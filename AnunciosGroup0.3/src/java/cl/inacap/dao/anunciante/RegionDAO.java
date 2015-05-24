@@ -49,4 +49,34 @@ public class RegionDAO {
         }
         return regiones;
     }
+
+    public Region BuscarRegion(int id_region) throws Exception{
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        PreparedStatement pst = null;
+        StringBuilder query = null;
+        ResultSet rs = null;
+        Region region = null;
+        try {
+            con = cf.obtenerConexion();
+            query = new StringBuilder();
+            query.append("SELECT region_id, nombre_region FROM region where region_id = " + id_region);
+            System.out.println(query);
+            pst = con.prepareStatement(query.toString());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                region = new Region();
+                region.setRegion_id(rs.getInt("region_id"));
+                region.setNombre_region(rs.getString("nombre_region"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            query = null;
+            cf = null;
+        }
+        return region;
+    }
 }

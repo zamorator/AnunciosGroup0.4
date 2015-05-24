@@ -4,6 +4,7 @@
     Author     : dzamoraf
 --%>
 
+<%@page import="cl.inacap.model.Anunciante"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,9 +20,14 @@
         <link rel="stylesheet" href="../css/Estilos_ag.css">
         <link rel="stylesheet" href="../css/anunciante.css">
         <title>Anunciante</title>
+        <%
+            Anunciante anunciante;
+            HttpSession session_actual = request.getSession();
+            anunciante = (Anunciante) session.getAttribute("anunciante");
+        %>
     </head>
     <body>
-        <%@include file="../base_ag/_menu_anunciante.jsp" %>  
+        <%@include file="../base_ag/_menu_anunciante.jsp"%>  
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
             <li role="presentation" class="active"><a href="#">Anuncios</a></li>
             <li role="presentation"><a href="perfil.jsp">Perfil</a></li>

@@ -58,7 +58,7 @@
             <div class="alert alert-danger" role="alert">${param.message}</div>
             <% }%>
             <% if (request.getParameter("susses") != null) {%>
-            <div class="alert alert-success" role="alert" >${param.susses}</div>
+            <div class="alert alert-success" role="" >${param.susses}</div>
             <% }%>
             <div class="panel panel-primary ajustado">
                 <div class="panel-heading">

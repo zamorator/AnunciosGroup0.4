@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class ComunaDAO {
 
-    public ArrayList<Comuna> BuscarComuna(int id_provincia) throws Exception {
+    public ArrayList<Comuna> BuscarComunas(int id_provincia) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
         PreparedStatement pst = null;
@@ -48,5 +48,35 @@ public class ComunaDAO {
             cf = null;
         }
         return comunas;
+    }
+
+    public Comuna BuscaComuna(int idComuna) throws Exception {
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        PreparedStatement pst = null;
+        String query = null;
+        ResultSet rs = null;
+        Comuna comuna = null;
+        try {
+            con = cf.obtenerConexion();
+            query = "select id_comuna, nombre_comuna, id_provincia from comuna where id_comuna = " + idComuna;
+            System.out.println(query);
+            pst = con.prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                comuna = new Comuna();
+                comuna.setNombre_comuna(rs.getString("nombre_comuna"));
+                comuna.setId_comuna(rs.getInt("id_comuna"));
+                comuna.setId_provincia(rs.getInt("id_provincia"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            query = null;
+            cf = null;
+        }
+        return comuna;
     }
 }

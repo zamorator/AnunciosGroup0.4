@@ -17,8 +17,8 @@ import java.util.ArrayList;
  * @author zamorator <zamorator@gmail.com>
  */
 public class ProvinciaDAO {
-    
-    public ArrayList<Provincia> BuscarProvincia(int id_region) throws Exception {
+
+    public ArrayList<Provincia> BuscarProvincias(int id_region) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
         PreparedStatement pst = null;
@@ -48,5 +48,36 @@ public class ProvinciaDAO {
             cf = null;
         }
         return provincias;
+    }
+
+    public Provincia BuscaProvincia(int id_provincia) throws Exception {
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        PreparedStatement pst = null;
+        String query = null;
+        ResultSet rs = null;
+        Provincia provincia = null;
+        try {
+            con = cf.obtenerConexion();
+            query = new String();
+            query = "SELECT id_provincia, nombre_provincia, region_id FROM provincia WHERE id_provincia = " + id_provincia;
+            System.out.println(query);
+            pst = con.prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                provincia = new Provincia();
+                provincia.setId_provincia(rs.getInt("id_provincia"));
+                provincia.setNombre_provincia(rs.getString("nombre_provincia"));
+                provincia.setRegion_id(rs.getInt("region_id"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            query = null;
+            cf = null;
+        }
+        return provincia;
     }
 }
