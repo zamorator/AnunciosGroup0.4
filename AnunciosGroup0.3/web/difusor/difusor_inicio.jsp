@@ -53,7 +53,7 @@
         <div id="panel">
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="#">Todos</a></li>
-                <li role="presentation"><a href="#">Mis Anuncios</a></li>
+                <li role="presentation"><a href="difusor_favorito.jsp">Mis Anuncios</a></li>
             </ul>
             
             <div class="contenido" id="contenido_panel">
@@ -85,7 +85,7 @@
                                             <p>Esta es una pequeña descripcion del anuncio.</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Canejar</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" type="submit">Canejar</button>
                                             <button type="button" class="btn btn-primary">Publicar</button>
                                         </div>
                                     </div>
