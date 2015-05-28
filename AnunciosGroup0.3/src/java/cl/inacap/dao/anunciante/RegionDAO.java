@@ -7,8 +7,8 @@ package cl.inacap.dao.anunciante;
 
 import cl.inacap.connect.ConnectionFactory;
 import cl.inacap.model.Region;
+import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -21,17 +21,12 @@ public class RegionDAO {
     public ArrayList<Region> BuscarRegiones() throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
-        StringBuilder query = null;
         ResultSet rs = null;
         ArrayList<Region> regiones = null;
         try {
             con = cf.obtenerConexion();
-            query = new StringBuilder();
-            query.append("SELECT region_id, nombre_region FROM region");
-            System.out.println(query);
-            pst = con.prepareStatement(query.toString());
-            rs = pst.executeQuery();
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCARREGIONES}");
+            rs = proc.executeQuery();
             regiones = new ArrayList<Region>();
             while (rs.next()) {
                 Region region = new Region();
@@ -44,7 +39,6 @@ public class RegionDAO {
             throw new Exception();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
         return regiones;
@@ -53,17 +47,13 @@ public class RegionDAO {
     public Region BuscarRegion(int id_region) throws Exception{
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
-        StringBuilder query = null;
         ResultSet rs = null;
         Region region = null;
         try {
             con = cf.obtenerConexion();
-            query = new StringBuilder();
-            query.append("SELECT region_id, nombre_region FROM region where region_id = " + id_region);
-            System.out.println(query);
-            pst = con.prepareStatement(query.toString());
-            rs = pst.executeQuery();
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCARREGION(?)}");
+            proc.setInt(1, id_region);
+            rs = proc.executeQuery();
             while (rs.next()) {
                 region = new Region();
                 region.setRegion_id(rs.getInt("region_id"));
@@ -74,7 +64,6 @@ public class RegionDAO {
             throw new Exception();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
         return region;

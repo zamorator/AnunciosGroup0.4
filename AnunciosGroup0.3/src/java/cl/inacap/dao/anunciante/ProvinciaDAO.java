@@ -7,8 +7,8 @@ package cl.inacap.dao.anunciante;
 
 import cl.inacap.connect.ConnectionFactory;
 import cl.inacap.model.Provincia;
+import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -21,17 +21,13 @@ public class ProvinciaDAO {
     public ArrayList<Provincia> BuscarProvincias(int id_region) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
-        String query = null;
         ResultSet rs = null;
         ArrayList<Provincia> provincias = null;
         try {
             con = cf.obtenerConexion();
-            query = new String();
-            query = "SELECT id_provincia, nombre_provincia FROM provincia WHERE region_id = " + id_region;
-            System.out.println(query);
-            pst = con.prepareStatement(query);
-            rs = pst.executeQuery();
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCARPROVINCIAS(?)}");
+            proc.setInt(1, id_region);
+            rs = proc.executeQuery();
             provincias = new ArrayList<Provincia>();
             while (rs.next()) {
                 Provincia provincia = new Provincia();
@@ -44,7 +40,6 @@ public class ProvinciaDAO {
             throw new Exception();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
         return provincias;
@@ -53,29 +48,24 @@ public class ProvinciaDAO {
     public Provincia BuscaProvincia(int id_provincia) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
-        String query = null;
         ResultSet rs = null;
         Provincia provincia = null;
         try {
             con = cf.obtenerConexion();
-            query = new String();
-            query = "SELECT id_provincia, nombre_provincia, region_id FROM provincia WHERE id_provincia = " + id_provincia;
-            System.out.println(query);
-            pst = con.prepareStatement(query);
-            rs = pst.executeQuery();
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCAPROVINCIA(?)}");
+            proc.setInt(1, id_provincia);
+            rs = proc.executeQuery();
             while (rs.next()) {
                 provincia = new Provincia();
+                provincia.setRegion_id(rs.getInt("region_id"));
                 provincia.setId_provincia(rs.getInt("id_provincia"));
                 provincia.setNombre_provincia(rs.getString("nombre_provincia"));
-                provincia.setRegion_id(rs.getInt("region_id"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Exception();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
         return provincia;

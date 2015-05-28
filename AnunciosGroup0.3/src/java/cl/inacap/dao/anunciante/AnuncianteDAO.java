@@ -7,6 +7,7 @@ package cl.inacap.dao.anunciante;
 
 import cl.inacap.connect.ConnectionFactory;
 import cl.inacap.model.Anunciante;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,17 +21,15 @@ public class AnuncianteDAO {
     public Anunciante IniciarSesionAnunciante(String nombre, String password) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
-        StringBuilder query = null;
         ResultSet rs = null;
         Anunciante anunciante = null;
         try {
+
             con = cf.obtenerConexion();
-            query = new StringBuilder();
-            query.append("SELECT * FROM `anunciante` WHERE nombre_u_anunciante = '" + nombre + "' and password_anunciante = '" + password + "'");
-            System.out.println(query);
-            pst = con.prepareStatement(query.toString());
-            rs = pst.executeQuery();
+            CallableStatement proc = con.prepareCall("{CALL SP_INICIARSESIONANUNCIANTE(?,?)}");
+            proc.setString(1, nombre);
+            proc.setString(2, password);
+            rs = proc.executeQuery();
             while (rs.next()) {
                 anunciante = new Anunciante();
                 anunciante.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
@@ -44,7 +43,6 @@ public class AnuncianteDAO {
             throw new Exception();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
         return anunciante;
@@ -53,27 +51,23 @@ public class AnuncianteDAO {
     public boolean AgregaAnunciante(Anunciante anunciante) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
-        StringBuilder query = null;
         try {
             con = cf.obtenerConexion();
-            query = new StringBuilder();
-            query.append("INSERT INTO anunciante( nombre_u_anunciante, id_comuna, nombre_anunciante, direccion_anunciante, password_anunciante) values("
-                    + " '" + anunciante.getNombre_u_anunciante() + "',"
-                    + " " + anunciante.getId_comuna() + ","
-                    + " '" + anunciante.getNombre_anunciante() + "',"
-                    + " '" + anunciante.getDireccion_anunciante() + "',"
-                    + " '" + anunciante.getPassword_anunciante() + "')"
-            );
-            System.out.println(query);
-            pst = con.prepareStatement(query.toString());
-            pst.execute();
+            CallableStatement proc = con.prepareCall("{CALL SPAGREGAANUNCIANTE(?,?,?,?,?)}");
+            proc.setString(1, anunciante.getNombre_u_anunciante());
+            proc.setInt(2, anunciante.getId_comuna());
+            proc.setString(3,anunciante.getNombre_anunciante());
+            proc.setString(4, anunciante.getDireccion_anunciante());
+            proc.setString(5, anunciante.getPassword_anunciante());
+            proc.executeQuery();
+            System.out.println("SPAGREGAANUNCIANTE");
+            
+            
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Exception();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
         return true;
@@ -83,16 +77,15 @@ public class AnuncianteDAO {
         //select count(*) from anunciante where nombre_u_anunciante = "";
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
-        String query = null;
         ResultSet rs = null;
         int resultado = 0;
         try {
             con = cf.obtenerConexion();
-            query = "select count(*) from anunciante where nombre_u_anunciante = '" + nombre_u_anunciante + "'";
-            System.out.println(query);
-            pst = con.prepareStatement(query.toString());
-            rs = pst.executeQuery();
+            CallableStatement proc = con.prepareCall("{CALL SPCONSULTANOMBREANUNCIANTE(?)}");
+            proc.setString(1, nombre_u_anunciante);
+            rs = proc.executeQuery();
+            System.out.println("SPCONSULTANOMBREANUNCIANTE");
+            
             while (rs.next()) {
                 resultado = rs.getInt(1);
             }
@@ -101,7 +94,6 @@ public class AnuncianteDAO {
             throw new Exception();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
         return resultado;
@@ -111,23 +103,21 @@ public class AnuncianteDAO {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
         PreparedStatement pst = null;
-        String query = null;
         try {
             con = cf.obtenerConexion();
-            query = "update anunciante set id_comuna = " + anunciante.getId_comuna() + ","
-                    + " nombre_anunciante= '" + anunciante.getNombre_anunciante() + "',"
-                    + " direccion_anunciante= '" + anunciante.getDireccion_anunciante() + "',"
-                    + " password_anunciante = '" + anunciante.getPassword_anunciante() + "'"
-                    + " where nombre_u_anunciante='" + anunciante.getNombre_u_anunciante() + "'";
-            System.out.println(query);
-            pst = con.prepareStatement(query);
-            pst.execute();
+            CallableStatement proc = con.prepareCall("{CALL SPACTUALIZAANUNCIANTE(?,?,?,?,?)}");
+            proc.setInt(1, anunciante.getId_comuna());
+            proc.setString(2, anunciante.getNombre_anunciante());
+            proc.setString(3, anunciante.getDireccion_anunciante());
+            proc.setString(4, anunciante.getPassword_anunciante());
+            proc.setString(5, anunciante.getNombre_u_anunciante());
+            proc.executeQuery();
+            System.out.println("SPACTUALIZAANUNCIANTE");
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Exception();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
         return true;

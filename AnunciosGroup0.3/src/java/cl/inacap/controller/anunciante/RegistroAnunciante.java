@@ -47,7 +47,7 @@ public class RegistroAnunciante extends HttpServlet {
                     anunciante.setNombre_anunciante(request.getParameter("InputNombreAnunciante"));
                     anunciante.setDireccion_anunciante(request.getParameter("InputDireccionAnunciante"));
                     anunciante.setId_comuna(Integer.parseInt(request.getParameter("selectComuna")));
-                    anunciante.setPassword_anunciante(request.getParameter("Inputpassword"));
+                    anunciante.setPassword_anunciante(request.getParameter("InputPassword"));
 
                     anuncianteDao.AgregaAnunciante(anunciante);
                     response.sendRedirect("registro_anunciante.jsp?susses=" + URLEncoder.encode("Se ha creado exitosamente un nuevo Anunciante", "UTF-8"));
