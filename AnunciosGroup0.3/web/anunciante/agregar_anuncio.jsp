@@ -25,8 +25,23 @@
         <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
         <!-- Latest compiled and minified JavaScript -->
         <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/vendor/jquery.ui.widget.js"></script>
+        <script src="../js/jquery.iframe-transport.js"></script>
+        <script src="../js/jquery.fileupload.js"></script>
         <link rel="stylesheet" href="../css/Estilos_ag.css">
         <link rel="stylesheet" href="../css/anunciante.css">
+        <script>
+            $(function () {
+                $('#fileupload').fileupload({
+                    dataType: 'json',
+                    done: function (e, data) {
+                        $.each(data.result.files, function (index, file) {
+                            $('<p/>').text(file.name).appendTo(document.body);
+                        });
+                    }
+                });
+            });
+        </script>
         <title>Anunciante</title>
         <%
             Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
@@ -94,6 +109,8 @@
                     cantidad cupones
                     porcentaje descuento
 
+                    <input id="fileupload" type="file" name="files[]" data-url="../UploadFile" multiple>
+                    
                     <button type="submit" class="btn btn-default">Agregar</button>
                 </form>
             </div>
