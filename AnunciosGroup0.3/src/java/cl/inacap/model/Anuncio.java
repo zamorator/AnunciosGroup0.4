@@ -21,7 +21,7 @@ public class Anuncio {
     private Date fecha_creacion_anuncio;
     private Date fecha_modificacion_anuncio;
     private String estado_anuncio;
-    private int id_categiria;
+    private int id_categoria;
     private int id_segmento_sexo;
     private int id_segmento_edad;
     private int cantidad_cupones;
@@ -91,12 +91,12 @@ public class Anuncio {
         this.estado_anuncio = estado_anuncio;
     }
 
-    public int getId_categiria() {
-        return id_categiria;
+    public int getId_categoria() {
+        return id_categoria;
     }
 
-    public void setId_categiria(int id_categiria) {
-        this.id_categiria = id_categiria;
+    public void setId_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
     public int getId_segmento_sexo() {

@@ -6,14 +6,18 @@
 package cl.inacap.controller.anunciante;
 
 import cl.inacap.dao.anunciante.AnuncioDAO;
+import cl.inacap.model.Anunciante;
 import cl.inacap.model.Anuncio;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.apache.taglibs.standard.tag.common.core.Util;
 
 /**
  *
@@ -33,11 +37,28 @@ public class AgregarAnuncio extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Anuncio anuncio = new Anuncio();
-        anuncio.setNombre_anuncio(request.getParameter("InputNombreAnuncio"));
-        anuncio.setDescripcion_anuncio(request.getParameter("InputDescripcionAnuncio"));
-        AnuncioDAO anuncioDao = new AnuncioDAO();
-        anuncioDao.AgregaAnuncio(anuncio);
+        try {
+            HttpSession sesion = request.getSession();
+            Anunciante anunciante = (Anunciante) sesion.getAttribute("anunciante");
+            Anuncio anuncio = new Anuncio();
+            
+            
+            anuncio.setNombre_u_anunciante(anunciante.getNombre_u_anunciante());
+            anuncio.setNombre_anuncio(request.getParameter("InputNombreAnuncio"));
+            anuncio.setImagen_anuncio("imagen");
+            anuncio.setDescripcion_anuncio(request.getParameter("InputDescripcionAnuncio"));
+            anuncio.setId_categoria(Integer.parseInt(request.getParameter("selectCategoria")));
+            anuncio.setId_segmento_sexo(Integer.parseInt(request.getParameter("selectSegmentoSexo")));
+            anuncio.setId_segmento_edad(Integer.parseInt(request.getParameter("selectSegmentoEdad")));
+            anuncio.setCantidad_cupones(10);
+            anuncio.setPorcentaje_descuento(10);
+            
+            AnuncioDAO anuncioDao = new AnuncioDAO();
+            anuncioDao.AgregaAnuncio(anuncio);
+            response.sendRedirect("anunciante/agregar_anuncio.jsp?message=" + Util.URLEncode("Exito al crear anunciante", "UTF-8"));
+        } catch (Exception ex) {
+            response.sendRedirect("anunciante/agregar_anuncio.jsp?message=" + Util.URLEncode("error al crear anunciante", "UTF-8"));
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

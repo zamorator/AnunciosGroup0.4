@@ -29,9 +29,7 @@
         <link rel="stylesheet" href="../css/anunciante.css">
         <title>Anunciante</title>
         <%
-            Anunciante anunciante;
-            HttpSession session_actual = request.getSession();
-            anunciante = (Anunciante) session.getAttribute("anunciante");
+            Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
             CategoriaDAO categoriaDao = new CategoriaDAO();
             List<Categoria> categorias = categoriaDao.BuscarCategorias();
             SegmentoSexoDAO segmentosexoDao = new SegmentoSexoDAO();
@@ -57,6 +55,9 @@
                 </ul>
             </div>
             <div id="agregar_anuncio" class="contenido">
+                <% if (request.getParameter("message") != null) {%>
+                <div class="label label-success" role="alert">${param.message}</div>
+                <% }%>
                 <form method="POST" action="${pageContext.request.contextPath}/AgregarAnuncio">
                     <div class="form-group">
                         <label for="InputNombreAnuncio">Nombre Anuncio</label>

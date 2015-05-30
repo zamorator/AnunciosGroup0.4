@@ -7,6 +7,7 @@ package cl.inacap.dao.anunciante;
 
 import cl.inacap.connect.ConnectionFactory;
 import cl.inacap.model.Anuncio;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -16,30 +17,30 @@ import java.sql.PreparedStatement;
  */
 public class AnuncioDAO {
 
-    public boolean AgregaAnuncio(Anuncio anuncio) {
+    public void AgregaAnuncio(Anuncio anuncio) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
-        StringBuilder query = null; 
         try {
+            int x = 0;
             con = cf.obtenerConexion();
-            query = new StringBuilder();
-            java.util.Date date = new java.util.Date();
-            query.append("insert into anuncio (nombre_anuncio, descripcion_anuncio) values("
-                    + " '" + anuncio.getNombre_anuncio() + "',"
-                    + "'" + anuncio.getDescripcion_anuncio() + "')");
-            System.out.println(query);
-            pst = con.prepareStatement(query.toString());
-            date = null;
-            pst.execute();
+            CallableStatement proc = con.prepareCall("{CALL SPAGREGAANUNCIO(?,?,?,?,?,?,?,?,?)}");
+            proc.setString(++x, anuncio.getNombre_u_anunciante());
+            proc.setString(++x, anuncio.getNombre_anuncio());
+            proc.setString(++x, anuncio.getImagen_anuncio());
+            proc.setString(++x, anuncio.getDescripcion_anuncio());
+            proc.setInt(++x, anuncio.getId_categoria());
+            proc.setInt(++x, anuncio.getId_segmento_sexo());
+            proc.setInt(++x, anuncio.getId_segmento_edad());
+            proc.setInt(++x, anuncio.getCantidad_cupones());
+            proc.setInt(++x, anuncio.getPorcentaje_descuento());
+            proc.executeQuery();
+            System.out.println("SPAGREGAANUNCIO");
 
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
-        return true;
     }
 }
