@@ -4,6 +4,14 @@
     Author     : dzamoraf
 --%>
 
+<%@page import="cl.inacap.model.SegmentoEdad"%>
+<%@page import="cl.inacap.dao.segmentos.SegmentoEdadDAO"%>
+<%@page import="cl.inacap.model.SegmentoSexo"%>
+<%@page import="cl.inacap.dao.segmentos.SegmentoSexoDAO"%>
+<%@page import="cl.inacap.dao.categoria.CategoriaDAO"%>
+<%@page import="cl.inacap.model.Categoria"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="cl.inacap.model.Anunciante"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,6 +32,12 @@
             Anunciante anunciante;
             HttpSession session_actual = request.getSession();
             anunciante = (Anunciante) session.getAttribute("anunciante");
+            CategoriaDAO categoriaDao = new CategoriaDAO();
+            List<Categoria> categorias = categoriaDao.BuscarCategorias();
+            SegmentoSexoDAO segmentosexoDao = new SegmentoSexoDAO();
+            List<SegmentoSexo> segmentoSexos = segmentosexoDao.BuscarSegmentoSexo();
+            SegmentoEdadDAO segmentoedadDao = new SegmentoEdadDAO();
+            List<SegmentoEdad> segmentoEdades = segmentoedadDao.BuscarSegmentoEdades();
         %>
     </head>
     <body>
@@ -52,6 +66,33 @@
                         <label for="InputDescripcionAnuncio">Descripci&oacute;n Anuncio</label>
                         <input type="text" class="form-control" name="InputDescripcionAnuncio" id="InputDescripcionAnuncio" placeholder="Ingrese Descripci&oacute;n del Anuncio">
                     </div>
+                    <div class="form-group" >
+                        <select class="form-control" name="selectCategoria" id="selectCategoria" >
+                            <option value="" selected="selected" >Seleccione categoria</option>
+                            <% for (Categoria c : categorias) {%>
+                            <option value="<%= c.getId_categoria()%>"><%= c.getNombre_categoria()%></option>
+                            <% }%>
+                        </select>
+                    </div>
+                    <div class="form-group" >
+                        <select class="form-control" name="selectSegmentoSexo" id="selectSegmentoSexo" >
+                            <option value="" selected="selected" >Seleccione sexo</option>
+                            <% for (SegmentoSexo ss : segmentoSexos) {%>
+                            <option value="<%= ss.getId_segmento_sexo()%>"><%= ss.getSegmento_sexo()%></option>
+                            <% }%>
+                        </select>
+                    </div>
+                    <div class="form-group" >
+                        <select class="form-control" name="selectSegmentoEdad" id="selectSegmentoEdad" >
+                            <option value="" selected="selected" >Seleccione segmento edad</option>
+                            <% for (SegmentoEdad se : segmentoEdades) {%>
+                            <option value="<%= se.getId_segmento_edad()%>"><%= se.getSegmento_edad()%></option>
+                            <% }%>
+                        </select>
+                    </div>
+                    cantidad cupones
+                    porcentaje descuento
+
                     <button type="submit" class="btn btn-default">Agregar</button>
                 </form>
             </div>
