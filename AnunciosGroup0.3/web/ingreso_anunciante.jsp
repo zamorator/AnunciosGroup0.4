@@ -33,6 +33,7 @@
                     <input type="text" class="form-control" name="InputPassword" id="Password" placeholder="Ingrese Contraseña" required="">
                 </div>
                 <button class="btn btn-default" type="submit" >Ingreso</button>
+                <a href="newjsp.jsp" class="btn btn-default">Volver</a>
             </form>
         </div>
         <%@include file="base_ag/_pie_pagina.jsp" %>

@@ -14,6 +14,6 @@
         <title>AnunciosGroup</title>
     </head>
     <body>
-        <a href="newjsp.jsp">Comenzar</a>
+        <meta http-equiv="Refresh" content="0;url=newjsp.jsp">
     </body>
 </html>

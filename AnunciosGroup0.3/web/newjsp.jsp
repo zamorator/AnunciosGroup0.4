@@ -88,9 +88,11 @@
                 </a>
             </div>
         </div>
-    <br/>
+        <br/>
         <a href="registro_administrador.jsp">link</a>
-        
+        <% if (request.getParameter("message") != null) {%>
+        <div class="alert alert-info" role="alert">${param.message}</div>
+        <% }%>
         <br>
         <a class="btn btn-primary" href="registro_anunciante.jsp">Registro Nuevo Anunciante</a>
         <a class="btn btn-primary" href="ingreso_anunciante.jsp">Ingreso Anunciantes</a>

@@ -56,8 +56,6 @@
                 </form>
             </div>
         </div>
-
-
         <%@include file="../base_ag/_pie_pagina.jsp" %>
     </body>
 </html>
