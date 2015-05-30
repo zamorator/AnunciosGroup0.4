@@ -126,12 +126,13 @@ public class DifusorDAO {
             // se crea instancia a procedimiento.
            Difusor difusoractualizado = new Difusor();
       
-           CallableStatement proc = con.prepareCall("{CALL SP_ACTUALIZAR_PERFIL_DIFUSOR(?,?,?,?)}");
-
-           proc.setString(1,difusor.getNombres());
-           proc.setString(2,difusor.getApellido_paterno_difusor());
-           proc.setString(3,difusor.getApellido_materno_difusor());
-           proc.setString(4,difusor.getEmail_difusor());
+           CallableStatement proc = con.prepareCall("{CALL SP_ACTUALIZAR_PERFIL_DIFUSOR(?,?,?,?,?)}");
+           
+           proc.setString(1, difusor.getNombre_u_difusor());
+           proc.setString(2,difusor.getNombres());
+           proc.setString(3,difusor.getApellido_paterno_difusor());
+           proc.setString(4,difusor.getApellido_materno_difusor());
+           proc.setString(5,difusor.getEmail_difusor());
            System.out.println(proc); 
            
            resp = proc.execute();

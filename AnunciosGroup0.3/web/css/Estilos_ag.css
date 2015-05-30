@@ -44,9 +44,14 @@ footer{
 
 .form-group input{
 
-    width: 45%;
+    //width: 45%;
 }
 #anuncios{
+    margin: 5% 5%;
+}
+
+#anunciossugeridos{ 
+    width: 60%;
     margin: 5% 5%;
 }
 

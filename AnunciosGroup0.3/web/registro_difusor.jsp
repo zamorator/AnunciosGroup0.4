@@ -9,7 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="js/main.js"></script>
+        
         <script src="js/bootstrap.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -20,7 +23,18 @@
     </head>
     <body>
         <%@include file="../base_ag/_menu_difusor.jsp" %>
+
         
+    
+        <script>
+            (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+        </script>      
 
         <div class="contenido" id="registro">
             <ul class="nav nav-tabs">
@@ -75,7 +89,7 @@
                             <p>Por favor ingresa al menos una red social</p>
                             <div class="form-group">
                                 <label for="InputFacebook">Facebook</label>
-                                <input type="text" class="form-control" name="InputFacebook" id="Facebook" placeholder="Ingresa tu usuario de Facebook">
+                                <input type="text" class="form-control" name="InputFacebook" id="Facebook" placeholder="Ingresa tu usuario de Facebook"><a href="#" id="login" class="btn btn-primary" >Vincular Facebook </a>
                             </div>
                             <div class="form-group">
                                 <label for="InputTwitter">Twitter</label>
@@ -83,7 +97,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="InputGoogleplus">Google +</label>
-                                <input type="text" class="form-control" name="InputGoogleplus" id="Facebook" placeholder="Ingresa usuario de Google+">
+                                <input type="text" class="form-control" name="InputGoogleplus" id="" placeholder="Ingresa usuario de Google+">
                             </div>
 
                             <div class="form-group">

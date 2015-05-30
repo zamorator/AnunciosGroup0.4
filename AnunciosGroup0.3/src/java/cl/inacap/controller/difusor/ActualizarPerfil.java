@@ -52,6 +52,7 @@ public class ActualizarPerfil extends HttpServlet {
             
             
             if (difusor != null){
+            difusor.setNombre_u_difusor(request.getParameter("InputNombreUDifusor"));
             difusor.setNombres(request.getParameter("InputNombres"));
             difusor.setApellido_paterno_difusor(request.getParameter("InputApellidoPaterno"));
             difusor.setApellido_materno_difusor(request.getParameter("InputApellidoMaterno"));

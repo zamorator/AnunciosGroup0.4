@@ -39,8 +39,8 @@
 
                             <ul class="nav navbar-nav navbar-right">
                                 <% if(difusor != null){    %>
-                                <img width="50px" src="/AnunciosGroup0.3/img/avatar/<%=difusor.getNombre_avatar()%>"
-                                     <p><%= difusor.getNombre_u_difusor() %> </p>
+                                <img width="50px" src="/AnunciosGroup0.3/img/avatar/<%=difusor.getNombre_avatar()%>">
+                                <a href="../difusor/difusor_perfil.jsp"><%= difusor.getNombre_u_difusor() %> </a>
                                 <% }%>
                             </ul>
                         </div><!-- /.navbar-collapse -->

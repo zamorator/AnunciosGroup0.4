@@ -66,13 +66,13 @@
                        <% int id_modal2=0; %>
                         <% for (Anuncio b : anunciossugeridos) {%>
                         <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail" id="anuncios">
+                        <div class="thumbnail" id="anunciossugeridos">
                             <img class="img-responsive" src="../img/anuncios/<%= b.getImagen_anuncio() %>" >
                             <div class="caption">
-                              <h3><%= b.getNombre_anuncio() %></h3>
+                              <h4><%= b.getNombre_anuncio() %></h4>
                               
                              <!--VENTANA MODAL INICIO -->
-                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
+                            <button type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
@@ -85,7 +85,7 @@
                                             <p>Esta es una pequeña descripcion del anuncio.</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal" type="submit">Canejar</button>
+                                            <button type="button"  class="btn btn-default" data-dismiss="modal" type="submit">Canejar</button>
                                             <button type="button" class="btn btn-primary">Publicar</button>
                                         </div>
                                     </div>
