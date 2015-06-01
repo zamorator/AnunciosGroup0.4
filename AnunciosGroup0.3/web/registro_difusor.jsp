@@ -22,7 +22,7 @@
         <title>Registro Difusor</title>
     </head>
     <body>
-        <%@include file="../base_ag/_menu_difusor.jsp" %>
+        <%@include file="base_ag/_menu_difusor.jsp" %>
 
         
     

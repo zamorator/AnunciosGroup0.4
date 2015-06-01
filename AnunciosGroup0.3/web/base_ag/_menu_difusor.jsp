@@ -24,7 +24,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="../newjsp.jsp">
+                            <a class="navbar-brand" href="../AnunciosGroup0.3/newjsp.jsp">
                                 <span>
                                     <img src="/AnunciosGroup0.3/img/AG logo.png" height="30" width="30">
                                 </span>
