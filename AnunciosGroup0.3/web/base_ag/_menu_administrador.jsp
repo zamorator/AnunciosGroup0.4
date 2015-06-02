@@ -29,6 +29,14 @@
 			<a href="#" class="bt-menu"><span class="icon-list2"></span>AnunciosGroup</a>
 		</div>
 		<nav class="Menu">
+                    <a class="navbar-brand" href="../AnunciosGroup0.3/newjsp.jsp">
+                                <span>
+                                    <img src="/AnunciosGroup0.3/img/AG logo.png" height="30" width="30">
+                                </span>
+                                <span>
+                                    AnunciosGroup
+                                </span>
+                            </a>
 			<ul>
 				<li><a href="#"><span class="icon-house"></span>Anuncios</a></li>
 				<li><a href="#"><span class="icon-suitcase"></span>Empresas</a></li>

@@ -37,12 +37,12 @@ public class LoginAdministrador extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             Administrador administrador = new Administrador();
-            administrador.setNombre_administrador(request.getParameter("InputNombreUAdministrador"));
-            administrador.setNombre_u_administrador("Javieru");
-            administrador.setApellido_paterno_administrador("power");
-            administrador.setApellido_materno_administrador("jay");
-            administrador.setEmail_administrador("donhuea@hotmail.com");
-            administrador.setPassword_administrador("123456");
+            administrador.setNombre_administrador(request.getParameter("InputNombre"));
+            administrador.setNombre_u_administrador("InputNombreUAdministrador");
+            administrador.setApellido_paterno_administrador("InputApellidoPaterno");
+            administrador.setApellido_materno_administrador("InputApellidoMaterno");
+            administrador.setEmail_administrador("InputEmail");
+            administrador.setPassword_administrador("InputPassword");
             
             AdministradorDAO administradordao = new AdministradorDAO();
             administradordao.AgregarAdministrador(administrador);
