@@ -33,12 +33,14 @@ $(function (){
     
     //SE CONECTA AL SDK CON LOS PARAMETROS
     window.fbAsyncInit = function() {
+        console.log(app_id);
         FB.init({
           appId      : app_id,
           cookie     : true,
           status     : true, 
           xfbml      : true,  
           version    : 'v2.2' 
+         
         });
 
         // VERIFICA SI YA ESTA CONECTADO A FACEBOOK
@@ -76,9 +78,10 @@ $(function (){
       FB.api('/me',function(response){
           $('#login').after(div_session);
           $('#login').remove();
-          $('#facebook-session strong').text("Bienvenido :" + response.name);
-          $("#Facebook").text(response.name);
-          $('#facebook-session img').attr('src','http://graph.facebook.com/' + response.id + '/picture?type=large');
+          //$('#facebook-session strong').text("Bienvenido :" + response.name);
+          $("#Facebook-nombre").val(response.name);
+          $("#Facebook-id").val(response.id);
+          //$('#facebook-session img').attr('src','http://graph.facebook.com/' + response.id + '/picture?type=large');
       });
     };
     

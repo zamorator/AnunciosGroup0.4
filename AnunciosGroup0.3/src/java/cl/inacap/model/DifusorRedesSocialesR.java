@@ -12,8 +12,18 @@ package cl.inacap.model;
 public class DifusorRedesSocialesR {
 
     private int id_red_social;
+    private String id_red_social_difusor;
     private String nombre_u_difusor;
     private String nombre_usuario_red_social;
+    
+    public String getId_red_social_difusor() {
+        return id_red_social_difusor;
+    }
+
+    public void setId_red_social_difusor(String id_red_social_difusor) {
+        this.id_red_social_difusor = id_red_social_difusor;
+    }
+ 
 
     public int getId_red_social() {
         return id_red_social;

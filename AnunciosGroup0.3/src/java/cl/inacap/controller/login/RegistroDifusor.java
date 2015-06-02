@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.eclipse.jdt.internal.compiler.lookup.TypeIds;
 
 /**
  *
@@ -40,12 +41,15 @@ public class RegistroDifusor extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        System.out.println(request.getParameter("InputFacebook-id"));
         try {
             // validacion redes sociales
             if (!request.getParameter("InputFacebook").equals("") || !request.getParameter("InputTwitter").equals("") || !request.getParameter("InputGoogleplus").equals("")) {
+                
                 String fb = request.getParameter("InputFacebook");
                 String tw = request.getParameter("InputTwitter");
                 String gl = request.getParameter("InputGoogleplus");
+                
                 boolean RedesSocialesValidas = validarExistencia(fb, tw, gl);
                 if (RedesSocialesValidas) {
                     //validacion password
@@ -61,6 +65,7 @@ public class RegistroDifusor extends HttpServlet {
                                 difusor.setApellido_materno_difusor(request.getParameter("InputApellidoMaterno"));
                                 difusor.setPassword_difusor(request.getParameter(""));
                                 difusor.setEmail_difusor(request.getParameter("InputEmail"));
+                                
                                 if (request.getParameter("InputEdad") != null) {
                                     int edad = Integer.parseInt(request.getParameter("InputEdad"));
                                     if (edad < 19) {
@@ -106,14 +111,33 @@ public class RegistroDifusor extends HttpServlet {
                                  twit | 2
                                  goo+ | 3
                                  */
+                                System.out.println("Previo a ingresar fb:" + fb);
                                 if (!fb.equals("")) {
-                                    creaRedSocial(difusor.getNombre_u_difusor(), fb, 1);
+                                    System.out.println("Llegue: aa");
+                                    DifusorRedesSocialesR difusor_redsocial = new DifusorRedesSocialesR();
+                                    System.out.println("Llegue: aa");
+                                    System.out.println(request.getParameter("InputFacebook-id"));
+                                    difusor_redsocial.setId_red_social(1);
+                                    difusor_redsocial.setId_red_social_difusor(request.getParameter("InputFacebook-id"));
+                                    difusor_redsocial.setNombre_u_difusor(difusor.getNombre_u_difusor());
+                                    difusor_redsocial.setNombre_usuario_red_social(request.getParameter("InputFacebook"));
+                                    
+                                    System.out.println(difusor_redsocial.getId_red_social()+ "1");
+                                    System.out.println(difusor_redsocial.getId_red_social_difusor()+"2");
+                                    System.out.println(difusor_redsocial.getNombre_u_difusor()+"3");
+                                    System.out.println(difusor_redsocial.getId_red_social()+"4");
+                                    System.out.println(difusor_redsocial.getNombre_usuario_red_social()+"4");
+                                    System.out.println("Holamundo");
+                                    creaRedSocial(difusor_redsocial);
                                 }
                                 if (!tw.equals("")) {
-                                    creaRedSocial(difusor.getNombre_u_difusor(), tw, 2);
+                                    DifusorRedesSocialesR difusor_redsocial = new DifusorRedesSocialesR();
+                                    
+                                    
+                                   // creaRedSocial(difusor.getNombre_u_difusor(), tw, 2);
                                 }
                                 if (!gl.equals("")) {
-                                    creaRedSocial(difusor.getNombre_u_difusor(), gl, 3);
+                                  //  creaRedSocial(difusor.getNombre_u_difusor(), gl, 3);
                                 }
                                 response.sendRedirect("exito.jsp");
                             } else {
@@ -132,6 +156,7 @@ public class RegistroDifusor extends HttpServlet {
                 response.sendRedirect("registro_difusor.jsp?message=" + URLEncoder.encode("Llenar al menos una red social", "UTF-8"));
             }
         } catch (Exception e) {
+            e.printStackTrace();
             response.sendRedirect("registro_difusor.jsp?message=" + URLEncoder.encode("Error al Intentar Crear Difusor", "UTF-8"));
         } finally {
             out.close();
@@ -177,12 +202,13 @@ public class RegistroDifusor extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void creaRedSocial(String nombre_u_difusor, String NombreUsuarioRedSocial, int idRedSocial) throws Exception {
+        private void creaRedSocial(DifusorRedesSocialesR in_difusor_redsocial) throws Exception {
         DifusorRedesSocialesR difusorRedesSocialesR = new DifusorRedesSocialesR();
         DifusorRedesSocialesDAO dAO;
-        difusorRedesSocialesR.setNombre_u_difusor(nombre_u_difusor);
-        difusorRedesSocialesR.setNombre_usuario_red_social(NombreUsuarioRedSocial);
-        difusorRedesSocialesR.setId_red_social(idRedSocial);
+        difusorRedesSocialesR.setNombre_u_difusor(in_difusor_redsocial.getNombre_u_difusor());
+        difusorRedesSocialesR.setNombre_usuario_red_social(in_difusor_redsocial.getNombre_usuario_red_social());
+        difusorRedesSocialesR.setId_red_social(in_difusor_redsocial.getId_red_social());
+        difusorRedesSocialesR.setId_red_social_difusor(in_difusor_redsocial.getId_red_social_difusor());
         dAO = new DifusorRedesSocialesDAO();
         dAO.AgregaRedSocialDifusor(difusorRedesSocialesR);
     }

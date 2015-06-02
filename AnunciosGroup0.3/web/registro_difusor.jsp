@@ -12,7 +12,6 @@
         <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="js/main.js"></script>
-        
         <script src="js/bootstrap.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -22,7 +21,7 @@
         <title>Registro Difusor</title>
     </head>
     <body>
-        <%@include file="../base_ag/_menu_difusor.jsp" %>
+        <%@include file="base_ag/_menu_difusor.jsp" %>
 
         
     
@@ -89,7 +88,10 @@
                             <p>Por favor ingresa al menos una red social</p>
                             <div class="form-group">
                                 <label for="InputFacebook">Facebook</label>
-                                <input type="text" class="form-control" name="InputFacebook" id="Facebook" placeholder="Ingresa tu usuario de Facebook"><a href="#" id="login" class="btn btn-primary" >Vincular Facebook </a>
+                                <input type="text" class="form-control" name="InputFacebook" id="Facebook-nombre" readonly="true"   placeholder="Ingresa tu usuario de Facebook">
+                                <input type="hidden" class="form-control" name="InputFacebook-id" id="Facebook-id" placeholder="">
+
+                                    <a href="#" id="login" class="btn btn-primary" >Vincular Facebook </a>
                             </div>
                             <div class="form-group">
                                 <label for="InputTwitter">Twitter</label>

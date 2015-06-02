@@ -7,6 +7,7 @@ package cl.inacap.dao.difusor;
 
 import cl.inacap.model.DifusorRedesSocialesR;
 import cl.inacap.connect.ConnectionFactory;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,26 +19,28 @@ import java.sql.ResultSet;
 public class DifusorRedesSocialesDAO {
 
     public boolean AgregaRedSocialDifusor(DifusorRedesSocialesR drsr) throws Exception {
-        ConnectionFactory cf = new ConnectionFactory();
-        Connection con = null;
-        PreparedStatement pst = null;
-        StringBuilder query = null;
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            ResultSet rs = null;
         try {
             con = cf.obtenerConexion();
-            query = new StringBuilder();
-            query.append("INSERT INTO difusor_redsocial_r (`id_red_social`, `nombre_u_difusor`) values("
-                    + " '" + drsr.getId_red_social() + "',"
-                    + " '" + drsr.getNombre_u_difusor() + "')"
-            );
-            System.out.println(query);
-            pst = con.prepareStatement(query.toString());
-            pst.execute();
+            
+            CallableStatement proc = con.prepareCall("{CALL SP_AGREGA_RED_SOCIAL_DIFUSOR(?,?,?,?)}");
+            
+            proc.setInt(1, drsr.getId_red_social());
+            proc.setString(2,drsr.getNombre_u_difusor());
+            proc.setString(3,drsr.getId_red_social_difusor());
+            proc.setString(4,drsr.getNombre_usuario_red_social());
+            
+            System.out.println(proc); 
+            
+ 
+            proc.execute();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Exception();
         } finally {
             con = null;
-            query = null;
             cf = null;
         }
         return true;
