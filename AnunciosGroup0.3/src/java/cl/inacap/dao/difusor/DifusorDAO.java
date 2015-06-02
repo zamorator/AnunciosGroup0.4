@@ -94,6 +94,7 @@ public class DifusorDAO {
             proc.setString(1,nombre);
             proc.setString(2,password);
             rs = proc.executeQuery();
+            System.out.println(proc);
             while (rs.next()) {
                 difusor = new Difusor();
                 difusor.setNombre_u_difusor(rs.getString("NOMBRE_U_DIFUSOR"));

@@ -42,9 +42,15 @@ public class LoginDifusor extends HttpServlet {
             Difusor difusor = new Difusor();
          
             difusor = difusorDAO.IniciaSesionDifusor(request.getParameter("InputNombreDifusor"), request.getParameter("InputPassword"));
-            HttpSession session_actual = request.getSession(true);
-            session_actual.setAttribute("difusor", difusor);
-            response.sendRedirect("difusor/difusor_inicio.jsp");
+            if(difusor == null){
+                response.sendRedirect("ingreso_difusor.jsp?message=" + URLEncoder.encode("Usuario y contrase&ntilde;a no coinciden", "UTF-8"));
+            
+            }else{
+                HttpSession session_actual = request.getSession(true);
+                session_actual.setAttribute("difusor", difusor);
+                response.sendRedirect("difusor/difusor_inicio.jsp");
+            }
+            
         } catch (Exception e) {
             response.sendRedirect("ingreso_difusor.jsp?message=" + URLEncoder.encode("Usuario y contrase&ntilde;a no coinciden", "UTF-8"));
         } finally {

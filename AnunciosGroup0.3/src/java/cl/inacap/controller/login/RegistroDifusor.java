@@ -113,21 +113,13 @@ public class RegistroDifusor extends HttpServlet {
                                  */
                                 System.out.println("Previo a ingresar fb:" + fb);
                                 if (!fb.equals("")) {
-                                    System.out.println("Llegue: aa");
+                                    
                                     DifusorRedesSocialesR difusor_redsocial = new DifusorRedesSocialesR();
-                                    System.out.println("Llegue: aa");
                                     System.out.println(request.getParameter("InputFacebook-id"));
                                     difusor_redsocial.setId_red_social(1);
                                     difusor_redsocial.setId_red_social_difusor(request.getParameter("InputFacebook-id"));
                                     difusor_redsocial.setNombre_u_difusor(difusor.getNombre_u_difusor());
                                     difusor_redsocial.setNombre_usuario_red_social(request.getParameter("InputFacebook"));
-                                    
-                                    System.out.println(difusor_redsocial.getId_red_social()+ "1");
-                                    System.out.println(difusor_redsocial.getId_red_social_difusor()+"2");
-                                    System.out.println(difusor_redsocial.getNombre_u_difusor()+"3");
-                                    System.out.println(difusor_redsocial.getId_red_social()+"4");
-                                    System.out.println(difusor_redsocial.getNombre_usuario_red_social()+"4");
-                                    System.out.println("Holamundo");
                                     creaRedSocial(difusor_redsocial);
                                 }
                                 if (!tw.equals("")) {
