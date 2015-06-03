@@ -105,7 +105,7 @@
                     <!--<div class="col-sm-6 col-md-4">-->
                     <div class="col-md-12">
                        <!--ANUNCIO 1 --> 
-                       <% int id_modal=0; %>
+                       
                         <% for (Anuncio a : anuncios) {%>
                         <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" id="anuncios">
@@ -114,32 +114,35 @@
                               <h3><%= a.getNombre_anuncio() %></h3>
                               
                              <!--VENTANA MODAL INICIO -->
-                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal%>">Detalle</button>
-                                <div class="modal fade" id="<%=id_modal %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                    <div class="modal-content">
-                                         <div class="modal-header">
-                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                             <h4 class="modal-title" id="myModalLabel"> <h3><%= a.getNombre_anuncio() %></h3></h4>
+                             <form method="POST" action="${pageContext.request.contextPath}/PublicarCanjear">
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"  data-target="#<%= a.getCodigo_anuncio() %>">Detalle</button>
+                                    <div class="modal fade"  id="<%=a.getCodigo_anuncio()%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                        <div class="modal-content">
+                                             <div class="modal-header">
+                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                 <h4 class="modal-title" id="myModalLabel"> <h3><%= a.getNombre_anuncio() %></h3></h4>
+                                                 <input type="hidden" name="codigoanuncio" value="<%= a.getCodigo_anuncio()%>">
+                                            </div>
+                                            <div class="modal-body">
+                                                <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
+                                                <p>Esta es una pequeña descripcion del anuncio.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" class="btn btn-default" name="canjear" data-dismiss="modal" value="Canjear">
+                                                <input type="submit" class="btn btn-primary" name="publicar"value="Publicar">
+                                            </div>
                                         </div>
-                                        <div class="modal-body">
-                                            <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
-                                            <p>Esta es una pequeña descripcion del anuncio.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Canejar</button>
-                                            <button type="button" class="btn btn-primary">Publicar</button>
                                         </div>
                                     </div>
-                                    </div>
-                                </div>
+                               </form> 
                             <!--VENTANA MODAL FIN -->
                               
                               
                             </div>
                         </div>
                         </div>
-                        <%id_modal++;}%>    
+                        <%}%>    
                     </div>
                 </div>
                 

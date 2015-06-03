@@ -131,5 +131,41 @@ public class DifusorAnunciosDAO {
         
         }
         
+        
+        public Anuncio buscaranuncioespecifico(Anuncio inanuncio) throws Exception {
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            ResultSet rs = null;
+            System.out.println(con);  
+            Anuncio anuncio = new Anuncio();
+         try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_ANUNCIO_ESPECIFICO(?)}");
+             System.out.println(proc);
+            proc.setInt(1,inanuncio.getCodigo_anuncio());
+            rs = proc.executeQuery();
+            
+            while(rs.next()){
+            
+            anuncio.setCodigo_anuncio(rs.getInt("CODIGO_ANUNCIO"));
+            anuncio.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
+            anuncio.setNombre_anuncio(rs.getString("NOMBRE_ANUNCIO"));
+            anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
+            anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
+            
+            
+            }
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         return anuncio;
+
+         }
 }
 
