@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="js/jquery-min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -55,25 +55,20 @@
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="img/AG logo.png" height="500" width="500" align=center>
+                        <img src="img/AG logo.png" height="1024" width="768" align=center>
                     </div>
 
                     <div class="item">
-                        <img src="img/AG logo.png" height="500" width="500" align=center>
+                        <img src="img/portada_anunciante.png" height="1024" width="768" align=center>
                     </div>
 
                     <div class="item">
-                        <img src="img/AG logo.png" height="500" width="500" align=center>
-                    </div>
-
-                    <div class="item">
-                        <img src="img/AG logo.png" height="500" width="500" align=center>
+                        <img src="img/portada_difusor.png" height="1024" width="768" align=center>
                     </div>
                 </div>
 
