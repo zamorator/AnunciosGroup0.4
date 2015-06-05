@@ -32,8 +32,8 @@
                     <label for="InputPassword">Contraseña</label>
                     <input type="text" class="form-control" name="InputPassword" id="Password" placeholder="Ingrese Contraseña" required="">
                 </div>
-                <button class="btn btn-default" type="submit" >Ingreso</button>
-                <a href="newjsp.jsp" class="btn btn-default">Volver</a>
+                <button class="btn btn-primary" type="submit" >Ingreso</button>
+                <a href="newjsp.jsp" class="btn btn-primary">Volver</a>
             </form>
         </div>
         <%@include file="base_ag/_pie_pagina.jsp" %>
