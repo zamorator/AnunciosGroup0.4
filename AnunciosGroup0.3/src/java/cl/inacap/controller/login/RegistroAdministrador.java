@@ -7,9 +7,9 @@ package cl.inacap.controller.login;
 
 import cl.inacap.dao.administrador.AdministradorDAO;
 import cl.inacap.model.Administrador;
+import cl.inacap.model.Anunciante;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Javoru
  */
-@WebServlet(name = "LoginAdministrador", urlPatterns = {"/LoginAdministrador"})
-public class LoginAdministrador extends HttpServlet {
+@WebServlet(name = "RegistroAdministrador", urlPatterns = {"/RegistroAdministrador"})
+public class RegistroAdministrador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,21 +41,29 @@ public class LoginAdministrador extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             
-            AdministradorDAO administradordao = new AdministradorDAO();
-            Administrador administrador = new Administrador();
-            administradordao.AgregarAdministrador(administrador);
             
-            
-          administrador.setNombre_u_administrador("InputNombreUAdministrador");
-          administrador.setPassword_administrador("InputPassword"); 
-            
-           administrador = administradordao.IniciaSesionAdministrador(request.getParameter("InputNombreAdministrador"),request.getParameter("InputPassword"));
-                       HttpSession session_actual = request.getSession(true);
-            session_actual.setAttribute("administrador", administrador);
-            response.sendRedirect("administrador/Admin_inicio.jsp");
-        } catch (Exception e) {
-            response.sendRedirect("ingreso_administrador.jsp?message=" + URLEncoder.encode("Usuario y contrase&ntilde;a no coinciden", "UTF-8"));
-        } finally {
+          //Instancia la clase administrador
+          Administrador administrador = new Administrador();
+          //RESCATO PARAMETROS DEL FORMULARIO,
+          administrador.setNombre_u_administrador(request.getParameter("InputNombreUAdministrador"));
+          administrador.setNombre_administrador(request.getParameter("InputNombre"));
+          administrador.setApellido_paterno_administrador(request.getParameter("InputApellidoPaterno"));
+          administrador.setApellido_materno_administrador(request.getParameter("InputApellidoMaterno"));
+          administrador.setEmail_administrador(request.getParameter("InputEmail"));
+          administrador.setPassword_administrador(request.getParameter("InputPassword"));
+          
+          //se llama al acceso a datos (se instancia)
+          AdministradorDAO administradorDAO = new AdministradorDAO();
+          // llamarr al metodo de la clase
+          administradorDAO.AgregarAdministrador(administrador);
+          
+          
+          
+        }catch (Exception e){
+            // si hay una excepcion , manda la excepcion (trasa)
+        e.printStackTrace();
+        }
+        finally {
             out.close();
         }
     }
@@ -75,7 +83,7 @@ public class LoginAdministrador extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(LoginAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegistroAdministrador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -93,7 +101,7 @@ public class LoginAdministrador extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(LoginAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegistroAdministrador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
