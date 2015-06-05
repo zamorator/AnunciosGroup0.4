@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,10 +47,14 @@ public class PublicarCanjear extends HttpServlet {
                    anuncio.setCodigo_anuncio(Integer.parseInt(request.getParameter("codigoanuncio")));
                    System.out.println(request.getParameter("codigoanuncio"));
                    anuncio = dad.buscaranuncioespecifico(anuncio);
-                   request.setAttribute("anuncios", anuncio);
-                   System.out.println(anuncio.getDescripcion_anuncio());
-                  // request.getRequestDispatcher("difusor/difusor_publicar.jsp").forward(request, response);
-                    request.getRequestDispatcher("difusor/difusor_publicar.jsp").forward(request, response);
+                   HttpSession session_actual2 = request.getSession(true);
+                   session_actual2.setAttribute("anuncio", anuncio);
+                   
+                   response.sendRedirect("difusor/difusor_publicar.jsp");
+                    //request.setAttribute("anuncios", anuncio);
+                    //System.out.println(anuncio.getDescripcion_anuncio());
+                    // request.getRequestDispatcher("difusor/difusor_publicar.jsp").forward(request, response);
+                    //  request.getRequestDispatcher("difusor/difusor_publicar.jsp").forward(request, response);
                 }else if (!request.getParameter("canjear").equals(null)){
             
             }   
