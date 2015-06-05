@@ -89,6 +89,7 @@
         <% }%>
         <br>
         <a class="btn btn-primary" href="registro_administrador.jsp">Registro Administrador</a>
+        <a class="btn btn-primary" href="ingreso_administrador.jsp">Ingreso Administrador</a>
         <a class="btn btn-primary" href="registro_anunciante.jsp">Registro Nuevo Anunciante</a>
         <a class="btn btn-primary" href="ingreso_anunciante.jsp">Ingreso Anunciantes</a>
         <br>

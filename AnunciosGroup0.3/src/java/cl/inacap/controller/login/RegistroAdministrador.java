@@ -58,6 +58,8 @@ public class RegistroAdministrador extends HttpServlet {
           administradorDAO.AgregarAdministrador(administrador);
           
           
+          response.sendRedirect("exito.jsp");
+          
           
         }catch (Exception e){
             // si hay una excepcion , manda la excepcion (trasa)

@@ -31,7 +31,7 @@
             <div class="alert alert-danger" role="alert">${param.message}</div>
             <% }%>
             
-        <form action="${pageContext.request.contextPath}/LoginAdministrador" method="POST">
+        <form action="${pageContext.request.contextPath}/RegistroAdministrador" method="POST">
             
             <!-- <input type="text" name="txtapellido">  -->
             <!-- <button type="submit">Enviar</button> -->
@@ -68,7 +68,8 @@
                 <button class="btn btn-default" type="submit" >Registro</button>
                 
                 <%@include file="base_ag/_pie_pagina.jsp" %>
-            
+            </div>
         </form>
+        </div>
     </body>
 </html>
