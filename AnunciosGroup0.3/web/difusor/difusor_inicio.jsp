@@ -109,7 +109,7 @@
                         <% for (Anuncio a : anuncios) {%>
                         <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" id="anuncios">
-                            <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
+                            <img class="img-responsive" id="img_anuncios"  src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
                             <div class="caption">
                               <h3><%= a.getNombre_anuncio() %></h3>
                               
