@@ -45,10 +45,11 @@
                 </ul>
             </div>
             <div id="mis_anuncios" class="contenido">
-                <form action="${pageContext.request.contextPath}/CompraShareCoins" method="POST">
-                    <div class="col-md-12">
-                        <!--ANUNCIO 1 --> 
-                        <% for (Anuncio a : anuncios) {%>
+
+                <div class="col-md-12">
+                    <!--ANUNCIO 1 --> 
+                    <% for (Anuncio a : anuncios) {%>
+                    <form action="${pageContext.request.contextPath}/CompraShareCoins" method="POST">
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail" id="anuncios">
                                 <% if (a.getEstado_anuncio().equals("F")) { %>
@@ -71,6 +72,7 @@
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     <h4 class="modal-title" id="myModalLabel"> <h3><%= a.getNombre_anuncio()%></h3></h4>
                                                 </div>
+                                                <input type="hidden" name="codigoanuncio" value="<%= a.getCodigo_anuncio()%>">
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
                                                     <button type="submit" class="btn btn-primary" >Comprar ShareCoins</button>
@@ -82,9 +84,9 @@
                                 </div>
                             </div>
                         </div>
-                        <%}%>    
-                    </div>
-                </form>
+                    </form>
+                    <%}%>    
+                </div>
             </div>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %>

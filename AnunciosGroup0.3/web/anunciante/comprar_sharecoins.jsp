@@ -4,6 +4,7 @@
     Author     : zamorator <zamorator@gmail.com>
 --%>
 
+<%@page import="cl.inacap.model.Anuncio"%>
 <%@page import="cl.inacap.model.Anunciante"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,7 +22,9 @@
         <link rel="stylesheet" href="../css/anunciante.css">
         <link rel="stylesheet" href="../css/bootstrap-nav-wizard.css">
         <title>Anunciante</title>
-        <% Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");%>
+        <% Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
+            Anuncio anuncio = (Anuncio) session.getAttribute("anuncio");
+        %>
     </head>
     <body>
         <%@include file="../base_ag/_menu_anunciante.jsp" %> 
@@ -40,17 +43,34 @@
                 </ul>
             </div>
             <div id="agregar_anuncio" class="contenido">
-                <ul class="nav nav-wizard">
+                <div class="workflow" >
+                    <ul class="nav nav-wizard">
 
-                    <li class='active'>Paso 1</li>
+                        <li class='active'>Paso 1</li>
 
-                    <li>Paso 2</li>
+                        <li>Paso 2</li>
 
-                    <li>Paso 3</li>
+                        <li>Paso 3</li>
 
-                </ul>
+                    </ul>
+                </div>
+                <div class="contenido_interior" >
+                    <h3>
+                        <%= anuncio.getNombre_anuncio()%>
+                    </h3>
+                    <div class="contenedorImagen">
+                        <%= anuncio.getImagen_anuncio()%>
+                    </div>
+                    <div class="detalle" >
+                        <%= anuncio.getDescripcion_anuncio()%>
+                    </div>
+                    <div class="puntos" >
 
-                <h1>workflow de compra</h1>
+                        <input type="radio" name="group1" value="10"> 10.000<br>
+                        <input type="radio" name="group1" value="15" checked> 15.000<br>
+                        <input type="radio" name="group1" value="20"> 20.000
+                    </div>
+                </div>
                 <a href="comprar_sharecoins_paso2.jsp" class="btn btn-primary">Siguiente</a>
             </div>
         </div>
