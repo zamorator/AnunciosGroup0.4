@@ -10,6 +10,7 @@ import cl.inacap.model.Administrador;
 import cl.inacap.model.Anunciante;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -45,18 +46,26 @@ public class RegistroAdministrador extends HttpServlet {
           //Instancia la clase administrador
           Administrador administrador = new Administrador();
           //RESCATO PARAMETROS DEL FORMULARIO,
-          administrador.setNombre_u_administrador(request.getParameter("InputNombreUAdministrador"));
-          administrador.setNombre_administrador(request.getParameter("InputNombre"));
-          administrador.setApellido_paterno_administrador(request.getParameter("InputApellidoPaterno"));
-          administrador.setApellido_materno_administrador(request.getParameter("InputApellidoMaterno"));
-          administrador.setEmail_administrador(request.getParameter("InputEmail"));
-          administrador.setPassword_administrador(request.getParameter("InputPassword"));
-          
+          if(request.getParameter("InputPassword").equals(request.getParameter("InputPassword2"))){
+            administrador.setNombre_u_administrador(request.getParameter("InputNombreUAdministrador"));
+            administrador.setNombre_administrador(request.getParameter("InputNombre"));
+            administrador.setApellido_paterno_administrador(request.getParameter("InputApellidoPaterno"));
+            administrador.setApellido_materno_administrador(request.getParameter("InputApellidoMaterno"));
+            administrador.setEmail_administrador(request.getParameter("InputEmail"));
+            administrador.setPassword_administrador(request.getParameter("InputPassword"));
+            
+           
           //se llama al acceso a datos (se instancia)
           AdministradorDAO administradorDAO = new AdministradorDAO();
-          // llamarr al metodo de la clase
+          // llamar al metodo de la clase
           administradorDAO.AgregarAdministrador(administrador);
+          }else {
+                    response.sendRedirect("registro_administrador.jsp?message=" + URLEncoder.encode("Passwords no coinciden", "UTF-8"));
+                }
           
+          
+          
+          response.sendRedirect("exito.jsp");
           
           
         }catch (Exception e){

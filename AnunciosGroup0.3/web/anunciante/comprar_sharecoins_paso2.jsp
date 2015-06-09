@@ -51,6 +51,7 @@
                 </ul>
 
                 <h1>workflow de compra 2</h1>
+                <img src="../img/webpay.jpg" alt="400px" width="500px" >
                 <a href="comprar_sharecoins_paso3.jsp" class="btn btn-primary">Siguiente</a>
                 <a href="comprar_sharecoins.jsp" class="btn btn-primary">Volver</a>
             </div>

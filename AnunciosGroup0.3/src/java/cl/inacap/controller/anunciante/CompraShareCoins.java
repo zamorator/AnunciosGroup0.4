@@ -5,12 +5,15 @@
  */
 package cl.inacap.controller.anunciante;
 
+import cl.inacap.dao.anuncio.AnuncioDAO;
+import cl.inacap.model.Anuncio;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,10 +35,14 @@ public class CompraShareCoins extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            //aca debería enviar el anuncio marcado para la compra
-            request.getParameter("anuncio");
+            System.out.println(request.getParameter("codigoanuncio"));
+            AnuncioDAO anuncioDao = new AnuncioDAO();
+            Anuncio anuncio = anuncioDao.BuscarAnunciosPorAnunciante(Integer.parseInt(request.getParameter("codigoanuncio")));
+            HttpSession session = request.getSession();
+            session.setAttribute("anuncio", anuncio);
             response.sendRedirect("anunciante/comprar_sharecoins.jsp");
-        } finally {
+        } catch (Exception e) {
+            response.sendRedirect("anunciante/mis_anuncios.jsp");
         }
     }
 

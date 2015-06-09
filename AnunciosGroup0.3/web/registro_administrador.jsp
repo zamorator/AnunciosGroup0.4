@@ -19,7 +19,9 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/Estilos_ag.css">
-       
+        <link rel="shortcut icon" src="img/social-icons/Logoicon.ico" type="image/icon" />
+        <link src="img/social-icons/Logoicon.ico" type="image/x-icon" rel="shortcut icon" />
+             
         <title>Registro Administrador</title>
     </head>
     <body>
@@ -31,7 +33,7 @@
             <div class="alert alert-danger" role="alert">${param.message}</div>
             <% }%>
             
-        <form action="${pageContext.request.contextPath}/LoginAdministrador" method="POST">
+        <form action="${pageContext.request.contextPath}/RegistroAdministrador" method="POST">
             
             <!-- <input type="text" name="txtapellido">  -->
             <!-- <button type="submit">Enviar</button> -->
@@ -67,8 +69,10 @@
                 
                 <button class="btn btn-default" type="submit" >Registro</button>
                 
-                <%@include file="base_ag/_pie_pagina.jsp" %>
-            
+                
+            </div>
         </form>
+        </div>
+        <%@include file="base_ag/_pie_pagina.jsp" %>
     </body>
 </html>

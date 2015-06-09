@@ -73,8 +73,9 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             proc.setString(++x, administrador.getApellido_materno_administrador());
             proc.setString(++x, administrador.getPassword_administrador());
             proc.setString(++x, administrador.getEmail_administrador());
+            System.out.println(proc);
             proc.executeQuery();
-            System.out.println("SP_AGREGAR_ADMINISTRADOR");
+            
 
         } catch (Exception ex) {
             ex.printStackTrace();

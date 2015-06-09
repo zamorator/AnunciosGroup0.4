@@ -12,6 +12,7 @@
 	<title>Menu</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="../css/Estilos_ag.css">
+        <link rel="shortcut icon" type="image/x-icon" href="img/social-icons/Logoicon.ico">
 </head>
 <body>
 
@@ -22,8 +23,12 @@
 			</div>
 			<div class="datos_login">
 				<p>Administrador</p>
+                                
+                        </div>
+                        <div> 
 				<p>Informacion administrador</p>
-			</div>
+                        </div>
+                    
 		</div>
 		<div class="menu_bar">
 			<a href="#" class="bt-menu"><span class="icon-list2"></span>AnunciosGroup</a>
@@ -38,9 +43,9 @@
                                 </span>
                             </a>
 			<ul>
-				<li><a href="#"><span class="icon-house"></span>Anuncios</a></li>
-				<li><a href="#"><span class="icon-suitcase"></span>Empresas</a></li>
-				<li><a href="#"><span class="icon-earth"></span>Perfil</a></li>
+				<li><a href="../administrador/admin_anuncios.jsp"><span class="icon-house"></span>Anuncios</a></li>
+				<li><a href="../administrador/admin_empresas.jsp"><span class="icon-suitcase"></span>Empresas</a></li>
+                                <li><a href="../administrador/admin_perfil.jsp"><span class="icon-earth"></span>Perfil</a></li>
 			</ul>
 		</nav>
 	</header>
