@@ -15,6 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <!-- Latest compiled and minified CSS -->
+        <script type ="text/javascript" src="../js/paginacion.js"></script>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
@@ -36,7 +37,7 @@
             anunciossugeridos= new ArrayList<Anuncio>();
             
             DifusorAnunciosDAO anunciosDAO = new DifusorAnunciosDAO();
-            anuncios = anunciosDAO.buscaranuncio();  
+            anuncios = anunciosDAO.buscaranuncio(0,4);  
             anunciossugeridos = anunciosDAO.buscaranunciosugerido(difusor);
             
             System.out.println(anuncios);
@@ -105,9 +106,9 @@
                     <!--<div class="col-sm-6 col-md-4">-->
                     <div class="col-md-12">
                        <!--ANUNCIO 1 --> 
-                       
+                       <% int cantanucios= 0; %>
                         <% for (Anuncio a : anuncios) {%>
-                        <div class="col-sm-6 col-md-4">
+                    <div class="col-sm-6 col-md-4" id="desdeaqui<%= cantanucios  %>">
                         <div class="thumbnail" id="anuncios">
                             <img class="img-responsive" id="img_anuncios"  src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
                             <div class="caption">
@@ -137,13 +138,13 @@
                                     </div>
                                </form> 
                             <!--VENTANA MODAL FIN -->
-                              
-                              
+                                </div>                          
                             </div>
                         </div>
-                        </div>
-                        <%}%>    
+                        <%cantanucios++;} ;System.out.println(cantanucios);%>    
                     </div>
+                    <input type="text" id ="cantidadanuncios"value="<%= cantanucios%>">
+                   
                 </div>
                 
             </div>

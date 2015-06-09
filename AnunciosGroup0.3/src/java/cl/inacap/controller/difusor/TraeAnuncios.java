@@ -3,18 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cl.inacap.controller.anunciante;
+package cl.inacap.controller.difusor;
 
-import cl.inacap.dao.anunciante.ProvinciaDAO;
-import cl.inacap.model.Provincia;
+import cl.inacap.dao.difusor.DifusorAnunciosDAO;
+import cl.inacap.model.Anuncio;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author zamorator <zamorator@gmail.com>
+ * @author macbookair
  */
-    @WebServlet(name = "TraerProvincias", urlPatterns = {"/TraerProvincias"})
-public class TraerProvincias extends HttpServlet {
+@WebServlet(name = "TraeAnuncios", urlPatterns = {"/TraeAnuncios"})
+public class TraeAnuncios extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,10 +42,10 @@ public class TraerProvincias extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TraerProvincias</title>");
+            out.println("<title>Servlet TraeAnuncios</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet TraerProvincias at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet TraeAnuncios at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {
@@ -69,24 +65,19 @@ public class TraerProvincias extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Y el Id de region es ... " + request.getParameter("idregion"));
+        //processRequest(request, response);
         try {
-            ProvinciaDAO provinciaDao = new ProvinciaDAO();
-            List<Provincia> provincias = provinciaDao.BuscarProvincias(Integer.parseInt(request.getParameter("idregion")));
-            Map<String, String> options = new LinkedHashMap<String, String>();
-
-            for (Provincia p : provincias) {
-                options.put("" + p.getId_provincia(), "" + p.getNombre_provincia());
-            }
-
-            String json = new Gson().toJson(options);
-
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
+            DifusorAnunciosDAO buscaanuncios = new DifusorAnunciosDAO();
+            ArrayList<Anuncio> anuncios =  buscaanuncios.buscaranuncio(Integer.parseInt(request.getParameter("in_cantidad")),Integer.parseInt(request.getParameter("in_cantidad"))+5);
+            String json = new Gson().toJson(anuncios);
+            
             response.getWriter().write(json);
-        } catch (Exception ex) {
-            Logger.getLogger(TraerComunas.class.getName()).log(Level.SEVERE, null, ex);
+            
+        } catch (Exception e) {
         }
+        
+        
+        
     }
 
     /**

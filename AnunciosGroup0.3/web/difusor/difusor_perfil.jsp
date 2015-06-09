@@ -37,7 +37,7 @@
         <div id="panel">
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="#">Mis Datos</a></li>
-                <li role="presentation"><a href="#">Puntos</a></li>
+                <li role="presentation"><a href="difusor_puntos.jsp">Puntos</a></li>
             </ul>
             
             <div class="contenido" id="contenido_panel">

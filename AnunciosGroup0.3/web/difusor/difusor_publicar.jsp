@@ -58,8 +58,6 @@
             
             <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
             <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>   
-            
-
        </div>
         <div id="panel_publicar_lateral">
             </br>
