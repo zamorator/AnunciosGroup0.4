@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="../js/Main.js"></script>
-        <title>Inicio</title>
+        <title>Inicio Administrador</title>
     </head>
     <body>
         <%@include file="../base_ag/_menu_administrador.jsp" %>    
