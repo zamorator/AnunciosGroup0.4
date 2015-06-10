@@ -33,6 +33,7 @@
                         </a>
                     </li>
                 </ul>
+                <p><a href="#">Quienes somos</a></p>
                 <p>© Copyright 2015. AnunciosGroup.cl</p>
             </div>
         </footer>
