@@ -19,6 +19,7 @@
         <title>AnunciosGroup</title>
     </head>
     <body>
+        <%@include file="../base_ag/_menu_difusor.jsp" %>
       <!-- Image Background Page Header -->
     <!-- Note: The background image is set within the business-casual.css file. -->
     <header class="business-header">

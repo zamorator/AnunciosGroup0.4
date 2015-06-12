@@ -77,8 +77,8 @@
                         <h4><i class="fa fa-fw fa-check"></i>¿Aun no sabes como funciona?</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                        <p>Basicamente consiste en compartir distintos anuncios en tus redes sociales, cada ves que lo realices obtendras coins los cuales seran acumulables y equivaldran a porcentajes de descuentos en los productos de la pagina. Comienza ya y obten fabulosos descuentos.</p>
+                        <a href="#" class="btn btn-default">Solicitar mas informacion</a>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                         <h4><i class="fa fa-fw fa-gift"></i>¿Ya estas registrado?</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                        <p>¿Que esperas? Sigue compartiendo anucios publicitarios e invita a tus amigos para que formen parte de <b>AnunciosGroup</b>, recuerda que es totalomente gratis y puedes obtener descuentos en todos los productos anunciandos en la pagina.</p>
                         <a href="ingreso_difusor.jsp" class="btn btn-default">Iniciar sesion</a>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                         <h4><i class="fa fa-fw fa-compass"></i> Registrate</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                        <p>¿Quiere comprar productos o servicios pero son demasiado caros? <b>AnunciosGroup</b> te ayuda entregandote descuentos los cuales son proporsinales a tu participación. Registrate ahora y comienza a acumular coins y canjear descuentos fabulosos. </p>
                         <a href="registro_difusor.jsp" class="btn btn-default">Registrate</a>
                     </div>
                 </div>
