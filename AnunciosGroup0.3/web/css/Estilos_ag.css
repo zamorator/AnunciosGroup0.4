@@ -10,7 +10,7 @@ and open the template in the editor.
 
 body{
     font-family:verdana;
-    background-image: url("../img/BG_1.jpg"); 
+   // background-image: url("../img/BG_1.jpg"); 
     background-size:100%; 				
     background-attachment:fixed; 
 }
@@ -147,4 +147,28 @@ footer{
 #img_anuncios{
     width:250px;
     height: 150px;
+}
+
+
+.business-header {
+    height: 400px;
+    background: url('../img/cabecera-inico.jpg') center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+#imagen2{
+    float: right;
+}
+
+#acceso_usuarios{
+   margin-left:5%;
+}
+#acceso_empresas{
+   margin-right:5%;
+}
+#tesistas{
+margin-left:12%;
 }

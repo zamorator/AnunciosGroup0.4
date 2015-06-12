@@ -14,7 +14,7 @@
             Difusor difusor = (Difusor) session_actual.getAttribute("difusor");
             %>
     <body>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default navbar-fixed-top" >
                     <div class="container-fluid">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
@@ -25,11 +25,11 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand" href="../AnunciosGroup0.3/newjsp.jsp">
+                                
+                                <img src="/AnunciosGroup0.3/img/Logo.png" height="35" width="250" style="margin-top: -10px;">
+                                
                                 <span>
-                                    <img src="/AnunciosGroup0.3/img/Logo1.png" height="30" width="30">
-                                </span>
-                                <span>
-                                    AnunciosGroup
+                                    
                                 </span>
                             </a>
                         </div>

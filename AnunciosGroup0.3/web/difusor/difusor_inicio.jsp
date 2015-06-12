@@ -46,7 +46,7 @@
             }
         %>
         
-        <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
+        <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation" class="active"><a href="#">Inicio</a></li>
             <li role="presentation"><a href="difusor_perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="#">Canjear</a></li>
@@ -101,7 +101,6 @@
                         <%id_modal2++;}%>    
                     </div>
                     
-                    
                     <!-- SUGERIDOS fin -->
                     <!--<div class="col-sm-6 col-md-4">-->
                     <div class="col-md-12">
@@ -128,6 +127,8 @@
                                             <div class="modal-body">
                                                 <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
                                                 <p>Esta es una pequeña descripcion del anuncio.</p>
+       
+                                                <input type="checkbox" class="click" > Agregar a Favorito
                                             </div>
                                             <div class="modal-footer">
                                                 <input type="submit" class="btn btn-default" name="canjear" data-dismiss="modal" value="Canjear">
@@ -149,6 +150,18 @@
                 
             </div>
         </div>
+                    
+                    <script>
+                        $('.click').click(function(e)){
+                            e.preventDefault();
+                            var agregar = $('.click').val();
+                            $.get("../AgregarFavorito"),{in_valor: agregar},fuction(respuesta){
+                                
+                            }
+                            
+                        }
+                        
+                    </script>   
         <%@include file="../base_ag/_pie_pagina.jsp" %>    
     </body>
 </html>
