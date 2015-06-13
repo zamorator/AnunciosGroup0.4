@@ -109,8 +109,8 @@
                     cantidad cupones
                     porcentaje descuento
 
-                    <input id="fileupload" type="file" name="files[]" data-url="../UploadFile" multiple>
-                    
+                     <input type="file" name="file">
+
                     <button type="submit" class="btn btn-default">Agregar</button>
                 </form>
             </div>

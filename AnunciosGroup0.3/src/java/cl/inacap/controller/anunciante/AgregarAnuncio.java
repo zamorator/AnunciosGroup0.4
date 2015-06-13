@@ -9,8 +9,6 @@ import cl.inacap.dao.anunciante.AnuncioDAO;
 import cl.inacap.model.Anunciante;
 import cl.inacap.model.Anuncio;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +36,7 @@ public class AgregarAnuncio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            System.out.println(request.getParameter("file"));
             HttpSession sesion = request.getSession();
             Anunciante anunciante = (Anunciante) sesion.getAttribute("anunciante");
             Anuncio anuncio = new Anuncio();
