@@ -4,6 +4,8 @@
     Author     : zamorator
 --%>
 
+<%@page import="cl.inacap.dao.giro.GiroCabeceraDAO"%>
+<%@page import="cl.inacap.model.GiroCabecera"%>
 <%@page import="cl.inacap.model.Provincia"%>
 <%@page import="cl.inacap.model.Comuna"%>
 <%@page import="cl.inacap.dao.anunciante.RegionDAO"%>
@@ -38,6 +40,27 @@
                         });
                     });
                 });
+                $('#selectGiroCabecera').change(function () {
+                    $.get('TraerGiroDetalle', {idGiroCabecera: $(this).val()}, function (responseJson) {
+                        var $select = $('#selectGiroDetalle');
+                        $select.find('option').remove();
+                        $('<option>').val("").text("Seleccione Detalle Giro").appendTo($select);
+                        $.each(responseJson, function (key, value) {
+                            $('<option>').val(key).text(value).appendTo($select);
+                        });
+                    });
+                });
+                $('#selectGiroDetalle').change(function () {
+                    $.get('TraerGiro', {idGiroDetalle: $(this).val()}, function (responseJson) {
+                        var $select = $('#selectGiro');
+                        $select.find('option').remove();
+                        $('<option>').val("").text("Seleccione Giro").appendTo($select);
+                        $.each(responseJson, function (key, value) {
+                            $('<option>').val(key).text(value).appendTo($select);
+                        });
+                    });
+                });
+                
             });
         </script>
         <!-- Latest compiled and minified CSS -->
@@ -51,7 +74,8 @@
         <%
             RegionDAO regionesDao = new RegionDAO();
             ArrayList<Region> regiones = regionesDao.BuscarRegiones();
-            ArrayList<Comuna> comunas = new ArrayList<Comuna>();
+            GiroCabeceraDAO giroCabeceraDao = new GiroCabeceraDAO();
+            ArrayList<GiroCabecera> giro_cabeceras = giroCabeceraDao.listCabeceraGiro();
         %>
         <div class="contenido">
             <% if (request.getParameter("message") != null) {%>
@@ -78,6 +102,32 @@
                             <input type="text" class="form-control" name="InputNombreAnunciante" id="NombreAnunciante" placeholder="Ingrese Nombre de su Empresa" required="">
                         </div>
                     </div>
+                    <div id="giroAnunciante" class="panel panel-default margen">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Giro</h3>
+                        </div>
+                        <div class="form-group margen">
+                            <label for="selectGiroCabecera">Región</label>
+                            <select class="form-control" name="selectGiroCabecera" id="selectGiroCabecera" >
+                                <option value="" selected="selected" >Seleccione Cabecera Giro</option>
+                                <% for (GiroCabecera gr : giro_cabeceras) {%>
+                                    <option value="<%= gr.getGiro_cabecera() %>"><%= gr.getNombre_giro_cabecera() %></option>
+                                <% }%>
+                            </select>
+                        </div>
+                        <div class="form-group margen">
+                            <label for="selectGiroDetalle">Detalle Giro</label>
+                            <select class="form-control"  name="selectGiroDetalle" id="selectGiroDetalle"> 
+                                <option value="" selected="selected">Seleccione Detalle Giro</option>
+                            </select>                    
+                        </div>
+                        <div class="form-group margen">
+                            <label for="selectGiro">Giro</label>
+                            <select class="form-control"  name="selectGiro" id="selectGiro"> 
+                                <option value="" selected="selected">Seleccione Giro</option>
+                            </select>                    
+                        </div>
+                    </div>
                     <div id="direccionAnunciante" class="panel panel-default margen"> 
                         <div class="panel-heading">
                             <h3 class="panel-title">Direcci&oacute;n Anunciante</h3>
@@ -96,7 +146,7 @@
                             </select>
                         </div>
                         <div class="form-group margen">
-                            <label for="InputComuna">Provincia</label>
+                            <label for="InputProvincia">Provincia</label>
                             <select class="form-control"  name="selectProvincia" id="selectProvincia"> 
                                 <option value="" selected="selected">Seleccione Provincia</option>
                             </select>                    
@@ -105,9 +155,6 @@
                             <label for="InputComuna">Comuna</label>
                             <select class="form-control"  name="selectComuna" id="selectComuna"  required="" >
                                 <option value="" selected="selected">Seleccione Comuna</option>
-                                <% for (Comuna c : comunas) {%>
-                                <option value="<%= c.getId_comuna()%>"><%= c.getNombre_comuna()%>"></option>
-                                <% }%>
                             </select>                    
                         </div>
                     </div>
