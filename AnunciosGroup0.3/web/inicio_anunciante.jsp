@@ -20,7 +20,7 @@
         <title>Inicio Anunciante</title>
     </head>
     <body>
-    <%@include file="../base_ag/_menu_difusor.jsp" %>    
+    <%@include file="base_ag/_menu_difusor.jsp" %>    
     <!-- Full Width Image Header with Logo -->
     <!-- Image backgrounds are set within the full-width-pics.css file. -->
     <header class="image-bg-fluid-height">
@@ -45,16 +45,6 @@
     <!-- Fixed Height Image Aside -->
     <!-- Image backgrounds are set within the full-width-pics.css file. -->
     <aside class="image-bg-fixed-height"></aside>
-
-   
-    
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    
-    <%@include file="../base_ag/_pie_pagina.jsp" %>    
+    <%@include file="base_ag/_pie_pagina.jsp" %>    
     </body>
 </html>

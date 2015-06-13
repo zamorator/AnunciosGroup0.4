@@ -16,10 +16,10 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/Estilos_ag.css">
-        <title>AnunciosGroup asicalao</title>
+        <title>AnunciosGroup</title>
     </head>
     <body>
-        <%@include file="../base_ag/_menu_difusor.jsp" %>
+        <%@include file="base_ag/_menu_difusor.jsp" %>
       <!-- Image Background Page Header -->
     <!-- Note: The background image is set within the business-casual.css file. -->
     <header class="business-header">
@@ -106,6 +106,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>  
-        <%@include file="../base_ag/_pie_pagina.jsp" %>   
+        <%@include file="base_ag/_pie_pagina.jsp" %>   
     </body>
 </html>
