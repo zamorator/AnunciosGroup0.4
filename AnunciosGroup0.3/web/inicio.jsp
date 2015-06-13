@@ -16,7 +16,7 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/Estilos_ag.css">
-        <title>AnunciosGroup</title>
+        <title>AnunciosGroup asicalao</title>
     </head>
     <body>
         <%@include file="../base_ag/_menu_difusor.jsp" %>
