@@ -50,16 +50,15 @@ public class AnuncioDAO {
     public ArrayList<Anuncio> BuscarAnunciosPorAnunciante(Anunciante anunciante) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
         ResultSet rs = null;
         ArrayList<Anuncio> anuncios = null;
         try {
             anuncios = new ArrayList<Anuncio>();
             con = cf.obtenerConexion();
-            CallableStatement proc = con.prepareCall("{CALL SPSBUSCARANUNCIOSPORANUNCIANTE(?)}");
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCARANUNCIOSPORANUNCIANTE(?)}");
             proc.setString(1, anunciante.getNombre_u_anunciante());
             rs = proc.executeQuery();
-            System.out.println("SPSBUSCARANUNCIOSPORANUNCIANTE");
+            System.out.println("SPBUSCARANUNCIOSPORANUNCIANTE");
             while (rs.next()) {
                 Anuncio anuncio = new Anuncio();
                 anuncio.setCodigo_anuncio(rs.getInt("codigo_anuncio"));

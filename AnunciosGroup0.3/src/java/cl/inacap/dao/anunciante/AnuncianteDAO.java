@@ -122,4 +122,31 @@ public class AnuncianteDAO {
         }
         return true;
     }
+
+    public Anunciante ConsultaIngresoAnunciante(String nombre_u_anunciante) throws Exception{
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        ResultSet rs = null;
+        Anunciante anunciante = null;
+        try {
+
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPCONSULTAINGRESOANUNCIANTE(?)}");
+            proc.setString(1, nombre_u_anunciante);
+            rs = proc.executeQuery();
+            System.out.println("SPCONSULTAINGRESOANUNCIANTE");
+            while (rs.next()) {
+                anunciante = new Anunciante();
+                anunciante.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
+                anunciante.setEstado_anunciante(rs.getString("ESTADO_ANUNCIANTE"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            cf = null;
+        }
+        return anunciante;
+    }
 }

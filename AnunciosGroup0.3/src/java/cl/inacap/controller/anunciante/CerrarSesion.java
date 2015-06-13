@@ -37,7 +37,7 @@ public class CerrarSesion extends HttpServlet {
         if (sesion_actual != null) {
             sesion_actual.invalidate();
         }
-        response.sendRedirect("newjsp.jsp?message="+ URLEncoder.encode("Sesion cerrada exitosamente", "UTF-8"));
+        response.sendRedirect("index.jsp?message="+ URLEncoder.encode("Sesion cerrada exitosamente", "UTF-8"));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -16,6 +16,8 @@ public class Anunciante {
     private String nombre_anunciante;
     private String direccion_anunciante;
     private String password_anunciante;
+    private String email_anunciante;
+    private String estado_anunciante;
 
     public String getNombre_u_anunciante() {
         return nombre_u_anunciante;
@@ -55,6 +57,22 @@ public class Anunciante {
 
     public void setPassword_anunciante(String password_anunciante) {
         this.password_anunciante = password_anunciante;
+    }
+
+    public String getEmail_anunciante() {
+        return email_anunciante;
+    }
+
+    public void setEmail_anunciante(String email_anunciante) {
+        this.email_anunciante = email_anunciante;
+    }
+
+    public String getEstado_anunciante() {
+        return estado_anunciante;
+    }
+
+    public void setEstado_anunciante(String estado_anunciante) {
+        this.estado_anunciante = estado_anunciante;
     }
 
 }

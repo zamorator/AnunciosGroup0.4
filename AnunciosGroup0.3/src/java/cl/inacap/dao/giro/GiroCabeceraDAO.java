@@ -18,7 +18,8 @@ import java.util.List;
  * @author zamorator <zamorator@gmail.com>
  */
 public class GiroCabeceraDAO {
-    public ArrayList<GiroCabecera> listCabeceraGiro() throws Exception{
+
+    public ArrayList<GiroCabecera> listCabeceraGiro() throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
         ResultSet rs = null;
@@ -31,10 +32,10 @@ public class GiroCabeceraDAO {
             giroCabeceras = new ArrayList<GiroCabecera>();
             while (rs.next()) {
                 GiroCabecera giroCabecera = new GiroCabecera();
-                
+
                 giroCabecera.setGiro_cabecera(rs.getInt("ID_GIRO_CABECERA"));
                 giroCabecera.setNombre_giro_cabecera(rs.getString("NOMBRE_GIRO_CABECERA"));
-                
+
                 giroCabeceras.add(giroCabecera);
             }
         } catch (Exception ex) {
@@ -44,7 +45,34 @@ public class GiroCabeceraDAO {
             con = null;
             cf = null;
         }
-        
+
         return giroCabeceras;
+    }
+
+    public GiroCabecera buscaGiroCabecera(int id_giro_cabecera) throws Exception{
+        GiroCabecera gc = new GiroCabecera();
+        ConnectionFactory cf = new ConnectionFactory();
+        ResultSet rs = null;
+        Connection con = null;
+        try {
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCAGIROCABECERA(?)}");
+            proc.setInt(1, id_giro_cabecera);
+            rs = proc.executeQuery();
+            while (rs.next()) {
+                
+                gc.setGiro_cabecera(rs.getInt("id_giro_cabecera"));
+                gc.setNombre_giro_cabecera(rs.getString("nombre_giro_cabecera"));
+            }
+            System.out.println("SPBUSCAGIROCABECERA");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            cf = null;
+        }
+        return gc;
     }
 }

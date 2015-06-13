@@ -6,6 +6,7 @@
 package cl.inacap.controller.anunciante;
 
 import cl.inacap.dao.anunciante.AnuncianteDAO;
+import cl.inacap.dao.anunciante.AnuncianteGiroDAO;
 import cl.inacap.model.Anunciante;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,8 +49,11 @@ public class RegistroAnunciante extends HttpServlet {
                     anunciante.setDireccion_anunciante(request.getParameter("InputDireccionAnunciante"));
                     anunciante.setId_comuna(Integer.parseInt(request.getParameter("selectComuna")));
                     anunciante.setPassword_anunciante(request.getParameter("InputPassword"));
+                    anunciante.setEmail_anunciante(request.getParameter("InputEmailAnunciante"));
 
+                    AnuncianteGiroDAO anuncianteGiroDao = new AnuncianteGiroDAO();
                     anuncianteDao.AgregaAnunciante(anunciante);
+                    anuncianteGiroDao.agregarAnuncianteGiro(Integer.parseInt(request.getParameter("selectGiro")), anunciante.getNombre_u_anunciante());
                     response.sendRedirect("registro_anunciante.jsp?susses=" + URLEncoder.encode("Se ha creado exitosamente un nuevo Anunciante", "UTF-8"));
                 } else {
                     response.sendRedirect("registro_anunciante.jsp?message=" + URLEncoder.encode("Passwords no coinciden", "UTF-8"));

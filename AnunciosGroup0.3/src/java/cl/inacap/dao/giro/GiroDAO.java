@@ -20,8 +20,8 @@ import java.util.List;
  */
 public class GiroDAO {
 
-    public List<Giro> listGiroByGiroDetalle(int id_giroDetalle) throws Exception{
-        List<Giro> giros = new ArrayList<Giro>();
+    public ArrayList<Giro> listGiroByGiroDetalle(int id_giroDetalle) throws Exception{
+        ArrayList<Giro> giros = new ArrayList<Giro>();
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
         PreparedStatement pst = null;
@@ -52,5 +52,36 @@ public class GiroDAO {
             cf = null;
         }
         return giros;
+    }
+    
+    public Giro buscaGiro(int codigo_giro) throws Exception{
+        Giro giro = new Giro();
+        ConnectionFactory cf = new ConnectionFactory();
+        ResultSet rs = null;
+        Connection con = null;
+        try {
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCAGIRO(?)}");
+            proc.setInt(1, codigo_giro);
+            rs = proc.executeQuery();
+            while (rs.next()) {
+                giro.setAfecto_iva(rs.getString("afecto_iva"));
+                giro.setCategoria_tributaria(rs.getInt("categoria_tributaria"));
+                giro.setCodigo_giro(rs.getInt("codigo_giro"));
+                giro.setDetalle(rs.getString("detalle"));
+                giro.setDisponible_internet(rs.getString("disponible_internet"));
+                giro.setId_giro_detalle(rs.getInt("id_giro_detalle"));
+            }
+            System.out.println("SPBUSCAGIRO");
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            cf = null;
+        }
+        
+        return giro;
     }
 }

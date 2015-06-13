@@ -71,6 +71,7 @@
         <title>Registro Anunciante</title>
     </head>
     <body>
+    <%@include file="base_ag/_menu_difusor.jsp" %>  
         <%
             RegionDAO regionesDao = new RegionDAO();
             ArrayList<Region> regiones = regionesDao.BuscarRegiones();
@@ -101,13 +102,17 @@
                             <label for="InputNombreAnunciante">Nombre Empresa</label>
                             <input type="text" class="form-control" name="InputNombreAnunciante" id="NombreAnunciante" placeholder="Ingrese Nombre de su Empresa" required="">
                         </div>
+                        <div class="form-group margen">
+                            <label for="InputEmailAnunciante">Email de contacto empresa</label>
+                            <input type="email" class="form-control" name="InputEmailAnunciante" id="EmailAnunciante" placeholder="Ingrese Email de su Empresa" required="">
+                        </div>
                     </div>
                     <div id="giroAnunciante" class="panel panel-default margen">
                         <div class="panel-heading">
                             <h3 class="panel-title">Giro</h3>
                         </div>
                         <div class="form-group margen">
-                            <label for="selectGiroCabecera">Región</label>
+                            <label for="selectGiroCabecera">Cabecera Giro</label>
                             <select class="form-control" name="selectGiroCabecera" id="selectGiroCabecera" >
                                 <option value="" selected="selected" >Seleccione Cabecera Giro</option>
                                 <% for (GiroCabecera gr : giro_cabeceras) {%>
@@ -171,7 +176,7 @@
                             <input type="password" class="form-control" name="InputPassword2" id="password2" placeholder="Ingrese Contraseña" required="">
                         </div>
                         <button class="btn btn-default" type="submit" >Registro</button>
-                        <a href="newjsp.jsp" class="btn btn-default">Volver</a>
+                        <a href="index.jsp" class="btn btn-default">Volver</a>
                     </div>
                 </form>
             </div>

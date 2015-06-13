@@ -39,11 +39,24 @@ public class LoginAnunciante extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             AnuncianteDAO anuncianteDAO = new AnuncianteDAO();
-            Anunciante anunciante = anuncianteDAO.IniciarSesionAnunciante(request.getParameter("InputNombreUAnunciante"), request.getParameter("InputPassword"));
-            HttpSession session_actual = request.getSession(true);
-            session_actual.setAttribute("anunciante", anunciante);
-            response.sendRedirect("anunciante/mis_anuncios.jsp");
+            Anunciante anValidación = anuncianteDAO.ConsultaIngresoAnunciante(request.getParameter("InputNombreUAnunciante"));
+            if (anValidación != null) {
+                if (anValidación.getEstado_anunciante().equals("V")) { //es válido
+                    Anunciante anunciante = anuncianteDAO.IniciarSesionAnunciante(request.getParameter("InputNombreUAnunciante"), request.getParameter("InputPassword"));
+                    HttpSession session_actual = request.getSession(true);
+                    session_actual.setAttribute("anunciante", anunciante);
+                    response.sendRedirect("anunciante/mis_anuncios.jsp");
+                } else{
+                    //no es valido, comunicarse con admin
+                    response.sendRedirect("ingreso_anunciante.jsp?message=" + URLEncoder.encode("Usuario aun no validado por administradores, favor contactarse con su administrador ", "UTF-8"));
+                }
+            } else{
+                //no existe, crear o comunicar con admin
+                response.sendRedirect("ingreso_anunciante.jsp?message=" + URLEncoder.encode("Usuario no existe, favor crear nuevo anunciante", "UTF-8"));
+            }
+
         } catch (Exception e) {
+            e.printStackTrace();
             response.sendRedirect("ingreso_anunciante.jsp?message=" + URLEncoder.encode("Usuario y contrase&ntilde;a no coinciden", "UTF-8"));
         } finally {
             out.close();
