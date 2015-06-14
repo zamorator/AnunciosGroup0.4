@@ -34,7 +34,8 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                         <ul class="nav navbar-nav navbar-right">
-                            <%= anunciante.getNombre_u_anunciante()%>
+                            <%= anunciante.getNombre_u_anunciante()%> |
+                            <%= giro.getDetalle() %>
                         <button type="submit" class="btn btn-link">Cerrar Sessi&oacute;n</button>
                         </ul>
                     </div><!-- /.navbar-collapse -->

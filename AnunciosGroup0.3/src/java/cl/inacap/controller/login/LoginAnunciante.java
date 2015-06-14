@@ -6,7 +6,11 @@
 package cl.inacap.controller.login;
 
 import cl.inacap.dao.anunciante.AnuncianteDAO;
+import cl.inacap.dao.anunciante.AnuncianteGiroDAO;
+import cl.inacap.dao.giro.GiroDAO;
 import cl.inacap.model.Anunciante;
+import cl.inacap.model.AnuncianteGiro;
+import cl.inacap.model.Giro;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
@@ -43,21 +47,29 @@ public class LoginAnunciante extends HttpServlet {
             if (anValidación != null) {
                 if (anValidación.getEstado_anunciante().equals("V")) { //es válido
                     Anunciante anunciante = anuncianteDAO.IniciarSesionAnunciante(request.getParameter("InputNombreUAnunciante"), request.getParameter("InputPassword"));
-                    HttpSession session_actual = request.getSession(true);
-                    session_actual.setAttribute("anunciante", anunciante);
-                    response.sendRedirect("anunciante/mis_anuncios.jsp");
-                } else{
+                    if (anunciante == null) {
+                        response.sendRedirect("ingreso_anunciante.jsp?message=" + URLEncoder.encode("Usuario y contrase&ntilde;a no coinciden", "UTF-8"));
+                    } else {
+                        AnuncianteGiroDAO agDao = new AnuncianteGiroDAO();
+                        AnuncianteGiro agGiro = agDao.buscaAnuncianteGiro(anunciante.getNombre_u_anunciante());
+                        GiroDAO giroDao = new GiroDAO();
+                        Giro giro = giroDao.buscaGiro(agGiro.getCodigo_giro());
+                        HttpSession session_actual = request.getSession(true);
+                        session_actual.setAttribute("anunciante", anunciante);
+                        session_actual.setAttribute("giro", giro);
+                        response.sendRedirect("anunciante/mis_anuncios.jsp");
+                    }
+                } else {
                     //no es valido, comunicarse con admin
                     response.sendRedirect("ingreso_anunciante.jsp?message=" + URLEncoder.encode("Usuario aun no validado por administradores, favor contactarse con su administrador ", "UTF-8"));
                 }
-            } else{
+            } else {
                 //no existe, crear o comunicar con admin
                 response.sendRedirect("ingreso_anunciante.jsp?message=" + URLEncoder.encode("Usuario no existe, favor crear nuevo anunciante", "UTF-8"));
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
-            response.sendRedirect("ingreso_anunciante.jsp?message=" + URLEncoder.encode("Usuario y contrase&ntilde;a no coinciden", "UTF-8"));
+            response.sendRedirect("ingreso_anunciante.jsp?message=" + URLEncoder.encode("Error al intentar iniciar sesión", "UTF-8"));
         } finally {
             out.close();
         }

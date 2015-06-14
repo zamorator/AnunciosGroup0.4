@@ -4,6 +4,7 @@
     Author     : dzamoraf
 --%>
 
+<%@page import="cl.inacap.model.Giro"%>
 <%@page import="cl.inacap.model.SegmentoEdad"%>
 <%@page import="cl.inacap.dao.segmentos.SegmentoEdadDAO"%>
 <%@page import="cl.inacap.model.SegmentoSexo"%>
@@ -27,7 +28,6 @@
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/vendor/jquery.ui.widget.js"></script>
         <script src="../js/jquery.iframe-transport.js"></script>
-        <script src="../js/jquery.fileupload.js"></script>
         <link rel="stylesheet" href="../css/Estilos_ag.css">
         <link rel="stylesheet" href="../css/anunciante.css">
         <script>
@@ -45,6 +45,7 @@
         <title>Anunciante</title>
         <%
             Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
+            Giro giro = (Giro) session.getAttribute("giro");
             CategoriaDAO categoriaDao = new CategoriaDAO();
             List<Categoria> categorias = categoriaDao.BuscarCategorias();
             SegmentoSexoDAO segmentosexoDao = new SegmentoSexoDAO();
@@ -67,6 +68,7 @@
                 <ul class="nav nav-tabs nav-justified">
                     <li role="submenu"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
                     <li role="submenu" class="active"><a href="#">Agregar Anuncio</a></li>
+                    <li role="submenu"><a href="#">Editar Anuncio</a></li>
                 </ul>
             </div>
             <div id="agregar_anuncio" class="contenido">
@@ -76,14 +78,14 @@
                 <form method="POST" action="${pageContext.request.contextPath}/AgregarAnuncio">
                     <div class="form-group">
                         <label for="InputNombreAnuncio">Nombre Anuncio</label>
-                        <input type="text" class="form-control" name="InputNombreAnuncio" id="InputNombreAnuncio" placeholder="Ingrese Nombre Anuncio">
+                        <input required="" type="text" class="form-control" name="InputNombreAnuncio" id="InputNombreAnuncio" placeholder="Ingrese Nombre Anuncio">
                     </div>
                     <div class="form-group">
                         <label for="InputDescripcionAnuncio">Descripci&oacute;n Anuncio</label>
-                        <input type="text" class="form-control" name="InputDescripcionAnuncio" id="InputDescripcionAnuncio" placeholder="Ingrese Descripci&oacute;n del Anuncio">
+                        <textarea required="" class="form-control"  name="InputDescripcionAnuncio" id="InputDescripcionAnuncio" placeholder="Ingrese Descripci&oacute;n del Anuncio" ></textarea>
                     </div>
                     <div class="form-group" >
-                        <select class="form-control" name="selectCategoria" id="selectCategoria" >
+                        <select required="" class="form-control" name="selectCategoria" id="selectCategoria" >
                             <option value="" selected="selected" >Seleccione categoria</option>
                             <% for (Categoria c : categorias) {%>
                             <option value="<%= c.getId_categoria()%>"><%= c.getNombre_categoria()%></option>
@@ -91,7 +93,7 @@
                         </select>
                     </div>
                     <div class="form-group" >
-                        <select class="form-control" name="selectSegmentoSexo" id="selectSegmentoSexo" >
+                        <select required="" class="form-control" name="selectSegmentoSexo" id="selectSegmentoSexo" >
                             <option value="" selected="selected" >Seleccione sexo</option>
                             <% for (SegmentoSexo ss : segmentoSexos) {%>
                             <option value="<%= ss.getId_segmento_sexo()%>"><%= ss.getSegmento_sexo()%></option>
@@ -99,17 +101,34 @@
                         </select>
                     </div>
                     <div class="form-group" >
-                        <select class="form-control" name="selectSegmentoEdad" id="selectSegmentoEdad" >
+                        <select required="" class="form-control" name="selectSegmentoEdad" id="selectSegmentoEdad" >
                             <option value="" selected="selected" >Seleccione segmento edad</option>
                             <% for (SegmentoEdad se : segmentoEdades) {%>
                             <option value="<%= se.getId_segmento_edad()%>"><%= se.getSegmento_edad()%></option>
                             <% }%>
                         </select>
                     </div>
-                    cantidad cupones
-                    porcentaje descuento
-
-                     <input type="file" name="file">
+                    <div class="form-group">
+                        <label for="InputCantidadCupones">Cantidad de cupones</label> 
+                        <input type="number" name="InputCantidadCupones" required="" id="CantidadCupones">
+                    </div>
+                    <label for="InputPorcentajeDescuento">Porcentaje de Descuento</label> 
+                    <div class=" form-group radio" >
+                        <input type="radio" name="porcentajeDescueto" value="10"> 10%<br>
+                        <input type="radio" name="porcentajeDescueto" value="15"> 15%<br>
+                        <input type="radio" name="porcentajeDescueto" value="20"> 20%<br>
+                        <input type="radio" name="porcentajeDescueto" value="25"> 25%<br>
+                        <input type="radio" name="porcentajeDescueto" value="30"> 30%<br>
+                        <input type="radio" name="porcentajeDescueto" value="35"> 35%<br>
+                        <input type="radio" name="porcentajeDescueto" value="40"> 40%<br>
+                        <input type="radio" name="porcentajeDescueto" value="45"> 45%<br>
+                        <input type="radio" name="porcentajeDescueto" value="50"> 50%<br>
+                        <input type="radio" name="porcentajeDescueto" value="55"> 55%<br>
+                        <input type="radio" name="porcentajeDescueto" value="60"> 60%<br>
+                        <input type="radio" name="porcentajeDescueto" value="65"> 65%<br>
+                        <input type="radio" name="porcentajeDescueto" value="70"> 70%<br>
+                        <input type="radio" checked="" name="porcentajeDescueto" value="75"> 75%
+                    </div>
 
                     <button type="submit" class="btn btn-default">Agregar</button>
                 </form>

@@ -4,6 +4,7 @@
     Author     : zamorator <zamorator@gmail.com>
 --%>
 
+<%@page import="cl.inacap.model.Giro"%>
 <%@page import="cl.inacap.model.Anunciante"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,7 +22,9 @@
         <link rel="stylesheet" href="../css/anunciante.css">
         <link rel="stylesheet" href="../css/bootstrap-nav-wizard.css">
         <title>Anunciante</title>
-        <% Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");%>
+        <% Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
+            Giro giro = (Giro) session.getAttribute("giro");
+        %>
     </head>
     <body>
         <%@include file="../base_ag/_menu_anunciante.jsp" %> 
@@ -35,8 +38,9 @@
         <div id="contenido" class="submenu"> 
             <div id="submenu" class="links_submenu">
                 <ul class="nav nav-tabs nav-justified">
-                    <li role="submenu"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
-                    <li role="submenu" class="active"><a href="#">Agregar Anuncio</a></li>
+                    <li role="submenu" class="active"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
+                    <li role="submenu"><a href="#">Agregar Anuncio</a></li>
+                <li role="submenu"><a href="#">Editar Anuncio</a></li>
                 </ul>
             </div>
             <div id="agregar_anuncio" class="contenido">

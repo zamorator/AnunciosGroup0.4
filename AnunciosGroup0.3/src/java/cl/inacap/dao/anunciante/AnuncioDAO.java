@@ -10,7 +10,6 @@ import cl.inacap.model.Anunciante;
 import cl.inacap.model.Anuncio;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -84,6 +83,79 @@ public class AnuncioDAO {
             cf = null;
         }
         return anuncios;
+    }
+    
+    public Anuncio buscarAnuncioPorId(int id_anuncio) throws Exception{
+        Anuncio anuncio = new Anuncio();
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        ResultSet rs = null;
+        ArrayList<Anuncio> anuncios = null;
+        try {
+            anuncios = new ArrayList<Anuncio>();
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCAANUNCIOPORID(?)}");
+            proc.setInt(1, id_anuncio);
+            rs = proc.executeQuery();
+            System.out.println("SPBUSCAANUNCIOPORID");
+            while (rs.next()) {
+                anuncio.setCodigo_anuncio(rs.getInt("codigo_anuncio"));
+                anuncio.setNombre_u_anunciante(rs.getString("nombre_u_anunciante"));
+                anuncio.setNombre_anuncio(rs.getString("nombre_anuncio"));
+                anuncio.setImagen_anuncio(rs.getString("imagen_anuncio"));
+                anuncio.setDescripcion_anuncio(rs.getString("descripcion_anuncio"));
+                anuncio.setFecha_creacion_anuncio(rs.getDate("fecha_creacion_anuncio"));
+                anuncio.setFecha_modificacion_anuncio(rs.getDate("fecha_modificacion_anuncio"));
+                anuncio.setEstado_anuncio(rs.getString("estado_anuncio"));
+                anuncio.setId_categoria(rs.getInt("id_categoria"));
+                anuncio.setId_segmento_sexo(rs.getInt("id_segmento_sexo"));
+                anuncio.setId_segmento_edad(rs.getInt("id_segmento_edad"));
+                anuncio.setCantidad_cupones(rs.getInt("cantidad_cupones"));
+                anuncio.setPorcentaje_descuento(rs.getInt("porcentaje_descuento"));
+                anuncios.add(anuncio);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            cf = null;
+        }
+        
+        return anuncio;
+    }
+
+    public void actualizarAnuncio(Anuncio anuncio) throws Exception{
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        ArrayList<Anuncio> anuncios = null;
+        try {
+            anuncios = new ArrayList<Anuncio>();
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPACTUALIZAANUNCIO(?,?,?,?,?,?,?,?)}");
+            int i = 0;
+            proc.setInt(++i, anuncio.getCodigo_anuncio());
+            //proc.setString(++i, anuncio.getNombre_u_anunciante());
+            proc.setString(++i, anuncio.getNombre_anuncio());
+            //proc.setString(++i, anuncio.getImagen_anuncio());
+            proc.setString(++i, anuncio.getDescripcion_anuncio());
+            //proc.setDate(++i, (Date) anuncio.getFecha_modificacion_anuncio());
+            //proc.setString(++i, anuncio.getEstado_anuncio());
+            proc.setInt(++i, anuncio.getId_categoria());
+            proc.setInt(++i, anuncio.getId_segmento_sexo());
+            proc.setInt(++i, anuncio.getId_segmento_edad());
+            proc.setInt(++i, anuncio.getCantidad_cupones());
+            proc.setInt(++i, anuncio.getPorcentaje_descuento());
+            
+            proc.executeQuery();
+            System.out.println("SPACTUALIZAANUNCIO");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            cf = null;
+        }
     }
     
 }

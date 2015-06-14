@@ -4,6 +4,7 @@
     Author     : zamorator <zamorator@gmail.com>
 --%>
 
+<%@page import="cl.inacap.model.Giro"%>
 <%@page import="cl.inacap.model.Anunciante"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,6 +25,7 @@
             Anunciante anunciante;
             HttpSession session_actual = request.getSession();
             anunciante = (Anunciante) session.getAttribute("anunciante");
+            Giro giro = (Giro) session.getAttribute("giro");
         %>
     </head>
     <body>

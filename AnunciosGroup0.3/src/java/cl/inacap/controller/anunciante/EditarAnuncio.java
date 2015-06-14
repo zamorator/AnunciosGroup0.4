@@ -6,23 +6,21 @@
 package cl.inacap.controller.anunciante;
 
 import cl.inacap.dao.anunciante.AnuncioDAO;
-import cl.inacap.model.Anunciante;
 import cl.inacap.model.Anuncio;
 import java.io.IOException;
+import java.net.URLEncoder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.net.URLEncoder;
 
 /**
  *
- * @author zamorator
+ * @author zamorator <zamorator@gmail.com>
  */
-@WebServlet(name = "AgregarAnuncio", urlPatterns = {"/AgregarAnuncio"})
-public class AgregarAnuncio extends HttpServlet {
+@WebServlet(name = "EditarAnuncio", urlPatterns = {"/EditarAnuncio"})
+public class EditarAnuncio extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,29 +33,27 @@ public class AgregarAnuncio extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         try {
-            System.out.println(request.getParameter("file"));
-            HttpSession sesion = request.getSession();
-            Anunciante anunciante = (Anunciante) sesion.getAttribute("anunciante");
             Anuncio anuncio = new Anuncio();
-            
-            
-            anuncio.setNombre_u_anunciante(anunciante.getNombre_u_anunciante());
+            anuncio.setCodigo_anuncio(Integer.parseInt(request.getParameter("InputCodigoAnuncio")));
             anuncio.setNombre_anuncio(request.getParameter("InputNombreAnuncio"));
-            anuncio.setImagen_anuncio("imagen");
             anuncio.setDescripcion_anuncio(request.getParameter("InputDescripcionAnuncio"));
             anuncio.setId_categoria(Integer.parseInt(request.getParameter("selectCategoria")));
             anuncio.setId_segmento_sexo(Integer.parseInt(request.getParameter("selectSegmentoSexo")));
             anuncio.setId_segmento_edad(Integer.parseInt(request.getParameter("selectSegmentoEdad")));
-            anuncio.setCantidad_cupones(10);
-            anuncio.setPorcentaje_descuento(10);
+            anuncio.setCantidad_cupones(Integer.parseInt(request.getParameter("InputCantidadCupones")));
+            anuncio.setPorcentaje_descuento(Integer.parseInt(request.getParameter("porcentajeDescueto")));
             
             AnuncioDAO anuncioDao = new AnuncioDAO();
-            anuncioDao.AgregaAnuncio(anuncio);
-            response.sendRedirect("anunciante/agregar_anuncio.jsp?message=" + URLEncoder.encode("Exito al crear anunciante", "UTF-8"));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            response.sendRedirect("anunciante/agregar_anuncio.jsp?message=" + URLEncoder.encode("error al crear anunciante", "UTF-8"));
+            request.setAttribute("anuncio", anuncio);
+            response.sendRedirect("anunciante/mis_anuncios.jsp?message="+ URLEncoder.encode("Anuncio Actualizado Exitosamente", "UTF-8"));
+            anuncioDao.actualizarAnuncio(anuncio);
+        } catch (Exception e){
+          e.printStackTrace();
+          response.sendRedirect("anunciante/mis_anuncios.jsp?message="+ URLEncoder.encode("Error al intentar actualizar Anuncio", "UTF-8"));
+        } finally {
+            
         }
     }
 

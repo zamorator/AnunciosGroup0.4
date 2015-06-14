@@ -4,6 +4,7 @@
     Author     : dzamoraf
 --%>
 
+<%@page import="cl.inacap.model.Giro"%>
 <%@page import="cl.inacap.dao.anunciante.AnuncioDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="cl.inacap.model.Anuncio"%>
@@ -26,6 +27,7 @@
         <title>Anunciante</title>
         <%
             Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
+            Giro giro = (Giro) session.getAttribute("giro");
             AnuncioDAO anuncioDao = new AnuncioDAO();
             List<Anuncio> anuncios = anuncioDao.BuscarAnunciosPorAnunciante(anunciante);
         %>
@@ -37,13 +39,12 @@
             <li role="presentation"><a href="perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
         </ul>
-        <div class="submenu">  
-            <div id="submenu" class="links_submenu">
-                <ul class="nav nav-tabs nav-justified">
-                    <li role="submenu" class="active"><a href="#">Mis Anuncios</a></li>
-                    <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
-                </ul>
-            </div>
+        <div class="submenu">
+            <ul class="nav nav-tabs nav-justified">
+                <li role="submenu" class="active"><a href="#">Mis Anuncios</a></li>
+                <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
+                <li role="submenu"><a href="#">Editar Anuncio</a></li>
+            </ul>
             <div id="mis_anuncios" class="contenido">
 
                 <div class="col-md-12">
@@ -62,8 +63,9 @@
                                     <h3><%= a.getNombre_anuncio()%></h3>
 
                                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= a.getCodigo_anuncio()%>">Detalle</button>
-
-
+                                    <a class="btn btn-primary btn-lg" href="editar_anuncio.jsp?anuncio_id=<%=a.getCodigo_anuncio()%>">
+                                        Editar
+                                    </a>
                                     <!--VENTANA MODAL INICIO -->
                                     <div class="modal fade" id="<%=a.getCodigo_anuncio()%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">

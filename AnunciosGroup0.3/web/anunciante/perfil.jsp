@@ -83,6 +83,7 @@
         <%
             Anunciante anunciante;
             anunciante = (Anunciante) session.getAttribute("anunciante");
+            Giro giro = (Giro) session.getAttribute("giro");
             
             ComunaDAO comunaDao = new ComunaDAO();
             Comuna comuna = comunaDao.BuscaComuna(anunciante.getId_comuna());
@@ -94,7 +95,7 @@
             AnuncianteGiroDAO agDao = new AnuncianteGiroDAO();
             AnuncianteGiro ag = agDao.buscaAnuncianteGiro(anunciante.getNombre_u_anunciante());
             GiroDAO giroDao = new GiroDAO();
-            Giro giro = giroDao.buscaGiro(ag.getCodigo_giro());
+            
             GiroDetalleDAO gdDao = new GiroDetalleDAO();
             GiroDetalle giroDetalle = gdDao.buscaGiroDetalle(giro.getId_giro_detalle());
             GiroCabeceraDAO gcDao = new GiroCabeceraDAO();
@@ -123,14 +124,14 @@
                     <% if (request.getParameter("message") != null) {%>
                     <div class="label label-success" role="alert">${param.message}</div>
                     <% }%>
-                    <h1>Perfil</h1>
+                    <h2>Mi Perfil</h2>
                     <div id="direccionAnunciante" class="panel panel-default margen"> 
                         <div class="panel-heading">
                             <h3 class="panel-title">Datos personales</h3>
                         </div>
                         <div class="form-group margen">
                             <label for="InputNombreAnunciante">Nombre Usuario Anunciante</label>
-                            <input type="text" class="form-control" name="InputNombreUAnunciante" id="NombreUAnunciante" value="<%= anunciante.getNombre_u_anunciante()%>" required="">
+                            <input type="text" class="form-control" name="InputNombreUAnunciante" id="NombreUAnunciante" value="<%= anunciante.getNombre_u_anunciante()%>" readonly="">
                         </div>
                         <div class="form-group margen">
                             <label for="InputNombreAnunciante">Nombre Empresa</label>

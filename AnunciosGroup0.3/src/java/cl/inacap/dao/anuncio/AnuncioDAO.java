@@ -25,10 +25,10 @@ public class AnuncioDAO {
         Anuncio anuncio = null;
         try {
             con = cf.obtenerConexion();
-            CallableStatement proc = con.prepareCall("{CALL BUSCARANUNCIOPORID(?)}");
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCAANUNCIOPORID(?)}");
             proc.setInt(1, id_anuncio);
             rs = proc.executeQuery();
-            System.out.println("BUSCARANUNCIOPORID");
+            System.out.println("SPBUSCAANUNCIOPORID");
             while (rs.next()) {
                 anuncio = new Anuncio();
                 anuncio.setCodigo_anuncio(rs.getInt("codigo_anuncio"));

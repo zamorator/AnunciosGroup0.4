@@ -176,7 +176,7 @@
                             <input type="password" class="form-control" name="InputPassword2" id="password2" placeholder="Ingrese Contraseña" required="">
                         </div>
                         <button class="btn btn-default" type="submit" >Registro</button>
-                        <a href="index.jsp" class="btn btn-default">Volver</a>
+                        <a href="ingreso_anunciante.jsp" class="btn btn-default">Volver</a>
                     </div>
                 </form>
             </div>

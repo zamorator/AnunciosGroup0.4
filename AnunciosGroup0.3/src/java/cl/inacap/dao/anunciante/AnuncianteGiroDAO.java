@@ -16,7 +16,7 @@ import java.sql.ResultSet;
  * @author zamorator <zamorator@gmail.com>
  */
 public class AnuncianteGiroDAO {
-    
+
     public void agregarAnuncianteGiro(int cod_giro, String nombre_u_anunciante) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
@@ -27,7 +27,7 @@ public class AnuncianteGiroDAO {
             proc.setString(2, nombre_u_anunciante);
             proc.executeQuery();
             System.out.println("SPAGREGAANUNCIANTEGIRO");
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Exception();
@@ -36,7 +36,7 @@ public class AnuncianteGiroDAO {
             cf = null;
         }
     }
-    
+
     public AnuncianteGiro buscaAnuncianteGiro(String nombre_u_anunciante) throws Exception {
         AnuncianteGiro ag = new AnuncianteGiro();
         ConnectionFactory cf = new ConnectionFactory();
@@ -52,7 +52,7 @@ public class AnuncianteGiroDAO {
                 ag.setNombre_u_anunciante(rs.getString("nombre_u_anunciante"));
             }
             System.out.println("SPBUSCAANUNCIANTEGIRO");
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Exception();
@@ -60,8 +60,30 @@ public class AnuncianteGiroDAO {
             con = null;
             cf = null;
         }
-        
+
         return ag;
     }
-    
+
+    public void actualizaAnuncianteGiro(AnuncianteGiro anuncianteGiro) throws Exception{
+        AnuncianteGiro ag = new AnuncianteGiro();
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        try {
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPACTUALIZAANUNCIANTEGIRO(?,?)}");
+            proc.setInt(1, anuncianteGiro.getCodigo_giro());
+            proc.setString(2, anuncianteGiro.getNombre_u_anunciante());
+            proc.executeQuery();
+            System.out.println("SPACTUALIZAANUNCIANTEGIRO");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            cf = null;
+        }
+
+    }
+
 }
