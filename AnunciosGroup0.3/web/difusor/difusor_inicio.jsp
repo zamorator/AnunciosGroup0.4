@@ -129,9 +129,7 @@
                                                 <p>Esta es una pequeña descripcion del anuncio.</p>
                                                  <% 
                                                     String Favorito = "";
-                                                     System.out.println(a.getFavorito() + "favorito");
                                                     if(a.getFavorito() == 1){
-                                                        System.out.println(Favorito + "favorito2");
                                                         Favorito = "checked";
                                                     };
                                                  %>

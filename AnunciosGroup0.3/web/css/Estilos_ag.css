@@ -10,7 +10,7 @@ and open the template in the editor.
 
 body{
     font-family:verdana;
-   // background-image: url("../img/BG_1.jpg"); 
+    background-image: url("../img/fondo.jpg"); 
     background-size:100%; 				
     background-attachment:fixed; 
 }
