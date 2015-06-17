@@ -170,7 +170,39 @@ public class DifusorAnunciosDAO {
 
          }
         
-       
+       public Boolean agregarfavorito(String codigo_anuncio, String nombre_difusor) throws Exception {
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            Boolean rs = false;
+            System.out.println(codigo_anuncio);  
+            System.out.println(nombre_difusor);  
+         try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_AGREGA_FAVORITO(?,?)}");           
+            proc.setInt(1,Integer.parseInt((codigo_anuncio.trim())));
+            proc.setString(2,nombre_difusor.trim());
+            System.out.println(proc);
+            rs = proc.execute();
+            
+            if(rs = false){
+                System.out.println("false");
+                return false;
+            }else{
+                System.out.println("true");
+               return true;    
+            }
+               
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+        
+        }
         
 }
 

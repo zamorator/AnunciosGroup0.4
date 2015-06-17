@@ -66,11 +66,15 @@ public class AgregarFavorito extends HttpServlet {
        // processRequest(request, response);
         
         try {
+            String codigo_anuncio = request.getParameter("in_codigo_anuncio");
+            String nombre_difusor = request.getParameter("in_nombre_difusor");
+            
             DifusorAnunciosDAO difusoranuncios = new DifusorAnunciosDAO();
             boolean respuesta = false;
-            //respuesta = difusoranuncios.();
+            respuesta = difusoranuncios.agregarfavorito(request.getParameter("in_codigo_anuncio"), request.getParameter("in_nombre_difusor"));
             
             String json = new Gson().toJson(respuesta);
+            System.out.println(json);
             response.getWriter().write(json);
         } catch (Exception e) {
         }

@@ -31,7 +31,7 @@
         <%
             ArrayList<Anuncio> anuncios= null;
             ArrayList<Anuncio> anunciossugeridos =null;
-            
+            String nombre_difusor = difusor.getNombre_u_difusor();
             try{
             anuncios = new ArrayList<Anuncio>();
             anunciossugeridos= new ArrayList<Anuncio>();
@@ -128,7 +128,7 @@
                                                 <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
                                                 <p>Esta es una pequeña descripcion del anuncio.</p>
        
-                                                <input type="checkbox" class="click" > Agregar a Favorito
+                                                <input type="checkbox" onclick="clickCheck(<%= a.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" class="click"> Agregar a Favorito
                                             </div>
                                             <div class="modal-footer">
                                                 <input type="submit" class="btn btn-default" name="canjear" data-dismiss="modal" value="Canjear">
@@ -152,15 +152,21 @@
         </div>
                     
                     <script>
-                        $('.click').click(function(e)){
-                            e.preventDefault();
-                            var agregar = $('.click').val();
-                            $.get("../AgregarFavorito"),{in_valor: agregar},fuction(respuesta){
-                                
-                            }
-                            
-                        }
-                        
+                        function clickCheck(codigo_anuncio,nombre_difusor){
+                         console.log(codigo_anuncio);
+                         console.log(nombre_difusor);
+
+                          $.get(
+                                "../AgregarFavorito",
+                                {
+                                in_codigo_anuncio: codigo_anuncio,
+                                in_nombre_difusor: nombre_difusor 
+                                },
+                                function(respuesta){
+                          console.log(respuesta);
+                          $(this).checked = respuesta;
+                          });  
+                          }                    
                     </script>   
         <%@include file="../base_ag/_pie_pagina.jsp" %>    
     </body>
