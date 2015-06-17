@@ -27,7 +27,7 @@
         <%@include file="../base_ag/_menu_difusor.jsp" %>
          <%
             ArrayList<Anuncio> anunciosfavoritos= null;
-            
+            String nombre_difusor = difusor.getNombre_u_difusor();
             
             try{
             anunciosfavoritos = new ArrayList<Anuncio>();
@@ -72,6 +72,8 @@
                                         <div class="modal-body">
                                             <img class="img-responsive" src="../img/anuncios/<%= b.getImagen_anuncio() %>" >
                                             <p>Esta es una pequeña descripcion del anuncio.</p>
+                     
+                                            <input type="checkbox"  onclick="clickCheck(<%= b.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" checked="" class="click"> Agregar a Favorito
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal" type="submit">Canejar</button>
@@ -90,6 +92,22 @@
                     </div>    
             
         </div>
-            
+                    <script>
+                        function clickCheck(codigo_anuncio,nombre_difusor){
+                         console.log(codigo_anuncio);
+                         console.log(nombre_difusor);
+
+                          $.get(
+                                "../AgregarFavorito",
+                                {
+                                in_codigo_anuncio: codigo_anuncio,
+                                in_nombre_difusor: nombre_difusor 
+                                },
+                                function(respuesta){
+                          console.log(respuesta);
+                          $(this).checked = respuesta;
+                          });  
+                          }                    
+                    </script>     
     </body>
 </html>

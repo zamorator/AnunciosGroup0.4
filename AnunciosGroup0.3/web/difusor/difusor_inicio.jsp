@@ -149,7 +149,7 @@
                         </div>
                         <%cantanucios++;} ;System.out.println(cantanucios);%>    
                     </div>
-                    <input type="text" id ="cantidadanuncios"value="<%= cantanucios%>">
+                        <input type="hidden" id ="cantidadanuncios"value="<%= cantanucios%>">
                    
                 </div>
                 
