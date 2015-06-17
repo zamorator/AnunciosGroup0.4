@@ -62,10 +62,9 @@
                                 <div class="caption">
                                     <h3><%= a.getNombre_anuncio()%></h3>
 
-                                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= a.getCodigo_anuncio()%>">Detalle</button>
-                                    <a class="btn btn-primary btn-lg" href="editar_anuncio.jsp?anuncio_id=<%=a.getCodigo_anuncio()%>">
-                                        Editar
-                                    </a>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%= a.getCodigo_anuncio()%>">Detalle</button>
+                                    <a class="btn btn-primary" href="editar_anuncio.jsp?anuncio_id=<%=a.getCodigo_anuncio()%>"> Editar </a>
+                                    <a class="btn btn-primary" href="editar_imagenes_anuncio.jsp?anuncio_id=<%=a.getCodigo_anuncio()%>"> Editar Im&aacute;genes Anuncio </a>
                                     <!--VENTANA MODAL INICIO -->
                                     <div class="modal fade" id="<%=a.getCodigo_anuncio()%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">

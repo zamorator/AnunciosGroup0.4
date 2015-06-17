@@ -2,6 +2,7 @@
 
 $(window).scroll(function(){   
     if ($(window).scrollTop() === $(document).height() - $(window).height()){
+        console.log("xapalapaxala");
         var cantidad = $('#cantidadanuncios').val();
         
         $.get("../TraeAnuncios",{in_cantidad:cantidad},function(res){

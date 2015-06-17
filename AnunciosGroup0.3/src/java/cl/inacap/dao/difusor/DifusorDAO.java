@@ -26,7 +26,7 @@ public class DifusorDAO {
         try {
             con = cf.obtenerConexion();
             query = new StringBuilder();
-            query.append("INSERT INTO DIFUSOR (`NOMBRE_U_DIFUSOR`, `NOMBRES`, `APELLIDO_PATERNO_DIFUSOR`, `APELLIDO_MATERNO_DIFUSOR`, `PASSWORD_DIFUSOR`, `EMAIL_DIFUSOR`, `ID_SEGMENTO_EDAD`, `ID_SEGMENTO_SEXO`,`ID_AVATAR`) values("
+            query.append("INSERT INTO difusor (`NOMBRE_U_DIFUSOR`, `NOMBRES`, `APELLIDO_PATERNO_DIFUSOR`, `APELLIDO_MATERNO_DIFUSOR`, `PASSWORD_DIFUSOR`, `EMAIL_DIFUSOR`, `ID_SEGMENTO_EDAD`, `ID_SEGMENTO_SEXO`,`ID_AVATAR`) values("
                     + " '" + difusor.getNombre_u_difusor() + "',"
                     + " '" + difusor.getNombres() + "',"
                     + " '" + difusor.getApellido_paterno_difusor() + "',"

@@ -27,7 +27,6 @@ public class DifusorAnunciosDAO {
             Connection con = null;
             ResultSet rs = null;
             ArrayList<Anuncio> anuncios = new ArrayList<Anuncio>();
-            System.out.println(con);  
             System.out.println("llegue");  
          try {  
             con = cf.obtenerConexion();
@@ -66,7 +65,6 @@ public class DifusorAnunciosDAO {
             Connection con = null;
             ResultSet rs = null;
             ArrayList<Anuncio> anuncios = new ArrayList<Anuncio>();
-            System.out.println(con);  
          try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
@@ -105,7 +103,6 @@ public class DifusorAnunciosDAO {
             Connection con = null;
             ResultSet rs = null;
             ArrayList<Anuncio> anuncios = new ArrayList<Anuncio>();
-            System.out.println(con);  
             try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.

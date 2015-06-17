@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="../js/jquery-min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <script type ="text/javascript" src="../js/paginacion.js"></script>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
