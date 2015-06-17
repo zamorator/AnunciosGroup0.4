@@ -40,7 +40,7 @@
                 e.printStackTrace();
             }
         %>
-        <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
+        <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation" class="active"><a href="#">Inicio</a></li>
             <li role="presentation"><a href="difusor_perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="#">Canjear</a></li>
@@ -56,7 +56,7 @@
                         <% for (Anuncio b : anunciosfavoritos) {%>
                         <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" id="anuncios">
-                            <img class="img-responsive" src="../img/anuncios/<%= b.getImagen_anuncio() %>" >
+                            <img class="img-responsive" id="img_anuncios" src="../img/anuncios/<%= b.getImagen_anuncio() %>" >
                             <div class="caption">
                               <h3><%= b.getNombre_anuncio() %></h3>
                               

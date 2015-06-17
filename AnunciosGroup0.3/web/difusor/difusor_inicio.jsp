@@ -127,8 +127,15 @@
                                             <div class="modal-body">
                                                 <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
                                                 <p>Esta es una pequeña descripcion del anuncio.</p>
-       
-                                                <input type="checkbox" onclick="clickCheck(<%= a.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" class="click"> Agregar a Favorito
+                                                 <% 
+                                                    String Favorito = "";
+                                                     System.out.println(a.getFavorito() + "favorito");
+                                                    if(a.getFavorito() == 1){
+                                                        System.out.println(Favorito + "favorito2");
+                                                        Favorito = "checked";
+                                                    };
+                                                 %>
+                                                 <input type="checkbox"  onclick="clickCheck(<%= a.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" <%= Favorito %> class="click"> Agregar a Favorito
                                             </div>
                                             <div class="modal-footer">
                                                 <input type="submit" class="btn btn-default" name="canjear" data-dismiss="modal" value="Canjear">

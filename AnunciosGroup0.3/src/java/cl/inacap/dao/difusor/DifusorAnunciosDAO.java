@@ -47,6 +47,7 @@ public class DifusorAnunciosDAO {
             anuncio.setNombre_anuncio(rs.getString("NOMBRE_ANUNCIO"));
             anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
             anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
+            anuncio.setFavorito(rs.getInt("ESTADO_FAVORITO"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {                  

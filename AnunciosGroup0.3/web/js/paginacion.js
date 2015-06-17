@@ -32,6 +32,7 @@ $(window).scroll(function(){
                                                                             '<div class="modal-body">'+
                                                                                 '<img class="img-responsive" src="../img/anuncios/' + data[f].imagen_anuncio +'" >'+
                                                                                 '<p>Esta es una pequeña descripcion del anuncio.</p>'+
+                                                                                '<input type="checkbox"  name ="favorito" class="click" onclick="clickCheck('+data[f].codigo_anuncio+' , ' +'&quot;' + nombre_difusor+'&quot;'+')" > Agregar a Favorito'+
                                                                             '</div>'+
                                                                             '<div class="modal-footer">'+
                                                                                 '<input type="submit" class="btn btn-default" name="canjear" data-dismiss="modal" value="Canjear">'+

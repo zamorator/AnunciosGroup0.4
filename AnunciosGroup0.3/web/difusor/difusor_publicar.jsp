@@ -42,7 +42,7 @@
         
         
         <%@include file="../base_ag/_menu_difusor.jsp" %>
-        <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
+        <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation"><a href="difusor_inicio.jsp">Inicio</a></li>
             <li role="presentation"><a href="difusor_perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="#">Canjear</a></li>

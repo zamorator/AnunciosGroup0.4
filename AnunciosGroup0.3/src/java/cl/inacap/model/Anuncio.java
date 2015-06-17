@@ -26,7 +26,15 @@ public class Anuncio {
     private int id_segmento_edad;
     private int cantidad_cupones;
     private int porcentaje_descuento;
+    private int favorito;
+    
+    public int getFavorito() {
+        return favorito;
+    }
 
+    public void setFavorito(int favorito) {
+        this.favorito = favorito;
+    }
     public int getCodigo_anuncio() {
         return codigo_anuncio;
     }
