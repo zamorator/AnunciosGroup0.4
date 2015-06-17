@@ -136,7 +136,7 @@ public class DifusorDAO {
            proc.setString(5,difusor.getEmail_difusor());
            System.out.println(proc); 
            
-           resp = proc.execute();
+            resp = proc.execute();
             System.out.println(resp); 
             if (resp){
                 difusor = null;
