@@ -33,6 +33,53 @@
                 <li role="presentation" class="active"><a href="#">Puntos</a></li>
             </ul>
         </div>
+        
+         <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><%= difusor.getNombres() %>
+                    <small>Estos son tus coins acumulados.</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+                <img class="img-responsive img-center" style="padding-top: 5%; margin-left: 40%;" width="20%" src="../img/avatar/<%= difusor.getNombre_avatar()%>" alt="">
+            </div>
+
+            <div class="col-md-4">
+                <h3>Coins</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+                <h3>Project Details</h3>
+                <ul>
+                    <li>Lorem Ipsum</li>
+                    <li>Dolor Sit Amet</li>
+                    <li>Consectetur</li>
+                    <li>Adipiscing Elit</li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        
+
+        <hr>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+        
        <%@include file="../base_ag/_pie_pagina.jsp" %>   
     </body>
 </html>

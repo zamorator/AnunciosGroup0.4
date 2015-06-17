@@ -47,34 +47,69 @@
             <li role="presentation"><a href="difusor_perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="#">Canjear</a></li>
         </ul>
-        <div id="panel">
-        <div id="panel_publicar">
-            <h3><%= anuncio.getNombre_anuncio() %></h3>
-            </br>
-            <img id="img_publicar" src="../img/anuncios/<%= anuncio.getImagen_anuncio() %>">  
-            </br>
-            </br>
-            <p><%= anuncio.getDescripcion_anuncio() %></p>
-            
-            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
-            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>   
-       </div>
-        <div id="panel_publicar_lateral">
-            </br>
-                <div class="row">
-                    <div class="col-lg-10 col-lg-12">
-                      <div class="thumbnail">
-                          <img src="../img/anuncios/cupcake.jpeg" alt="...">
-                        <div class="caption">
-                            <h5>Otro anuncio</h5>
-                          <p>Penes venudos</p>
-                          <p><a href="#" class="btn btn-primary" role="button">Button</a> </p>
-                        </div>
-                      </div>
-                    </div>
-               </div>      
-            </div>   
+
+        <div class="container" style="padding-top: 5%;" >
+
+        <!-- Heading Row -->
+        <div class="row">
+            <div class="col-md-8">
+                <img class="img-responsive img-rounded" src="../img/anuncios/<%= anuncio.getImagen_anuncio() %>"   width="800px" height="250px"alt="">
+            </div>
+            <!-- /.col-md-8 -->
+            <div class="col-md-4">
+                <h1><%= anuncio.getNombre_anuncio() %></h1>
+                <p><%= anuncio.getDescripcion_anuncio() %></p>
+                <a class="btn btn-primary btn-lg" href="#">Call to Action!</a>
+            </div>
+            <!-- /.col-md-4 -->
         </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Call to Action Well -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well text-center">
+                    Aqui hay otros anuncios que pueden ser de tu interes, no dudes en compartirlos!.
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Heading 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <h2>Heading 2</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <h2>Heading 3</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <!-- /.col-md-4 -->
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+        
         <%@include file="../base_ag/_pie_pagina.jsp" %>   
     </body>
 </html>
