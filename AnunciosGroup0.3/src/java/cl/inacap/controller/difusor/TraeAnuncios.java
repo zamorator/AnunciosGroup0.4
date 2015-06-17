@@ -68,7 +68,7 @@ public class TraeAnuncios extends HttpServlet {
         //processRequest(request, response);
         try {
             DifusorAnunciosDAO buscaanuncios = new DifusorAnunciosDAO();
-            ArrayList<Anuncio> anuncios =  buscaanuncios.buscaranuncio(Integer.parseInt(request.getParameter("in_cantidad")),Integer.parseInt(request.getParameter("in_cantidad"))+5);
+            ArrayList<Anuncio> anuncios =  buscaanuncios.buscaranuncio(Integer.parseInt(request.getParameter("in_cantidad")),Integer.parseInt(request.getParameter("in_cantidad"))+5,request.getParameter("in_nombre_difusor"));
             String json = new Gson().toJson(anuncios);
             
             response.getWriter().write(json);

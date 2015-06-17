@@ -4,8 +4,8 @@ $(window).scroll(function(){
     if ($(window).scrollTop() === $(document).height() - $(window).height()){
         console.log("xapalapaxala");
         var cantidad = $('#cantidadanuncios').val();
-        
-        $.get("../TraeAnuncios",{in_cantidad:cantidad},function(res){
+        var nombre_difusor = $('#nombre_difusor').val();
+        $.get("../TraeAnuncios",{in_cantidad:cantidad, in_nombre_difuor:nombre_difusor},function(res){
             var json = res;
             var data = JSON.parse(json);
             console.log(data.length + " cantidad arrays  ");

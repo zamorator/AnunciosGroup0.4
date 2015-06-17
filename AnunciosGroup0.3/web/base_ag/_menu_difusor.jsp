@@ -41,6 +41,7 @@
                         <% if (difusor != null) {%>
                         <img width="50px" src="/AnunciosGroup0.3/img/avatar/<%=difusor.getNombre_avatar()%>">
                         <a href="../difusor/difusor_perfil.jsp"><%= difusor.getNombre_u_difusor()%> </a>
+                        <input type="hidden" id="nombre_difusor" value="<%= difusor.getNombre_u_difusor()%>">
                         <% }%>
                     </ul>
                 </div><!-- /.navbar-collapse -->

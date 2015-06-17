@@ -37,7 +37,7 @@
             anunciossugeridos= new ArrayList<Anuncio>();
             
             DifusorAnunciosDAO anunciosDAO = new DifusorAnunciosDAO();
-            anuncios = anunciosDAO.buscaranuncio(0,4);  
+            anuncios = anunciosDAO.buscaranuncio(0,4,difusor.getNombre_u_difusor());  
             anunciossugeridos = anunciosDAO.buscaranunciosugerido(difusor);
             
             System.out.println(anuncios);

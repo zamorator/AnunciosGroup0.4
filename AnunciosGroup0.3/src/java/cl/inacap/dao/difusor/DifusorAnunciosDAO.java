@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class DifusorAnunciosDAO {
         
-        public ArrayList<Anuncio> buscaranuncio(int desde, int hasta) throws Exception {
+        public ArrayList<Anuncio> buscaranuncio(int desde, int hasta, String nombre_difusor) throws Exception {
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
             ResultSet rs = null;
@@ -31,10 +31,11 @@ public class DifusorAnunciosDAO {
          try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
-            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_ANUNCIO(?,?)}");
+            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_ANUNCIO(?,?,?)}");
             
             proc.setInt(1, desde);
             proc.setInt(2, hasta);
+            proc.setString(3, nombre_difusor);
              System.out.println(proc);
             
             rs = proc.executeQuery();
