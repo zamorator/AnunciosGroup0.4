@@ -204,6 +204,35 @@ public class DifusorAnunciosDAO {
         } 
         
         }
+       
+        public int contartotalpuntos(Difusor difusor) throws Exception {
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            ResultSet rs = null;
+            int total_puntos = 0;
+            Anuncio anuncio = new Anuncio();
+         try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_CONTAR_TOTAL_PUNTOS(?)}");
+             System.out.println(proc);
+            proc.setString(1,difusor.getNombre_u_difusor());
+            rs = proc.executeQuery();
+            
+            while(rs.next()){            
+                total_puntos = rs.getInt("TOTAL_COINS");
+            }
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         return total_puntos;
+
+         }
         
 }
 
