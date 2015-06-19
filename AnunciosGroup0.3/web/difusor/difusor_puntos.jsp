@@ -45,7 +45,7 @@
         <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><%= difusor.getNombres() %>
+                <h1 class="page-header"><%= difusor.getNombres() %>,
                     <small>Estos son tus coins acumulados.</small>
                 </h1>
             </div>
