@@ -13,6 +13,9 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLClientInfoException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -84,4 +87,69 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             cf = null;
         }
     }
+
+    public ArrayList<Anuncio> buscaranuncioadministrador() throws  Exception{
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            ResultSet rs = null;
+            ArrayList<Anuncio> anuncios = new ArrayList<Anuncio>();
+            try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_ANUNCIO_ADMINISTRADOR}");
+                   
+           
+            System.out.println(proc);
+            rs = proc.executeQuery();
+            
+            while(rs.next()){
+            Anuncio anuncio = new Anuncio();
+            anuncio.setCodigo_anuncio(rs.getInt("CODIGO_ANUNCIO"));
+            anuncio.setNombre_anuncio(rs.getString("NOMBRE_ANUNCIO"));
+            anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
+            anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
+            anuncios.add(anuncio);
+            }
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         return anuncios;
+        
+        }
+    
+    public void actualizarestadoanuncio(int codigoanuncio) throws  Exception, SQLClientInfoException{
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            
+            
+            try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_ACTUALIZAR_ESTADO_ANUNCIO(?)}");
+            proc.setInt(1, codigoanuncio);
+           
+            System.out.println(proc);
+            //recibe el resultado de una query
+            //rs recibe la tabla entera entera cuando se hace un slect
+            proc.execute();
+            
+            } catch (SQLException x){
+                x.printStackTrace();
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         
+        
+        }
+    
 }    

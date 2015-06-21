@@ -1,6 +1,6 @@
 <%-- 
-    Document   : admin_empresas
-    Created on : 08-jun-2015, 20:14:37
+    Document   : admin_n_empresas
+    Created on : 17-jun-2015, 23:02:09
     Author     : Javoru
 --%>
 
@@ -17,25 +17,28 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="../css/Estilos_ag.css">
-        <title>Empresas</title>
+        <title>Nuevas Empresas</title>
     </head>
     <body>
+        
         <%@include file="../base_ag/_menu_administrador.jsp" %>    
     
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation" ><a href="../administrador/Admin_inicio.jsp">Anuncios</a></li>
             <li role="presentation" class="active"><a href="#">Empresas</a></li>
-            <li role="presentation"><a href="../administrador/admin_perfil.jsp">Perfil</a></li>
+            <li role="presentation"  ><a href="../administrador/admin_perfil.jsp">Perfil</a></li>
         </ul>
         
         <div id="panel">
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#">Mensajes</a></li>
-                <li role="presentation"><a href="admin_n_empresas.jsp">Nuevas Empresas</a></li>
+                <li role="presentation" ><a href="../administrador/admin_empresas.jsp">Mensaje</a></li>
+                <li role="presentation" class="active"><a href="#">Nuevas Empresas</a></li>
+
                 
                 
             </ul>
         </div>
          <%@include file="../base_ag/_pie_pagina.jsp" %>
+        
     </body>
 </html>

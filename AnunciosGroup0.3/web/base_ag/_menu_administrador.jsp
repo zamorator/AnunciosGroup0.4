@@ -8,46 +8,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<title>Menu</title>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <link rel="stylesheet" href="../css/Estilos_ag.css">
-        <link rel="shortcut icon" type="image/x-icon" href="img/social-icons/Logoicon.ico">
+    
 </head>
 <body>
+    <nav class="navbar navbar-default navbar-fixed-top" >
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../inicio.jsp">
 
-	<header>
-		<div class="login">
-			<div class="Logo">
-				ANUNCIOSGROUP
-			</div>
-			<div class="datos_login">
-				<p>Administrador</p>
-                                
-                        </div>
-                        <div> 
-				<p>Informacion administrador</p>
-                        </div>
+                        <img src="/AnunciosGroup0.3/img/Logo.png" height="35" width="250" style="margin-top: -10px;">
+
+                        <span>
+
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                    </ul>
                     
-		</div>
-		<div class="menu_bar">
-			<a href="#" class="bt-menu"><span class="icon-list2"></span>AnunciosGroup</a>
-		</div>
-		<nav class="Menu">
-                    <a class="navbar-brand" href="../AnunciosGroup0.3/newjsp.jsp">
-                                <span>
-                                    <img src="/AnunciosGroup0.3/img/AG logo.png" height="30" width="30">
-                                </span>
-                                <span>
-                                    AnunciosGroup
-                                </span>
-                            </a>
-			<ul>
-				<li><a href="../administrador/admin_anuncios.jsp"><span class="icon-house"></span>Anuncios</a></li>
-				<li><a href="../administrador/admin_empresas.jsp"><span class="icon-suitcase"></span>Empresas</a></li>
-                                <li><a href="../administrador/admin_perfil.jsp"><span class="icon-earth"></span>Perfil</a></li>
-			</ul>
-		</nav>
-	</header>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>  
+    
 </body>	
 </html>
