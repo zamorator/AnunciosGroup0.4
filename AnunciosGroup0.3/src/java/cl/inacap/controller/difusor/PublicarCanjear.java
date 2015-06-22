@@ -9,6 +9,7 @@ import cl.inacap.dao.difusor.DifusorAnunciosDAO;
 import cl.inacap.model.Anuncio;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -41,7 +42,10 @@ public class PublicarCanjear extends HttpServlet {
         try {
             Anuncio anuncio = new Anuncio();
             DifusorAnunciosDAO dad = new DifusorAnunciosDAO();
-            if(!request.getParameter("publicar").equals(null)){
+            String publicar = request.getParameter("publicar");
+            String canjear = request.getParameter("canjear");
+           // if(!request.getParameter("publicar").equals(null)){
+            if(publicar != null){
                    System.out.println(request.getParameter("publicar"));
                    System.out.println(request.getParameter("codigoanuncio"));
                    anuncio.setCodigo_anuncio(Integer.parseInt(request.getParameter("codigoanuncio")));
@@ -55,10 +59,17 @@ public class PublicarCanjear extends HttpServlet {
                     //System.out.println(anuncio.getDescripcion_anuncio());
                     // request.getRequestDispatcher("difusor/difusor_publicar.jsp").forward(request, response);
                     //  request.getRequestDispatcher("difusor/difusor_publicar.jsp").forward(request, response);
-                }else if (!request.getParameter("canjear").equals(null)){
-            
+                }else if(canjear != null) {
+                    System.out.println("llegue canjeo");
+                    anuncio.setCodigo_anuncio(Integer.parseInt(request.getParameter("codigoanuncio")));
+                    anuncio = dad.buscaranuncioespecifico(anuncio);
+                    HttpSession session_actual2 = request.getSession(true);
+                    session_actual2.setAttribute("anuncio", anuncio);
+                    response.sendRedirect("difusor/difusor_canjear.jsp");
             }   
-        } finally {
+        }catch (Exception e) {
+            System.out.println(e);
+        }finally {
             out.close();
         }
     }
