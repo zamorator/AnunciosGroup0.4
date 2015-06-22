@@ -84,7 +84,7 @@
                             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <input type="hidden" id="in_codigo_anuncio" value="<%= b.getCodigo_anuncio() %>" >
+                                        <input type="hidden" name="in_codigo_anuncio" value="<%= b.getCodigo_anuncio() %>" >
                                     <div class="modal-content">
                                          <div class="modal-header">
                                              <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -97,7 +97,7 @@
                                            
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-success"  type="submit">Aceptar</button>
+                                            <button  class="btn btn-success"  type="submit">Aceptar</button>
                                             <button type="button" class="btn btn-danger" data-dismiss="modal" >Rechazar</button>
                                         </div>
                                     </div>

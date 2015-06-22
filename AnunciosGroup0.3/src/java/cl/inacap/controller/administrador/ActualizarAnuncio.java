@@ -39,6 +39,7 @@ public class ActualizarAnuncio extends HttpServlet {
         
         try {
             System.out.println("llegue a servlet");
+            System.out.println(request.getParameter("in_codigo_anuncio"));
             AdministradorDAO administradordao = new AdministradorDAO();
             boolean resp = administradordao.actualizarestadoanuncio(Integer.parseInt(request.getParameter("in_codigo_anuncio")));
             response.sendRedirect("administrador/Admin_inicio.jsp");
