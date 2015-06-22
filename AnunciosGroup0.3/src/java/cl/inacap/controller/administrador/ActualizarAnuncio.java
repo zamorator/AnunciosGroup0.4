@@ -5,8 +5,11 @@
  */
 package cl.inacap.controller.administrador;
 
+import cl.inacap.dao.administrador.AdministradorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,15 +33,25 @@ public class ActualizarAnuncio extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
         try {
-          
+            System.out.println("llegue a servlet");
+            AdministradorDAO administradordao = new AdministradorDAO();
+            boolean resp = administradordao.actualizarestadoanuncio(Integer.parseInt(request.getParameter("in_codigo_anuncio")));
+            response.sendRedirect("administrador/Admin_inicio.jsp");
             // recoger del html las variables del anuncio a actualizar
+            
             // creas obj del Dao a invocar
-            //invocas metodo que actualiza
-            //retornas a la pagina con mensaje de exito o error
+            // invocas metodo que actualiza
+            // retornas a la pagina con mensaje de exito o error
+            
+            
+            
+            
+            
             
             
           
@@ -59,7 +72,11 @@ public class ActualizarAnuncio extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ActualizarAnuncio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -73,7 +90,11 @@ public class ActualizarAnuncio extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ActualizarAnuncio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
