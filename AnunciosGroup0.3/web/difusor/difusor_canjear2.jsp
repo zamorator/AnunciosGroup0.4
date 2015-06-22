@@ -1,33 +1,23 @@
 <%-- 
-    Document   : difusor_canjear
-    Created on : 25-may-2015, 20:13:11
+    Document   : difusor_canjear2
+    Created on : 21-jun-2015, 22:46:41
     Author     : macbookair
 --%>
 
-<%@page import="cl.inacap.dao.difusor.DifusorAnunciosDAO"%>
 <%@page import="cl.inacap.model.Anuncio"%>
+<%@page import="cl.inacap.dao.difusor.DifusorAnunciosDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="../js/jquery-min.js"></script>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="../js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="../css/Estilos_ag.css">
-        <link rel="stylesheet" href="../css/anunciante.css">
-        <link rel="stylesheet" href="../css/bootstrap-nav-wizard.css">
-        <title>Canjear</title>
+        <title>JSP Page</title>
     </head>
-         <%
-            HttpSession session_actual2 = request.getSession(true);
-            Anuncio anuncio = (Anuncio) session_actual2.getAttribute("anuncio");
-            
-         %>
+            <%
+                HttpSession session_actual2 = request.getSession(true);
+                Anuncio anuncio = (Anuncio) session_actual2.getAttribute("anuncio");
+            %>
+    
     <body>
         <%@include file="../base_ag/_menu_difusor.jsp" %>
         <%
@@ -50,9 +40,9 @@
                     <div class="workflow" >
                         <ul class="nav nav-wizard">
 
-                            <li class='active'>Paso 1</li>
+                            <li>Paso 1</li>
 
-                            <li>Paso 2</li>
+                            <li class='active'>Paso 2</li>
 
                             <li>Paso 3</li>
 
@@ -66,7 +56,7 @@
                             </a>
                         </div>
                         <div class="col-md-5">
-                            <h3> <%= anuncio.getNombre_anuncio()%></h3>
+                            <h3><%= anuncio.getNombre_anuncio()%></h3>
                             <h4><%= anuncio.getNombre_u_anunciante()%></h4>
                             <p><%= anuncio.getDescripcion_anuncio()%></p>
                         </div>
@@ -82,23 +72,5 @@
             </div>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %> 
-        
-        
-        
-        
-        
-        
-        
-        <script>
-               function solonumeros(e)
-            {
-            var keynum = window.event ? window.event.keyCode : e.which;
-            if ((keynum === 8) || (keynum === 46))
-            return true;
-             
-            return /\d/.test(String.fromCharCode(keynum));
-            }
-        </script>
-            
     </body>
 </html>
