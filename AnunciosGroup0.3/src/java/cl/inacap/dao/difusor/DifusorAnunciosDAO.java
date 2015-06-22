@@ -145,20 +145,18 @@ public class DifusorAnunciosDAO {
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
             CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_ANUNCIO_ESPECIFICO(?)}");
-             System.out.println(proc);
             proc.setInt(1,inanuncio.getCodigo_anuncio());
+            System.out.println(proc);
             rs = proc.executeQuery();
             
             while(rs.next()){
-            
-            anuncio.setCodigo_anuncio(rs.getInt("CODIGO_ANUNCIO"));
-            anuncio.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
-            anuncio.setNombre_anuncio(rs.getString("NOMBRE_ANUNCIO"));
-            anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
-            anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
-            anuncio.setPorcentaje_descuento(rs.getInt("PORCENTAJE_DESCUENTO"));
-            
-            
+                anuncio.setCodigo_anuncio(rs.getInt("CODIGO_ANUNCIO"));
+                anuncio.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
+                anuncio.setNombre_anuncio(rs.getString("NOMBRE_ANUNCIO"));
+                anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
+                anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
+                anuncio.setPorcentaje_descuento(rs.getInt("PORCENTAJE_DESCUENTO"));
+                anuncio.setValor_real(rs.getInt("VALOR_REAL"));   
             }
         }catch (Exception ex) {                  
             System.out.println(ex);
@@ -216,8 +214,8 @@ public class DifusorAnunciosDAO {
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
             CallableStatement proc = con.prepareCall("{CALL SP_CONTAR_TOTAL_PUNTOS(?)}");
-             System.out.println(proc);
             proc.setString(1,difusor.getNombre_u_difusor());
+            System.out.println(proc);
             rs = proc.executeQuery();
             
             while(rs.next()){            

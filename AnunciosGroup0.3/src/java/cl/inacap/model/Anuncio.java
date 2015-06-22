@@ -27,6 +27,15 @@ public class Anuncio {
     private int cantidad_cupones;
     private int porcentaje_descuento;
     private int favorito;
+    private int valor_real;
+    
+    public int getValor_real() {
+        return valor_real;
+    }
+
+    public void setValor_real(int valor_real) {
+        this.valor_real = valor_real;
+    }
     
     public int getFavorito() {
         return favorito;
