@@ -122,11 +122,14 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
         
         }
     
-    public void actualizarestadoanuncio(int codigoanuncio) throws  Exception, SQLClientInfoException{
+    public boolean  actualizarestadoanuncio(int codigoanuncio) throws  Exception, SQLClientInfoException{
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
             
-            
+           ResultSet rs = null;
+           boolean resp = false;
+           Anuncio estadoactualizado = new Anuncio();
+           
             try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
@@ -136,7 +139,18 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             System.out.println(proc);
             //recibe el resultado de una query
             //rs recibe la tabla entera entera cuando se hace un slect
-            proc.execute();
+            resp = proc.execute();
+            System.out.println(resp); 
+            
+            if (resp){
+            
+                return resp;
+            }else{
+                
+                return resp;
+            }
+            
+            
             
             } catch (SQLException x){
                 x.printStackTrace();
@@ -148,8 +162,13 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             con = null;
             cf = null;
         } 
-         
-        
-        }
+
+            return false;
+}
+
+
+    private Anuncio IniciaSesionAdministrador(String estado_anuncio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }    

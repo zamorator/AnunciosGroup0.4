@@ -80,14 +80,14 @@
                               <h3><%= b.getNombre_anuncio() %></h3>
                               
                              <!--VENTANA MODAL INICIO -->
-                             <form method="POST" action="$(pageContext.request.context)/"
+                             <form action="${pageContext.request.contextPath}/ActualizarAnuncio" method="POST" >
                             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <input type="hidden" id="in_codigo_anuncio" value="<%= b.getCodigo_anuncio() %>" >
                                     <div class="modal-content">
                                          <div class="modal-header">
-                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                              <h4 class="modal-title" id="myModalLabel"> <h3><%= b.getNombre_anuncio() %></h3></h4>
                                         </div>
                                         <div class="modal-body">
@@ -97,14 +97,14 @@
                                            
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-success" data-dismiss="modal" type="submit">Aceptar</button>
-                                            <button type="button" class="btn btn-danger">Rechazar</button>
+                                            <button type="button" class="btn btn-success"  type="submit">Aceptar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" >Rechazar</button>
                                         </div>
                                     </div>
                                     </div>
                                 </div>
                             <!--VENTANA MODAL FIN -->
-                              
+                              </form>
                               
                             </div>
                         </div>
