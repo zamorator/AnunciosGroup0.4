@@ -46,7 +46,12 @@
                 <li role="submenu"><a href="#">Editar Anuncio</a></li>
             </ul>
             <div id="mis_anuncios" class="contenido">
-
+                <% if (request.getParameter("mensaje") != null) {%>
+                <div class="label label-success" role="alert">${param.mensaje}</div>
+                <% }%>
+                <% if (request.getParameter("error") != null) {%>
+                <div class="label label-danger" role="alert">${param.error}</div>
+                <% }%>
                 <div class="col-md-12">
                     <!--ANUNCIO 1 --> 
                     <% for (Anuncio a : anuncios) {%>
