@@ -86,8 +86,8 @@
                                             <p>Esta es una pequeña descripcion del anuncio.</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button"  class="btn btn-default" data-dismiss="modal" type="submit">Canejar</button>
-                                            <button type="button" class="btn btn-primary">Publicar</button>
+                                            <button type="button"  class="btn btn-default">Canejar</button>
+                                            <button type="button" class="btn btn-primary" >Publicar</button>
                                         </div>
                                     </div>
                                     </div>
@@ -136,7 +136,7 @@
                                                  <input type="checkbox"  onclick="clickCheck(<%= a.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" <%= Favorito %> class="click"> Agregar a Favorito
                                             </div>
                                             <div class="modal-footer">
-                                                <input type="submit" class="btn btn-default" name="canjear" data-dismiss="modal" value="Canjear">
+                                                <input type="submit" class="btn btn-default" name="canjear" value="Canjear">
                                                 <input type="submit" class="btn btn-primary" name="publicar"value="Publicar">
                                             </div>
                                         </div>

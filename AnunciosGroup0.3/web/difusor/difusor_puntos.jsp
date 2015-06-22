@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="cl.inacap.dao.difusor.DifusorAnunciosDAO"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,6 +23,11 @@
     </head>
     <body>
        <%@include file="../base_ag/_menu_difusor.jsp" %>
+       <%
+            DifusorAnunciosDAO difusoranunciosdao = new DifusorAnunciosDAO();
+            int puntos = difusoranunciosdao.contartotalpuntos(difusor);
+           
+       %>
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation"><a href="difusor_inicio.jsp">Inicio</a></li>
             <li role="presentation" class="active"><a href="#">Perfil</a></li>
@@ -39,7 +45,7 @@
         <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><%= difusor.getNombres() %>
+                <h1 class="page-header"><%= difusor.getNombres() %>,
                     <small>Estos son tus coins acumulados.</small>
                 </h1>
             </div>
@@ -55,14 +61,9 @@
 
             <div class="col-md-4">
                 <h3>Coins</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <h3>Project Details</h3>
-                <ul>
-                    <li>Lorem Ipsum</li>
-                    <li>Dolor Sit Amet</li>
-                    <li>Consectetur</li>
-                    <li>Adipiscing Elit</li>
-                </ul>
+                <p></p>
+                <h3><%= puntos %></h3>
+                
             </div>
 
         </div>

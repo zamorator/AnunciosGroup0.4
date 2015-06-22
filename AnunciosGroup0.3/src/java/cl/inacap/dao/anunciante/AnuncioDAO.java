@@ -45,7 +45,7 @@ public class AnuncioDAO {
             cf = null;
         }
     }
-    
+
     public ArrayList<Anuncio> BuscarAnunciosPorAnunciante(Anunciante anunciante) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
@@ -84,8 +84,8 @@ public class AnuncioDAO {
         }
         return anuncios;
     }
-    
-    public Anuncio buscarAnuncioPorId(int id_anuncio) throws Exception{
+
+    public Anuncio buscarAnuncioPorId(int id_anuncio) throws Exception {
         Anuncio anuncio = new Anuncio();
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
@@ -121,11 +121,11 @@ public class AnuncioDAO {
             con = null;
             cf = null;
         }
-        
+
         return anuncio;
     }
 
-    public void actualizarAnuncio(Anuncio anuncio) throws Exception{
+    public void actualizarAnuncio(Anuncio anuncio) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
         ArrayList<Anuncio> anuncios = null;
@@ -146,7 +146,7 @@ public class AnuncioDAO {
             proc.setInt(++i, anuncio.getId_segmento_edad());
             proc.setInt(++i, anuncio.getCantidad_cupones());
             proc.setInt(++i, anuncio.getPorcentaje_descuento());
-            
+
             proc.executeQuery();
             System.out.println("SPACTUALIZAANUNCIO");
         } catch (Exception ex) {
@@ -157,5 +157,22 @@ public class AnuncioDAO {
             cf = null;
         }
     }
-    
+
+    public void actualizaImagenAnuncio(String archivo, int cod_anuncio) throws Exception {
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+
+        try {
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPACTUALIZAIMAGENANUNCIO(?, ?)}");
+            proc.setString(1, archivo);
+            proc.setInt(2, cod_anuncio);
+            proc.executeQuery();
+            System.out.println("SPACTUALIZAIMAGENANUNCIO");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception();
+        }
+    }
+
 }

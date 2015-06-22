@@ -12,6 +12,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="../js/jquery-min.js"></script>
+        <script src="../js/jquery.fileupload.js"></script>
+        <script src="../js/jquery.iframe-transport.js"></script>
+        <script src="../js/vendor/jquery.ui.widget.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <!-- Optional theme -->
@@ -20,6 +23,7 @@
         <script src="../js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/Estilos_ag.css">
         <link rel="stylesheet" href="../css/anunciante.css">
+
         <title>Anunciante</title>
         <%
             Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
@@ -44,8 +48,14 @@
 
             <div class="contenido" >
 
-            </div>
+                <form method="POST" action="${pageContext.request.contextPath}/EditarImagenesAnuncio">
+                    <p>Por favor selecciona una inagen para tu anuncio publicitario</p>
+                    <input required="" type="file" name="inputfile" />
+                    <input type="text" name="inputIdAnuncio" value="<%= request.getParameter("anuncio_id") %>" hidden="" />
 
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </form>
+            </div>
         </div>
 
 
