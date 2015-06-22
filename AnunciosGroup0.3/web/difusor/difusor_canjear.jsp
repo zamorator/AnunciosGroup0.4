@@ -75,9 +75,9 @@
                         <div class="col-md-5">
                             <h3>Maximo descuento: <%= anuncio.getPorcentaje_descuento() %> %</h3>
                             <input type="hidden" id ="max_descuento" value="<%= anuncio.getPorcentaje_descuento() %>">
-                            <h4>Tu puntos disponibles: <%= puntos %> </h4>
+                            <h4>Tu coins disponibles: <%= puntos %> </h4>
                             <input type="hidden" id="max_puntos" value="<%= puntos %>">
-                            <h4>Puntos a utilizar:</h4> <input type="number" id="descuento" min="0" max="<%= puntos %>" onkeypress="return solonumeros(event);" value="0"> <input  onclick="Maxpuntos();" type="button" value="Calcular descuento">
+                            <h4>Coins a utilizar:</h4> <input type="number" id="descuento" min="0" max="<%= puntos %>" onkeypress="return solonumeros(event);" value="0"> <input  onclick="Maxpuntos();" type="button" value="Calcular descuento">
                             <hr>
                             <h4>Valor real: $<%= anuncio.getValor_real() %></h4>
                             <input type="hidden" id="valor_real"  value="<%= anuncio.getValor_real() %>">
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <hr>
-                    <a href="difusor_canjear2.jsp" id="boton" class="btn btn-primary" >Siguiente</a>
+                    <button id="boton_siguiente" class="btn btn-primary" disabled="true" >Siguiente</button>
             </div>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %> 
@@ -117,7 +117,13 @@
                 var valor_final = valor_real -((valor_real * total)/100); 
                 if(total <= maximo_descuento ){
                     $('#valor_descuento').text(total+"%");
-                    $('#valor_final').text(valor_final);
+                    $('#valor_final').text("$" + valor_final);
+                    if (descuento > 0){
+                        $('#boton_siguiente').prop('disabled',false);
+                    }else{
+                        $('#boton_siguiente').prop('disabled',true); 
+                    }
+                        
                 }else{
                     alert("La cantidad de puntos seleccionados excede al maximo de descuento permitido.");
                     $('#descuento').val("0");
