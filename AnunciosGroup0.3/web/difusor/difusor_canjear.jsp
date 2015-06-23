@@ -59,6 +59,8 @@
                         </ul>
                     </div>
                     <hr>
+            <form method="POST" action="${pageContext.request.contextPath}/GenerarCupon">
+                <input type="hidden" value="<%= difusor.getNombre_u_difusor() %>" name="nombre_difusor">
                     <div class="row">
                         <div class="col-md-7">
                             <a href="#">
@@ -69,6 +71,7 @@
                             <h3> <%= anuncio.getNombre_anuncio()%></h3>
                             <h4><%= anuncio.getNombre_u_anunciante()%></h4>
                             <p><%= anuncio.getDescripcion_anuncio()%></p>
+                            <input type="hidden" name="codigo_anuncio" value="<%= anuncio.getCodigo_anuncio() %>">
                             <hr>
                         </div>
                         
@@ -82,12 +85,15 @@
                             <h4>Valor real: $<%= anuncio.getValor_real() %></h4>
                             <input type="hidden" id="valor_real"  value="<%= anuncio.getValor_real() %>">
                             
-                            <h4>Descuento obtenido:<span id="valor_descuento" disabled="true" > </span></h4>
-                            <h4>Valor final:<span id="valor_final" disabled="true" > </span></h4>
+                            <h4>Descuento obtenido:<span id="valor_descuento" name="descuento_obtenido"  disabled="true" > </span></h4>
+                            <input type="hidden" id="in_descuento_obtenido" name="in_descuento_obtenido" value="">
+                            <h4>Valor final:<span id="valor_final" name="valor_final" disabled="true" > </span></h4>
+                            <input type="hidden" id="in_valor_final" name="in_valor_final" value="">
                         </div>
                     </div>
                     <hr>
-                    <button id="boton_siguiente" class="btn btn-primary" disabled="true" >Siguiente</button>
+                    <button type="submit" id="boton_siguiente" class="btn btn-primary" disabled="true" >Siguiente</button>
+            </form>
             </div>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %> 
@@ -117,7 +123,9 @@
                 var valor_final = valor_real -((valor_real * total)/100); 
                 if(total <= maximo_descuento ){
                     $('#valor_descuento').text(total+"%");
+                    $('#in_descuento_obtenido').val(total);
                     $('#valor_final').text("$" + valor_final);
+                    $('#in_valor_final').val(valor_final);
                     if (descuento > 0){
                         $('#boton_siguiente').prop('disabled',false);
                     }else{

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : difusor_canjear2
-    Created on : 21-jun-2015, 22:46:41
+    Document   : difusor_canjear3
+    Created on : 22-jun-2015, 22:40:31
     Author     : macbookair
 --%>
 
@@ -22,7 +22,6 @@
         <link rel="stylesheet" href="../css/Estilos_ag.css">
         <link rel="stylesheet" href="../css/anunciante.css">
         <link rel="stylesheet" href="../css/bootstrap-nav-wizard.css">
-        <title>Canjear</title>
     </head>
             <%
                 HttpSession session_actual2 = request.getSession(true);
@@ -30,7 +29,6 @@
                 HttpSession session_actual3 = request.getSession(true);
                 Cupon cupon = (Cupon) session_actual3.getAttribute("cupon");
             %>
-    
     <body>
         <%@include file="../base_ag/_menu_difusor.jsp" %>
         <%
@@ -53,8 +51,8 @@
                     <div class="workflow" >
                         <ul class="nav nav-wizard">
                             <li>Paso 1</li>
-                            <li class='active'>Paso 2</li>
-                            <li>Paso 3</li>
+                            <li>Paso 2</li>
+                            <li class='active'>Paso 3</li>
                         </ul>
                     </div>
                     <hr>
@@ -65,30 +63,23 @@
                             </a>
                         </div>
                         <div class="col-md-5">
-                            <input type="checkbox" id="terminos" onclick="ValidarCheck()" > Acepto terminos y condiciones.
-                        </div>
-                        <div class="col-md-5">
                             
                         </div>
+                        <div class="col-md-5">
+                            <p>Para terminar de generar tu cúpon, presiona finalizar y este quedara disponibles en tu perfil.</p>
+                        </div>
                     </div>
-                    <hr>      
-                    <input type="button" class="btn btn-primary" src="difusor_canjear3.jsp" onclick="location.href='../difusor/difusor_canjear3.jsp'" id="boton_input" disabled="true" value="Siguiente"> 
+                    <hr>    
+                    <form method="POST" action="${pageContext.request.contextPath}/GeneraCupon2">
+                        <input type="hidden" name="cupon_codigo_anuncio" value="<%= cupon.getCodigo_anuncio() %>">  
+                        <input type="hidden" name="cupon_nombre_difusor" value="<%= cupon.getNombre_u_difusor() %>">  
+                        <input type="hidden" name="cupon_descuento" value="<%= cupon.getDescuento_obtenido() %>">  
+                        <input type="hidden" name="cupon_valor_final" value="<%= cupon.getValor_final_producto() %>">    
+                        <button type="submit" class="btn btn-primary" value="Finalizar">Finalizar</button>
+                    </form>
             </div>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %> 
         
-        <script>
-            function ValidarCheck (){
-                console.log("Hola mundo");
-                console.log($('#terminos').prop('checked',true));
-                //if ($('#terminos').prop('checked',true)){
-                console.log($('#terminos').checked);
-                $('#boton').prop('disabled',false);
-                $('#boton_input').prop('disabled',false);
-                //}else{   
-                //$('#boton').prop('disabled',true);
-                //};
-            }
-        </script>
     </body>
 </html>

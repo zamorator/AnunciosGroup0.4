@@ -18,6 +18,37 @@ public class Cupon {
     private int descripcion_cupon;
     private Date fecha_creacion_cupon;
     private Date fecha_vencimiento_cupon;
+    private String codigo_anuncio;
+    private String descuento_obtenido;
+    private String valor_final_producto;
+
+    public String getCodigo_anuncio() {
+        return codigo_anuncio;
+    }
+
+    public void setCodigo_anuncio(String codigo_anuncio) {
+        this.codigo_anuncio = codigo_anuncio;
+    }
+
+    public String getDescuento_obtenido() {
+        return descuento_obtenido;
+    }
+
+    public void setDescuento_obtenido(String descuento_obtenido) {
+        this.descuento_obtenido = descuento_obtenido;
+    }
+
+    public String getValor_final_producto() {
+        return valor_final_producto;
+    }
+
+    public void setValor_final_producto(String valor_final_producto) {
+        this.valor_final_producto = valor_final_producto;
+    }
+
+    
+    
+
 
     public int getId_cupon() {
         return id_cupon;
