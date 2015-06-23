@@ -10,6 +10,7 @@
 <%@page import="cl.inacap.model.Anuncio"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="cl.inacap.model.Anunciante"%>
+<%@page import="cl.inacap.utils.UploadFileUtils"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -58,7 +59,7 @@
                                 <% } else { %>
                                 <p class="text-info">Habilitado</p>
                                 <% }%>
-                                <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio()%>" >
+                                <img src="${pageContext.request.contextPath}/images/anunciante/<%= anunciante.getNombre_u_anunciante() +"/"+ a.getCodigo_anuncio() +"/" +a.getImagen_anuncio() %>" />
                                 <div class="caption">
                                     <h3><%= a.getNombre_anuncio()%></h3>
 
