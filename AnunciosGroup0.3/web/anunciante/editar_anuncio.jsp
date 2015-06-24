@@ -51,19 +51,19 @@
 
     <body>
         <%@include file="../base_ag/_menu_anunciante.jsp"%> 
-        <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
+        <ul class="nav nav-pills nav-justified menu_anunciante" role="group"style="padding-top: 10%;">
             <li role="presentation" class="active"><a href="#">Anuncios</a></li>
             <li role="presentation"><a href="perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
         </ul>
-        <div class="submenu">  
-            <div id="submenu" class="links_submenu">
-                <ul class="nav nav-tabs nav-justified">
+        <div id="panel">  
+            
+                <ul class="nav nav-tabs ">
                     <li role="submenu"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
                     <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
                     <li role="submenu" class="active"><a href="#">Editar Anuncio</a></li>
                 </ul>
-            </div>
+          
 
             <div class="contenido" >
                 <form method="POST" action="${pageContext.request.contextPath}/EditarAnuncio">
@@ -133,16 +133,16 @@
                             <input type="number" name="InputCantidadCupones" required="" id="CantidadCupones" value="<%= anuncio.getCantidad_cupones()%>">
                         </div>
                         <label for="InputPorcentajeDescuento">Porcentaje de Descuento</label> 
-                        <div class=" form-group radio" >
+                        <div style="margin-left: 3%;" class=" form-group radio" >
                             <% for (int i = 2; i <= 15; i++) { %>
                             <% if (i * 5 == anuncio.getPorcentaje_descuento()) {%>
-                            <input checked="" type="radio" name="porcentajeDescueto" value="<%= i * 5%>"> <%=i * 5%>%<br>
+                            <input  checked="" type="radio" name="porcentajeDescueto" value="<%= i * 5%>"> <%=i * 5%>%<br>
                             <%} else {%>
                             <input type="radio" name="porcentajeDescueto" value="<%= i * 5%>"> <%=i * 5%>%<br>
                             <%} %>
                             <%}%>
                         </div>
-                        <div class="form-group">
+                        <div style="margin-left: 3%;"class="form-group">
                             <label for="InputValor">Valor Anuncio</label> 
                             <input type="number" name="InputValorReal" required="" value="<%= valorAnuncio.getValor_real() %>">
                         </div>

@@ -113,18 +113,21 @@
     </head>
     <body>
         <%@include file="../base_ag/_menu_anunciante.jsp" %>  
-        <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
+        <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation"><a href="mis_anuncios.jsp">Anuncios</a></li>
             <li role="presentation" class="active"><a href="#">Perfil</a></li>
             <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
         </ul>
         <div id="mis_anuncios" class="contenido">
             <form method="POST" action="${pageContext.request.contextPath}/ActualizarAnunciante" >
-                <div class="submenu">
+                <div id="panel">
                     <% if (request.getParameter("message") != null) {%>
                     <div class="label label-success" role="alert">${param.message}</div>
                     <% }%>
-                    <h2>Mi Perfil</h2>
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="#">Mi Perfil</a></li>
+                        
+                    </ul>
                     <div id="direccionAnunciante" class="panel panel-default margen"> 
                         <div class="panel-heading">
                             <h3 class="panel-title">Datos personales</h3>
@@ -235,7 +238,7 @@
                         </div>
                         <div class="form-group margen">
                             <label for="InputPasswordAnunciante">Clave</label>
-                            <input type="text" class="form-control" name="InputPasswordAnunciante" id="PasswordAnunciante" value="<%= anunciante.getPassword_anunciante()%>" >
+                            <input type="password" class="form-control" name="InputPasswordAnunciante" id="PasswordAnunciante" value="<%= anunciante.getPassword_anunciante()%>" >
                         </div>
                     </div>
                         <button class="btn btn-primary" type="submit">Actualizar</button>
