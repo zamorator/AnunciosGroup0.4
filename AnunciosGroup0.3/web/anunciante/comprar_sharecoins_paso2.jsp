@@ -23,7 +23,10 @@
         <link rel="stylesheet" href="../css/bootstrap-nav-wizard.css">
         <title>Anunciante</title>
         <% Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
+            System.out.println(anunciante);
+
             Giro giro = (Giro) session.getAttribute("giro");
+            System.out.println(giro);
         %>
     </head>
     <body>
@@ -36,29 +39,31 @@
         </ul>
 
         <div id="contenido" class="submenu"> 
-            <div id="submenu" class="links_submenu">
-                <ul class="nav nav-tabs nav-justified">
-                    <li role="submenu" class="active"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
-                    <li role="submenu"><a href="#">Agregar Anuncio</a></li>
-                <li role="submenu"><a href="#">Editar Anuncio</a></li>
-                </ul>
-            </div>
-            <div id="agregar_anuncio" class="contenido">
-                <ul class="nav nav-wizard">
+            <form method="post" action="${pageContext.request.contextPath}/ComprarShareCoinsPaso3"  >
+                <div id="submenu" class="links_submenu">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li role="submenu" class="active"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
+                        <li role="submenu"><a href="#">Agregar Anuncio</a></li>
+                        <li role="submenu"><a href="#">Editar Anuncio</a></li>
+                    </ul>
+                </div>
+                <div id="agregar_anuncio" class="contenido">
+                    <ul class="nav nav-wizard">
 
-                    <li>Paso 1</li>
+                        <li>Paso 1</li>
 
-                    <li class='active'>Paso 2</li>
+                        <li class='active'>Paso 2</li>
 
-                    <li>Paso 3</li>
+                        <li>Paso 3</li>
 
-                </ul>
+                    </ul>
 
-                <h1>workflow de compra 2</h1>
-                <img src="../img/webpay.jpg" alt="400px" width="500px" >
-                <a href="comprar_sharecoins_paso3.jsp" class="btn btn-primary">Siguiente</a>
-                <a href="comprar_sharecoins.jsp" class="btn btn-primary">Volver</a>
-            </div>
+                    <h1>workflow de compra 2</h1>
+                    <img src="../img/webpay.jpg" alt="400px" width="500px" >
+                    <button type="submit" class="btn btn-primary">Siguiente</button>
+                    <a href="comprar_sharecoins.jsp" class="btn btn-primary">Volver</a>
+                </div>
+            </form>
         </div>
 
         <%@include file="../base_ag/_pie_pagina.jsp" %>

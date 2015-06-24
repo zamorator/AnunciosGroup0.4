@@ -55,7 +55,8 @@
                 <form action="${pageContext.request.contextPath}/EditarImagenesAnuncio" method="post" enctype="multipart/form-data"> 
 
                     <input type="file" name="file" required=""/> 
-                    <input class="btn-info" type="submit" value="Subir archivo" /> 
+                    <br>
+                    <input class="btn btn-primary" type="submit" value="Subir archivo" /> 
                 </form> 
             </div>
         </div>

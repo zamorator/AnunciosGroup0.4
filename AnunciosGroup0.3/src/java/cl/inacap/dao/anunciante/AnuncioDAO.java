@@ -8,6 +8,7 @@ package cl.inacap.dao.anunciante;
 import cl.inacap.connect.ConnectionFactory;
 import cl.inacap.model.Anunciante;
 import cl.inacap.model.Anuncio;
+import cl.inacap.model.ShareCoin;
 import cl.inacap.model.ValorAnuncio;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -200,7 +201,7 @@ public class AnuncioDAO {
 
     }
 
-    public void actualizarValorAnuncio(ValorAnuncio valorAnuncio) throws Exception{
+    public void actualizarValorAnuncio(ValorAnuncio valorAnuncio) throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
 
@@ -219,8 +220,8 @@ public class AnuncioDAO {
             con = null;
         }
     }
-    
-    public ValorAnuncio buscarValorAnuncioPorAnuncio(int cod_anuncio) throws Exception{
+
+    public ValorAnuncio buscarValorAnuncioPorAnuncio(int cod_anuncio) throws Exception {
         ValorAnuncio valorAnuncio = null;
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
@@ -242,11 +243,11 @@ public class AnuncioDAO {
             con = null;
             cf = null;
         }
-        
+
         return valorAnuncio;
     }
 
-    public int buscarIdAnuncio(Anuncio anuncio) throws Exception{
+    public int buscarIdAnuncio(Anuncio anuncio) throws Exception {
         int codigo_anuncio = 0;
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
@@ -258,7 +259,7 @@ public class AnuncioDAO {
             rs = proc.executeQuery();
             System.out.println("SPBUSCAIDANUNCIO");
             while (rs.next()) {
-               codigo_anuncio = (rs.getInt("codigo_anuncio"));
+                codigo_anuncio = (rs.getInt("codigo_anuncio"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -267,11 +268,11 @@ public class AnuncioDAO {
             con = null;
             cf = null;
         }
-        
+
         return codigo_anuncio;
     }
-    
-    public int buscaCantidadCuponesCanjeados(Anuncio anuncio) throws Exception{
+
+    public int buscaCantidadCuponesCanjeados(Anuncio anuncio) throws Exception {
         int cantidad = 0;
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
@@ -283,7 +284,7 @@ public class AnuncioDAO {
             rs = proc.executeQuery();
             System.out.println("SPCANTIDADCUPONESCANJEADOS");
             while (rs.next()) {
-               cantidad = (rs.getInt("COUNT(*)"));
+                cantidad = (rs.getInt("COUNT(*)"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -292,10 +293,10 @@ public class AnuncioDAO {
             con = null;
             cf = null;
         }
-        
+
         return cantidad;
     }
-    
+
     public int buscaCantidadCompartir(Anuncio anuncio) throws Exception {
         int cantidadCompartir = 0;
         ConnectionFactory cf = new ConnectionFactory();
@@ -308,7 +309,7 @@ public class AnuncioDAO {
             rs = proc.executeQuery();
             System.out.println("SPBUSCACANTIDADCOMPARTIR");
             while (rs.next()) {
-               cantidadCompartir = (rs.getInt("COUNT(*)"));
+                cantidadCompartir = (rs.getInt("COUNT(*)"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -317,8 +318,32 @@ public class AnuncioDAO {
             con = null;
             cf = null;
         }
-        
+
         return cantidadCompartir;
     }
-            
+
+    public void AgregaShareCoins(ShareCoin shareCoin) throws Exception {
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+
+        System.out.println("SPCREASHARECOINS(" + shareCoin.getCodigo_anuncio() + "," + shareCoin.getCantidad_compartir() + "," + shareCoin.getCantidad_extra_compartir() + "," + shareCoin.getId_valor_coin() + ")");
+        try {
+            con = cf.obtenerConexion();
+            int i = 0;
+            CallableStatement proc = con.prepareCall("{CALL SPCREASHARECOINS(?,?,?,?)}");
+            proc.setInt(++i, shareCoin.getCodigo_anuncio());
+            proc.setInt(++i, shareCoin.getCantidad_compartir());
+            proc.setInt(++i, shareCoin.getCantidad_extra_compartir());
+            proc.setInt(++i, shareCoin.getId_valor_coin());
+            proc.executeQuery();
+            System.out.println("SPCREASHARECOINS(" + shareCoin.getCodigo_anuncio() + "," + shareCoin.getCantidad_compartir() + "," + shareCoin.getCantidad_extra_compartir() + "," + shareCoin.getId_valor_coin() + ")");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception();
+        } finally {
+            cf = null;
+            con = null;
+        }
+    }
+
 }

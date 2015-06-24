@@ -57,42 +57,48 @@
                 </ul>
             </div>
             <div id="agregar_anuncio" class="contenido">
-                <div class="workflow" >
-                    <ul class="nav nav-wizard">
+                <form method="post" action="${pageContext.request.contextPath}/ComprarShareCoinsPaso2"  >
+                    <div class="workflow" >
+                        <ul class="nav nav-wizard">
 
-                        <li class='active'>Paso 1</li>
+                            <li class='active'>Paso 1</li>
 
-                        <li>Paso 2</li>
+                            <li>Paso 2</li>
 
-                        <li>Paso 3</li>
+                            <li>Paso 3</li>
 
-                    </ul>
-                </div>
-
-                <div class="contenido_interior" >
-                    <h3>
-                        <%= anuncio.getNombre_anuncio()%>
-                    </h3>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio()%>" class="img-responsive">
-                        </div>
-                        <div class="col-md-6"><div class="detalle" >
-                                <p> <%= anuncio.getDescripcion_anuncio()%> </p>
-                            </div>
-                            <div class="puntos" >
-                                <input type="radio" name="group1" value="10"> 10.000<br>
-                                <input type="radio" name="group1" value="15" checked> 15.000<br>
-                                <input type="radio" name="group1" value="20"> 20.000
-                            </div></div>
-
-                        <input type="checkbox" id="terminos" >
-
+                        </ul>
                     </div>
-                    <br>
-                    <a  id="btnSiguiente" href="comprar_sharecoins_paso2.jsp" class="btn btn-primary" disabled="" >Siguiente</a>
-                </div>
+
+                    <div class="contenido_interior" >
+                        <h3>
+                            <%= anuncio.getNombre_anuncio()%>
+                        </h3>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio()%>" class="img-responsive">
+                                <div class="detalle" >
+                                    <p> <%= anuncio.getDescripcion_anuncio()%> </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="puntos" >
+                                    <p>Seleccione la cantidad de dinero que desea invertir en anuncios, mientras más invierta mayor cantidad de sharecoins obtendrá.</p>
+                                    <input type="radio" name="group1" value="10"> $10.000 Equivalente a 125 ShareCoins<br>
+                                    <input type="radio" name="group1" value="15" checked> $15.000 Equivalente a 200 ShareCoins<br>
+                                    <input type="radio" name="group1" value="20"> $20.000 Equivalente a 300 ShareCoins<br>
+                                </div>
+                                <br>
+                                <p><input type="checkbox" id="terminos" > Al comprar Sharecoins Acepto los <a href="#">términos y condiciones</a></p>    
+                            </div>
+
+
+                            <br>
+                            <button type="submit" class="btn btn-primary" disabled="" id="btnSiguiente">Siguiente</button>
+                        </div>
+                    </div>
+                </form>
             </div>
 
             <%@include file="../base_ag/_pie_pagina.jsp" %>
