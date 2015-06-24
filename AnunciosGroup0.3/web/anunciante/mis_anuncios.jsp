@@ -10,6 +10,7 @@
 <%@page import="cl.inacap.model.Anuncio"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="cl.inacap.model.Anunciante"%>
+<%@page import="cl.inacap.utils.UploadFileUtils"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -40,6 +41,9 @@
             <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
         </ul>
         <div class="submenu">
+            <% if (request.getParameter("message") != null) {%>
+            <div class="label label-success" role="alert">${param.message}</div>
+            <% }%>
             <ul class="nav nav-tabs nav-justified">
                 <li role="submenu" class="active"><a href="#">Mis Anuncios</a></li>
                 <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
@@ -58,7 +62,7 @@
                                 <% } else { %>
                                 <p class="text-info">Habilitado</p>
                                 <% }%>
-                                <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio()%>" >
+                                <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
                                 <div class="caption">
                                     <h3><%= a.getNombre_anuncio()%></h3>
 

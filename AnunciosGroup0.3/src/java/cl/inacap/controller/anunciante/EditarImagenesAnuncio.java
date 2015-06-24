@@ -8,16 +8,22 @@ package cl.inacap.controller.anunciante;
 import cl.inacap.dao.anunciante.AnuncioDAO;
 import cl.inacap.model.Anunciante;
 import cl.inacap.utils.UploadFileUtils;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
-import java.nio.file.Files;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  *
@@ -43,21 +49,43 @@ public class EditarImagenesAnuncio extends HttpServlet {
             HttpSession session = request.getSession();
             Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
             String nombreAnunciante = anunciante.getNombre_u_anunciante();
-            String archivo = request.getParameter("inputfile").trim();
-            String anuncio = request.getParameter("inputIdAnuncio");
+            String idAnuncio = (String) session.getAttribute("id_anuncio");
 
             //valido estructura de directorios
-            if (UploadFileUtils.validaEstructuraDirectorios(UploadFileUtils.AnunciantePath, nombreAnunciante, anuncio)) {
+            if (UploadFileUtils.validaEstructuraDirectorios(UploadFileUtils.AnunciantePath, nombreAnunciante, idAnuncio)) {
                 //guardo archivo
-                Files.createFile(UploadFileUtils.getRuta(UploadFileUtils.AnunciantePath, nombreAnunciante, anuncio, archivo));
-                //guardo ruta de archivo en tabla de anuncio
-                AnuncioDAO anuncioDao = new AnuncioDAO();
-                anuncioDao.actualizaImagenAnuncio(archivo, Integer.parseInt(anuncio));
-                response.sendRedirect("anunciante/mis_anuncios.jsp?mensaje=" + URLEncoder.encode("Imagen guardada con exito", "UTF-8"));
+
+                String ubicacionArchivo = UploadFileUtils.getRuta(UploadFileUtils.AnunciantePath, nombreAnunciante, idAnuncio).toString();
+                DiskFileItemFactory factory = new DiskFileItemFactory();
+                factory.setSizeThreshold(1024);
+                factory.setRepository(new File(ubicacionArchivo));
+
+                ServletFileUpload upload = new ServletFileUpload(factory);
+
+                List<FileItem> partes = upload.parseRequest(request);
+
+                for (FileItem item : partes) {
+                    File file = new File(ubicacionArchivo, item.getName());
+
+                    try {
+
+                        item.write(file);
+                        String nombrearchivos = file.getName();
+                        //guardo ruta de archivo en tabla de anuncio
+                        AnuncioDAO anuncioDao = new AnuncioDAO();
+                        String cadena = nombreAnunciante + "/" + idAnuncio + "/" + nombrearchivos;
+                        anuncioDao.actualizaImagenAnuncio(cadena, Integer.parseInt(idAnuncio));
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+                response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Imagen guardada con exito", "UTF-8"));
             } else {
                 System.out.println("error");
                 //error al intentar guardar archivo
-                response.sendRedirect("anunciante/mis_anuncios.jsp?error=" + URLEncoder.encode("Error al intentar editar imagen de anuncio", "UTF-8"));
+                response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Error al intentar editar imagen de anuncio", "UTF-8"));
             }
 
             // imageFileName = file.getFileName().toString();
