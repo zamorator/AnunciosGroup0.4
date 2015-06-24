@@ -83,6 +83,7 @@
         <hr>
 
         <!-- Call to Action Well -->
+        <% if (anunciossugeridos != null){%>
         <div class="row">
             <div class="col-lg-12">
                 <div class="well text-center">
@@ -91,11 +92,12 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
+        <% };%>
         <!-- /.row -->
 
         <!-- Content Row -->
         <div class="row">
-                                    <div class="col-md-12" id="panel_sugeridos">
+                    <div class="col-md-12" id="panel_sugeridos">
                        <!--ANUNCIO 1 --> 
                        <% int id_modal2=0; %>
                         <% for (Anuncio b : anunciossugeridos) {%>

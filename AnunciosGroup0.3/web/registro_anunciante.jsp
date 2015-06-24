@@ -78,7 +78,10 @@
             GiroCabeceraDAO giroCabeceraDao = new GiroCabeceraDAO();
             ArrayList<GiroCabecera> giro_cabeceras = giroCabeceraDao.listCabeceraGiro();
         %>
-        <div class="contenido">
+        <div class="contenido"style="padding-top: 10%;" style="width: 80%;">
+            <ul class="nav nav-tabs">
+                <li role="presentation" ><a href="inicio.jsp">Home</a></li>
+            </ul>
             <% if (request.getParameter("message") != null) {%>
             <div class="alert alert-danger" role="alert">${param.message}</div>
             <% }%>

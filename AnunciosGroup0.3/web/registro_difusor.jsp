@@ -22,9 +22,6 @@
     </head>
     <body>
         <%@include file="base_ag/_menu_difusor.jsp" %>
-
-        
-    
         <script>
             (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -35,42 +32,51 @@
           }(document, 'script', 'facebook-jssdk'));
         </script>      
 
-        <div class="contenido" id="registro">
+        <div class="contenido" id="registro" style="padding-top: 10%;">
             <ul class="nav nav-tabs">
-                <li role="presentation" ><a href="newjsp.jsp">Home</a></li>
+                <li role="presentation" ><a href="inicio.jsp">Home</a></li>
             </ul>
             <% if (request.getParameter("message") != null) {%>
             <div class="alert alert-danger" role="alert">${param.message}</div>
             <% }%>
             
-            
+               <div class="panel panel-primary ajustado">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Registro Nuevo Usuario</h3>
+                </div>
                     <form method="POST" action="${pageContext.request.contextPath}/RegistroDifusor_1">
+                        <div class="row">
+                            <div class="col-md-8">
                         <div class="contenido" id="registro_panel">
-                            <div class="form-group">
+                            <div id="datosPersonalesAnunciante" class="panel panel-default margen"  >
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Datos Personales</h3>
+                                </div>
+                            <div class="form-group" style="padding: 2%;">
                                 <label for="InputNombreDifusor">Nombre Difusor</label>
                                 <input type="text" class="form-control" name="InputNombreDifusor" id="NombreDifusor" placeholder="Ingrese Nombre Difusor" required="">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"style="padding: 2%;">
                                 <label for="InputNombres">Nombres</label>
                                 <input type="text" class="form-control" name="InputNombres" id="Nombres" placeholder="Ingrese Nombres" required="">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"style="padding: 2%;">
                                 <label for="InputApellidoPaterno">Apellido Paterno</label>
                                 <input type="text" class="form-control" name="InputApellidoPaterno" id="ApellidoPaterno" placeholder="Ingrese Apellido Paterno" required="">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"style="padding: 2%;">
                                 <label for="InputApellidoMaterno">Apellido Materno</label>
                                 <input type="text" class="form-control" name="InputApellidoMaterno" id="ApellidoMaterno" placeholder="Ingrese Apellido Materno" required="">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"style="padding: 2%;">
                                 <label for="InputEmail">e-mail</label>
                                 <input type="email" class="form-control" name="InputEmail" id="Email" placeholder="Ingrese Correo Electrónico" required="">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"style="padding: 2%;">
                                 <label for="InputEdad">Edad</label>
                                 <input type="number" class="form-control" name="InputEdad" id="Edad" placeholder="Ingrese Edad" required="">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"style="padding: 2%;">
                                 <label for="optionsRadiosSexo">Sexo</label>
                                 <div class="radio">
                                     <label>
@@ -85,33 +91,57 @@
                                     </label>
                                 </div>  
                             </div>
-                            <p>Por favor ingresa al menos una red social</p>
-                            <div class="form-group">
+                            </div>
+                            </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div id="datosPersonalesAnunciante" class="panel panel-default margen" style="margin-top: 2%;" >
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Vincular red social</h3>
+                                </div>
+                            
+                            
+                            <div class="form-group"style="padding: 2%;">
                                 <label for="InputFacebook">Facebook</label>
-                                <input type="text" class="form-control" name="InputFacebook" id="Facebook-nombre" readonly="true"   placeholder="Ingresa tu usuario de Facebook">
+                                <input type="text" class="form-control" name="InputFacebook" id="Facebook-nombre" readonly="true"  value="hola" placeholder="">
                                 <input type="hidden" class="form-control" name="InputFacebook-id" id="Facebook-id" placeholder="">
 
-                                    <a href="#" id="login" class="btn btn-primary" >Vincular Facebook </a>
+                                    <a href="#" id="login" class="btn btn-primary" style="margin-top:  1%;">Vincular Facebook </a>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"style="padding: 2%;">
                                 <label for="InputTwitter">Twitter</label>
-                                <input type="text" class="form-control" name="InputTwitter" id="Twitter" placeholder="Ingresa tu usuario de Twitter">
+                                <input type="text" class="form-control" name="InputTwitter" id="Twitter-nombre" readonly="true"   placeholder="">
+                                <input type="hidden" class="form-control" name="InputTwitter-id" id="Twitter-id" placeholder="">
+                                <a href="#" id="login-twitter" class="btn btn-primary" style="margin-top:  1%;">Vincular Twitter </a>
                             </div>
-                            <div class="form-group">
-                                <label for="InputGoogleplus">Google +</label>
-                                <input type="text" class="form-control" name="InputGoogleplus" id="" placeholder="Ingresa usuario de Google+">
+                           
+                            </div> 
                             </div>
-
-                            <div class="form-group">
+                                                   
+                            <div class="col-md-4">
+                            <div id="datosPersonalesAnunciante" class="panel panel-default margen" >
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Contraseña</h3>
+                                </div>
+                            <div class="form-group"style="padding: 2%;">
                                 <label for="InputPassword">Contraseña</label>
                                 <input type="password" class="form-control" name="InputPassword" id="password" placeholder="Ingrese Contraseña" required="">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"style="padding: 2%;">
                                 <label for="InputPassword">Repita Contraseña</label>
                                 <input type="password" class="form-control" name="InputPassword2" id="password2" placeholder="Ingrese Contraseña" required="">
                             </div>
-                             <label>Seleccione su avatar</label>
-                            <div class="radio avatar-seleccionar">
+                             </div>
+                                </div>
+                            
+                            <div class="col-md-4">
+                             <div id="datosPersonalesAnunciante" class="panel panel-default margen" >
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"> Seleccione su avatar</h3>
+                                </div>
+                            
+                            <div class="radio avatar-seleccionar" style="padding: 2%;">
                                     <label>
                                         <input type="radio" name="optionsRadioAvatar" id="avatar" value="1"  checked="true">
                                         <img id="img-avatar" src="img/avatar/Alien 3.ico">   
@@ -141,10 +171,19 @@
                                         <img id="img-avatar" src="img/avatar/Skull 2.ico">   
                                     </label>      
                             </div>
-                            <button class="btn btn-default" type="submit" >Registro</button>
+                            </div>
+                            </div>
+                            <div class="col-md-4">
+                            <button class="btn btn-success" type="submit" >Registro</button>
+                            </div>
+                            </div> <!--FILA-->
+                           </form> 
                         </div>
-                    </form>
-        </div>
+                        </div>
+                    
+        
+                        
+    </div>
         <%@include file="base_ag/_pie_pagina.jsp" %>
     </body>
 </html>

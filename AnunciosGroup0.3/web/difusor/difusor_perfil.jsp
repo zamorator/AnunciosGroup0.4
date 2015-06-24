@@ -40,9 +40,6 @@
                 <li role="presentation"><a href="difusor_puntos.jsp">Puntos</a></li>
                 <li role="presentation"><a href="difusor_cupones.jsp">Cupones</a></li>
             </ul>
-            
-            <div class="contenido" id="contenido_panel">
-                
                 <% if (request.getParameter("mensajeexito") != null) {%>
                     <div class="alert alert-success" role="alert">${param.mensajeexito}</div>
                 <% }%>
@@ -50,6 +47,13 @@
                 <% if (request.getParameter("mensajeerror") != null) {%>
                     <div class="alert alert-danger" role="alert">${param.mensajeerror}</div>
                 <% }%>
+             <div id="datosPersonalesAnunciante" class="panel panel-default margen" >
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Datos Personales</h3>
+                        </div>
+            <div class="contenido" id="contenido_panel" style="padding: 2%;">
+
+
                 
                 <form action="${pageContext.request.contextPath}/ActualizarPerfil" method="POST">
      
@@ -85,6 +89,7 @@
                     
                      <div class="form-group" id="box_input">
                         <button class="btn btn-default" id="btn_actualizar" type="submit" >Actualizar</button>
+                    </div>
                     </div>
                 </form>
             </div>

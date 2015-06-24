@@ -20,6 +20,7 @@
     </head>
     <body>
         <div class="contenido">
+            <div class="contenido" id="ingreso">
             <% if (request.getParameter("message") != null) {%>
             <div class="alert alert-danger" role="alert">${param.message}</div>
             <% }%>
@@ -35,6 +36,7 @@
                 <button class="btn btn-primary" type="submit" >Ingreso</button>
                 <a href="inicio_anunciante.jsp" class="btn btn-primary">Volver</a>
             </form>
+            </div>
         </div>
         <%@include file="base_ag/_pie_pagina.jsp" %>
     </body>

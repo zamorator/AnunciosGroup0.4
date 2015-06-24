@@ -75,9 +75,9 @@ footer{
 }
 
 #registro{
-    width: 50%;
-    margin:auto;
-    padding:2%;
+ width: 80%;   
+ margin: auto;
+
 }
 
 .avatar-seleccionar label{

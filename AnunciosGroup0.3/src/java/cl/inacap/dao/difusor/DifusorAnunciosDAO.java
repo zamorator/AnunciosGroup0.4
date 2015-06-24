@@ -271,7 +271,7 @@ public class DifusorAnunciosDAO {
 
          }
         
-        public ArrayList<Cupon> buscarcupones() throws Exception {
+        public ArrayList<Cupon> buscarcupones(String nombredifusor) throws Exception {
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
             ResultSet rs = null;
@@ -281,7 +281,8 @@ public class DifusorAnunciosDAO {
          try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
-            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_CUPONES()}");
+            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_CUPONES(?)}");
+            proc.setString(1, nombredifusor);
             System.out.println(proc);
             rs = proc.executeQuery();
             

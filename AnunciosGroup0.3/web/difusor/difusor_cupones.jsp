@@ -23,19 +23,21 @@
         <link rel="stylesheet" href="../css/anunciante.css">
         <title>Cupones</title>
     </head>
-    <%
+    
+    <body>
+        <%@include file="../base_ag/_menu_difusor.jsp" %>
+        <%
          ArrayList<Cupon> cupones= null;
+         String nombredisfusor = difusor.getNombre_u_difusor();
          try{
              cupones = new ArrayList<Cupon>();
              DifusorAnunciosDAO anunciosDAO = new DifusorAnunciosDAO();
-             cupones = anunciosDAO.buscarcupones();
+             cupones = anunciosDAO.buscarcupones(nombredisfusor);
              System.out.println(cupones);
          } catch(Exception e){
                 e.printStackTrace();
             }
     %>
-    <body>
-        <%@include file="../base_ag/_menu_difusor.jsp" %>
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation"><a href="difusor_inicio.jsp">Inicio</a></li>
             <li role="presentation" class="active"><a href="#">Perfil</a></li>
