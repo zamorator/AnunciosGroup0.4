@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="../css/cabecera_anunciante.css">
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -34,7 +34,7 @@
                     </li>
                 </ul>
                 <p>© Copyright 2015. AnunciosGroup.cl</p>
-                <a href="../administrador/Admin_inicio.jsp" >INCIO ADMIN</a>
+                <a href="${pageContext.request.contextPath}/ingreso_administrador.jsp" >INCIO ADMIN</a>
             </div>
         </footer>
 

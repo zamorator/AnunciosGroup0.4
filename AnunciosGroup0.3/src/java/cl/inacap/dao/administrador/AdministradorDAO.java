@@ -279,7 +279,7 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             anunciante.setId_comuna(rs.getInt("ID_COMUNA"));
             anunciante.setNombre_anunciante(rs.getString("NOMBRE_ANUNCIANTE"));
             anunciante.setDireccion_anunciante(rs.getString("DIRECCION_ANUNCIANTE"));
-            anunciante.setEstado_anunciante(rs.getString("ESTADO_ANUNCIANTE"));
+            anunciante.setEstado_anunciante(rs.getString("estado_anunciante"));
             anunciantes.add(anunciante);
             }
         }catch (Exception ex) {                  
