@@ -7,6 +7,7 @@ package cl.inacap.controller.anunciante;
 
 import cl.inacap.dao.anunciante.AnuncioDAO;
 import cl.inacap.model.Anuncio;
+import cl.inacap.model.ValorAnuncio;
 import java.io.IOException;
 import java.net.URLEncoder;
 import javax.servlet.ServletException;
@@ -45,10 +46,17 @@ public class EditarAnuncio extends HttpServlet {
             anuncio.setCantidad_cupones(Integer.parseInt(request.getParameter("InputCantidadCupones")));
             anuncio.setPorcentaje_descuento(Integer.parseInt(request.getParameter("porcentajeDescueto")));
             
+            ValorAnuncio valorAnuncio = new ValorAnuncio();
+            valorAnuncio.setValor_real(Integer.parseInt(request.getParameter("InputValorReal")));
+            valorAnuncio.setCodigo_anuncio(anuncio.getCodigo_anuncio());
+            
+            
             AnuncioDAO anuncioDao = new AnuncioDAO();
-            request.setAttribute("anuncio", anuncio);
-            response.sendRedirect("anunciante/mis_anuncios.jsp?message="+ URLEncoder.encode("Anuncio Actualizado Exitosamente", "UTF-8"));
             anuncioDao.actualizarAnuncio(anuncio);
+            anuncioDao.actualizarValorAnuncio(valorAnuncio);
+            request.setAttribute("anuncio", anuncio);
+            
+            response.sendRedirect("anunciante/mis_anuncios.jsp?message="+ URLEncoder.encode("Anuncio Actualizado Exitosamente", "UTF-8"));
         } catch (Exception e){
           e.printStackTrace();
           response.sendRedirect("anunciante/mis_anuncios.jsp?message="+ URLEncoder.encode("Error al intentar actualizar Anuncio", "UTF-8"));

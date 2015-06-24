@@ -53,12 +53,13 @@ public class AnuncianteDAO {
         Connection con = null;
         try {
             con = cf.obtenerConexion();
-            CallableStatement proc = con.prepareCall("{CALL SPAGREGAANUNCIANTE(?,?,?,?,?)}");
+            CallableStatement proc = con.prepareCall("{CALL SPAGREGAANUNCIANTE(?,?,?,?,?,?)}");
             proc.setString(1, anunciante.getNombre_u_anunciante());
             proc.setInt(2, anunciante.getId_comuna());
             proc.setString(3,anunciante.getNombre_anunciante());
             proc.setString(4, anunciante.getDireccion_anunciante());
             proc.setString(5, anunciante.getPassword_anunciante());
+            proc.setString(6, anunciante.getEmail_anunciante());
             proc.executeQuery();
             System.out.println("SPAGREGAANUNCIANTE");
             
@@ -105,12 +106,13 @@ public class AnuncianteDAO {
         PreparedStatement pst = null;
         try {
             con = cf.obtenerConexion();
-            CallableStatement proc = con.prepareCall("{CALL SPACTUALIZAANUNCIANTE(?,?,?,?,?)}");
+            CallableStatement proc = con.prepareCall("{CALL SPACTUALIZAANUNCIANTE(?,?,?,?,?,?)}");
             proc.setInt(1, anunciante.getId_comuna());
             proc.setString(2, anunciante.getNombre_anunciante());
             proc.setString(3, anunciante.getDireccion_anunciante());
             proc.setString(4, anunciante.getPassword_anunciante());
             proc.setString(5, anunciante.getNombre_u_anunciante());
+            proc.setString(6, anunciante.getEmail_anunciante());
             proc.executeQuery();
             System.out.println("SPACTUALIZAANUNCIANTE");
         } catch (Exception ex) {

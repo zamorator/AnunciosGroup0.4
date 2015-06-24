@@ -40,7 +40,7 @@ public class AgregarAnuncio extends HttpServlet {
             HttpSession sesion = request.getSession();
             Anunciante anunciante = (Anunciante) sesion.getAttribute("anunciante");
             Anuncio anuncio = new Anuncio();
-            
+            int valorAnuncio = Integer.parseInt(request.getParameter("InputValorReal"));
             
             anuncio.setNombre_u_anunciante(anunciante.getNombre_u_anunciante());
             anuncio.setNombre_anuncio(request.getParameter("InputNombreAnuncio"));
@@ -54,6 +54,11 @@ public class AgregarAnuncio extends HttpServlet {
             
             AnuncioDAO anuncioDao = new AnuncioDAO();
             anuncioDao.AgregaAnuncio(anuncio);
+            // traigo id de anuncio recien creado
+            int id_anuncio = anuncioDao.buscarIdAnuncio(anuncio);
+            
+            //agrego valor anuncio
+            anuncioDao.agregarValorAnuncio(id_anuncio,valorAnuncio );
             response.sendRedirect("anunciante/agregar_anuncio.jsp?message=" + URLEncoder.encode("Exito al crear anunciante", "UTF-8"));
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -129,6 +129,11 @@
                         <input type="radio" name="porcentajeDescueto" value="70"> 70%<br>
                         <input type="radio" checked="" name="porcentajeDescueto" value="75"> 75%
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="InputValor">Valor Anuncio</label> 
+                        <input type="number" name="InputValorReal" required="" >
+                    </div>
 
                     <button type="submit" class="btn btn-default">Agregar</button>
                 </form>

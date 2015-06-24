@@ -4,6 +4,7 @@
     Author     : zamorator <zamorator@gmail.com>
 --%>
 
+<%@page import="cl.inacap.model.ValorAnuncio"%>
 <%@page import="cl.inacap.dao.anunciante.AnuncioDAO"%>
 <%@page import="cl.inacap.model.Anuncio"%>
 <%@page import="cl.inacap.dao.segmentos.SegmentoEdadDAO"%>
@@ -44,6 +45,7 @@
             AnuncioDAO anuncioDAO = new AnuncioDAO();
             Anuncio anuncio = new Anuncio();
             anuncio = anuncioDAO.buscarAnuncioPorId(Integer.parseInt(request.getParameter("anuncio_id")));
+            ValorAnuncio valorAnuncio = anuncioDAO.buscarValorAnuncioPorAnuncio(anuncio.getCodigo_anuncio());
         %>
     </head>
 
@@ -70,7 +72,7 @@
                             <h3 class="panel-title">Información Anuncio</h3>
                         </div>
                         <div class="form-group margen">
-                            <input type="text" value="<%= anuncio.getCodigo_anuncio() %>" hidden="" name="InputCodigoAnuncio">
+                            <input type="text" value="<%= anuncio.getCodigo_anuncio()%>" hidden="" name="InputCodigoAnuncio">
                             <label for="InputNombreAnuncio">Nombre Anuncio</label>
                             <input required="" type="text" class="form-control" name="InputNombreAnuncio" id="InputNombreAnuncio" value="<%= anuncio.getNombre_anuncio()%>">
                         </div>
@@ -139,6 +141,10 @@
                             <input type="radio" name="porcentajeDescueto" value="<%= i * 5%>"> <%=i * 5%>%<br>
                             <%} %>
                             <%}%>
+                        </div>
+                        <div class="form-group">
+                            <label for="InputValor">Valor Anuncio</label> 
+                            <input type="number" name="InputValorReal" required="" value="<%= valorAnuncio.getValor_real() %>">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Actualizar</button>

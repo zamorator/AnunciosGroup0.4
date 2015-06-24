@@ -48,6 +48,7 @@ public class ActualizarAnunciante extends HttpServlet {
             anunciante.setDireccion_anunciante(request.getParameter("InputDireccionAnunciante"));
             anunciante.setId_comuna(Integer.parseInt(request.getParameter("selectComuna")));
             anunciante.setPassword_anunciante(request.getParameter("InputPasswordAnunciante"));
+            anunciante.setEmail_anunciante(request.getParameter("InputEmailAnunciante"));
             AnuncianteDAO anuncianteDao = new AnuncianteDAO();
             anuncianteDao.ActualizaAnunciante(anunciante);
 
