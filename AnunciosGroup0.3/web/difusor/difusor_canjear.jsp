@@ -121,6 +121,10 @@
                 var total = ((descuento * 100) / valor_real);
                 var maximo_descuento = $('#max_descuento').val();
                 var valor_final = valor_real -((valor_real * total)/100); 
+                console.log("descuento" + descuento);
+                console.log("valor_real" + valor_real);
+                console.log("total" + total);
+                console.log("maximo" + maximo_descuento);
                 if(total <= maximo_descuento ){
                     $('#valor_descuento').text(total+"%");
                     $('#in_descuento_obtenido').val(total);

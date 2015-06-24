@@ -50,38 +50,51 @@
                 <li role="presentation"><a href="difusor_inicio.jsp">Todos</a></li>
                 <li role="presentation"class="active"><a href="difusor_favorito.jsp">Mis Anuncios</a></li>
             </ul>
-        <div class="col-md-12" id="">
+            
+                
+                <div class="row">
+                    <!-- SUGERIDOS inicio -->
+
+                 <div class="col-md-12" >
                        <!--ANUNCIO 1 --> 
                        <% int id_modal2=0; %>
                         <% for (Anuncio b : anunciosfavoritos) {%>
                         <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail" id="anuncios">
-                            <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
+                        <div class="thumbnail" id="anunciossugeridos">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                             <div class="caption">
-                              <h3><%= b.getNombre_anuncio() %></h3>
+                              <h4><%= b.getNombre_anuncio() %></h4>
                               
                              <!--VENTANA MODAL INICIO -->
-                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
+                            <form method="POST" action="${pageContext.request.contextPath}/PublicarCanjear">
+                            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                          <div class="modal-header">
                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                              <h4 class="modal-title" id="myModalLabel"> <h3><%= b.getNombre_anuncio() %></h3></h4>
+                                             <input type="hidden" name="codigoanuncio" value="<%= b.getCodigo_anuncio()%>">
                                         </div>
                                         <div class="modal-body">
                                             <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
-                                            <p>Esta es una pequeña descripcion del anuncio.</p>
-                     
-                                            <input type="checkbox"  onclick="clickCheck(<%= b.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" checked="" class="click"> Agregar a Favorito
+                                            <p><%= b.getDescripcion_anuncio()%></p>
+                                            <% 
+                                                    String Favorito = "";
+                                                    if(b.getFavorito() == 1){
+                                                        Favorito = "checked";
+                                                    };
+                                                 %>
+                                                 <input type="checkbox"  onclick="clickCheck(<%= b.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" <%= Favorito %> class="click"> Agregar a Favorito
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal" type="submit">Canejar</button>
-                                            <button type="button" class="btn btn-primary">Publicar</button>
+                                            <input type="submit" class="btn btn-default" name="canjear" value="Canjear">
+                                            <input type="submit" class="btn btn-primary" name="publicar"value="Publicar">
                                         </div>
                                     </div>
                                     </div>
                                 </div>
+                                </form> 
                             <!--VENTANA MODAL FIN -->
                               
                               
@@ -89,7 +102,8 @@
                         </div>
                         </div>
                         <%id_modal2++;}%>    
-                    </div>    
+                    </div>
+                       
             
         </div>
                     <script>

@@ -73,26 +73,35 @@
                               <h4><%= b.getNombre_anuncio() %></h4>
                               
                              <!--VENTANA MODAL INICIO -->
-                            <button type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
+                            <form method="POST" action="${pageContext.request.contextPath}/PublicarCanjear">
+                            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                          <div class="modal-header">
                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                              <h4 class="modal-title" id="myModalLabel"> <h3><%= b.getNombre_anuncio() %></h3></h4>
+                                             <input type="hidden" name="codigoanuncio" value="<%= b.getCodigo_anuncio()%>">
                                         </div>
                                         <div class="modal-body">
                                             <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
-                                            <p>Esta es una pequeña descripcion del anuncio.</p>
-                                            
+                                            <p><%= b.getDescripcion_anuncio()%></p>
+                                            <% 
+                                                    String Favorito = "";
+                                                    if(b.getFavorito() == 1){
+                                                        Favorito = "checked";
+                                                    };
+                                                 %>
+                                                 <input type="checkbox"  onclick="clickCheck(<%= b.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" <%= Favorito %> class="click"> Agregar a Favorito
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button"  class="btn btn-default">Canejar</button>
-                                            <button type="button" class="btn btn-primary" >Publicar</button>
+                                            <input type="submit" class="btn btn-default" name="canjear" value="Canjear">
+                                            <input type="submit" class="btn btn-primary" name="publicar"value="Publicar">
                                         </div>
                                     </div>
                                     </div>
                                 </div>
+                                </form> 
                             <!--VENTANA MODAL FIN -->
                               
                               
@@ -112,7 +121,7 @@
                         <div class="thumbnail" id="anuncios">
                             <img class="img-responsive" id="img_anuncios"  src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio() %>" >
                             <div class="caption">
-                              <h3><%= a.getNombre_anuncio() %></h3>
+                              <h4><%= a.getNombre_anuncio() %></h4>
                               
                              <!--VENTANA MODAL INICIO -->
                              <form method="POST" action="${pageContext.request.contextPath}/PublicarCanjear">
@@ -122,12 +131,12 @@
                                         <div class="modal-content">
                                              <div class="modal-header">
                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                 <h4 class="modal-title" id="myModalLabel"> <h3><%= a.getNombre_anuncio() %></h3></h4>
+                                                 <h4 class="modal-title" id="myModalLabel"> <%= a.getNombre_anuncio() %></h4>
                                                  <input type="hidden" name="codigoanuncio" value="<%= a.getCodigo_anuncio()%>">
                                             </div>
                                             <div class="modal-body">
                                                 <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio() %>" >
-                                                <p>Esta es una pequeña descripcion del anuncio.</p>   
+                                                <p><%= a.getDescripcion_anuncio()%></p>   
                                                  <% 
                                                     String Favorito = "";
                                                     if(a.getFavorito() == 1){

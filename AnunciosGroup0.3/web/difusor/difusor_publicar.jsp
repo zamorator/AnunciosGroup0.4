@@ -4,6 +4,8 @@
     Author     : macbookair
 --%>
 
+<%@page import="cl.inacap.dao.difusor.DifusorAnunciosDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="cl.inacap.model.Anuncio"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,6 +31,21 @@
         <div id="fb-root"></div>
         
         <%@include file="../base_ag/_menu_difusor.jsp" %>
+        <%
+            ArrayList<Anuncio> anunciossugeridos =null;
+             try{
+         
+            
+            
+            DifusorAnunciosDAO anunciosDAO = new DifusorAnunciosDAO();
+        
+            anunciossugeridos = anunciosDAO.buscaranunciosugerido(difusor);
+            
+           
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        %>
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation"><a href="difusor_inicio.jsp">Inicio</a></li>
             <li role="presentation"><a href="difusor_perfil.jsp">Perfil</a></li>
@@ -39,7 +56,7 @@
         <!-- Heading Row -->
         <div class="row">
             <div class="col-md-8">
-                <img class="img-responsive img-rounded" src="${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio() %>"   width="800px" height="250px"alt="">
+                <img class="img-responsive img-rounded" src="${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio() %>"   width="500px" height="250px"alt="">
                 <input type="hidden" id="imagen" value="http://190.13.76.218:8080/${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio() %>">
             </div>
             <!-- /.col-md-8 -->
@@ -47,13 +64,15 @@
                 <h1><%= anuncio.getNombre_anuncio() %></h1>
                 <p><%= anuncio.getDescripcion_anuncio() %></p>
                 <input type="hidden" id="descripcion" value="<%= anuncio.getDescripcion_anuncio() %>">
-                
-                <a class="btn btn-primary btn-lg" href="#" id="share_button" style="text-decoration: none; margin-right: -4px; margin-left: -3px;">
-			Publicar en Facebook
-		</a>
-                
-
+                <div class="row col-md-12">  
+                    <a class="btn btn-primary btn-lg" href="#" id="share_button" >Publicar en Facebook</a>
+                </div>
+             
+                <div class="row col-lg-12" style="margin-top: 3%;">  
+                    <a class="btn btn-primary btn-lg" href="#" id="share_button" >Publicar en Twitter</a>
+                </div>    
             </div>
+            
             <!-- /.col-md-4 -->
         </div>
         <!-- /.row -->
@@ -73,24 +92,49 @@
 
         <!-- Content Row -->
         <div class="row">
-            <div class="col-md-4">
-                <h2>Heading 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
-                <a class="btn btn-default" href="#">More Info</a>
-            </div>
-            <!-- /.col-md-4 -->
-            <div class="col-md-4">
-                <h2>Heading 2</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
-                <a class="btn btn-default" href="#">More Info</a>
-            </div>
-            <!-- /.col-md-4 -->
-            <div class="col-md-4">
-                <h2>Heading 3</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
-                <a class="btn btn-default" href="#">More Info</a>
-            </div>
-            <!-- /.col-md-4 -->
+                   <!-- SUGERIDOS inicio -->
+
+                 <div class="col-md-12" id="panel_sugeridos">
+                       <!--ANUNCIO 1 --> 
+                       <% int id_modal2=0; %>
+                        <% for (Anuncio b : anunciossugeridos) {%>
+                        <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail" id="anunciossugeridos">
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
+                            <div class="caption">
+                              <h4><%= b.getNombre_anuncio() %></h4>
+                              
+                             <!--VENTANA MODAL INICIO -->
+                            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
+                                <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                         <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                             <h4 class="modal-title" id="myModalLabel"> <h3><%= b.getNombre_anuncio() %></h3></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
+                                            <p>Esta es una pequeña descripcion del anuncio.</p>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button"  class="btn btn-default">Canejar</button>
+                                            <button type="button" class="btn btn-primary" >Publicar</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            <!--VENTANA MODAL FIN -->
+                              
+                              
+                            </div>
+                        </div>
+                        </div>
+                        <%id_modal2++;}%>    
+                    </div>
+                    
+                    <!-- SUGERIDOS fin -->
         </div>
         <!-- /.row -->
 

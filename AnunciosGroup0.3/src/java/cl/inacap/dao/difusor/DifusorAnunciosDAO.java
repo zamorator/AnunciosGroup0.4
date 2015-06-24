@@ -71,11 +71,12 @@ public class DifusorAnunciosDAO {
          try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
-            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_ANUNCIO_SUGERIDOS(?,?)}");
+            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_ANUNCIO_SUGERIDOS(?,?,?)}");
              
-             
+            
             proc.setInt(1,difusor.getId_segmento_sexo());
             proc.setInt(2,difusor.getId_segmento_edad());
+            proc.setString(3, difusor.getNombre_u_difusor());
             System.out.println(proc);
             rs = proc.executeQuery();
             
@@ -87,6 +88,7 @@ public class DifusorAnunciosDAO {
             anuncio.setNombre_anuncio(rs.getString("NOMBRE_ANUNCIO"));
             anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
             anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
+            anuncio.setFavorito(rs.getInt("ESTADO_FAVORITO"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {                  
@@ -121,6 +123,7 @@ public class DifusorAnunciosDAO {
             anuncio.setNombre_anuncio(rs.getString("NOMBRE_ANUNCIO"));
             anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
             anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
+            anuncio.setFavorito(rs.getInt("ESTADO_FAVORITO"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {                  
