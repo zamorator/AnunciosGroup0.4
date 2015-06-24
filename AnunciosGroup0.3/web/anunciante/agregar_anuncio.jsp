@@ -108,12 +108,17 @@
                             <% }%>
                         </select>
                     </div>
+                        
+                     <div id="direccionAnunciante" class="panel panel-default margen"> 
+                        <div class="panel-heading">
+                            <h3 style="margin-left: 3%;"class="panel-title">Publicidad del Anuncio</h3>
+                        </div>     
                     <div class="form-group">
-                        <label for="InputCantidadCupones">Cantidad de cupones</label> 
-                        <input type="number" name="InputCantidadCupones" required="" id="CantidadCupones">
+                        <label style="margin-left: 3%; margin-top: 1%;"for="InputCantidadCupones">Cantidad de cupones</label> 
+                        <input style=" margin-top: 1%;"type="number" name="InputCantidadCupones" required="" id="CantidadCupones">
                     </div>
-                    <label for="InputPorcentajeDescuento">Porcentaje de Descuento</label> 
-                    <div class=" form-group radio" >
+                    <label style="margin-left: 3%;"for="InputPorcentajeDescuento">Porcentaje de Descuento</label> 
+                    <div style="margin-left: 3%;" class=" form-group radio" >
                         <input type="radio" name="porcentajeDescueto" value="10"> 10%<br>
                         <input type="radio" name="porcentajeDescueto" value="15"> 15%<br>
                         <input type="radio" name="porcentajeDescueto" value="20"> 20%<br>
@@ -131,10 +136,10 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="InputValor">Valor Anuncio</label> 
+                        <label style="margin-left: 3%;"for="InputValor">Valor Anuncio</label> 
                         <input type="number" name="InputValorReal" required="" >
                     </div>
-
+                     </div>   
                     <button type="submit" class="btn btn-default">Agregar</button>
                 </form>
             </div>

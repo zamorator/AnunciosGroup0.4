@@ -20,14 +20,14 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/AnunciosGroup0.3/anunciante/mis_anuncios.jsp">
-                            <span>
-                                <img src="../img/AG logo.png" height="30" width="30">
-                            </span>
-                            <span>
-                                AnunciosGroup
-                            </span>
-                        </a>
+                                            <a class="navbar-brand" href="../inicio.jsp">
+
+                        <img src="/AnunciosGroup0.3/img/Logo.png" height="35" width="250" style="margin-top: -10px;">
+
+                        <span>
+
+                        </span>
+                    </a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->

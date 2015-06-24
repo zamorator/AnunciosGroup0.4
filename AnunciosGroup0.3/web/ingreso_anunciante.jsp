@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="InputPassword">Contraseña</label>
-                    <input type="text" class="form-control" name="InputPassword" id="Password" placeholder="Ingrese Contraseña" required="">
+                    <input type="password" class="form-control" name="InputPassword" id="Password" placeholder="Ingrese Contraseña" required="">
                 </div>
                 <button class="btn btn-primary" type="submit" >Ingreso</button>
                 <a href="inicio_anunciante.jsp" class="btn btn-primary">Volver</a>
