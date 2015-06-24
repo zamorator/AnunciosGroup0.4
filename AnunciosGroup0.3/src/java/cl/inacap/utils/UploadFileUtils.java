@@ -15,7 +15,7 @@ import java.nio.file.Paths;
  */
 public class UploadFileUtils {
 
-    public static final String MainPath = "/home/diego/images";
+    public static final String MainPath = "/home/diego/NetBeansProjects/AnunciosGroup0.4/AnunciosGroup0.3/web/images";
     public static final String AnunciantePath = "/anunciante";
     public static final String DifusorPath = "/difusor";
     public static final String AdministradorPath = "/administrador";
@@ -60,8 +60,9 @@ public class UploadFileUtils {
         }
     }
 
-    public static Path getRuta(String rol, String usuario, String file) {
-        return Paths.get(UploadFileUtils.MainPath + "/" + rol + "/" + usuario + "/" + file);
+
+    public static Path getRuta(String rol, String usuario, String anuncio) {
+        return Paths.get(UploadFileUtils.MainPath + "/" + rol + "/" + usuario + "/" + anuncio);
     }
 
     public static Path getRuta(String rol, String usuario, String anuncio, String file) {

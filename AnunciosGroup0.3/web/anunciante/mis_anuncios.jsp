@@ -41,6 +41,9 @@
             <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
         </ul>
         <div class="submenu">
+            <% if (request.getParameter("message") != null) {%>
+            <div class="label label-success" role="alert">${param.message}</div>
+            <% }%>
             <ul class="nav nav-tabs nav-justified">
                 <li role="submenu" class="active"><a href="#">Mis Anuncios</a></li>
                 <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
@@ -59,7 +62,7 @@
                                 <% } else { %>
                                 <p class="text-info">Habilitado</p>
                                 <% }%>
-                                <img src="${pageContext.request.contextPath}/images/anunciante/<%= anunciante.getNombre_u_anunciante() +"/"+ a.getCodigo_anuncio() +"/" +a.getImagen_anuncio() %>" />
+                                <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
                                 <div class="caption">
                                     <h3><%= a.getNombre_anuncio()%></h3>
 

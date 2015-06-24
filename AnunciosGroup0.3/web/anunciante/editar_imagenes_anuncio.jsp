@@ -28,6 +28,7 @@
         <%
             Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
             Giro giro = (Giro) session.getAttribute("giro");
+            session.setAttribute("id_anuncio", request.getParameter("anuncio_id"));
         %>
     </head>
     <body>
@@ -37,7 +38,10 @@
             <li role="presentation"><a href="perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
         </ul>
-        <div class="submenu">  
+        <div class="submenu">
+            <% if (request.getParameter("mensaje") != null) {%>
+            <div class="label label-success" role="alert">${param.mensaje}</div>
+            <% }%>
             <div id="submenu" class="links_submenu">
                 <ul class="nav nav-tabs nav-justified">
                     <li role="submenu"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
@@ -48,13 +52,11 @@
 
             <div class="contenido" >
 
-                <form method="POST" action="${pageContext.request.contextPath}/EditarImagenesAnuncio">
-                    <p>Por favor selecciona una inagen para tu anuncio publicitario</p>
-                    <input required="" type="file" name="inputfile" />
-                    <input type="text" name="inputIdAnuncio" value="<%= request.getParameter("anuncio_id") %>" hidden="" />
+                <form action="${pageContext.request.contextPath}/EditarImagenesAnuncio" method="post" enctype="multipart/form-data"> 
 
-                    <button class="btn btn-primary" type="submit">Enviar</button>
-                </form>
+                    <input type="file" name="file"/> 
+                    <input class="btn-info" type="submit" value="Subir archivo" /> 
+                </form> 
             </div>
         </div>
 
