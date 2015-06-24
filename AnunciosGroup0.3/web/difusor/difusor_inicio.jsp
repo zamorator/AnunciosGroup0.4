@@ -68,7 +68,7 @@
                         <% for (Anuncio b : anunciossugeridos) {%>
                         <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" id="anunciossugeridos">
-                            <img class="img-responsive" src="../img/anuncios/<%= b.getImagen_anuncio() %>" >
+                            <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                             <div class="caption">
                               <h4><%= b.getNombre_anuncio() %></h4>
                               
@@ -82,7 +82,7 @@
                                              <h4 class="modal-title" id="myModalLabel"> <h3><%= b.getNombre_anuncio() %></h3></h4>
                                         </div>
                                         <div class="modal-body">
-                                            <img class="img-responsive" src="../img/anuncios/<%= b.getImagen_anuncio() %>" >
+                                            <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                                             <p>Esta es una pequeña descripcion del anuncio.</p>
                                             
                                         </div>
@@ -110,7 +110,7 @@
                         <% for (Anuncio a : anuncios) {%>
                     <div class="col-sm-6 col-md-4" id="desdeaqui<%= cantanucios  %>">
                         <div class="thumbnail" id="anuncios">
-                            <img class="img-responsive" id="img_anuncios"  src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
+                            <img class="img-responsive" id="img_anuncios"  src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio() %>" >
                             <div class="caption">
                               <h3><%= a.getNombre_anuncio() %></h3>
                               
@@ -126,7 +126,7 @@
                                                  <input type="hidden" name="codigoanuncio" value="<%= a.getCodigo_anuncio()%>">
                                             </div>
                                             <div class="modal-body">
-                                                <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
+                                                <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio() %>" >
                                                 <p>Esta es una pequeña descripcion del anuncio.</p>   
                                                  <% 
                                                     String Favorito = "";

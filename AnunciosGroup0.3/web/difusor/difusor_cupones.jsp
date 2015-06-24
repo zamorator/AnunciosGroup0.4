@@ -56,7 +56,7 @@
                 <li class="media">
                   <div class="media-left">
                     <a href="#">
-                        <img class="media-object" src="../img/anuncios/<%= b.getImg_anuncio() %>" width="100px">
+                        <img class="media-object" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImg_anuncio() %>" width="100px">
                     </a>
                   </div>
                   <div class="media-body">

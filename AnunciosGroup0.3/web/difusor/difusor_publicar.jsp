@@ -9,7 +9,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -27,19 +26,7 @@
          %>
     </head>
     <body>
-        
-        
         <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3&appId=428447157327741";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>     
-        
-        
         
         <%@include file="../base_ag/_menu_difusor.jsp" %>
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
@@ -47,19 +34,25 @@
             <li role="presentation"><a href="difusor_perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="#">Canjear</a></li>
         </ul>
-
         <div class="container" style="padding-top: 5%;" >
 
         <!-- Heading Row -->
         <div class="row">
             <div class="col-md-8">
-                <img class="img-responsive img-rounded" src="../img/anuncios/<%= anuncio.getImagen_anuncio() %>"   width="800px" height="250px"alt="">
+                <img class="img-responsive img-rounded" src="${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio() %>"   width="800px" height="250px"alt="">
+                <input type="hidden" id="imagen" value="http://190.13.76.218:8080/${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio() %>">
             </div>
             <!-- /.col-md-8 -->
             <div class="col-md-4">
                 <h1><%= anuncio.getNombre_anuncio() %></h1>
                 <p><%= anuncio.getDescripcion_anuncio() %></p>
-                <a class="btn btn-primary btn-lg" href="#">Call to Action!</a>
+                <input type="hidden" id="descripcion" value="<%= anuncio.getDescripcion_anuncio() %>">
+                
+                <a class="btn btn-primary btn-lg" href="#" id="share_button" style="text-decoration: none; margin-right: -4px; margin-left: -3px;">
+			Publicar en Facebook
+		</a>
+                
+
             </div>
             <!-- /.col-md-4 -->
         </div>
@@ -103,7 +96,47 @@
 
     </div>
     <!-- /.container -->
+<script type="text/javascript">
+<!--
+//nuevo face share btn
+$(document).ready(function(){
+	$('#share_button').click(function(e){          
+		e.preventDefault();
+		var url='http://190.13.76.218:8080/AnunciosGroup0.3/inicio.jsp';
+		var titulo=$('#descripcion').val();
+		var img = $('#imagen').val();
+		FB.ui(
+		{
+			method: 'feed',
+			name: titulo,
+			link: url,
+			picture: img,
+			caption: 'AnunciosGroup, tu pagina de cupones.',
+			description: 'Anunciosgroup.cl',
+			message: 'asdasdasd'
+		});
+		
+			
+	});
+	
+	
+});
 
+
+
+
+
+
+//-->
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3&appId=1596591600595494";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
