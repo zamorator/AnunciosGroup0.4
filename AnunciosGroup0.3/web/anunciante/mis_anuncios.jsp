@@ -4,6 +4,7 @@
     Author     : dzamoraf
 --%>
 
+<%@page import="cl.inacap.model.ValorAnuncio"%>
 <%@page import="cl.inacap.model.Giro"%>
 <%@page import="cl.inacap.dao.anunciante.AnuncioDAO"%>
 <%@page import="java.util.List"%>
@@ -31,6 +32,13 @@
             Giro giro = (Giro) session.getAttribute("giro");
             AnuncioDAO anuncioDao = new AnuncioDAO();
             List<Anuncio> anuncios = anuncioDao.BuscarAnunciosPorAnunciante(anunciante);
+            for(Anuncio a : anuncios){
+                ValorAnuncio valor_anuncio =  anuncioDao.buscarValorAnuncioPorAnuncio(a.getCodigo_anuncio());
+                a.setValor_real(valor_anuncio.getValor_real());
+                a.setCantidadCompartirRealizados(anuncioDao.buscaCantidadCompartir(a));
+                a.setCantidadCuponesCanjeados(anuncioDao.buscaCantidadCuponesCanjeados(a));
+            }
+            
         %>
     </head>
     <body>
@@ -76,6 +84,17 @@
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     <h4 class="modal-title" id="myModalLabel"> <h3><%= a.getNombre_anuncio()%></h3></h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
+                                                    <p>Descripci&oacute;n: <%= a.getDescripcion_anuncio() %></p>
+                                                    <p>Estado: <%= a.getEstado_anuncio() %></p>
+                                                    <p>Cantidad cupones: <%= a.getCantidad_cupones() %></p>
+                                                    <p>Cupones canjeados: <%= a.getCantidadCuponesCanjeados() %> </p>
+                                                    <p>Compartir realizados: <%= a.getCantidadCompartirRealizados() %></p>
+                                                    <p>Porcentaje Descuento: <%= a.getPorcentaje_descuento() %>%</p>
+                                                    <p>Valor Anuncio: $<%= a.getValor_real() %></p>
+
                                                 </div>
                                                 <input type="hidden" name="codigoanuncio" value="<%= a.getCodigo_anuncio()%>">
                                                 <div class="modal-footer">

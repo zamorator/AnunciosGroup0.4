@@ -270,5 +270,55 @@ public class AnuncioDAO {
         
         return codigo_anuncio;
     }
-
+    
+    public int buscaCantidadCuponesCanjeados(Anuncio anuncio) throws Exception{
+        int cantidad = 0;
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        ResultSet rs = null;
+        try {
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPCANTIDADCUPONESCANJEADOS(?)}");
+            proc.setInt(1, anuncio.getCodigo_anuncio());
+            rs = proc.executeQuery();
+            System.out.println("SPCANTIDADCUPONESCANJEADOS");
+            while (rs.next()) {
+               cantidad = (rs.getInt("COUNT(*)"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            cf = null;
+        }
+        
+        return cantidad;
+    }
+    
+    public int buscaCantidadCompartir(Anuncio anuncio) throws Exception {
+        int cantidadCompartir = 0;
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        ResultSet rs = null;
+        try {
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCACANTIDADCOMPARTIR(?)}");
+            proc.setInt(1, anuncio.getCodigo_anuncio());
+            rs = proc.executeQuery();
+            System.out.println("SPBUSCACANTIDADCOMPARTIR");
+            while (rs.next()) {
+               cantidadCompartir = (rs.getInt("COUNT(*)"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            cf = null;
+        }
+        
+        return cantidadCompartir;
+    }
+            
 }
