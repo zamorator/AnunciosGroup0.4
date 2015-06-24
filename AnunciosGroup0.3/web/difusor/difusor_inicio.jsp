@@ -73,7 +73,7 @@
                               <h4><%= b.getNombre_anuncio() %></h4>
                               
                              <!--VENTANA MODAL INICIO -->
-                            <form method="POST" action="${pageContext.request.contextPath}/PublicarCanjear">
+                            <form method="GET" action="${pageContext.request.contextPath}/PublicarCanjear">
                             <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">

@@ -66,11 +66,9 @@
                             
                         </div>
                         <div class="col-md-5">
-                            <p>Para terminar de generar tu cúpon, presiona finalizar y este quedara disponibles en tu perfil.</p>
-                        </div>
-                    </div>
-                    <hr>    
-                    <form method="POST" action="${pageContext.request.contextPath}/GeneraCupon2">
+                            <h4>Para terminar de generar tu cúpon, presiona finalizar y este quedara disponibles en tu perfil.</h4>
+                            
+                            <form method="POST" action="${pageContext.request.contextPath}/GeneraCupon2">
                         <input type="hidden" name="cupon_codigo_anuncio" value="<%= cupon.getCodigo_anuncio() %>">  
                         <input type="hidden" name="cupon_nombre_difusor" value="<%= cupon.getNombre_u_difusor() %>">  
                         <input type="hidden" name="cupon_descuento" value="<%= cupon.getDescuento_obtenido() %>">  
@@ -78,6 +76,10 @@
                         <input type="hidden" name="puntos_utilizados" value="<%= cupon.getPtos_utilizados() %>"> 
                         <button type="submit" class="btn btn-primary" value="Finalizar">Finalizar</button>
                     </form>
+                        </div>
+                    </div>
+                    <hr>    
+                    
             </div>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %> 

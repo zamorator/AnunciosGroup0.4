@@ -88,12 +88,12 @@
             <div class="col-sm-3" id="tesistas">
                 <img class="img-circle img-responsive img-center" src="img/diego.jpg" width="150px" alt="">
                 <h2>Diego Zamora</h2>
-                <p>Ineniero en informatica de la Universidad tecnologica de Chile, Cofundador en AnunciosGroup, desarrollador y coleccionador de comic.</p>
+                <p>Ingeniero en informatica de la Universidad tecnologica de Chile, Cofundador en AnunciosGroup, desarrollador y coleccionador de comic.</p>
             </div>
             <div class="col-sm-3" id="tesistas">
                 <img class="img-circle img-responsive img-center" src="img/javier.jpg" width="150px" alt="">
                 <h2>Javier Castro</h2>
-                <p>Ineniero en informatica de la Universidad tecnologica de Chile, Gerente de Finanzas, desarrollador y basquetbolista aficionado.</p>            </div>
+                <p>Ingeniero en informatica de la Universidad tecnologica de Chile, Gerente de Finanzas, desarrollador y basquetbolista aficionado.</p>            </div>
         </div>
         
 

@@ -65,5 +65,11 @@ $(document).ready(function(){
 <a href="#" id="share_button" style="text-decoration: none; margin-right: -4px; margin-left: -3px;">
 			<img src="/img/interface/facebook.png" alt="Facebook" width="16" height="16" hspace="1" border="0">asdas
 			</a>
+
+
+<a class="twitter popup" data-lang="es" href="http://twitter.com/home/?status=Me%20gust%C3%B3%20este%20producto%20en%20%23PCFactory%0AMSI%C2%AE+Notebook+Gamer+GT80+TITAN+SLI+Intel+Core+i7-4720HQ+16GB+256GB+SSD+SuperRaid+%2B+1TB+18.4%22+Full+HD+NVIDIA+GTX980M+x+2+SLI+8GB+Teclado+mec%C3%A1nico+Windows+8.1%0Ahttps://www.pcfactory.cl/producto/19037"><img src="/img/interface/twitter.png" title="Compartir en Twitter" alt="Twitter" style="margin-right: -3px;" height="16" hspace="3" border="0" width="16">Twitter</a>
+<a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet">
+Tweet</a>
 </body>
 </html>

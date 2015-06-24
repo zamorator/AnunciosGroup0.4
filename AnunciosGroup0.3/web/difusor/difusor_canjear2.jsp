@@ -77,10 +77,6 @@
                         <div class="col-md-5">
                             
                         </div>
-                    <div class="col-md-5">
-                        <input type="checkbox" id="terminos" onclick="ValidarCheck()" > Acepto terminos y condiciones.
-                    </div>
-                    <div class="col-md-5">
 
                     </div>
                 </div>

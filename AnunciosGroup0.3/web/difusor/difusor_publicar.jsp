@@ -33,6 +33,7 @@
         <%@include file="../base_ag/_menu_difusor.jsp" %>
         <%
             ArrayList<Anuncio> anunciossugeridos =null;
+            String nombre_difusor = difusor.getNombre_u_difusor();
              try{
          
             
@@ -63,14 +64,16 @@
             <div class="col-md-4">
                 <h1><%= anuncio.getNombre_anuncio() %></h1>
                 <p><%= anuncio.getDescripcion_anuncio() %></p>
+                <input type="hidden" id="nombredifusor" value="<%= difusor.getNombre_u_difusor() %>">
                 <input type="hidden" id="descripcion" value="<%= anuncio.getDescripcion_anuncio() %>">
+                <input type="hidden" id="codigoanuncio" value="<%= anuncio.getCodigo_anuncio() %>">
                 <div class="row col-md-12">  
-                    <a class="btn btn-primary btn-lg" href="#" id="share_button" >Publicar en Facebook</a>
+                    <button class="btn btn-primary btn-lg" href="#" id="share_button"  value="Publicar en Facebook">Publicar en Facebook</button>
                 </div>
              
-                <div class="row col-lg-12" style="margin-top: 3%;">  
+                 <!-- <div class="row col-lg-12" style="margin-top: 3%;">  
                     <a class="btn btn-primary btn-lg" href="#" id="share_button" >Publicar en Twitter</a>
-                </div>    
+                </div>    --> 
             </div>
             
             <!-- /.col-md-4 -->
@@ -92,9 +95,7 @@
 
         <!-- Content Row -->
         <div class="row">
-                   <!-- SUGERIDOS inicio -->
-
-                 <div class="col-md-12" id="panel_sugeridos">
+                                    <div class="col-md-12" id="panel_sugeridos">
                        <!--ANUNCIO 1 --> 
                        <% int id_modal2=0; %>
                         <% for (Anuncio b : anunciossugeridos) {%>
@@ -105,6 +106,7 @@
                               <h4><%= b.getNombre_anuncio() %></h4>
                               
                              <!--VENTANA MODAL INICIO -->
+                            <form method="GET" action="${pageContext.request.contextPath}/PublicarCanjear">
                             <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -112,19 +114,27 @@
                                          <div class="modal-header">
                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                              <h4 class="modal-title" id="myModalLabel"> <h3><%= b.getNombre_anuncio() %></h3></h4>
+                                             <input type="hidden" name="codigoanuncio" value="<%= b.getCodigo_anuncio()%>">
                                         </div>
                                         <div class="modal-body">
                                             <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
-                                            <p>Esta es una pequeña descripcion del anuncio.</p>
-                                            
+                                            <p><%= b.getDescripcion_anuncio()%></p>
+                                            <% 
+                                                    String Favorito = "";
+                                                    if(b.getFavorito() == 1){
+                                                        Favorito = "checked";
+                                                    };
+                                                 %>
+                                                 <input type="checkbox"  onclick="clickCheck(<%= b.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" <%= Favorito %> class="click"> Agregar a Favorito
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button"  class="btn btn-default">Canejar</button>
-                                            <button type="button" class="btn btn-primary" >Publicar</button>
+                                            <input type="submit" class="btn btn-default" name="canjear" value="Canjear">
+                                            <input type="submit" class="btn btn-primary" name="publicar"value="Publicar">
                                         </div>
                                     </div>
                                     </div>
                                 </div>
+                                </form> 
                             <!--VENTANA MODAL FIN -->
                               
                               
@@ -133,8 +143,6 @@
                         </div>
                         <%id_modal2++;}%>    
                     </div>
-                    
-                    <!-- SUGERIDOS fin -->
         </div>
         <!-- /.row -->
 
@@ -159,7 +167,17 @@ $(document).ready(function(){
 			description: 'Anunciosgroup.cl',
 			message: 'asdasdasd'
 		});
-		
+                        var nombre_difusor = $('#nombredifusor').val();
+                        var codigo_anuncios = $('#codigoanuncio').val();
+                        $.get(
+                                "../AgregarCoin",
+                                {
+                                in_nombre_difusor: nombre_difusor,
+                                in_codigo_anuncios: codigo_anuncios
+                                },
+                                function(respuesta){
+                            $('#share_button').prop('disabled',true); 
+                          });
 			
 	});
 	
@@ -186,6 +204,22 @@ $(document).ready(function(){
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+                    <script>
+                        function clickCheck(codigo_anuncio,nombre_difusor){
+                         console.log(codigo_anuncio);
+                         console.log(nombre_difusor);
+                          $.get(
+                                "../AgregarFavorito",
+                                {
+                                in_codigo_anuncio: codigo_anuncio,
+                                in_nombre_difusor: nombre_difusor 
+                                },
+                                function(respuesta){
+                          console.log(respuesta);
+                          $(this).checked = respuesta;
+                          });  
+                          }                    
+                    </script>   
         
         <%@include file="../base_ag/_pie_pagina.jsp" %>   
     </body>
