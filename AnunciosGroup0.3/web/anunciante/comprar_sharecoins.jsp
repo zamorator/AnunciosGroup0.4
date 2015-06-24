@@ -22,6 +22,17 @@
         <link rel="stylesheet" href="../css/Estilos_ag.css">
         <link rel="stylesheet" href="../css/anunciante.css">
         <link rel="stylesheet" href="../css/bootstrap-nav-wizard.css">
+        <script>
+            $(document).ready(function () {
+                $("#terminos").change(function () {
+                    if ($("#terminos").is(':checked')) {
+                        $("#btnSiguiente").removeAttr('disabled');
+                    } else {
+                        $("#btnSiguiente").attr('disabled', 'disabled');
+                    }
+                });
+            });
+        </script>
         <title>Anunciante</title>
         <% Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
             Giro giro = (Giro) session.getAttribute("giro");
@@ -42,7 +53,7 @@
                 <ul class="nav nav-tabs nav-justified">
                     <li role="submenu" class="active"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
                     <li role="submenu"><a href="#">Agregar Anuncio</a></li>
-                <li role="submenu"><a href="#">Editar Anuncio</a></li>
+                    <li role="submenu"><a href="#">Editar Anuncio</a></li>
                 </ul>
             </div>
             <div id="agregar_anuncio" class="contenido">
@@ -57,27 +68,33 @@
 
                     </ul>
                 </div>
+
                 <div class="contenido_interior" >
                     <h3>
                         <%= anuncio.getNombre_anuncio()%>
                     </h3>
-                    <div class="contenedorImagen">
-                        <%= anuncio.getImagen_anuncio()%>
-                    </div>
-                    <div class="detalle" >
-                        <%= anuncio.getDescripcion_anuncio()%>
-                    </div>
-                    <div class="puntos" >
 
-                        <input type="radio" name="group1" value="10"> 10.000<br>
-                        <input type="radio" name="group1" value="15" checked> 15.000<br>
-                        <input type="radio" name="group1" value="20"> 20.000
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio()%>" class="img-responsive">
+                        </div>
+                        <div class="col-md-6"><div class="detalle" >
+                                <p> <%= anuncio.getDescripcion_anuncio()%> </p>
+                            </div>
+                            <div class="puntos" >
+                                <input type="radio" name="group1" value="10"> 10.000<br>
+                                <input type="radio" name="group1" value="15" checked> 15.000<br>
+                                <input type="radio" name="group1" value="20"> 20.000
+                            </div></div>
+
+                        <input type="checkbox" id="terminos" >
+
                     </div>
+                    <br>
+                    <a  id="btnSiguiente" href="comprar_sharecoins_paso2.jsp" class="btn btn-primary" disabled="" >Siguiente</a>
                 </div>
-                <a href="comprar_sharecoins_paso2.jsp" class="btn btn-primary">Siguiente</a>
             </div>
-        </div>
 
-        <%@include file="../base_ag/_pie_pagina.jsp" %>
+            <%@include file="../base_ag/_pie_pagina.jsp" %>
     </body>
 </html>
