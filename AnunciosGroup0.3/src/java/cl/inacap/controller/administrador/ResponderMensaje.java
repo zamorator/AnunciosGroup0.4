@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cl.inacap.controller.anunciante;
+package cl.inacap.controller.administrador;
 
-import cl.inacap.dao.anunciante.AnuncioDAO;
-import cl.inacap.model.Anuncio;
-import cl.inacap.model.ValorAnuncio;
+import cl.inacap.dao.administrador.AdministradorDAO;
 import java.io.IOException;
-import java.net.URLEncoder;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author zamorator <zamorator@gmail.com>
+ * @author Javoru
  */
-@WebServlet(name = "EditarAnuncio", urlPatterns = {"/EditarAnuncio"})
-public class EditarAnuncio extends HttpServlet {
+@WebServlet(name = "TraerMensaje", urlPatterns = {"/TraerMensaje"})
+public class ResponderMensaje extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,35 +33,20 @@ public class EditarAnuncio extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         try {
-            Anuncio anuncio = new Anuncio();
-            anuncio.setCodigo_anuncio(Integer.parseInt(request.getParameter("InputCodigoAnuncio")));
-            anuncio.setNombre_anuncio(request.getParameter("InputNombreAnuncio"));
-            anuncio.setDescripcion_anuncio(request.getParameter("InputDescripcionAnuncio"));
-            anuncio.setId_categoria(Integer.parseInt(request.getParameter("selectCategoria")));
-            anuncio.setId_segmento_sexo(Integer.parseInt(request.getParameter("selectSegmentoSexo")));
-            anuncio.setId_segmento_edad(Integer.parseInt(request.getParameter("selectSegmentoEdad")));
-            anuncio.setCantidad_cupones(Integer.parseInt(request.getParameter("InputCantidadCupones")));
-            anuncio.setPorcentaje_descuento(Integer.parseInt(request.getParameter("porcentajeDescueto")));
-            
-            ValorAnuncio valorAnuncio = new ValorAnuncio();
-            valorAnuncio.setValor_real(Integer.parseInt(request.getParameter("InputValorReal")));
-            valorAnuncio.setCodigo_anuncio(anuncio.getCodigo_anuncio());
+            /* TODO output your page here. You may use following sample code. */
+         
+            System.out.println("llegue a servlet");
+            AdministradorDAO administradordao = new AdministradorDAO();
+            boolean  resp = administradordao.respondermensaje(request.getParameter("in_mensaje"));
+            response.sendRedirect("administrador/admin_empresas.jsp");
             
             
-            AnuncioDAO anuncioDao = new AnuncioDAO();
-            anuncioDao.actualizarAnuncio(anuncio);
-            anuncioDao.actualizarValorAnuncio(valorAnuncio);
-            request.setAttribute("anuncio", anuncio);
-            
-            response.sendRedirect("anunciante/mis_anuncios.jsp?message="+ URLEncoder.encode("Anuncio Actualizado Exitosamente", "UTF-8"));
-        } catch (Exception e){
-          e.printStackTrace();
-          response.sendRedirect("anunciante/mis_anuncios.jsp?message="+ URLEncoder.encode("Error al intentar actualizar Anuncio", "UTF-8"));
         } finally {
-            
+            out.close();
         }
     }
 
@@ -77,7 +62,11 @@ public class EditarAnuncio extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ResponderMensaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -91,7 +80,11 @@ public class EditarAnuncio extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ResponderMensaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

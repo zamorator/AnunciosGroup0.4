@@ -7,8 +7,10 @@ package cl.inacap.dao.administrador;
 
 import cl.inacap.connect.ConnectionFactory;
 import cl.inacap.model.Administrador;
+import cl.inacap.model.Anunciante;
 import cl.inacap.model.Anuncio;
 import cl.inacap.model.Difusor;
+import cl.inacap.model.Mensaje;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -122,6 +124,10 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
         
         }
     
+    
+
+    
+    
     public boolean  actualizarestadoanuncio(int codigoanuncio) throws  Exception, SQLClientInfoException{
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
@@ -165,9 +171,181 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
 
             return false;
 }
+    
+    
+       public ArrayList<Mensaje> buscarmensajes() throws  Exception{
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            ResultSet rs = null;
+            ArrayList<Mensaje> mensajes = new ArrayList<Mensaje>();
+            try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_MENSAJE}");
+                   
+           
+            System.out.println(proc);
+            rs = proc.executeQuery();
+            
+            while(rs.next()){
+            Mensaje mensaje = new Mensaje();
+            mensaje.setId_mensaje(rs.getInt("ID_MENSAJE"));
+            mensaje.setPara(rs.getString("PARA"));
+            mensaje.setDe(rs.getString("DE"));
+            mensaje.setAsunto(rs.getString("ASUNTO"));
+            mensaje.setMensaje(rs.getString("MENSAJE"));
+            mensaje.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
+            mensaje.setCodigo_administrador(rs.getInt("CODIGO_ADMINISTRADOR"));
+            
+            mensajes.add(mensaje);
+            }
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         return mensajes;
+        
+        }
+    
+    
+    public boolean  respondermensaje(String mensaje) throws  Exception, SQLClientInfoException{
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            
+           ResultSet rs = null;
+           boolean resp = false;
+        
+           
+            try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_RESPONDER_MENSAJE(?)}");
+            proc.setString(1, mensaje);
+           
+            System.out.println(proc);
+            //recibe el resultado de una query
+            //rs recibe la tabla entera entera cuando se hace un slect
+            resp = proc.execute();
+            System.out.println(resp); 
+            
+            if (resp){
+            
+                return resp;
+            }else{
+                
+                return resp;
+            }
+            
+            
+            
+            } catch (SQLException x){
+                x.printStackTrace();
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+
+            return false;
+}
+       
+       
+       
+       
+    public ArrayList<Anunciante> buscaranuncianteadministrador() throws  Exception{
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            ResultSet rs = null;
+            ArrayList<Anunciante> anunciantes = new ArrayList<Anunciante>();
+            try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_ANUNCIANTE_ADMINISTRADOR}");
+                   
+           
+            System.out.println(proc);
+            rs = proc.executeQuery();
+            
+            while(rs.next()){
+            Anunciante anunciante = new Anunciante();
+            anunciante.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
+            anunciante.setId_comuna(rs.getInt("ID_COMUNA"));
+            anunciante.setNombre_anunciante(rs.getString("NOMBRE_ANUNCIANTE"));
+            anunciante.setDireccion_anunciante(rs.getString("DIRECCION_ANUNCIANTE"));
+            anunciante.setEstado_anunciante(rs.getString("ESTADO_ANUNCIANTE"));
+            anunciantes.add(anunciante);
+            }
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         return anunciantes;
+        
+        }
+    
+    
+    public boolean  actualizarestadoanunciante(String nombreuanunciante) throws  Exception, SQLClientInfoException{
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            
+           ResultSet rs = null;
+           boolean resp = false;
+           Anunciante estadoactualizado = new Anunciante();
+           
+            try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_ACTUALIZAR_ESTADO_ANUNCIANTE(?)}");
+            proc.setString(1, nombreuanunciante);
+           
+            System.out.println(proc);
+            //recibe el resultado de una query
+            //rs recibe la tabla entera entera cuando se hace un slect
+            resp = proc.execute();
+            System.out.println(resp); 
+            
+            if (resp){
+            
+                return resp;
+            }else{
+                
+                return resp;
+            }
+            
+            
+            
+            } catch (SQLException x){
+                x.printStackTrace();
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+
+            return false;
+}
+    
 
 
     private Anuncio IniciaSesionAdministrador(String estado_anuncio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean buscarmensajes(String parameter) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

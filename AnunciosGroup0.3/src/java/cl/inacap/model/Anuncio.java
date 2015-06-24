@@ -28,7 +28,11 @@ public class Anuncio {
     private int porcentaje_descuento;
     private int favorito;
     private int valor_real;
-    
+
+    //valores para mostrar en detalle anuncio, anunciante
+    private int cantidadCuponesCanjeados;
+    private int cantidadCompartirRealizados;
+
     public int getValor_real() {
         return valor_real;
     }
@@ -36,7 +40,7 @@ public class Anuncio {
     public void setValor_real(int valor_real) {
         this.valor_real = valor_real;
     }
-    
+
     public int getFavorito() {
         return favorito;
     }
@@ -44,6 +48,7 @@ public class Anuncio {
     public void setFavorito(int favorito) {
         this.favorito = favorito;
     }
+
     public int getCodigo_anuncio() {
         return codigo_anuncio;
     }
@@ -146,6 +151,22 @@ public class Anuncio {
 
     public void setPorcentaje_descuento(int porcentaje_descuento) {
         this.porcentaje_descuento = porcentaje_descuento;
+    }
+
+    public int getCantidadCuponesCanjeados() {
+        return cantidadCuponesCanjeados;
+    }
+
+    public void setCantidadCuponesCanjeados(int cantidadCuponesCanjeados) {
+        this.cantidadCuponesCanjeados = cantidadCuponesCanjeados;
+    }
+
+    public int getCantidadCompartirRealizados() {
+        return cantidadCompartirRealizados;
+    }
+
+    public void setCantidadCompartirRealizados(int cantidadCompartirRealizados) {
+        this.cantidadCompartirRealizados = cantidadCompartirRealizados;
     }
 
 }
