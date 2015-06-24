@@ -45,6 +45,8 @@ public class GenerarCupon extends HttpServlet {
             System.out.println(request.getParameter("in_descuento_obtenido"));
             cupon.setValor_final_producto(request.getParameter("in_valor_final"));
             System.out.println(request.getParameter("in_valor_final"));
+            cupon.setPtos_utilizados(Integer.parseInt(request.getParameter("puntos_utilizados")));
+            System.out.println(Integer.parseInt(request.getParameter("puntos_utilizados")));
             HttpSession session_actual3 = request.getSession(true);
             session_actual3.setAttribute("cupon", cupon);
             response.sendRedirect("difusor/difusor_canjear2.jsp");

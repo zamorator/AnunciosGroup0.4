@@ -37,6 +37,7 @@
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="difusor_perfil.jsp">Mis Datos</a></li>
                 <li role="presentation" class="active"><a href="#">Puntos</a></li>
+                <li role="presentation"><a href="difusor_cupones.jsp">Cupones</a></li>
             </ul>
         </div>
         

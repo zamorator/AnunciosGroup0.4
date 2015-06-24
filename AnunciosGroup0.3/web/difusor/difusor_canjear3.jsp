@@ -74,7 +74,8 @@
                         <input type="hidden" name="cupon_codigo_anuncio" value="<%= cupon.getCodigo_anuncio() %>">  
                         <input type="hidden" name="cupon_nombre_difusor" value="<%= cupon.getNombre_u_difusor() %>">  
                         <input type="hidden" name="cupon_descuento" value="<%= cupon.getDescuento_obtenido() %>">  
-                        <input type="hidden" name="cupon_valor_final" value="<%= cupon.getValor_final_producto() %>">    
+                        <input type="hidden" name="cupon_valor_final" value="<%= cupon.getValor_final_producto() %>"> 
+                        <input type="hidden" name="puntos_utilizados" value="<%= cupon.getPtos_utilizados() %>"> 
                         <button type="submit" class="btn btn-primary" value="Finalizar">Finalizar</button>
                     </form>
             </div>

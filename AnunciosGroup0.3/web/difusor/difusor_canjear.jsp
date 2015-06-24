@@ -80,7 +80,7 @@
                             <input type="hidden" id ="max_descuento" value="<%= anuncio.getPorcentaje_descuento() %>">
                             <h4>Tu coins disponibles: <%= puntos %> </h4>
                             <input type="hidden" id="max_puntos" value="<%= puntos %>">
-                            <h4>Coins a utilizar:</h4> <input type="number" id="descuento" min="0" max="<%= puntos %>" onkeypress="return solonumeros(event);" value="0"> <input  onclick="Maxpuntos();" type="button" value="Calcular descuento">
+                            <h4>Coins a utilizar:</h4> <input type="number" id="descuento" name="puntos_utilizados" min="0" max="<%= puntos %>" onkeypress="return solonumeros(event);" value="0"> <input  onclick="Maxpuntos();" type="button" value="Calcular descuento">
                             <hr>
                             <h4>Valor real: $<%= anuncio.getValor_real() %></h4>
                             <input type="hidden" id="valor_real"  value="<%= anuncio.getValor_real() %>">

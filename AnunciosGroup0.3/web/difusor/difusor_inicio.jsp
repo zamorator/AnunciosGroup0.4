@@ -84,6 +84,7 @@
                                         <div class="modal-body">
                                             <img class="img-responsive" src="../img/anuncios/<%= b.getImagen_anuncio() %>" >
                                             <p>Esta es una pequeña descripcion del anuncio.</p>
+                                            
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button"  class="btn btn-default">Canejar</button>
@@ -115,7 +116,7 @@
                               
                              <!--VENTANA MODAL INICIO -->
                              <form method="POST" action="${pageContext.request.contextPath}/PublicarCanjear">
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"  data-target="#<%= a.getCodigo_anuncio() %>">Detalle</button>
+                                <button type="button" class="btn btn-primary " data-toggle="modal"  data-target="#<%= a.getCodigo_anuncio() %>">Detalle</button>
                                     <div class="modal fade"  id="<%=a.getCodigo_anuncio()%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content">
@@ -126,7 +127,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <img class="img-responsive" src="../img/anuncios/<%= a.getImagen_anuncio() %>" >
-                                                <p>Esta es una pequeña descripcion del anuncio.</p>
+                                                <p>Esta es una pequeña descripcion del anuncio.</p>   
                                                  <% 
                                                     String Favorito = "";
                                                     if(a.getFavorito() == 1){
@@ -154,13 +155,11 @@
                 </div>
                 
             </div>
-        </div>
-                    
+        </div>                
                     <script>
                         function clickCheck(codigo_anuncio,nombre_difusor){
                          console.log(codigo_anuncio);
                          console.log(nombre_difusor);
-
                           $.get(
                                 "../AgregarFavorito",
                                 {
