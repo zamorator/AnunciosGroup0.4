@@ -120,6 +120,7 @@ public class RegistroDifusor extends HttpServlet {
                                     difusor_redsocial.setNombre_u_difusor(difusor.getNombre_u_difusor());
                                     difusor_redsocial.setNombre_usuario_red_social(request.getParameter("InputFacebook"));
                                     creaRedSocial(difusor_redsocial);
+                                    
                                 }
                                 if (!tw.equals("")) {
                                     DifusorRedesSocialesR difusor_redsocial = new DifusorRedesSocialesR();
