@@ -37,6 +37,7 @@ public class AnuncianteDAO {
                 anunciante.setNombre_anunciante(rs.getString("NOMBRE_ANUNCIANTE"));
                 anunciante.setDireccion_anunciante(rs.getString("DIRECCION_ANUNCIANTE"));
                 anunciante.setPassword_anunciante(rs.getString("PASSWORD_ANUNCIANTE"));
+                anunciante.setEmail_anunciante(rs.getString("EMAIL_ANUNCIANTE"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
