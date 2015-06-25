@@ -19,11 +19,16 @@
         <title>Ingreso Anunciante</title>
     </head>
     <body>
+         <%@include file="base_ag/_menu_general.jsp" %>
         <div class="contenido">
+
             <div class="contenido" id="ingreso">
             <% if (request.getParameter("message") != null) {%>
             <div class="alert alert-danger" role="alert">${param.message}</div>
             <% }%>
+            <ul class="nav nav-tabs">
+                <li role="presentation" ><a href="inicio.jsp">Home</a></li>
+            </ul>
             <form action="${pageContext.request.contextPath}/LoginAnunciante" method="POST" >
                 <div class="form-group">
                     <label for="InputNombreUAnunciante">Nombre Anunciante</label>

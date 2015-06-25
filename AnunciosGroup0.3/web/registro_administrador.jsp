@@ -27,7 +27,7 @@
     <body>
         
         
-        
+         <%@include file="base_ag/_menu_general.jsp" %>
         <div class="contenido" id="registro">
             <% if (request.getParameter("message") != null) {%>
             <div class="alert alert-danger" role="alert">${param.message}</div>

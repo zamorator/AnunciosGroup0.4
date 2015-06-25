@@ -24,7 +24,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../inicio.jsp">
+                    <a class="navbar-brand" href="/AnunciosGroup0.3/inicio.jsp">
 
                         <img src="/AnunciosGroup0.3/img/Logo.png" height="35" width="250" style="margin-top: -10px;">
 

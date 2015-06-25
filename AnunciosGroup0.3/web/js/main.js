@@ -28,7 +28,7 @@ $(function (){
     var div_session=' <div id="facebook-session">'+
             '<strong></strong>'+
             '<img>'+
-            '<a href="#" id="logout" class="btn btn-danger"> Cerrar sesion <a/>'+
+            '<a href="#" id="logout" class="btn btn-danger"> Desvincular <a/>'+
             '</div>';
     
     //SE CONECTA AL SDK CON LOS PARAMETROS
@@ -127,6 +127,7 @@ $(function (){
         if(confirm("¿Esta Seguro?")){ 
          
             facebookLogout();
+            $('#Facebook-nombre').val("");
         }else{
           return false;  
       };

@@ -47,9 +47,9 @@ public class RegistroDifusor extends HttpServlet {
                 
                 String fb = request.getParameter("InputFacebook");
                 String tw = request.getParameter("InputTwitter");
-                String gl = request.getParameter("InputGoogleplus");
+                //String gl = request.getParameter("InputGoogleplus");
                 
-                boolean RedesSocialesValidas = validarExistencia(fb, tw, gl);
+                boolean RedesSocialesValidas = validarExistencia(fb, tw);
                 if (RedesSocialesValidas) {
                     //validacion password
                     if (!request.getParameter("InputPassword").equals("") || !request.getParameter("InputPassword2").equals("")) {
@@ -127,9 +127,7 @@ public class RegistroDifusor extends HttpServlet {
                                     
                                    // creaRedSocial(difusor.getNombre_u_difusor(), tw, 2);
                                 }
-                                if (!gl.equals("")) {
-                                  //  creaRedSocial(difusor.getNombre_u_difusor(), gl, 3);
-                                }
+
                                 response.sendRedirect("exito.jsp");
                             } else {
                                 response.sendRedirect("registro_difusor.jsp?message=" + URLEncoder.encode("Nombre Difusor ya existe", "UTF-8"));
@@ -204,16 +202,13 @@ public class RegistroDifusor extends HttpServlet {
         dAO.AgregaRedSocialDifusor(difusorRedesSocialesR);
     }
 
-    private boolean validarExistencia(String fb, String tw, String gl) throws Exception {
+    private boolean validarExistencia(String fb, String tw) throws Exception {
         DifusorRedesSocialesDAO drsdao = new DifusorRedesSocialesDAO();
         if (drsdao.ConsultaRedSocialExistente(fb) != 0) {
             redesSocialesInvalidas += "Facebook ";
         }
         if (drsdao.ConsultaRedSocialExistente(tw) != 0) {
             redesSocialesInvalidas += "Twitter ";
-        }
-        if (drsdao.ConsultaRedSocialExistente(gl) != 0) {
-            redesSocialesInvalidas += "Google+";
         }
         if (redesSocialesInvalidas.length() > 0) {
             return false;

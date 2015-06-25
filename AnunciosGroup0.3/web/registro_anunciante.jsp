@@ -71,7 +71,7 @@
         <title>Registro Anunciante</title>
     </head>
     <body>
-    <%@include file="base_ag/_menu_difusor.jsp" %>  
+     <%@include file="base_ag/_menu_general.jsp" %>
         <%
             RegionDAO regionesDao = new RegionDAO();
             ArrayList<Region> regiones = regionesDao.BuscarRegiones();

@@ -20,7 +20,7 @@
         <title>Inicio Difusor</title>
     </head>
     <body>
-        <%@include file="base_ag/_menu_difusor.jsp" %>
+         <%@include file="base_ag/_menu_general.jsp" %>
         <!-- Header Carousel -->
         <header id="myCarousel" class="carousel slide">
             <!-- Indicators -->

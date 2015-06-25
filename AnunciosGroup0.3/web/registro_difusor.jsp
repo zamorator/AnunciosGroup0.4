@@ -21,7 +21,7 @@
         <title>Registro Difusor</title>
     </head>
     <body>
-        <%@include file="base_ag/_menu_difusor.jsp" %>
+        <%@include file="base_ag/_menu_general.jsp" %>
         <script>
             (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -74,7 +74,7 @@
                             </div>
                             <div class="form-group"style="padding: 2%;">
                                 <label for="InputEdad">Edad</label>
-                                <input type="number" class="form-control" name="InputEdad" id="Edad" placeholder="Ingrese Edad" required="">
+                                <input type="number" min="0" max="100" class="form-control" name="InputEdad" id="Edad" placeholder="Ingrese Edad" required="">
                             </div>
                             <div class="form-group"style="padding: 2%;">
                                 <label for="optionsRadiosSexo">Sexo</label>
@@ -104,14 +104,14 @@
                             
                             <div class="form-group"style="padding: 2%;">
                                 <label for="InputFacebook">Facebook</label>
-                                <input type="text" class="form-control" name="InputFacebook" id="Facebook-nombre" readonly="true"  value="hola" placeholder="">
+                                <input type="text" class="form-control" name="InputFacebook" id="Facebook-nombre" readonly="true"placeholder="" required="">
                                 <input type="hidden" class="form-control" name="InputFacebook-id" id="Facebook-id" placeholder="">
 
                                     <a href="#" id="login" class="btn btn-primary" style="margin-top:  1%;">Vincular Facebook </a>
                             </div>
                             <div class="form-group"style="padding: 2%;">
                                 <label for="InputTwitter">Twitter</label>
-                                <input type="text" class="form-control" name="InputTwitter" id="Twitter-nombre" readonly="true"   placeholder="">
+                                <input type="text" class="form-control" name="InputTwitter" id="Twitter-nombre" readonly="true"   placeholder="" required="">
                                 <input type="hidden" class="form-control" name="InputTwitter-id" id="Twitter-id" placeholder="">
                                 <a href="#" id="login-twitter" class="btn btn-primary" style="margin-top:  1%;">Vincular Twitter </a>
                             </div>

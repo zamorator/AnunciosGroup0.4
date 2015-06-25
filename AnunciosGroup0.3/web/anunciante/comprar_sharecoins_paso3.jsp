@@ -29,15 +29,15 @@
     <body>
         <%@include file="../base_ag/_menu_anunciante.jsp" %> 
 
-        <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
+        <ul class="nav nav-pills nav-justified menu_anunciante" role="group"style="padding-top: 10%;">
             <li role="presentation" class="active"><a href="mis_anuncios.jsp">Anuncios</a></li>
             <li role="presentation"><a href="perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="#">Ayuda</a></li>
         </ul>
 
-        <div id="contenido" class="submenu"> 
+        <div id="panel"> 
             <div id="submenu" class="links_submenu">
-                <ul class="nav nav-tabs nav-justified">
+                <ul class="nav nav-tabs">
                     <li role="submenu" class="active"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
                     <li role="submenu"><a href="#">Agregar Anuncio</a></li>
                 <li role="submenu"><a href="#">Editar Anuncio</a></li>
