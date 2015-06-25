@@ -21,20 +21,22 @@
     <body>
         <%@include file="base_ag/_menu_general.jsp" %>
 
-        <section class="bg-primary" id="about" style="margin-top: 20%;">
-        <div class="container">
+    <section class="bg-primary" id="about" style="margin-top: 16%;">
+        <div class="container" >
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Bienvenido a AnunciosGroup</h2>
                     <hr class="light">
                     <p class="text-faded">Como grupo AnunciosGroup, te damos la mas cordial bievenida y te agradecemos por querer ser parte de esto, nuestro personal esta a disposicion  no dudes en contactarte con AnunciosGroup ante cualquier eventualidad.</p>
-                    <a style="margin-top: 3px;" href="inicio.jsp" class="btn btn-default btn-xl">Comienza ya!</a>
+                    <a style="margin-top: 3px;" href="/AnunciosGroup0.3/inicio.jsp" class="btn btn-default btn-xl">Comienza ya!</a>
                 </div>
             </div>
         </div>
     </section>
+      
 
-
+        <div style="height: 125px;">
+        </div>
 
    
         <%@include file="base_ag/_pie_pagina.jsp" %>
