@@ -6,8 +6,11 @@ $(window).scroll(function(){
         var cantidad = $('#cantidadanuncios').val();
         var ruta = $('#ruta').val();
         var nombre_difusor = $('#nombre_difusor').val();
-        $.get("../TraeAnuncios",{in_cantidad:cantidad, in_nombre_difuor:nombre_difusor},function(res){
+        console.log(nombre_difusor);
+        var favorito = "";
+        $.get("../TraeAnuncios",{in_cantidad:cantidad, in_nombre_difusor:nombre_difusor},function(res){
             var json = res;
+            console.log(json);
             var data = JSON.parse(json);
             console.log(data.length + " cantidad arrays  ");
             for(f=0;f<data.length;f++)
@@ -60,9 +63,14 @@ $(window).scroll(function(){
                                                                             '</div>'+
                                                                             '<div class="modal-body">'+
                                                                                 '<img class="img-responsive" src="'+ ruta +'/images/anunciante/' + data[f].imagen_anuncio +'" >'+
-                                                                                '<p>'+ data[f].descripcion_anuncio+'</p>'+
+                                                                                '<p>'+ data[f].descripcion_anuncio+'</p>';
                                                                                 
-                                                                                '<input type="checkbox"  name ="favorito" class="click" onclick="clickCheck('+data[f].codigo_anuncio+' , ' +'&quot;' + nombre_difusor+'&quot;'+')" > Agregar a Favorito'+
+                                                                                if(data[f].favorito  === 1){
+                                                                                    console.log("es" +favorito );
+                                                                                    favorito = "checked";
+                                                                                };
+                                                                                
+                                 anuncios_nuevos = anuncios_nuevos +    '<input type="checkbox"  name ="favorito" class="click" onclick="clickCheck('+data[f].codigo_anuncio+' , ' +'&quot;' + nombre_difusor+'&quot;'+')"'+ favorito+' > Agregar a Favorito'+
                                                                             '</div>'+
                                                                             '<div class="modal-footer">'+
                                                                                 '<input type="submit" class="btn btn-default" name="canjear" data-dismiss="modal" value="Canjear">'+
