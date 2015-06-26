@@ -18,7 +18,7 @@ $(window).scroll(function(){
                  var cantidad_anterior= cantidad;
                  var anuncios_nuevos='                    <div class="col-sm-6 col-md-4" id="desdeaqui'+ cantidad  +'">'+
                                                         '<div class="thumbnail" id="anuncios">'+
-                                                            '<img class="img-responsive" id="img_anuncios"  src="'+ ruta +'/images/anunciante/' + data[f].imagen_anuncio +'" >'+
+                                                            '<img class="img-responsive img-thumbnail" id="img_anuncios"  src="'+ ruta +'/images/anunciante/' + data[f].imagen_anuncio +'" >'+
                                                             '<div class="caption">';
                                                               
                         //---------------Nuevo inicio                                        
@@ -62,7 +62,7 @@ $(window).scroll(function(){
                                                                                  '<input type="hidden" name="codigoanuncio" value="'+data[f].codigo_anuncio+'">'+
                                                                             '</div>'+
                                                                             '<div class="modal-body">'+
-                                                                                '<img class="img-responsive" src="'+ ruta +'/images/anunciante/' + data[f].imagen_anuncio +'" >'+
+                                                                                '<img class="img-responsive img-thumbnail" src="'+ ruta +'/images/anunciante/' + data[f].imagen_anuncio +'" >'+
                                                                                 '<p>'+ data[f].descripcion_anuncio+'</p>';
                                                                                 
                                                                                 if(data[f].favorito  === 1){

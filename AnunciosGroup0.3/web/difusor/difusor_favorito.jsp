@@ -61,7 +61,7 @@
                         <% for (Anuncio b : anunciosfavoritos) {%>
                         <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" id="anunciossugeridos">
-                            <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
+                            <img class="img-responsive img-thumbnail" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                             <div class="caption">
                                 <% if(b.getNombre_anuncio().length() <= 23){ %>
                                     <h4><a href="#"><%= b.getNombre_anuncio() %></a>
@@ -104,7 +104,7 @@
                                              <input type="hidden" name="codigoanuncio" value="<%= b.getCodigo_anuncio()%>">
                                         </div>
                                         <div class="modal-body">
-                                            <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
+                                            <img class="img-responsive img-thumbnail" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                                             <p><%= b.getDescripcion_anuncio()%></p>
                                             <% 
                                                     String Favorito = "";

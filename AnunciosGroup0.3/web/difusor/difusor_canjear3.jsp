@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-md-7">
                             <a href="#">
-                                <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio()%>" style="width: 400px; height: 400px;"alt="">
+                                <img class="img-responsive img-thumbnail" src="${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio()%>" style="width: 400px; height: 400px;"alt="">
                             </a>
                         </div>
                         <div class="col-md-5">
