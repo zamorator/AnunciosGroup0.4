@@ -44,16 +44,16 @@
     </head>
     <body>
         <%@include file="../base_ag/_menu_anunciante.jsp"%>  
-        <ul class="nav nav-pills nav-justified menu_anunciante" role="group">
+        <ul class="nav nav-pills nav-justified menu_anunciante" role="group"style="padding-top: 10%;">
             <li role="presentation" class="active"><a href="#">Anuncios</a></li>
             <li role="presentation"><a href="perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
         </ul>
-        <div class="submenu">
+        <div id="panel">
             <% if (request.getParameter("message") != null) {%>
             <div class="label label-success" role="alert">${param.message}</div>
             <% }%>
-            <ul class="nav nav-tabs nav-justified">
+            <ul class="nav nav-tabs ">
                 <li role="submenu" class="active"><a href="#">Mis Anuncios</a></li>
                 <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
                 <li role="submenu"><a href="#">Editar Anuncio</a></li>
@@ -73,7 +73,11 @@
                                 <% }%>
                                 <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
                                 <div class="caption">
-                                    <h3><%= a.getNombre_anuncio()%></h3>
+                                <% if(a.getNombre_anuncio().length() <= 23){ %>
+                                    <h4><%= a.getNombre_anuncio() %></h4>
+                                <%}else{%>
+                                <h4><%= a.getNombre_anuncio().substring(0, 23) %> ...</h4>
+                                <%}%>
 
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%= a.getCodigo_anuncio()%>">Detalle</button>
                                     <a class="btn btn-primary" href="editar_anuncio.jsp?anuncio_id=<%=a.getCodigo_anuncio()%>"> Editar </a>
@@ -87,11 +91,11 @@
                                                     <h4 class="modal-title" id="myModalLabel"> <h3><%= a.getNombre_anuncio()%></h3></h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
+                                                    <img class="img-responsive"  id="img_anuncios"src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
                                                     <p></p>
                                                     <p> </p>
                                                     <p></p>
-                                                    <p>%</p>
+                                                    <p></p>
                                                     <p></p>
                                                     <ul class="list-group">
                                                         <li class="list-group-item">
