@@ -196,6 +196,7 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             mensaje.setMensaje(rs.getString("MENSAJE"));
             mensaje.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
             mensaje.setCodigo_administrador(rs.getInt("CODIGO_ADMINISTRADOR"));
+            mensaje.setFecha(rs.getString("FECHA"));
             
             mensajes.add(mensaje);
             }

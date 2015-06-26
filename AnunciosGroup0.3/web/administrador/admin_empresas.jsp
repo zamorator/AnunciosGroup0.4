@@ -20,6 +20,10 @@
         <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
         <!-- Latest compiled and minified JavaScript -->
         <script src="../js/bootstrap.min.js"></script>
+        <!--  MENSAJES BOOTSTRAP  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+        
         <link rel="stylesheet" href="../css/Estilos_ag.css">
         <link rel="stylesheet" href="../css/anunciante.css">
         <title>MENSAJES</title>
@@ -59,20 +63,56 @@
             </ul>
             
             
-            <div class="col-md-12" id="">
+        <!--    <div class="col-md-12" id=""> -->
                        <!--ANUNCIO 1 --> 
                        <% int id_modal2=0; %>
+                       <br>
+                       
                        <% for (Mensaje b : mostrarmensajes) {%>
-                       <div class="col-sm-6 col-md-4">
-                        
-                            
-                            <div class="caption">
-                                 ID : <h3> <%= b.getId_mensaje() %></h3>
-                                 DE : <h3> <%= b.getDe()%></h3>
+                       <form action="${pageContext.request.contextPath}/TraerMensaje" method="POST" >
+                       
+                           <div class="tab-content">
+                               <div class="tab-pane fade in active" id="home">
+                                   <div class="list-group">
+                                       <a href="#" class="list-group-item" data-toggle="modal" data-target="#<%= id_modal2%>" >
+                                           
+                                           <span class="glyphicon glyphicon-star-empty"></span><span class="name" style="min-width: 120px;
+                                           display: inline-block;"> <%= b.getNombre_u_anunciante()%> </span> <span class=""> <%= b.getDe()%> </span>
+                                           <span class="text-muted" style="font-size: 11px;">- More content here</span> <span class="badge"> <%= b.getFecha()%> </span> <span class="pull-right"><span class="glyphicon glyphicon-paperclip">
+                                           </span></span>
+                                       </a>
+                                   </div>
+                               </div>
+                           </div>        
+                           
+                           
+                           
+                           
+                       
+                           
+                    <!--   <li class="list-group-item text-muted">Inbox</li> 
+                       for (Mensaje b : mostrarmensajes) {%>
+                      
+                       
+                       <form action="${pageContext.request.contextPath}/TraerMensaje" method="POST" >
+                           
+                       
+                         <div class="tab-pane" id="messages">
+                           <ul class="list-group">
+                                 <li class="list-group-item text-right" ><a href="#" data-toggle="modal" data-target="#<%= id_modal2%>"  class="pull-left">
+                                  EMPRESA: <%= b.getNombre_u_anunciante()%> 
+                                  DE:  <%= b.getDe()%>
+                                  PARA: <%= b.getPara()%> </a> <%= b.getFecha()  %> 
+                                 </li>
+                             </ul>  
+                         
+                         </div> -->
+
                          
                              <!--VENTANA MODAL INICIO -->
-                            <form action="${pageContext.request.contextPath}/TraerMensaje" method="POST" >
-                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
+                        <!--    <form action="${pageContext.request.contextPath}/TraerMensaje" method="POST" >
+                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal2%>">Ver</button> -->
+                            
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <input type="hidden" name="in_mensaje" value="<%= b.getMensaje() %>" >

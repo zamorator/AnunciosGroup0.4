@@ -18,6 +18,7 @@ public class Mensaje {
     private String mensaje;
     private String nombre_u_anunciante;
     private int codigo_administrador;
+    private String fecha;
 
     public int getId_mensaje() {
         return id_mensaje;
@@ -73,6 +74,14 @@ public class Mensaje {
 
     public void setCodigo_administrador(int codigo_administrador) {
         this.codigo_administrador = codigo_administrador;
+    }
+    
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
 }
