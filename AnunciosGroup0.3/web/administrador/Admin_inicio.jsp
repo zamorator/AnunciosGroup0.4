@@ -62,13 +62,17 @@
                         <% for (Anuncio b : anunciospendientes) {%>
                         <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" id="anuncios">
-                            <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/img/anuncios/<%= b.getImagen_anuncio() %>" >
+                            <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                             <div class="caption">
-                              <h3><%= b.getNombre_anuncio() %></h3>
+                               <% if(b.getNombre_anuncio().length() <= 23){ %>
+                                    <h4><%= b.getNombre_anuncio() %></h4>
+                                <%}else{%>
+                                <h4><%= b.getNombre_anuncio().substring(0, 23) %> ...</h4>
+                                <%}%>
                               
                              <!--VENTANA MODAL INICIO -->
                              <form action="${pageContext.request.contextPath}/ActualizarAnuncio" method="POST" >
-                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <input type="hidden" name="in_codigo_anuncio" value="<%= b.getCodigo_anuncio() %>" >
@@ -78,7 +82,7 @@
                                              <h4 class="modal-title" id="myModalLabel"> <h3><%= b.getNombre_anuncio() %></h3></h4>
                                         </div>
                                         <div class="modal-body">
-                                            <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/img/anuncios/<%= b.getImagen_anuncio() %>" >
+                                            <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                                             <p>Esta es una pequeña descripcion del anuncio.</p>
                      
                                            
