@@ -74,21 +74,24 @@
                             <input type="hidden" name="codigo_anuncio" value="<%= anuncio.getCodigo_anuncio() %>">
                             <hr>
                         </div>
-                        
+
                         <div class="col-md-5">
-                            <h3>Maximo descuento: <%= anuncio.getPorcentaje_descuento() %> %</h3>
-                            <input type="hidden" id ="max_descuento" value="<%= anuncio.getPorcentaje_descuento() %>">
-                            <h4>Tu coins disponibles: <%= puntos %> </h4>
+                        <div class="list-group" >
+                            <a href="#" class="list-group-item active">
+                              Maximo descuento: <%= anuncio.getPorcentaje_descuento() %> %
+                              <input type="hidden" id ="max_descuento" value="<%= anuncio.getPorcentaje_descuento() %>">
+                            </a>
+                            <a href="#" class="list-group-item">Tu coins disponibles: <%= puntos %></a>
+                            <a class="list-group-item">Coins a utilizar:<input type="number" id="descuento" name="puntos_utilizados" min="0" max="<%= puntos %>" onkeypress="return solonumeros(event);" value="0"> <input  onclick="Maxpuntos();" type="button" value="Calcular descuento"></a>
                             <input type="hidden" id="max_puntos" value="<%= puntos %>">
-                            <h4>Coins a utilizar:</h4> <input type="number" id="descuento" name="puntos_utilizados" min="0" max="<%= puntos %>" onkeypress="return solonumeros(event);" value="0"> <input  onclick="Maxpuntos();" type="button" value="Calcular descuento">
-                            <hr>
-                            <h4>Valor real: $<%= anuncio.getValor_real() %></h4>
+                            <a href="#" class="list-group-item">Valor real: $<%= anuncio.getValor_real() %></a>
                             <input type="hidden" id="valor_real"  value="<%= anuncio.getValor_real() %>">
-                            
-                            <h4>Descuento obtenido:<span id="valor_descuento" name="descuento_obtenido"  disabled="true" > </span></h4>
+                            <a href="#" class="list-group-item">Descuento obtenido:<span id="valor_descuento" name="descuento_obtenido"  disabled="true" > </span></a>
                             <input type="hidden" id="in_descuento_obtenido" name="in_descuento_obtenido" value="">
-                            <h4>Valor final:<span id="valor_final" name="valor_final" disabled="true" > </span></h4>
+                            <a href="#" class="list-group-item">Valor final:<span id="valor_final" name="valor_final" disabled="true" > </span></a>
                             <input type="hidden" id="in_valor_final" name="in_valor_final" value="">
+                        </div>
+                            
                         </div>
                     </div>
                     <hr>
@@ -125,7 +128,11 @@
                 console.log("valor_real" + valor_real);
                 console.log("total" + total);
                 console.log("maximo" + maximo_descuento);
+                
                 if(total <= maximo_descuento ){
+                    total = String(total);
+                    total = total.substring(0,3);
+                    console.log(total);
                     $('#valor_descuento').text(total+"%");
                     $('#in_descuento_obtenido').val(total);
                     $('#valor_final').text("$" + valor_final);
