@@ -78,12 +78,12 @@
                                         <input type="hidden" name="in_codigo_anuncio" value="<%= b.getCodigo_anuncio() %>" >
                                     <div class="modal-content">
                                          <div class="modal-header">
-                                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                              <h4 class="modal-title" id="myModalLabel"> <h3><%= b.getNombre_anuncio() %></h3></h4>
                                         </div>
                                         <div class="modal-body">
-                                            <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
-                                            <p>Esta es una pequeña descripcion del anuncio.</p>
+                                            <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
+                                            <p><%= b.getDescripcion_anuncio() %></p>
                      
                                            
                                         </div>

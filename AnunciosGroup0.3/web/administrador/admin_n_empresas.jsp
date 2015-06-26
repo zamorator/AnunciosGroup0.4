@@ -67,13 +67,23 @@
                        <div class="col-sm-6 col-md-4">
                         
                             
-                            <div class="caption">
-                               <h3> <%= b.getNombre_u_anunciante()%></h3>
-                               <h3> <%= b.getDireccion_anunciante()%></h3>
-                               <h3> <%= b.getEstado_anunciante() %></h3>
+                            <div style="padding-top: 3%;" class="caption">
+             
+                               
+                               
+                                <div style="padding-top: 3%;" class="list-group">
+                                    <a href="#" class="list-group-item disabled">
+                                      Solicitud nueva empresa.
+                                    </a>
+                                    <a href="#" class="list-group-item"><%= b.getNombre_u_anunciante()%></a>
+                                    <a href="#" class="list-group-item"><%= b.getDireccion_anunciante()%></a>
+                                    <a href="#" class="list-group-item"><%= b.getEstado_anunciante() %></a> 
+                                </div>
+                               
+                               
                              <!--VENTANA MODAL INICIO -->
                             <form action="${pageContext.request.contextPath}/ActualizarAnuncianteAdmin" method="POST" >
-                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <input type="hidden" name="in_nombre_u_anunciante" value="<%= b.getNombre_u_anunciante()%>" >
@@ -98,7 +108,7 @@
                             <!--VENTANA MODAL FIN -->
                               </form>
                               
-                            </div>
+                            </div >
                         
                         </div>
                         <%id_modal2++;}%>    
