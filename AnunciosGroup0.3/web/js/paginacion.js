@@ -49,7 +49,7 @@ $(window).scroll(function(){
                         //------------------Nuevo fin
                        anuncios_nuevos = anuncios_nuevos + '<!--VENTANA MODAL INICIO -->'+
                                                              '<form method="POST" action="/AnunciosGroup0.3/PublicarCanjear">'+
-                                                                '<button type="button" class="btn btn-primary btn-lg" data-toggle="modal"  data-target="#'+data[f].codigo_anuncio+'">Detalle</button>'+
+                                                                '<button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#'+data[f].codigo_anuncio+'">Detalle</button>'+
                                                                     '<div class="modal fade"  id="'+data[f].codigo_anuncio+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
                                                                         '<div class="modal-dialog">'+
                                                                         '<div class="modal-content">'+
@@ -59,8 +59,9 @@ $(window).scroll(function(){
                                                                                  '<input type="hidden" name="codigoanuncio" value="'+data[f].codigo_anuncio+'">'+
                                                                             '</div>'+
                                                                             '<div class="modal-body">'+
-                                                                                '<img class="img-responsive" src="../img/anuncios/' + data[f].imagen_anuncio +'" >'+
-                                                                                '<p>Esta es una pequeña descripcion del anuncio.</p>'+
+                                                                                '<img class="img-responsive" src="'+ ruta +'/images/anunciante/' + data[f].imagen_anuncio +'" >'+
+                                                                                '<p>'+ data[f].descripcion_anuncio+'</p>'+
+                                                                                
                                                                                 '<input type="checkbox"  name ="favorito" class="click" onclick="clickCheck('+data[f].codigo_anuncio+' , ' +'&quot;' + nombre_difusor+'&quot;'+')" > Agregar a Favorito'+
                                                                             '</div>'+
                                                                             '<div class="modal-footer">'+
