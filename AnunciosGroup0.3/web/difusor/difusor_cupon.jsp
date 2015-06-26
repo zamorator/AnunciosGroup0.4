@@ -42,7 +42,7 @@
             <div class="col-md-9">
 
                 <div class="thumbnail">
-                    <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= cupon.getImg_anuncio() %>" width="300px">
+                    <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= cupon.getImg_anuncio() %>" style="width: 300px; height: 300px;">
                     <div class="caption-full">
                         <h4 class="pull-right"> $ <%= cupon.getValor_final_producto() %></h4>
                         <h4><a href="#"><%= cupon.getDescripcion_cupon() %></a>

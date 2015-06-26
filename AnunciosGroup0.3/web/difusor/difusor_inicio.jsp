@@ -68,9 +68,13 @@
                         <% for (Anuncio b : anunciossugeridos) {%>
                         <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" id="anunciossugeridos">
-                            <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
+                            <img class="img-responsive" id="img_anuncios"src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                             <div class="caption">
-                              <h4><%= b.getNombre_anuncio() %></h4>
+                                <% if(b.getNombre_anuncio().length() <= 23){ %>
+                                    <h4><%= b.getNombre_anuncio() %></h4>
+                                <%}else{%>
+                                <h4><%= b.getNombre_anuncio().substring(0, 23) %> ...</h4>
+                                <%}%>
                               
                              <!--VENTANA MODAL INICIO -->
                             <form method="GET" action="${pageContext.request.contextPath}/PublicarCanjear">
@@ -84,7 +88,7 @@
                                              <input type="hidden" name="codigoanuncio" value="<%= b.getCodigo_anuncio()%>">
                                         </div>
                                         <div class="modal-body">
-                                            <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
+                                            <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                                             <p><%= b.getDescripcion_anuncio()%></p>
                                             <% 
                                                     String Favorito = "";
@@ -121,7 +125,12 @@
                         <div class="thumbnail" id="anuncios">
                             <img class="img-responsive" id="img_anuncios"  src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio() %>" >
                             <div class="caption">
-                              <h4><%= a.getNombre_anuncio() %></h4>
+                                
+                                <% if(a.getNombre_anuncio().length() <= 23){ %>
+                                    <h4><%= a.getNombre_anuncio() %></h4>
+                                <%}else{%>
+                                <h4><%= a.getNombre_anuncio().substring(0, 23) %> ...</h4>
+                                <%}%>
                               
                              <!--VENTANA MODAL INICIO -->
                              <form method="POST" action="${pageContext.request.contextPath}/PublicarCanjear">
@@ -135,7 +144,7 @@
                                                  <input type="hidden" name="codigoanuncio" value="<%= a.getCodigo_anuncio()%>">
                                             </div>
                                             <div class="modal-body">
-                                                <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio() %>" >
+                                                <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio() %>" >
                                                 <p><%= a.getDescripcion_anuncio()%></p>   
                                                  <% 
                                                     String Favorito = "";
