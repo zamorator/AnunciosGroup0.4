@@ -44,6 +44,7 @@
     
     <body>
         <%@include file="../base_ag/_menu_administrador.jsp" %>    
+        
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation"class="active" ><a href="../administrador/Admin_inicio.jsp">Anuncios</a></li>
             <li role="presentation" ><a href="admin_empresas.jsp">Empresas</a></li>
