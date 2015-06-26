@@ -32,13 +32,14 @@
             Giro giro = (Giro) session.getAttribute("giro");
             AnuncioDAO anuncioDao = new AnuncioDAO();
             List<Anuncio> anuncios = anuncioDao.BuscarAnunciosPorAnunciante(anunciante);
-            for(Anuncio a : anuncios){
-                ValorAnuncio valor_anuncio =  anuncioDao.buscarValorAnuncioPorAnuncio(a.getCodigo_anuncio());
+            for (Anuncio a : anuncios) {
+                ValorAnuncio valor_anuncio = anuncioDao.buscarValorAnuncioPorAnuncio(a.getCodigo_anuncio());
                 a.setValor_real(valor_anuncio.getValor_real());
                 a.setCantidadCompartirRealizados(anuncioDao.buscaCantidadCompartir(a));
                 a.setCantidadCuponesCanjeados(anuncioDao.buscaCantidadCuponesCanjeados(a));
+                a.setCantidadShareCoins(anuncioDao.buscarSumaShareCoins(a));
             }
-            
+
         %>
     </head>
     <body>
@@ -87,14 +88,51 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <img class="img-responsive" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
-                                                    <p>Descripci&oacute;n: <%= a.getDescripcion_anuncio() %></p>
-                                                    <p>Estado: <%= a.getEstado_anuncio() %></p>
-                                                    <p>Cantidad cupones: <%= a.getCantidad_cupones() %></p>
-                                                    <p>Cupones canjeados: <%= a.getCantidadCuponesCanjeados() %> </p>
-                                                    <p>Compartir realizados: <%= a.getCantidadCompartirRealizados() %></p>
-                                                    <p>Porcentaje Descuento: <%= a.getPorcentaje_descuento() %>%</p>
-                                                    <p>Valor Anuncio: $<%= a.getValor_real() %></p>
-
+                                                    <p></p>
+                                                    <p> </p>
+                                                    <p></p>
+                                                    <p>%</p>
+                                                    <p></p>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            Descripci&oacute;n: <%= a.getDescripcion_anuncio()%>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge"><%= a.getEstado_anuncio()%></span>
+                                                            Estado5
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge">
+                                                                <%= a.getCantidad_cupones()%>
+                                                            </span>
+                                                            Cantidad cupones
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge">
+                                                                <%= a.getCantidadCuponesCanjeados()%>
+                                                            </span>
+                                                            Cupones canjeados
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge">
+                                                                <%= a.getCantidadCompartirRealizados()%>
+                                                            </span>Compartir realizados: 
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge">
+                                                                <%= a.getPorcentaje_descuento()%>%
+                                                            </span>
+                                                            Porcentaje Descuento 
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge">$<%= a.getValor_real()%></span>
+                                                            Valor Anuncio
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge"><%= a.getCantidadShareCoins() %></span>
+                                                            Cantidad ShareCoins
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                                 <input type="hidden" name="codigoanuncio" value="<%= a.getCodigo_anuncio()%>">
                                                 <div class="modal-footer">

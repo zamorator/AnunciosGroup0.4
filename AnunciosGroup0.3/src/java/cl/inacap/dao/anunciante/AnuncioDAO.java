@@ -345,5 +345,29 @@ public class AnuncioDAO {
             con = null;
         }
     }
+    
+    public int buscarSumaShareCoins(Anuncio anuncio) throws Exception{
+        int cantidadShareCoins = 0;
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        ResultSet rs = null;
+        try {
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPBUSCASUMASHARECOINS(?)}");
+            proc.setInt(1, anuncio.getCodigo_anuncio());
+            rs = proc.executeQuery();
+            System.out.println("SPBUSCASUMASHARECOINS");
+            while (rs.next()) {
+                cantidadShareCoins = (rs.getInt("sum(cantidad_compartir)"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            con = null;
+            cf = null;
+        }
+        return cantidadShareCoins;
+    }
 
 }

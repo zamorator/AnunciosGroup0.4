@@ -32,6 +32,7 @@ public class Anuncio {
     //valores para mostrar en detalle anuncio, anunciante
     private int cantidadCuponesCanjeados;
     private int cantidadCompartirRealizados;
+    private int cantidadShareCoins;
 
     public int getValor_real() {
         return valor_real;
@@ -169,4 +170,11 @@ public class Anuncio {
         this.cantidadCompartirRealizados = cantidadCompartirRealizados;
     }
 
+    public int getCantidadShareCoins() {
+        return cantidadShareCoins;
+    }
+
+    public void setCantidadShareCoins(int cantidadShareCoins) {
+        this.cantidadShareCoins = cantidadShareCoins;
+    }
 }
