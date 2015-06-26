@@ -49,6 +49,8 @@ public class DifusorAnunciosDAO {
             anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
             anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
             anuncio.setFavorito(rs.getInt("ESTADO_FAVORITO"));
+            anuncio.setPorcentaje_descuento(rs.getInt("PORCENTAJE_DESCUENTO"));
+            anuncio.setValor_real(rs.getInt("VALOR_REAL"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {                  
@@ -89,6 +91,8 @@ public class DifusorAnunciosDAO {
             anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
             anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
             anuncio.setFavorito(rs.getInt("ESTADO_FAVORITO"));
+            anuncio.setPorcentaje_descuento(rs.getInt("PORCENTAJE_DESCUENTO"));
+            anuncio.setValor_real(rs.getInt("VALOR_REAL"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {                  
@@ -124,6 +128,8 @@ public class DifusorAnunciosDAO {
             anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
             anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
             anuncio.setFavorito(rs.getInt("ESTADO_FAVORITO"));
+            anuncio.setPorcentaje_descuento(rs.getInt("PORCENTAJE_DESCUENTO"));
+            anuncio.setValor_real(rs.getInt("VALOR_REAL"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {                  

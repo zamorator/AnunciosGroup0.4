@@ -4,6 +4,7 @@ $(window).scroll(function(){
     if ($(window).scrollTop() === $(document).height() - $(window).height()){
         console.log("xapalapaxala");
         var cantidad = $('#cantidadanuncios').val();
+        var ruta = $('#ruta').val();
         var nombre_difusor = $('#nombre_difusor').val();
         $.get("../TraeAnuncios",{in_cantidad:cantidad, in_nombre_difuor:nombre_difusor},function(res){
             var json = res;
@@ -14,11 +15,39 @@ $(window).scroll(function(){
                  var cantidad_anterior= cantidad;
                  var anuncios_nuevos='                    <div class="col-sm-6 col-md-4" id="desdeaqui'+ cantidad  +'">'+
                                                         '<div class="thumbnail" id="anuncios">'+
-                                                            '<img class="img-responsive" id="img_anuncios"  src="../img/anuncios/' + data[f].imagen_anuncio +'" >'+
-                                                            '<div class="caption">'+
-                                                              '<h3>'+ data[f].nombre_anuncio   +'</h3>'+
-
-                                                             '<!--VENTANA MODAL INICIO -->'+
+                                                            '<img class="img-responsive" id="img_anuncios"  src="'+ ruta +'/images/anunciante/' + data[f].imagen_anuncio +'" >'+
+                                                            '<div class="caption">';
+                                                              
+                        //---------------Nuevo inicio                                        
+                                            if(data[f].nombre_anuncio.length <= 23){ 
+                                                anuncios_nuevos = anuncios_nuevos + '<h4><a href="#">'+data[f].nombre_anuncio+' </a>'+
+                                                '</h4>';
+                                            }else{
+                                                anuncios_nuevos = anuncios_nuevos +'<h4><a href="#">' + data[f].nombre_anuncio.substring(0, 23)+' ...</a></h4>';
+                                            }
+ anuncios_nuevos = anuncios_nuevos +'<div class="ratings">'+
+                                    '<p class="pull-right" style="color: red;"> Hasta ' + data[f].porcentaje_descuento+ '%</p>'+
+                                    '<p>';
+                                    if(data[f].porcentaje_descuento  > 0 && data[f].porcentaje_descuento <= 10) {
+                                     anuncios_nuevos = anuncios_nuevos +'<span class="glyphicon glyphicon-star"></span>';
+                                    }
+                                    if(data[f].porcentaje_descuento > 10 && data[f].porcentaje_descuento <=50) {
+                                     anuncios_nuevos = anuncios_nuevos +'<span class="glyphicon glyphicon-star"></span>'+
+                                    '<span class="glyphicon glyphicon-star"></span>'+
+                                    '<span class="glyphicon glyphicon-star"></span>';
+                                    }
+                                    if(data[f].porcentaje_descuento   > 50 && data[f].porcentaje_descuento <100) {
+                                     anuncios_nuevos = anuncios_nuevos +'<span class="glyphicon glyphicon-star"></span>'+
+                                    '<span class="glyphicon glyphicon-star"></span>'+
+                                    '<span class="glyphicon glyphicon-star"></span>'+
+                                    '<span class="glyphicon glyphicon-star"></span>'+
+                                    '<span class="glyphicon glyphicon-star"></span>';
+                                    }
+             anuncios_nuevos = anuncios_nuevos +'</p>'+
+                                                '</div>'+
+                                                '<h4 class="pull-right">$'+ data[f].valor_real +'</h4>';                            
+                        //------------------Nuevo fin
+                       anuncios_nuevos = anuncios_nuevos + '<!--VENTANA MODAL INICIO -->'+
                                                              '<form method="POST" action="/AnunciosGroup0.3/PublicarCanjear">'+
                                                                 '<button type="button" class="btn btn-primary btn-lg" data-toggle="modal"  data-target="#'+data[f].codigo_anuncio+'">Detalle</button>'+
                                                                     '<div class="modal fade"  id="'+data[f].codigo_anuncio+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
