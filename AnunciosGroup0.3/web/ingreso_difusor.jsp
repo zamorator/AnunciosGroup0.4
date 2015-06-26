@@ -23,7 +23,7 @@
         <%@include file="base_ag/_menu_difusor.jsp" %>
         <div class="contenido" id="ingreso">
             <ul class="nav nav-tabs">
-                <li role="presentation" ><a href="newjsp.jsp">Home</a></li>
+                <li role="presentation" ><a href="inicio.jsp">Home</a></li>
             </ul>
             <% if (request.getParameter("message") != null) {%>
             <div class="alert alert-danger" role="alert">${param.message}</div>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="InputPassword">Contraseña</label>
-                        <input type="text" class="form-control" name="InputPassword" id="Password" placeholder="Ingrese Contraseña" required="">
+                        <input type="password" class="form-control" name="InputPassword" id="Password" placeholder="Ingrese Contraseña" required="">
                     </div>
                     <button class="btn btn-default" type="submit" >Ingreso</button>
                 </div>

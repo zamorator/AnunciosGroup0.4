@@ -12,19 +12,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script src="../js/main.js"></script>
-        <link rel="stylesheet" href="../css/cabecera_anunciante.css">
+        <script src="../js/jquery-min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <script type ="text/javascript" src="../js/paginacion.js"></script>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/modern-business.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="../css/Estilos_ag.css">
+        <!-- Latest compiled and minified JavaScript -->
         <script src="../js/bootstrap.min.js"></script>
         <!--  MENSAJES BOOTSTRAP  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
         
+        <link rel="stylesheet" href="../css/Estilos_ag.css">
+        <link rel="stylesheet" href="../css/anunciante.css">
         <title>MENSAJES</title>
     </head>
     

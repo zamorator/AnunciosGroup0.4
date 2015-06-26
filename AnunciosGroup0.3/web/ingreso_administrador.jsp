@@ -23,7 +23,7 @@
         
                 <div class="contenido" id="ingreso">
             <ul class="nav nav-tabs">
-                <li role="presentation" ><a href="newjsp.jsp">Home</a></li>
+                <li role="presentation" ><a href="inicio.jsp">Home</a></li>
             </ul>
             <% if (request.getParameter("message") != null) {%>
             <div class="alert alert-danger" role="alert">${param.message}</div>

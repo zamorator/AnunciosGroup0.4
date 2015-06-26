@@ -64,10 +64,33 @@
                             <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                             <div class="caption">
                                 <% if(b.getNombre_anuncio().length() <= 23){ %>
-                                    <h4><%= b.getNombre_anuncio() %></h4>
+                                    <h4><a href="#"><%= b.getNombre_anuncio() %></a>
+                                </h4>
                                 <%}else{%>
-                                <h4><%= b.getNombre_anuncio().substring(0, 23) %> ...</h4>
+                               
+                                    <h4><a href="#"><%= b.getNombre_anuncio().substring(0, 23) %> ...</a></h4>
                                 <%}%>
+                            <div class="ratings">
+                                    <p class="pull-right" style="color: red;"> Hasta <%= b.getPorcentaje_descuento() %>% </p>
+                                <p>
+                                    <% if(b.getPorcentaje_descuento()  > 0 && b.getPorcentaje_descuento() <= 10) {%>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <%};%>
+                                    <% if(b.getPorcentaje_descuento() > 10 && b.getPorcentaje_descuento() <=50) {%>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <%};%>
+                                    <% if(b.getPorcentaje_descuento()   > 50 && b.getPorcentaje_descuento() <100) {%>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <%};%>
+                                </p>
+                            </div>
+                             <h4 class="pull-right">$<%= b.getValor_real() %></h4>
                               
                              <!--VENTANA MODAL INICIO -->
                             <form method="POST" action="${pageContext.request.contextPath}/PublicarCanjear">
