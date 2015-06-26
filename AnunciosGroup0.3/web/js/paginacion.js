@@ -68,6 +68,8 @@ $(window).scroll(function(){
                                                                                 if(data[f].favorito  === 1){
                                                                                     console.log("es" +favorito );
                                                                                     favorito = "checked";
+                                                                                }else{
+                                                                                    favorito="";
                                                                                 };
                                                                                 
                                  anuncios_nuevos = anuncios_nuevos +    '<input type="checkbox"  name ="favorito" class="click" onclick="clickCheck('+data[f].codigo_anuncio+' , ' +'&quot;' + nombre_difusor+'&quot;'+')"'+ favorito+' > Agregar a Favorito'+
