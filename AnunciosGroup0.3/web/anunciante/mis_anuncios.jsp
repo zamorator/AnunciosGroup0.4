@@ -71,7 +71,7 @@
                                 <% } else { %>
                                 <p class="text-info">Habilitado</p>
                                 <% }%>
-                                <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
+                                <img class="img-responsive img-thumbnail" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
                                 <div class="caption">
                                 <% if(a.getNombre_anuncio().length() <= 23){ %>
                                     <h4><%= a.getNombre_anuncio() %></h4>
@@ -91,7 +91,7 @@
                                                     <h4 class="modal-title" id="myModalLabel"> <h3><%= a.getNombre_anuncio()%></h3></h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img class="img-responsive"  id="img_anuncios"src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
+                                                    <img class="img-responsive img-thumbnail"  id="img_anuncios"src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
                                                     <p></p>
                                                     <p> </p>
                                                     <p></p>

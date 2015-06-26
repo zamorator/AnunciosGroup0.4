@@ -63,7 +63,7 @@
                         <% for (Anuncio b : anunciospendientes) {%>
                         <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" id="anuncios">
-                            <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
+                            <img class="img-responsive img-thumbnail" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                             <div class="caption">
                                <% if(b.getNombre_anuncio().length() <= 23){ %>
                                     <h4><%= b.getNombre_anuncio() %></h4>
@@ -83,7 +83,7 @@
                                              <h4 class="modal-title" id="myModalLabel"> <h3><%= b.getNombre_anuncio() %></h3></h4>
                                         </div>
                                         <div class="modal-body">
-                                            <img class="img-responsive" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
+                                            <img class="img-responsive img-thumbnail" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
                                             <p><%= b.getDescripcion_anuncio() %></p>
                      
                                            
