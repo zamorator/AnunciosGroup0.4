@@ -20,6 +20,7 @@ public class Mensaje {
     private String nombre_u_anunciante;
     private int codigo_administrador;
     private String fecha;
+    private String estado;
 
     public int getId_mensaje() {
         return id_mensaje;
@@ -91,6 +92,14 @@ public class Mensaje {
 
     public void setTipo_remitente(String tipo_remitente) {
         this.tipo_remitente = tipo_remitente;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 }
