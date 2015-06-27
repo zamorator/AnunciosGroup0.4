@@ -19,6 +19,7 @@ public class Mensaje {
     private String nombre_u_anunciante;
     private int codigo_administrador;
     private String fecha;
+    private String estado;
 
     public int getId_mensaje() {
         return id_mensaje;
@@ -82,6 +83,14 @@ public class Mensaje {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 }

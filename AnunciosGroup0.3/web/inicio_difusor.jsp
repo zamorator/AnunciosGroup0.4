@@ -77,7 +77,7 @@
                             <h4><i class="fa fa-fw fa-check"></i>¿Aun no sabes como funciona?</h4>
                         </div>
                         <div class="panel-body">
-                            <p>Basicamente consiste en compartir distintos anuncios en tus redes sociales, cada ves que lo realices obtendras coins los cuales seran acumulables y equivaldran a porcentajes de descuentos en los productos de la pagina. Comienza ya y obten fabulosos descuentos.</p>
+                            <p>Básicamente consiste en compartir distintos anuncios en tus redes sociales, cada ves que lo realices obtendrás, coins los cuales seran acumulables y equivaldrán a porcentajes de descuentos en los productos de la pagina. Comienza ya y obtén fabulosos descuentos.</p>
                             <a href="#" class="btn btn-default">Solicitar mas informacion</a>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                             <h4><i class="fa fa-fw fa-gift"></i>¿Ya estas registrado?</h4>
                         </div>
                         <div class="panel-body">
-                            <p>¿Que esperas? Sigue compartiendo anucios publicitarios e invita a tus amigos para que formen parte de <b>AnunciosGroup</b>, recuerda que es totalomente gratis y puedes obtener descuentos en todos los productos anunciandos en la pagina.</p>
+                            <p>¿Que esperas? Sigue compartiendo anuncios publicitarios e invita a tus amigos para que formen parte de <b>AnunciosGroup</b>, recuerda que es totalmente gratis y puedes obtener descuentos en todos los productos anunciados en la pagina.</p>
                             <a href="ingreso_difusor.jsp" class="btn btn-default">Iniciar sesion</a>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                             <h4><i class="fa fa-fw fa-compass"></i> Registrate</h4>
                         </div>
                         <div class="panel-body">
-                            <p>¿Quiere comprar productos o servicios pero son demasiado caros? <b>AnunciosGroup</b> te ayuda entregandote descuentos los cuales son proporsinales a tu participación. Registrate ahora y comienza a acumular coins y canjear descuentos fabulosos. </p>
+                            <p>¿Quieres comprar productos o servicios pero son demasiado caros? <b>AnunciosGroup</b> te ayuda entregándote descuentos los cuales son proporcionales a tu participación. Regístrate ahora y comienza a acumular coins y canjear descuentos fabulosos. </p>
                             <a href="registro_difusor.jsp" class="btn btn-default">Registrate</a>
                         </div>
                     </div>

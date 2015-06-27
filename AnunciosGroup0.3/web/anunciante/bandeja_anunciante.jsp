@@ -4,6 +4,10 @@
     Author     : zamorator <zamorator@gmail.com>
 --%>
 
+<%@page import="cl.inacap.model.Mensaje"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="cl.inacap.dao.anunciante.MensajeDAO"%>
 <%@page import="cl.inacap.model.Giro"%>
 <%@page import="cl.inacap.model.Anunciante"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,6 +28,8 @@
         <%
             Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
             Giro giro = (Giro) session.getAttribute("giro");
+            MensajeDAO mensajeDao = new MensajeDAO();
+            List<Mensaje> mensajes = mensajeDao.buscarMensajesAnunciante(anunciante);
         %>
     </head>
     <body>
@@ -44,6 +50,23 @@
                     </ul>
                 </div>
                 <h1>Bandeja Anunciante</h1>
+
+                <%if(mensajes.size() == 0){ %>
+                <h3>No tiene mensajes en su bandeja.</h3>
+                <%} else { %>
+                
+                <% for(Mensaje m : mensajes) {%>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge"><%= m.getEstado() %>  </span>
+                        <%= m.getDe() %> | <%= m.getAsunto() %>
+                    </li>
+                    <li class="list-group-item">
+                        <%= m.getMensaje() %>
+                    </li>
+                </ul>
+                <% }%>
+                <%}%>
             </div>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %>
