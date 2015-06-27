@@ -12,6 +12,7 @@ package cl.inacap.model;
 public class Mensaje {
 
     private int id_mensaje;
+    private String tipo_remitente;
     private String para;
     private String de;
     private String asunto;
@@ -82,6 +83,14 @@ public class Mensaje {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+    
+    public String getTipo_remitente() {
+        return tipo_remitente;
+    }
+
+    public void setTipo_remitente(String tipo_remitente) {
+        this.tipo_remitente = tipo_remitente;
     }
 
 }

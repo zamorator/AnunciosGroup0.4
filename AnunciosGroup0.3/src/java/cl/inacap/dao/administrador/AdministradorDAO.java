@@ -173,7 +173,7 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
 }
     
     
-       public ArrayList<Mensaje> buscarmensajes() throws  Exception{
+       public ArrayList<Mensaje> buscarmensajes(String tipo_remitente) throws  Exception{
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
             ResultSet rs = null;
@@ -181,8 +181,8 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
-            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_MENSAJE}");
-                   
+            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_MENSAJE(?)}");
+            proc.setString(1, tipo_remitente);
            
             System.out.println(proc);
             rs = proc.executeQuery();
@@ -190,6 +190,7 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             while(rs.next()){
             Mensaje mensaje = new Mensaje();
             mensaje.setId_mensaje(rs.getInt("ID_MENSAJE"));
+            mensaje.setTipo_remitente(rs.getString("TIPO_REMITENTE"));
             mensaje.setPara(rs.getString("PARA"));
             mensaje.setDe(rs.getString("DE"));
             mensaje.setAsunto(rs.getString("ASUNTO"));
@@ -342,12 +343,5 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
     
 
 
-    private Anuncio IniciaSesionAdministrador(String estado_anuncio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public boolean buscarmensajes(String parameter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+ 
 }    
