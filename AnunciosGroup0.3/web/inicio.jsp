@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-sm-7">
                 <h2>¿Que es AnunciosGroup?</h2>
-                <p>Una nueva he innovadora forma de difundir publicidad a travez de internet, el objetivo es que tanto la empresas como los usuarios interactuen para ambos obtener benificios.</p>
+                <p>Una nueva e innovadora forma de difundir publicidad a través de internet, el objetivo es que tanto la empresas como los usuarios interactúen para ambos obtener beneficios.</p>
                 <p>Cada punto acumulado es un porcentaje de descuento que podrá se canjeando entre los distinto productos que se encuentra disponibles dentro de la plataforma de <b>AnunciosGroup</b>.</p> 
 				<p>Comparte, acumula coins y canjea!.</p>
                 <p>

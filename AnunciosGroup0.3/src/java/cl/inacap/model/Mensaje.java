@@ -12,6 +12,7 @@ package cl.inacap.model;
 public class Mensaje {
 
     private int id_mensaje;
+    private String tipo_remitente;
     private String para;
     private String de;
     private String asunto;
@@ -19,6 +20,7 @@ public class Mensaje {
     private String nombre_u_anunciante;
     private int codigo_administrador;
     private String fecha;
+    private String estado;
 
     public int getId_mensaje() {
         return id_mensaje;
@@ -82,6 +84,22 @@ public class Mensaje {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+    
+    public String getTipo_remitente() {
+        return tipo_remitente;
+    }
+
+    public void setTipo_remitente(String tipo_remitente) {
+        this.tipo_remitente = tipo_remitente;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 }

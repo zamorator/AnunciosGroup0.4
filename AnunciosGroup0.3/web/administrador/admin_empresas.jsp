@@ -37,7 +37,7 @@
             mostrarmensajes = new ArrayList<Mensaje>();
             
             AdministradorDAO mensajesDAO = new AdministradorDAO();
-            mostrarmensajes = mensajesDAO.buscarmensajes();
+            mostrarmensajes = mensajesDAO.buscarmensajes("E");
             
             System.out.println(mostrarmensajes);
             } catch(Exception e){
@@ -58,78 +58,55 @@
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="#">Mensajes</a></li>
                 <li role="presentation"><a href="admin_n_empresas.jsp">Nuevas Empresas</a></li>
-                
-                
             </ul>
-            
-            
-        <!--    <div class="col-md-12" id=""> -->
+              
                        <!--ANUNCIO 1 --> 
                        <% int id_modal2=0; %>
-                       <br>
-                       
                        <% for (Mensaje b : mostrarmensajes) {%>
-                       <form action="${pageContext.request.contextPath}/TraerMensaje" method="POST" >
+                       <form action="${pageContext.request.contextPath}/TraerMensaje" method="POST" > 
                        
-                           <div class="tab-content">
+                       <div class="tab-content">
                                <div class="tab-pane fade in active" id="home">
                                    <div class="list-group">
                                        <a href="#" class="list-group-item" data-toggle="modal" data-target="#<%= id_modal2%>" >
-                                           
-                                           <span class="glyphicon glyphicon-star-empty"></span><span class="name" style="min-width: 120px;
-                                           display: inline-block;"> <%= b.getNombre_u_anunciante()%> </span> <span class=""> <%= b.getDe()%> </span>
-                                           <span class="text-muted" style="font-size: 11px;">- More content here</span> <span class="badge"> <%= b.getFecha()%> </span> <span class="pull-right"><span class="glyphicon glyphicon-paperclip">
-                                           </span></span>
+                                           <span class="glyphicon glyphicon-star-empty"></span>
+                                           <span class="name" style="min-width: 110px;display: inline-block;"> <%= b.getNombre_u_anunciante()%> </span> <span class=""> <%= b.getDe()%> </span>
+                                           <span class="text-muted" style="font-size: 11px;">- <%= b.getAsunto()%> </span> <span class="badge"> <%= b.getFecha()%> </span> <span class="pull-right">
+                                           </span>
                                        </a>
                                    </div>
                                </div>
-                           </div>        
-                           
-                           
-                           
-                           
-                       
-                           
-                    <!--   <li class="list-group-item text-muted">Inbox</li> 
-                       for (Mensaje b : mostrarmensajes) {%>
-                      
-                       
-                       <form action="${pageContext.request.contextPath}/TraerMensaje" method="POST" >
-                           
-                       
-                         <div class="tab-pane" id="messages">
-                           <ul class="list-group">
-                                 <li class="list-group-item text-right" ><a href="#" data-toggle="modal" data-target="#<%= id_modal2%>"  class="pull-left">
-                                  EMPRESA: <%= b.getNombre_u_anunciante()%> 
-                                  DE:  <%= b.getDe()%>
-                                  PARA: <%= b.getPara()%> </a> <%= b.getFecha()  %> 
-                                 </li>
-                             </ul>  
-                         
-                         </div> -->
+                       </div>                        
+                       </form>
 
-                         
                              <!--VENTANA MODAL INICIO -->
-                        <!--    <form action="${pageContext.request.contextPath}/TraerMensaje" method="POST" >
-                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#<%= id_modal2%>">Ver</button> -->
-                            
-                                <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <input type="hidden" name="in_mensaje" value="<%= b.getMensaje() %>" >
-                                    <div class="modal-content">
-                                         <div class="modal-header">
-                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                             <h3 class="modal-title" id="myModalLabel"> <%= b.getNombre_u_anunciante()%> </h3>
-                                        </div>
+                             <form action="${pageContext.request.contextPath}/TraerMensaje" method="POST" >
+                                 
+                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <input type="hidden" name="in_mensaje" value="<%= b.getMensaje() %>" >
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h3 class="modal-title" id="myModalLabel"> <%= b.getNombre_u_anunciante()%> </h3>
+                                            </div>
                                         <div class="modal-body">
-                                                    
-                                                ASUNTO : <h3> <%= b.getAsunto()%></h3>
-                                               MENSAJE :
-                                                         <h3> <%= b.getMensaje()%></h3>
-                                        
-                     
-                                              <label for="InputMensaje">Mensaje</label>
-                                              <input type="text" class="form-control" name="InputMensaje" id="Mensaje" placeholder="Respuesta" required="">   
+                                            <div>
+                                                <!-- AL INSERTAR EL MENSAJE TAMBIEN SE DEBE INSERTAR 
+                                                - NOMBRE DEL ANUNCIANTE
+                                                --ASUTO
+                                                - POR DEFECTO EL TIPO "E" -->
+                                                
+                                                <h3>ASUNTO :  <%= b.getAsunto()%></h3>
+                                               
+                                                <h3>MENSAJE : <%= b.getMensaje()%></h3>
+                                            </div>
+                                              <label class="control-label col-sm-2" for="InputEmpresa"> Empresa </label>
+                                              <input disabled value="<%= b.getNombre_u_anunciante()%>" type="text" class="form-control" name="InputEmpresa" id="Empresa"  required=""  >
+                                              <label class="control-label col-sm-2" for="InputEmpresa"> Asunto </label>
+                                              <input disabled value="<%= b.getAsunto()%>" type="text" class="form-control" name="InputAsunto" id="Asunto"  required=""  >
+                                              <label class="control-label col-sm-2" for="InputMensaje">Mensaje</label>
+                                              <textarea type="text" class="form-control" name="InputMensaje" id="Mensaje" placeholder="Respuesta" required=""></textarea>   
                                         </div>
                                         <div class="modal-footer">
                                             <button  class="btn btn-success"  type="submit">Responder</button>
@@ -139,17 +116,16 @@
                                     </div>
                                     </div>
                                 </div>
+                             
+                             </form>
+                                
                             <!--VENTANA MODAL FIN -->
-                              </form>
-                              
-                            </div>
-                        
-                        </div>
+
+      
                         <%id_modal2++;}%>    
-                    </div>    
-            
-            
-        </div>
-         <%@include file="../base_ag/_pie_pagina.jsp" %>
+ 
+ 
+ </div>
+                        <%@include file="../base_ag/_pie_pagina.jsp" %>
     </body>
 </html>

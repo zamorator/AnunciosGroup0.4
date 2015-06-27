@@ -46,6 +46,47 @@
                     </ul>
                 </div>
                 <h1>Enviar mensaje</h1>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputDe" class="col-sm-2 control-label">De</label>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" id="InputDe" value="<%= anunciante.getEmail_anunciante()%>" required="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPara" class="col-sm-2 control-label">Para</label>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" id="InputPara" placeholder="Email" value="administrador@anunciosgorup.cl" required="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAsunto" class="col-sm-2 control-label">Asunto</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="InputAsunto" placeholder="Ingresar Asunto" required="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAsunto" class="col-sm-2 control-label">Mensaje</label>
+                                <div class="col-sm-6">
+                                    <textarea rows="3" class="form-control" required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-6">
+                                    <button type="submit" class="btn btn-default">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
         <%@include file="../base_ag/_pie_pagina.jsp" %>
