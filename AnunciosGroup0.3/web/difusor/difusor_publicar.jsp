@@ -212,11 +212,6 @@ $(document).ready(function(){
 	
 });
 
-
-
-
-
-
 //-->
 </script>
 <div id="fb-root"></div>

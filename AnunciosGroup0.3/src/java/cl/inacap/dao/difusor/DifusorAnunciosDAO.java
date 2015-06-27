@@ -413,5 +413,40 @@ public class DifusorAnunciosDAO {
          
 
          }
+        
+        
+        public boolean agregarpublicacion(String nombre_difusor, String codigo_anuncio) throws Exception {
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            boolean rs = false;
+            int total_puntos = 0;
+            Anuncio anuncio = new Anuncio();
+         try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_AGREGA_PUBLICACION(?,?)}");
+            proc.setString(1,codigo_anuncio);
+            proc.setString(2,nombre_difusor);
+            
+            System.out.println(proc);
+            rs = proc.execute();
+            
+            if(rs){
+                return false;
+            }else{
+                return true;
+            }
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         
+
+         }
+        
 }
 
