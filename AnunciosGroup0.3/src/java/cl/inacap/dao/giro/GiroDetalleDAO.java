@@ -11,7 +11,6 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -40,8 +39,10 @@ public class GiroDetalleDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -66,9 +67,11 @@ public class GiroDetalleDAO {
             System.out.println("SPBUSCAGIRODETALLE");
             
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }

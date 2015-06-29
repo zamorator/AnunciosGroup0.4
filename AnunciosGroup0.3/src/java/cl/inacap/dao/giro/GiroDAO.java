@@ -23,7 +23,6 @@ public class GiroDAO {
         ArrayList<Giro> giros = new ArrayList<Giro>();
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
         ResultSet rs = null;
         try {
             con = cf.obtenerConexion();
@@ -44,9 +43,11 @@ public class GiroDAO {
                 giros.add(giro);
             }
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -74,9 +75,11 @@ public class GiroDAO {
             System.out.println("SPBUSCAGIRO");
             
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }

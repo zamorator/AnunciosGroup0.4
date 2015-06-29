@@ -38,9 +38,11 @@ public class GiroCabeceraDAO {
                 giroCabeceras.add(giroCabecera);
             }
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -66,9 +68,11 @@ public class GiroCabeceraDAO {
             System.out.println("SPBUSCAGIROCABECERA");
 
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }

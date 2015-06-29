@@ -42,6 +42,8 @@ public class AnuncioDAO {
 
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
+            throw new Exception();
         } finally {
             con = null;
             cf = null;
@@ -79,8 +81,10 @@ public class AnuncioDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -118,8 +122,10 @@ public class AnuncioDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -153,8 +159,10 @@ public class AnuncioDAO {
             System.out.println("SPACTUALIZAANUNCIO");
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -173,8 +181,10 @@ public class AnuncioDAO {
             System.out.println("SPACTUALIZAIMAGENANUNCIO");
         } catch (Exception e) {
             e.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             cf = null;
             con = null;
         }
@@ -193,8 +203,10 @@ public class AnuncioDAO {
             System.out.println("SPAGREGAVALORANUNCIO");
         } catch (Exception e) {
             e.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             cf = null;
             con = null;
         }
@@ -214,8 +226,10 @@ public class AnuncioDAO {
             System.out.println("SPACTUALIZAVALORANUNCIO");
         } catch (Exception e) {
             e.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             cf = null;
             con = null;
         }
@@ -237,9 +251,11 @@ public class AnuncioDAO {
                 valorAnuncio.setValor_real(rs.getInt("valor_real"));
             }
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -263,8 +279,10 @@ public class AnuncioDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -288,8 +306,10 @@ public class AnuncioDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -313,8 +333,10 @@ public class AnuncioDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -339,8 +361,10 @@ public class AnuncioDAO {
             System.out.println("SPCREASHARECOINS(" + shareCoin.getCodigo_anuncio() + "," + shareCoin.getCantidad_compartir() + "," + shareCoin.getCantidad_extra_compartir() + "," + shareCoin.getId_valor_coin() + ")");
         } catch (Exception e) {
             e.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             cf = null;
             con = null;
         }
@@ -362,8 +386,10 @@ public class AnuncioDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }

@@ -36,8 +36,10 @@ public class RegionDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -61,8 +63,10 @@ public class RegionDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }

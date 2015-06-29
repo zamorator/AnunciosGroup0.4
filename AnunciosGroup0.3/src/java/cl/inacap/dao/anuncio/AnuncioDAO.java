@@ -1,7 +1,6 @@
 package cl.inacap.dao.anuncio;
 
 import cl.inacap.connect.ConnectionFactory;
-import cl.inacap.model.Anunciante;
 import cl.inacap.model.Anuncio;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -47,8 +46,10 @@ public class AnuncioDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }

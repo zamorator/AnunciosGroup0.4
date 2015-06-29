@@ -18,10 +18,9 @@ import java.sql.ResultSet;
  */
 public class DifusorRedesSocialesDAO {
 
-    public boolean AgregaRedSocialDifusor(DifusorRedesSocialesR drsr) throws Exception {
+    public void AgregaRedSocialDifusor(DifusorRedesSocialesR drsr) throws Exception {
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
-            ResultSet rs = null;
         try {
             con = cf.obtenerConexion();
             
@@ -37,13 +36,14 @@ public class DifusorRedesSocialesDAO {
  
             proc.execute();
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
-        return true;
     }
 
     public int ConsultaRedSocialExistente(String nombreDifusor) throws Exception {
@@ -65,8 +65,10 @@ public class DifusorRedesSocialesDAO {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             query = null;
             cf = null;

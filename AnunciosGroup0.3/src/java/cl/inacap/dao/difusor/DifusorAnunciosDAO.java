@@ -11,10 +11,7 @@ import cl.inacap.model.Cupon;
 import cl.inacap.model.Difusor;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Types;
 import java.util.ArrayList;
 
 /**
@@ -54,11 +51,12 @@ public class DifusorAnunciosDAO {
             anuncio.setValor_real(rs.getInt("VALOR_REAL"));
             anuncios.add(anuncio);
             }
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
@@ -96,11 +94,12 @@ public class DifusorAnunciosDAO {
             anuncio.setValor_real(rs.getInt("VALOR_REAL"));
             anuncios.add(anuncio);
             }
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
@@ -133,11 +132,12 @@ public class DifusorAnunciosDAO {
             anuncio.setValor_real(rs.getInt("VALOR_REAL"));
             anuncios.add(anuncio);
             }
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
             ex.printStackTrace();
+            cf.cerrarConexion();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
@@ -149,8 +149,7 @@ public class DifusorAnunciosDAO {
         public Anuncio buscaranuncioespecifico(Anuncio inanuncio) throws Exception {
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
-            ResultSet rs = null;
-            System.out.println(con);  
+            ResultSet rs = null; 
             Anuncio anuncio = new Anuncio();
          try {  
             con = cf.obtenerConexion();
@@ -169,11 +168,12 @@ public class DifusorAnunciosDAO {
                 anuncio.setPorcentaje_descuento(rs.getInt("PORCENTAJE_DESCUENTO"));
                 anuncio.setValor_real(rs.getInt("VALOR_REAL"));   
             }
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
@@ -204,11 +204,12 @@ public class DifusorAnunciosDAO {
                return true;    
             }
                
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
@@ -220,7 +221,6 @@ public class DifusorAnunciosDAO {
             Connection con = null;
             ResultSet rs = null;
             int total_puntos = 0;
-            Anuncio anuncio = new Anuncio();
          try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
@@ -232,11 +232,12 @@ public class DifusorAnunciosDAO {
             while(rs.next()){            
                 total_puntos = rs.getInt("TOTAL_COINS");
             }
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
@@ -248,8 +249,6 @@ public class DifusorAnunciosDAO {
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
             boolean rs = false;
-            int total_puntos = 0;
-            Anuncio anuncio = new Anuncio();
          try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
@@ -266,11 +265,12 @@ public class DifusorAnunciosDAO {
             }else{
                 return true;
             }
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
@@ -282,7 +282,6 @@ public class DifusorAnunciosDAO {
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
             ResultSet rs = null;
-            int total_puntos = 0;
             ArrayList<Cupon> cupones = new ArrayList<Cupon>();
            
          try {  
@@ -304,11 +303,12 @@ public class DifusorAnunciosDAO {
              cupon.setDescripcion_cupon(rs.getString("DESCRIPCION"));
              cupones.add(cupon);
             }
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
@@ -319,8 +319,6 @@ public class DifusorAnunciosDAO {
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
             boolean rs = false;
-            int total_puntos = 0;
-            Anuncio anuncio = new Anuncio();
          try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
@@ -334,11 +332,12 @@ public class DifusorAnunciosDAO {
             }else{
                 return true;
             }
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
@@ -371,11 +370,12 @@ public class DifusorAnunciosDAO {
              
             }
             return cupon;
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
@@ -386,8 +386,6 @@ public class DifusorAnunciosDAO {
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
             boolean rs = false;
-            int total_puntos = 0;
-            Anuncio anuncio = new Anuncio();
          try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
@@ -402,11 +400,12 @@ public class DifusorAnunciosDAO {
             }else{
                 return true;
             }
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 
