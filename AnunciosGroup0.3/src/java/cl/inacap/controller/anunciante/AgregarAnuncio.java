@@ -50,7 +50,7 @@ public class AgregarAnuncio extends HttpServlet {
             anuncio.setId_segmento_sexo(Integer.parseInt(request.getParameter("selectSegmentoSexo")));
             anuncio.setId_segmento_edad(Integer.parseInt(request.getParameter("selectSegmentoEdad")));
             anuncio.setCantidad_cupones(10);
-            anuncio.setPorcentaje_descuento(10);
+            anuncio.setPorcentaje_descuento(Integer.parseInt(request.getParameter("porcentajeDescueto")));
             
             AnuncioDAO anuncioDao = new AnuncioDAO();
             anuncioDao.AgregaAnuncio(anuncio);

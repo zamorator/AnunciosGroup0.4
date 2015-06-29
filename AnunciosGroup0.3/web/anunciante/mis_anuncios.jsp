@@ -73,15 +73,22 @@
                                 <% }%>
                                 <img class="img-responsive img-thumbnail" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
                                 <div class="caption">
-                                <% if(a.getNombre_anuncio().length() <= 23){ %>
-                                    <h4><%= a.getNombre_anuncio() %></h4>
-                                <%}else{%>
-                                <h4><%= a.getNombre_anuncio().substring(0, 23) %> ...</h4>
-                                <%}%>
-
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%= a.getCodigo_anuncio()%>">Detalle</button>
-                                    <a class="btn btn-primary" href="editar_anuncio.jsp?anuncio_id=<%=a.getCodigo_anuncio()%>"> Editar </a>
-                                    <a class="btn btn-primary" href="editar_imagenes_anuncio.jsp?anuncio_id=<%=a.getCodigo_anuncio()%>"> Editar Im&aacute;genes Anuncio </a>
+                                    <% if (a.getNombre_anuncio().length() <= 23) {%>
+                                    <h4><%= a.getNombre_anuncio()%></h4>
+                                    <%} else {%>
+                                    <h4><%= a.getNombre_anuncio().substring(0, 23)%> ...</h4>
+                                    <%}%>
+                                    <div class="btn-group-vertical" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#<%= a.getCodigo_anuncio()%>">
+                                            Detalle
+                                        </button>
+                                        <a class="btn btn-info" href="editar_anuncio.jsp?anuncio_id=<%=a.getCodigo_anuncio()%>">
+                                            Editar
+                                        </a>
+                                        <a class="btn btn-info" href="editar_imagenes_anuncio.jsp?anuncio_id=<%=a.getCodigo_anuncio()%>">
+                                            Editar Im&aacute;genes Anuncio 
+                                        </a>
+                                    </div>
                                     <!--VENTANA MODAL INICIO -->
                                     <div class="modal fade" id="<%=a.getCodigo_anuncio()%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -103,7 +110,7 @@
                                                         </li>
                                                         <li class="list-group-item">
                                                             <span class="badge"><%= a.getEstado_anuncio()%></span>
-                                                            Estado5
+                                                            Estado
                                                         </li>
                                                         <li class="list-group-item">
                                                             <span class="badge">
@@ -133,14 +140,13 @@
                                                             Valor Anuncio
                                                         </li>
                                                         <li class="list-group-item">
-                                                            <span class="badge"><%= a.getCantidadShareCoins() %></span>
+                                                            <span class="badge"><%= a.getCantidadShareCoins()%></span>
                                                             Cantidad ShareCoins
                                                         </li>
                                                     </ul>
                                                 </div>
                                                 <input type="hidden" name="codigoanuncio" value="<%= a.getCodigo_anuncio()%>">
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
                                                     <button type="submit" class="btn btn-primary" >Comprar ShareCoins</button>
                                                 </div>
                                             </div>
