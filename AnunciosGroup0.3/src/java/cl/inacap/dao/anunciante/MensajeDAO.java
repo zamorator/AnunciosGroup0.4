@@ -10,7 +10,6 @@ import cl.inacap.model.Anunciante;
 import cl.inacap.model.Mensaje;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -39,6 +38,7 @@ public class MensajeDAO {
                 mensaje.setDe(rs.getString("DE"));
                 mensaje.setAsunto(rs.getString("ASUNTO"));
                 mensaje.setMensaje(rs.getString("MENSAJE"));
+                mensaje.setEstado(rs.getString("ESTADO"));
                 
                 mensajesAnunciante.add(mensaje);
             }
@@ -51,5 +51,29 @@ public class MensajeDAO {
         }
 
         return mensajesAnunciante;
+    }
+
+    public void agregarMensaje(Mensaje mensaje) throws Exception{
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        try {
+            int x = 0;
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPCREARMENSAJE(?,?,?,?,?,?)}");
+            proc.setString(++x, mensaje.getDe() );
+            proc.setString(++x, mensaje.getPara() );
+            proc.setString(++x, mensaje.getAsunto() );
+            proc.setString(++x, mensaje.getMensaje() );
+            proc.setString(++x, mensaje.getNombre_u_anunciante() );
+            proc.setString(++x, "E"); //E -> empresa
+            proc.executeQuery();
+            System.out.println("SPCREARMENSAJE");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            con = null;
+            cf = null;
+        }
     }
 }
