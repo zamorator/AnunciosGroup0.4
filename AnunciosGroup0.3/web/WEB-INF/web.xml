@@ -9,4 +9,7 @@
             30
         </session-timeout>
     </session-config>
+    <error-page>
+        <location>/general-error.html</location>
+    </error-page>
 </web-app>

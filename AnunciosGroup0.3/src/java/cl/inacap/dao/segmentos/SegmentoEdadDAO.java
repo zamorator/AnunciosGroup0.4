@@ -7,7 +7,6 @@ package cl.inacap.dao.segmentos;
 
 import cl.inacap.connect.ConnectionFactory;
 import cl.inacap.model.SegmentoEdad;
-import cl.inacap.model.SegmentoSexo;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +22,6 @@ public class SegmentoEdadDAO {
     public ArrayList<SegmentoEdad> BuscarSegmentoEdades() throws Exception {
         ConnectionFactory cf = new ConnectionFactory();
         Connection con = null;
-        PreparedStatement pst = null;
         ResultSet rs = null;
         ArrayList<SegmentoEdad> sementoEdad = null;
         try {
@@ -41,9 +39,11 @@ public class SegmentoEdadDAO {
                 sementoEdad.add(segmentoedad);
             }
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }

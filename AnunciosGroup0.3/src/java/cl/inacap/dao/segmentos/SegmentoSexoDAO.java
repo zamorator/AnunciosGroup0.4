@@ -39,9 +39,11 @@ public class SegmentoSexoDAO {
                 sementoSexos.add(segmentoSexo);
             }
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }

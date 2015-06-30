@@ -41,9 +41,11 @@ public class DifusorDAO {
             pst = con.prepareStatement(query.toString());
             pst.execute();
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             query = null;
             cf = null;
@@ -86,9 +88,7 @@ public class DifusorDAO {
         Difusor difusor = null;
         try {
             con = cf.obtenerConexion();
-            con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
-           Difusor difusoractualizado = new Difusor();
       
             CallableStatement proc = con.prepareCall("{CALL SP_INICIAR_SESION_DIFUSOR(?,?)}");
             proc.setString(1,nombre);
@@ -107,9 +107,11 @@ public class DifusorDAO {
                 difusor.setId_segmento_edad(rs.getInt("ID_SEGMENTO_EDAD"));
             }
         } catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }
@@ -146,11 +148,12 @@ public class DifusorDAO {
                 return difusor;
             }
             
-        }catch (Exception ex) {                  
-            System.out.println(ex);
+        }catch (Exception ex) {
+            cf.cerrarConexion();
             ex.printStackTrace();
             throw new Exception();
        }finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         } 

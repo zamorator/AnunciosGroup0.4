@@ -59,7 +59,7 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <span class="badge"><%= m.getEstado() %>  </span>
-                        <%= m.getDe() %> | <%= m.getAsunto() %>
+                        De: <%= m.getDe() %> | Asunto: <%= m.getAsunto() %>
                     </li>
                     <li class="list-group-item">
                         <%= m.getMensaje() %>
