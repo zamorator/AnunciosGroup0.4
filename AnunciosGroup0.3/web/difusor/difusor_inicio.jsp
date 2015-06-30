@@ -102,7 +102,7 @@
                              <h4 class="pull-right">$<%= b.getValor_real() %></h4>
                              <!--VENTANA MODAL INICIO -->
                             <form method="GET" action="${pageContext.request.contextPath}/PublicarCanjear">
-                            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
+                                <button type="button" class="btn btn-primary"   data-toggle="modal" onclick="VerificaPulbicarf(<%=b.getCodigo_anuncio()%>,'<%= difusor.getNombre_u_difusor() %>',<%= id_modal2%>)" data-target="#<%= id_modal2%>">Detalle</button>
                                 <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
@@ -124,7 +124,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <input type="submit" class="btn btn-default" name="canjear" value="Canjear">
-                                            <input type="submit" class="btn btn-primary" name="publicar"value="Publicar">
+                                            <button type="submit" class="btn btn-primary" id="publicarf<%= id_modal2 %>" name="publicar"value="Publicar"> Publicar</button>
                                         </div>
                                     </div>
                                     </div>
@@ -181,7 +181,7 @@
                               <h4 class="pull-right">$<%= a.getValor_real() %></h4>
                              <!--VENTANA MODAL INICIO -->
                              <form method="POST" action="${pageContext.request.contextPath}/PublicarCanjear">
-                                <button type="button" class="btn btn-primary " data-toggle="modal"  data-target="#<%= a.getCodigo_anuncio() %>">Detalle</button>
+                                 <button type="button" class="btn btn-primary " data-toggle="modal" onclick="VerificaPulbicar(<%=a.getCodigo_anuncio()%>,'<%= difusor.getNombre_u_difusor() %>',<%=a.getCodigo_anuncio()%>)"  data-target="#<%= a.getCodigo_anuncio() %>">Detalle</button>
                                     <div class="modal fade"  id="<%=a.getCodigo_anuncio()%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content">
@@ -203,7 +203,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <input type="submit" class="btn btn-default" name="canjear" value="Canjear">
-                                                <input type="submit" class="btn btn-primary" name="publicar"value="Publicar">
+                                                <button type="submit" class="btn btn-primary" id="publicar<%=a.getCodigo_anuncio()%>" name="publicar"value="Publicar"> Publicar</button>
                                             </div>
                                         </div>
                                         </div>
@@ -235,7 +235,49 @@
                           console.log(respuesta);
                           $(this).checked = respuesta;
                           });  
-                          }                    
+                          } 
+                        function VerificaPulbicar(codigo_anuncio,nombre_difusor,id_publicar){
+                            console.log("Dentro VeriricaPublicar");
+                            $.get(
+                                "../VerificarPublicar",
+                                {
+                                in_codigo_anuncio: codigo_anuncio,
+                                in_nombre_difusor: nombre_difusor
+                                },
+                                function(respuesta){
+                                       console.log("Respueta verifica" + respuesta); 
+                                    var res = JSON.parse(respuesta);   
+                                       if (res  === "V"){
+                                           console.log("V");
+                                            $('#publicar'+id_publicar).prop('disabled',false);
+                                       }else{
+                                           console.log("F");
+                                            $('#publicar'+id_publicar).prop('disabled',true);
+                                       }
+                                });  
+                            
+                        }
+                        function VerificaPulbicarf(codigo_anuncio,nombre_difusor,id_publicar){
+                            console.log("Dentro VeriricaPublicar");
+                            $.get(
+                                "../VerificarPublicar",
+                                {
+                                in_codigo_anuncio: codigo_anuncio,
+                                in_nombre_difusor: nombre_difusor
+                                },
+                                function(respuesta){
+                                       console.log("Respueta verifica" + respuesta); 
+                                    var res = JSON.parse(respuesta);   
+                                       if (res  === "V"){
+                                           console.log("V");
+                                            $('#publicarf'+id_publicar).prop('disabled',false);
+                                       }else{
+                                           console.log("F");
+                                            $('#publicarf'+id_publicar).prop('disabled',true);
+                                       }
+                                });  
+                            
+                        }
                     </script>   
         <%@include file="../base_ag/_pie_pagina.jsp" %>    
     </body>

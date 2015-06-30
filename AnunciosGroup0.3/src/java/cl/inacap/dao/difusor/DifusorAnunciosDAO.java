@@ -447,5 +447,35 @@ public class DifusorAnunciosDAO {
 
          }
         
+        public String verificarpublicar(String nombre_difusor, String codigo_anuncio) throws Exception {
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            boolean rs = false;
+            int total_puntos = 0;
+            Anuncio anuncio = new Anuncio();
+         try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_VERIFICA_PUBLICAR(?,?,?)}");
+            proc.setString(1,codigo_anuncio);
+            proc.setString(2,nombre_difusor);
+            proc.registerOutParameter(3, java.sql.Types.VARCHAR);
+            System.out.println(proc);
+            rs = proc.execute();
+            System.out.println(proc.getString(3));
+            
+            return proc.getString(3);
+            
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         
+
+         }
 }
 

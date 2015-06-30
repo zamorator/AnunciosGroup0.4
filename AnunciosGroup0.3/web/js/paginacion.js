@@ -52,7 +52,7 @@ $(window).scroll(function(){
                         //------------------Nuevo fin
                        anuncios_nuevos = anuncios_nuevos + '<!--VENTANA MODAL INICIO -->'+
                                                              '<form method="POST" action="/AnunciosGroup0.3/PublicarCanjear">'+
-                                                                '<button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#'+data[f].codigo_anuncio+'">Detalle</button>'+
+                                                                '<button type="button" class="btn btn-primary" data-toggle="modal" onclick="VerificaPulbicar('+ data[f].codigo_anuncio+' , ' +'&quot;' + nombre_difusor+'&quot;'+','+ data[f].codigo_anuncio +')"  data-target="#'+data[f].codigo_anuncio+'">Detalle</button>'+
                                                                     '<div class="modal fade"  id="'+data[f].codigo_anuncio+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
                                                                         '<div class="modal-dialog">'+
                                                                         '<div class="modal-content">'+
@@ -76,7 +76,7 @@ $(window).scroll(function(){
                                                                             '</div>'+
                                                                             '<div class="modal-footer">'+
                                                                                 '<input type="submit" class="btn btn-default" name="canjear" data-dismiss="modal" value="Canjear">'+
-                                                                                '<input type="submit" class="btn btn-primary" name="publicar"value="Publicar">'+
+                                                                                '<button type="submit" class="btn btn-primary" id="publicar'+ data[f].codigo_anuncio +'" name="publicar"value="Publicar"> Publicar</button>'+
                                                                             '</div>'+
                                                                         '</div>'+
                                                                         '</div>'+
