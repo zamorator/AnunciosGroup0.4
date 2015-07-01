@@ -6,6 +6,7 @@
 package cl.inacap.controller.administrador;
 
 import cl.inacap.dao.administrador.AdministradorDAO;
+import cl.inacap.model.Mensaje;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -40,8 +41,20 @@ public class ResponderMensaje extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
          
             System.out.println("llegue a servlet");
-            AdministradorDAO administradordao = new AdministradorDAO();
-            boolean  resp = administradordao.respondermensaje(request.getParameter("in_mensaje"));
+            Mensaje mensaje = new Mensaje();// creaar objeto mensaje 
+            mensaje.setMensaje(request.getParameter("InputMensaje")); //seteo parametros del jps
+            mensaje.setAsunto(request.getParameter("InputAsunto"));
+            mensaje.setNombre_u_anunciante(request.getParameter("InputEmpresa"));
+            mensaje.setCodigo_administrador(1);
+            mensaje.setPara(request.getParameter("InputEmpresa"));
+            AdministradorDAO respuesta = new AdministradorDAO();
+            //administradordao.respondermensaje(request.getParameter("in_mensaje"));
+            //administradordao.respondermensaje(request.getParameter("in_nombre_u_anunciante"));
+            //administradordao.respondermensaje(request.getParameter("in_asunto"));
+            respuesta.respondermensaje(mensaje); //responder obtiene los valores
+            
+            
+            
             response.sendRedirect("administrador/admin_empresas.jsp");
             
             

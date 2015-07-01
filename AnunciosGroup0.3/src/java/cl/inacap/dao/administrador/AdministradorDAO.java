@@ -197,7 +197,7 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             mensaje.setMensaje(rs.getString("MENSAJE"));
             mensaje.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
             mensaje.setCodigo_administrador(rs.getInt("CODIGO_ADMINISTRADOR"));
-            //mensaje.setFecha(rs.getString("FECHA"));
+            mensaje.setFecha(rs.getString("FECHA"));
             
             mensajes.add(mensaje);
             }
@@ -214,7 +214,7 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
         }
     
     
-    public boolean  respondermensaje(String mensaje) throws  Exception, SQLClientInfoException{
+    public void respondermensaje(Mensaje respuesta) throws  Exception, SQLClientInfoException{
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
             
@@ -225,23 +225,31 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
-            CallableStatement proc = con.prepareCall("{CALL SP_RESPONDER_MENSAJE(?)}");
-            proc.setString(1, mensaje);
+            CallableStatement proc = con.prepareCall("{CALL SP_RESPONDER_MENSAJE(?,?,?,?,?,?,?)}"); //mandando
+            proc.setString(1, respuesta.getMensaje());
+            proc.setString(2, "ADMIN");
+            proc.setString(3, "A");
+            proc.setString(4, respuesta.getPara());
+            proc.setString(5, respuesta.getNombre_u_anunciante());
+            proc.setString(6, respuesta.getAsunto());
+            proc.setInt(7, respuesta.getCodigo_administrador());
+            
            
             System.out.println(proc);
             //recibe el resultado de una query
             //rs recibe la tabla entera entera cuando se hace un slect
-            resp = proc.execute();
+            //resp = proc.execute();
+            proc.execute();
             System.out.println(resp); 
             
-            if (resp){
+         //   if (resp){
             
-                return resp;
-            }else{
+           //     return resp;
+            //}else{
                 
-                return resp;
-            }
-            
+              //  return resp;
+           // }
+           
             
             
             } catch (SQLException x){
@@ -255,7 +263,8 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             cf = null;
         } 
 
-            return false;
+          //  return false;
+            
 }
        
        
@@ -340,6 +349,12 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
 
             return false;
 }
+
+    public void respondermensaje(String parameter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
     
 
 

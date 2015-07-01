@@ -43,7 +43,7 @@ public class LoginAdministrador extends HttpServlet {
             
             AdministradorDAO administradordao = new AdministradorDAO();
             Administrador administrador = new Administrador();
-            administradordao.AgregarAdministrador(administrador);
+            //administradordao.AgregarAdministrador(administrador);
             
             
           administrador.setNombre_u_administrador("InputNombreUAdministrador");

@@ -84,7 +84,10 @@
                                  
                                  <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                   <div class="modal-dialog">
+                                    <input type="hidden" name="in_nombre_u_anunciante" value="<%= b.getNombre_u_anunciante() %>" >
+                                    <input type="hidden" name="in_asunto" value="<%= b.getAsunto() %>" >
                                     <input type="hidden" name="in_mensaje" value="<%= b.getMensaje() %>" >
+                                    <input type="hidden" name="in_codigo_administrador" value="<%= b.getCodigo_administrador() %>" >
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -102,11 +105,11 @@
                                                 <h3>MENSAJE : <%= b.getMensaje()%></h3>
                                             </div>
                                               <label class="control-label col-sm-2" for="InputEmpresa"> Empresa </label>
-                                              <input disabled value="<%= b.getNombre_u_anunciante()%>" type="text" class="form-control" name="InputEmpresa" id="Empresa"  required=""  >
+                                              <input value="<%= b.getNombre_u_anunciante()%>" type="text" class="form-control" name="InputEmpresa" id="Empresa"  required=""  >
                                               <label class="control-label col-sm-2" for="InputEmpresa"> Asunto </label>
-                                              <input disabled value="<%= b.getAsunto()%>" type="text" class="form-control" name="InputAsunto" id="Asunto"  required=""  >
+                                              <input value="<%= b.getAsunto()%>" type="text" class="form-control" name="InputAsunto" id="Asunto"  required=""  >
                                               <label class="control-label col-sm-2" for="InputMensaje">Mensaje</label>
-                                              <textarea type="text" class="form-control" name="InputMensaje" id="Mensaje" placeholder="Respuesta" required=""></textarea>   
+                                              <input type="text" class="form-control" name="InputMensaje" id="Mensaje" placeholder="Respuesta" required="">  
                                         </div>
                                         <div class="modal-footer">
                                             <button  class="btn btn-success"  type="submit">Responder</button>
