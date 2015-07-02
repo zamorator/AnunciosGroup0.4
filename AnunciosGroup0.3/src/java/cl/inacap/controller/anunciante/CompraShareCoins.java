@@ -5,7 +5,7 @@
  */
 package cl.inacap.controller.anunciante;
 
-import cl.inacap.dao.anuncio.AnuncioDAO;
+import cl.inacap.dao.anunciante.AnuncioDAO;
 import cl.inacap.model.Anuncio;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -37,7 +37,7 @@ public class CompraShareCoins extends HttpServlet {
         try {
             System.out.println(request.getParameter("codigoanuncio"));
             AnuncioDAO anuncioDao = new AnuncioDAO();
-            Anuncio anuncio = anuncioDao.BuscarAnunciosPorAnunciante(Integer.parseInt(request.getParameter("codigoanuncio")));
+            Anuncio anuncio = anuncioDao.buscarAnuncioPorId(Integer.parseInt(request.getParameter("codigoanuncio")));
             HttpSession session = request.getSession();
             session.setAttribute("anuncio", anuncio);
             response.sendRedirect("anunciante/comprar_sharecoins.jsp");

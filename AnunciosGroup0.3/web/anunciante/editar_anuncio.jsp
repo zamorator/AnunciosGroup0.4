@@ -57,13 +57,13 @@
             <li role="presentation"><a href="enviar_mensaje.jsp">Ayuda</a></li>
         </ul>
         <div id="panel">  
-            
-                <ul class="nav nav-tabs ">
-                    <li role="submenu"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
-                    <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
-                    <li role="submenu" class="active"><a href="#">Editar Anuncio</a></li>
-                </ul>
-          
+
+            <ul class="nav nav-tabs ">
+                <li role="submenu"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
+                <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
+                <li role="submenu" class="active"><a href="#">Editar Anuncio</a></li>
+            </ul>
+
 
             <div class="contenido" >
                 <form method="POST" action="${pageContext.request.contextPath}/EditarAnuncio">
@@ -144,10 +144,28 @@
                         </div>
                         <div style="margin-left: 3%;"class="form-group">
                             <label for="InputValor">Valor Anuncio</label> 
-                            <input type="number" name="InputValorReal" required="" value="<%= valorAnuncio.getValor_real() %>">
+                            <input type="number" name="InputValorReal" required="" value="<%= valorAnuncio.getValor_real()%>">
                         </div>
+                        <br>
+                        <p><input value="false" name="checkDeshabilitar" type="checkbox" id="checkSubmit" > Deseo deshabilitar este anuncio</p>
                     </div>
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button id="actualizar" type="submit" class="btn btn-primary">Actualizar</button>
+                    <button id="deshabilitar" type="submit" class="btn btn-danger" disabled="">Deshabilitar</button>
+                    <script>
+                        $(document).ready(function () {
+                            $("#checkSubmit").change(function () {
+                                if ($("#checkSubmit").is(':checked')) {
+                                    $("#checkSubmit").val(true);
+                                    $("#deshabilitar").removeAttr('disabled');
+                                    $("#actualizar").attr('disabled', 'disabled');
+                                } else {
+                                    $("#checkSubmit").val(false);
+                                    $("#deshabilitar").attr('disabled', 'disabled');
+                                    $("#actualizar").removeAttr('disabled');
+                                }
+                            });
+                        });
+                    </script>
                 </form>
             </div>
 

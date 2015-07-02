@@ -395,5 +395,25 @@ public class AnuncioDAO {
         }
         return cantidadShareCoins;
     }
-
+   
+    public void eliminarAnuncio(Anuncio anuncio) throws Exception{
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        try {
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SPELIMINARANUNCIO(?)}");
+            proc.setInt(1, anuncio.getCodigo_anuncio());
+            proc.executeQuery();
+            System.out.println("SPELIMINARANUNCIO");
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            cf.cerrarConexion();
+            throw new Exception();
+        } finally {
+            cf.cerrarConexion();
+            con = null;
+            cf = null;
+        }
+    }
 }

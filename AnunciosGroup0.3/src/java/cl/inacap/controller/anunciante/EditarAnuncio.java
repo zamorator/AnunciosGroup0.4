@@ -36,32 +36,40 @@ public class EditarAnuncio extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            Anuncio anuncio = new Anuncio();
-            anuncio.setCodigo_anuncio(Integer.parseInt(request.getParameter("InputCodigoAnuncio")));
-            anuncio.setNombre_anuncio(request.getParameter("InputNombreAnuncio"));
-            anuncio.setDescripcion_anuncio(request.getParameter("InputDescripcionAnuncio"));
-            anuncio.setId_categoria(Integer.parseInt(request.getParameter("selectCategoria")));
-            anuncio.setId_segmento_sexo(Integer.parseInt(request.getParameter("selectSegmentoSexo")));
-            anuncio.setId_segmento_edad(Integer.parseInt(request.getParameter("selectSegmentoEdad")));
-            anuncio.setCantidad_cupones(Integer.parseInt(request.getParameter("InputCantidadCupones")));
-            anuncio.setPorcentaje_descuento(Integer.parseInt(request.getParameter("porcentajeDescueto")));
-            
-            ValorAnuncio valorAnuncio = new ValorAnuncio();
-            valorAnuncio.setValor_real(Integer.parseInt(request.getParameter("InputValorReal")));
-            valorAnuncio.setCodigo_anuncio(anuncio.getCodigo_anuncio());
-            
-            
-            AnuncioDAO anuncioDao = new AnuncioDAO();
-            anuncioDao.actualizarAnuncio(anuncio);
-            anuncioDao.actualizarValorAnuncio(valorAnuncio);
-            request.setAttribute("anuncio", anuncio);
-            
-            response.sendRedirect("anunciante/mis_anuncios.jsp?message="+ URLEncoder.encode("Anuncio Actualizado Exitosamente", "UTF-8"));
-        } catch (Exception e){
-          e.printStackTrace();
-          response.sendRedirect("anunciante/mis_anuncios.jsp?message="+ URLEncoder.encode("Error al intentar actualizar Anuncio", "UTF-8"));
+            boolean isDesabilitar = Boolean.valueOf(request.getParameter("checkDeshabilitar"));
+            System.out.println("isDesabilitar "+isDesabilitar);
+            if (!isDesabilitar) {
+                Anuncio anuncio = new Anuncio();
+                anuncio.setCodigo_anuncio(Integer.parseInt(request.getParameter("InputCodigoAnuncio")));
+                anuncio.setNombre_anuncio(request.getParameter("InputNombreAnuncio"));
+                anuncio.setDescripcion_anuncio(request.getParameter("InputDescripcionAnuncio"));
+                anuncio.setId_categoria(Integer.parseInt(request.getParameter("selectCategoria")));
+                anuncio.setId_segmento_sexo(Integer.parseInt(request.getParameter("selectSegmentoSexo")));
+                anuncio.setId_segmento_edad(Integer.parseInt(request.getParameter("selectSegmentoEdad")));
+                anuncio.setCantidad_cupones(Integer.parseInt(request.getParameter("InputCantidadCupones")));
+                anuncio.setPorcentaje_descuento(Integer.parseInt(request.getParameter("porcentajeDescueto")));
+
+                ValorAnuncio valorAnuncio = new ValorAnuncio();
+                valorAnuncio.setValor_real(Integer.parseInt(request.getParameter("InputValorReal")));
+                valorAnuncio.setCodigo_anuncio(anuncio.getCodigo_anuncio());
+
+                AnuncioDAO anuncioDao = new AnuncioDAO();
+                anuncioDao.actualizarAnuncio(anuncio);
+                anuncioDao.actualizarValorAnuncio(valorAnuncio);
+                request.setAttribute("anuncio", anuncio);
+            } else {
+                Anuncio anuncio = new Anuncio();
+                anuncio.setCodigo_anuncio(Integer.parseInt(request.getParameter("InputCodigoAnuncio")));
+                AnuncioDAO anuncioDao = new AnuncioDAO();
+                anuncioDao.eliminarAnuncio(anuncio);
+            }
+
+            response.sendRedirect("anunciante/mis_anuncios.jsp?message=" + URLEncoder.encode("Anuncio Actualizado Exitosamente", "UTF-8"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("anunciante/mis_anuncios.jsp?message=" + URLEncoder.encode("Error al intentar actualizar Anuncio", "UTF-8"));
         } finally {
-            
+
         }
     }
 
