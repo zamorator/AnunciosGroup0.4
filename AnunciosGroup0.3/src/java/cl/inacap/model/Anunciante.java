@@ -18,6 +18,25 @@ public class Anunciante {
     private String password_anunciante;
     private String email_anunciante;
     private String estado_anunciante;
+    private String nombre_comuna;
+    private String nombre_privincia;
+    
+    public String getNombre_comuna() {
+        return nombre_comuna;
+    }
+
+    public void setNombre_comuna(String nombre_comuna) {
+        this.nombre_comuna = nombre_comuna;
+    }
+
+    public String getNombre_privincia() {
+        return nombre_privincia;
+    }
+
+    public void setNombre_privincia(String nombre_privincia) {
+        this.nombre_privincia = nombre_privincia;
+    }
+
 
     public String getNombre_u_anunciante() {
         return nombre_u_anunciante;

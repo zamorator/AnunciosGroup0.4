@@ -6,6 +6,7 @@
 package cl.inacap.dao.difusor;
 
 import cl.inacap.connect.ConnectionFactory;
+import cl.inacap.model.Anunciante;
 import cl.inacap.model.Anuncio;
 import cl.inacap.model.Cupon;
 import cl.inacap.model.Difusor;
@@ -477,5 +478,39 @@ public class DifusorAnunciosDAO {
          
 
          }
+        
+        public Anunciante buscaanuncianteporanuncio(int codigo_anuncio) throws Exception {
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            ResultSet rs = null;      
+         try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_BUSCA_ANUNCIANTE_POR_CODIGO_ANUNCIO(?)}");
+            proc.setInt(1, codigo_anuncio);
+            System.out.println(proc);
+            rs = proc.executeQuery();
+            Anunciante anunciante = new Anunciante();
+            
+            while(rs.next()){
+             
+                anunciante.setNombre_anunciante(rs.getString("NOMBRE_ANUNCIANTE"));
+                anunciante.setEmail_anunciante(rs.getString("EMAIL_ANUNCIANTE"));
+                anunciante.setNombre_comuna(rs.getString("COMUNA"));
+                anunciante.setNombre_privincia(rs.getString("PROVINCIA"));
+                anunciante.setDireccion_anunciante(rs.getString("DIRECCION_ANUNCIANTE"));
+            }
+            return anunciante;
+        }catch (Exception ex) {
+            cf.cerrarConexion();
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            cf.cerrarConexion();
+            con = null;
+            cf = null;
+        } 
+         
+        }
 }
 

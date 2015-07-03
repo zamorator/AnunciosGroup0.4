@@ -6,6 +6,7 @@
 package cl.inacap.controller.difusor;
 
 import cl.inacap.dao.difusor.DifusorAnunciosDAO;
+import cl.inacap.model.Anunciante;
 import cl.inacap.model.Cupon;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,7 +44,9 @@ public class GeneraCupon3 extends HttpServlet {
         try {
             System.out.println(Integer.parseInt(request.getParameter("id_cupon")));
             DifusorAnunciosDAO dad = new DifusorAnunciosDAO();
+            
             Cupon cupon = new Cupon();
+            Anunciante anunciante = new Anunciante();
             cupon = dad.buscarcupon(Integer.parseInt(request.getParameter("id_cupon")));
             HttpSession session_actual4 = request.getSession(true);
             session_actual4.setAttribute("cupon2", cupon);
