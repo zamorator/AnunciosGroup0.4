@@ -130,12 +130,12 @@
                 console.log("maximo" + maximo_descuento);
                 
                 if(total <= maximo_descuento ){
-                    total = String(total);
-                    total = total.substring(0,3);
+                    total = String(Math.round(total));
+                    total = total.substring(0,4);
                     console.log(total);
                     $('#valor_descuento').text(total+"%");
                     $('#in_descuento_obtenido').val(total);
-                    $('#valor_final').text("$" + valor_final);
+                    $('#valor_final').text("$" + Math.round(valor_final));
                     $('#in_valor_final').val(valor_final);
                     if (descuento > 0){
                         $('#boton_siguiente').prop('disabled',false);
@@ -151,14 +151,16 @@
             }
             
             function Maxpuntos(){
-                var puntos=  $('#descuento').val();
-                var max_puntos= $('#max_puntos').val();
-                
+                var puntos=  parseInt($('#descuento').val());
+                console.log("los puntos"+puntos);
+                var max_puntos= parseInt($('#max_puntos').val());
+                console.log("puntos max"+max_puntos);
                 if(puntos > max_puntos){
                     alert("Los puntos seleccionados no pueden ser mayor a los puntos que se posen.");
                     $('#descuento').val("0");
                 }else{
-                    ObtenerDescuento();
+                   ObtenerDescuento();
+                   
                 }
             }
             

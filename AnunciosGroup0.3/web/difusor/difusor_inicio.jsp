@@ -52,7 +52,7 @@
             <li role="presentation"><a href="difusor_perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="#">Canjear</a></li>
         </ul>
-        <div id="panel">
+        <div id="panel" class="container">
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="#">Todos</a></li>
                 <li role="presentation"><a href="difusor_favorito.jsp">Mis Anuncios</a></li>
