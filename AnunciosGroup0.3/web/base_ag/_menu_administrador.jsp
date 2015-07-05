@@ -8,41 +8,42 @@
 <link rel="stylesheet" href="../css/cabecera_anunciante.css">
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    
-</head>
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top" >
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../inicio.jsp">
+    <head>
 
-                        <img src="/AnunciosGroup0.3/img/Logo.png" height="35" width="250" style="margin-top: -10px;">
+    </head>
+    <body>
+        <form action="${pageContext.request.contextPath}/CerrarSesion" method="POST" >
+            <nav class="navbar navbar-default navbar-fixed-top" >
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="../inicio.jsp">
 
-                        <span>
+                            <img src="/AnunciosGroup0.3/img/Logo.png" height="35" width="250" style="margin-top: -10px;">
 
-                        </span>
-                    </a>
-                </div>
+                            <span>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            </span>
+                        </a>
+                    </div>
 
-                    <ul class="nav navbar-nav navbar-right">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav navbar-right">
                             <%= administrador.getNombre_u_administrador()%> 
-                        <button type="submit" class="btn btn-link">Cerrar Sessi&oacute;n</button>
+                            <button type="submit" class="btn btn-link">Cerrar Sessi&oacute;n</button>
                         </ul>
-                    
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>  
-    
-</body>	
+
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>  
+        </form>
+    </body>	
 </html>
