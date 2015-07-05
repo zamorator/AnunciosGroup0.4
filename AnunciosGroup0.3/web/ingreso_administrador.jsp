@@ -32,7 +32,7 @@
                 <div id="ingreso_datos">
                     <div class="form-group">
                         <label for="InputNombreUAdministrado">Administrador</label>
-                        <input type="text" class="form-control" name="InputNombreUAdministrado" id="NombreAdministrador" placeholder="Ingrese Nombre Administrador" required="">
+                        <input type="text" class="form-control" name="InputNombreAdministrador" id="NombreAdministrador" placeholder="Ingrese Nombre Administrador" required="">
                     </div>
                     <div class="form-group">
                         <label for="InputPassword">Contraseña</label>

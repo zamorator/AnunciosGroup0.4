@@ -42,6 +42,8 @@ public Administrador IniciaSesionAdministrador(String nombre, String password) t
             proc.setString(1,nombre);
             proc.setString(2,password);
             rs = proc.executeQuery();
+            System.out.println("SP_INICIAR_SESION_ADMINISTRADOR");
+            System.out.println("SP_INICIAR_SESION_ADMINISTRADOR "+nombre + " " + password);
             
             //NOMBRE DEL CAMPO QUE DEVULEVE EL SP
             while (rs.next()) {
@@ -59,6 +61,7 @@ public Administrador IniciaSesionAdministrador(String nombre, String password) t
             ex.printStackTrace();
             throw new Exception();
         } finally {
+            cf.cerrarConexion();
             con = null;
             cf = null;
         }

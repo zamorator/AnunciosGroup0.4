@@ -40,21 +40,19 @@ public class LoginAdministrador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            
             AdministradorDAO administradordao = new AdministradorDAO();
-            Administrador administrador = new Administrador();
-            //administradordao.AgregarAdministrador(administrador);
-            
-            
-          administrador.setNombre_u_administrador("InputNombreUAdministrador");
-          administrador.setPassword_administrador("InputPassword"); 
-            
-           administrador = administradordao.IniciaSesionAdministrador(request.getParameter("InputNombreAdministrador"),request.getParameter("InputPassword"));
-                       HttpSession session_actual = request.getSession(true);
-            session_actual.setAttribute("administrador", administrador);
-            response.sendRedirect("administrador/Admin_inicio.jsp");
+            Administrador administrador = administradordao.IniciaSesionAdministrador(request.getParameter("InputNombreAdministrador"), request.getParameter("InputPassword"));
+
+            if (administrador == null) {
+                response.sendRedirect("ingreso_administrador.jsp?message=" + URLEncoder.encode("Usuario y contrase&ntilde;a no coinciden", "UTF-8"));
+            } else {
+                HttpSession session_actual = request.getSession(true);
+                session_actual.setAttribute("administrador", administrador);
+                response.sendRedirect("administrador/Admin_inicio.jsp");
+            }
         } catch (Exception e) {
-            response.sendRedirect("ingreso_administrador.jsp?message=" + URLEncoder.encode("Usuario y contrase&ntilde;a no coinciden", "UTF-8"));
+            e.printStackTrace();
+            response.sendRedirect("ingreso_administrador.jsp?message=" + URLEncoder.encode("Error al intentar iniciar sesión de administrador", "UTF-8"));
         } finally {
             out.close();
         }
