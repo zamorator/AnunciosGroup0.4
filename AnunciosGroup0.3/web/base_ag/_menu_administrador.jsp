@@ -36,8 +36,9 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav navbar-right">
-                        
-                    </ul>
+                            <%= administrador.getNombre_u_administrador()%> 
+                        <button type="submit" class="btn btn-link">Cerrar Sessi&oacute;n</button>
+                        </ul>
                     
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

@@ -4,6 +4,7 @@
     Author     : Javoru
 --%>
 
+<%@page import="cl.inacap.model.Administrador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,6 +21,9 @@
         <link rel="stylesheet" href="../css/anunciante.css">
         <title>Perfil</title>
     </head>
+    <%
+        Administrador administrador = (Administrador) session.getAttribute("administrador");
+    %>
     <body>
          <%@include file="../base_ag/_menu_administrador.jsp" %>    
     

@@ -4,6 +4,7 @@
     Author     : Javoru
 --%>
 
+<%@page import="cl.inacap.model.Administrador"%>
 <%@page import="cl.inacap.dao.administrador.AdministradorDAO"%>
 <%@page import="cl.inacap.model.Anuncio"%>
 <%@page import="cl.inacap.model.Anunciante"%>
@@ -24,98 +25,99 @@
         <script src="../js/bootstrap.min.js"></script>
         <title>Nuevas Empresas</title>
     </head>
-    
-    
+
+
     <%
-            ArrayList<Anunciante> anunciantespendientes= null;
-            
-            
-            try{
+        Administrador administrador = (Administrador) session.getAttribute("administrador");
+        ArrayList<Anunciante> anunciantespendientes = null;
+
+        try {
             anunciantespendientes = new ArrayList<Anunciante>();
-            
+
             AdministradorDAO anunciantesDAO = new AdministradorDAO();
             anunciantespendientes = anunciantesDAO.buscaranuncianteadministrador();
-            
+
             System.out.println(anunciantespendientes);
-            } catch(Exception e){
-                e.printStackTrace();
-            }
-        %>
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    %>
     <body>
-        
+
         <%@include file="../base_ag/_menu_administrador.jsp" %>    
-    
+
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation" ><a href="../administrador/Admin_inicio.jsp">Anuncios</a></li>
             <li role="presentation" class="active"><a href="#">Empresas</a></li>
             <li role="presentation"  ><a href="../administrador/admin_perfil.jsp">Perfil</a></li>
         </ul>
-        
+
         <div id="panel">
             <ul class="nav nav-tabs">
                 <li role="presentation" ><a href="../administrador/admin_empresas.jsp">Mensaje</a></li>
                 <li role="presentation" class="active"><a href="#">Nuevas Empresas</a></li>
 
-                
-                
+
+
             </ul>
-            
-                       <div class="col-md-12" id="">
-                       <!--ANUNCIO 1 --> 
-                       <% int id_modal2=0; %>
-                       <% for (Anunciante b : anunciantespendientes) {%>
-                       <div class="col-sm-6 col-md-4">
-                        
-                            
-                            <div style="padding-top: 3%;" class="caption">
-             
-                               
-                               
-                                <div style="padding-top: 3%;" class="list-group">
-                                    <a href="#" class="list-group-item disabled">
-                                      Solicitud nueva empresa.
-                                    </a>
-                                    <a href="#" class="list-group-item"><%= b.getNombre_u_anunciante()%></a>
-                                    <a href="#" class="list-group-item"><%= b.getDireccion_anunciante()%></a>
-                                    <a href="#" class="list-group-item"><%= b.getEstado_anunciante() %></a> 
-                                </div>
-                               
-                               
-                             <!--VENTANA MODAL INICIO -->
-                            <form action="${pageContext.request.contextPath}/ActualizarAnuncianteAdmin" method="POST" >
+
+            <div class="col-md-12" id="">
+                <!--ANUNCIO 1 --> 
+                <% int id_modal2 = 0; %>
+                <% for (Anunciante b : anunciantespendientes) {%>
+                <div class="col-sm-6 col-md-4">
+
+
+                    <div style="padding-top: 3%;" class="caption">
+
+
+
+                        <div style="padding-top: 3%;" class="list-group">
+                            <a href="#" class="list-group-item disabled">
+                                Solicitud nueva empresa.
+                            </a>
+                            <a href="#" class="list-group-item"><%= b.getNombre_u_anunciante()%></a>
+                            <a href="#" class="list-group-item"><%= b.getDireccion_anunciante()%></a>
+                            <a href="#" class="list-group-item"><%= b.getEstado_anunciante()%></a> 
+                        </div>
+
+
+                        <!--VENTANA MODAL INICIO -->
+                        <form action="${pageContext.request.contextPath}/ActualizarAnuncianteAdmin" method="POST" >
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
-                                <div class="modal fade" id="<%=id_modal2 %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <input type="hidden" name="in_nombre_u_anunciante" value="<%= b.getNombre_u_anunciante()%>" >
+                            <div class="modal fade" id="<%=id_modal2%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <input type="hidden" name="in_nombre_u_anunciante" value="<%= b.getNombre_u_anunciante()%>" >
                                     <div class="modal-content">
-                                         <div class="modal-header">
-                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                             <h3 class="modal-title" id="myModalLabel"> <%= b.getNombre_anunciante()%> </h3>
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h3 class="modal-title" id="myModalLabel"> <%= b.getNombre_anunciante()%> </h3>
                                         </div>
                                         <div class="modal-body">
-                                            
-                                        <p>Esta es una pequeña descripcion del anuncio.</p>
-                     
-                                           
+
+                                            <p>Esta es una pequeña descripcion del anuncio.</p>
+
+
                                         </div>
                                         <div class="modal-footer">
                                             <button  class="btn btn-success"  type="submit">Aceptar</button>
                                             <button type="button" class="btn btn-danger" data-dismiss="modal" >Rechazar</button>
                                         </div>
                                     </div>
-                                    </div>
                                 </div>
+                            </div>
                             <!--VENTANA MODAL FIN -->
-                              </form>
-                              
-                            </div >
-                        
-                        </div>
-                        <%id_modal2++;}%>    
-                    </div>    
-            
+                        </form>
+
+                    </div >
+
+                </div>
+                <%id_modal2++;
+                            }%>    
+            </div>    
+
         </div>
-         <%@include file="../base_ag/_pie_pagina.jsp" %>
-        
+        <%@include file="../base_ag/_pie_pagina.jsp" %>
+
     </body>
 </html>
