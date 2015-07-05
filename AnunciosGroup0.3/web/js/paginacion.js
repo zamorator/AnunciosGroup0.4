@@ -75,7 +75,7 @@ $(window).scroll(function(){
                                  anuncios_nuevos = anuncios_nuevos +    '<input type="checkbox"  name ="favorito" class="click" onclick="clickCheck('+data[f].codigo_anuncio+' , ' +'&quot;' + nombre_difusor+'&quot;'+')"'+ favorito+' > Agregar a Favorito'+
                                                                             '</div>'+
                                                                             '<div class="modal-footer">'+
-                                                                                '<input type="submit" class="btn btn-default" name="canjear" data-dismiss="modal" value="Canjear">'+
+                                                                                '<input type="submit" class="btn btn-default" name="canjear" value="Canjear">'+
                                                                                 '<button type="submit" class="btn btn-primary" id="publicar'+ data[f].codigo_anuncio +'" name="publicar"value="Publicar"> Publicar</button>'+
                                                                             '</div>'+
                                                                         '</div>'+
