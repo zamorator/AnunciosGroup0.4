@@ -9,7 +9,6 @@ import cl.inacap.connect.ConnectionFactory;
 import cl.inacap.model.Giro;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -85,5 +84,39 @@ public class GiroDAO {
         }
         
         return giro;
+    }
+    
+    public ArrayList<Giro> listaGirosRubroHeI() throws Exception{
+        ArrayList<Giro> giros = new ArrayList<Giro>();
+        ConnectionFactory cf = new ConnectionFactory();
+        Connection con = null;
+        ResultSet rs = null;
+        try {
+            con = cf.obtenerConexion();
+            CallableStatement proc = con.prepareCall("{CALL SP_GIROS_POR_RUBRO_H_I()}");
+            rs = proc.executeQuery();
+            System.out.println("SP_GIROS_POR_RUBRO_H_I");
+
+            while (rs.next()) {
+                Giro giro = new Giro();
+                giro.setCodigo_giro(rs.getInt("CODIGO_GIRO"));
+                giro.setId_giro_detalle(rs.getInt("ID_GIRO_DETALLE"));
+                giro.setDetalle(rs.getString("DETALLE"));
+                giro.setAfecto_iva(rs.getString("AFECTO_IVA"));
+                giro.setCategoria_tributaria(rs.getInt("CATEGORIA_TRIBUTARIA"));
+                giro.setDisponible_internet(rs.getString("DISPONIBLE_INTERNET"));
+                
+                giros.add(giro);
+            }
+        } catch (Exception ex) {
+            cf.cerrarConexion();
+            ex.printStackTrace();
+            throw new Exception();
+        } finally {
+            cf.cerrarConexion();
+            con = null;
+            cf = null;
+        }
+        return giros;
     }
 }

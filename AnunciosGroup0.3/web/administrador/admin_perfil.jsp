@@ -4,6 +4,10 @@
     Author     : Javoru
 --%>
 
+<%@page import="cl.inacap.dao.giro.GiroDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="cl.inacap.model.Giro"%>
 <%@page import="cl.inacap.model.Administrador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,24 +27,40 @@
     </head>
     <%
         Administrador administrador = (Administrador) session.getAttribute("administrador");
+        GiroDAO giroDao = new GiroDAO();
+        ArrayList<Giro> giros = giroDao.listaGirosRubroHeI();
     %>
     <body>
-         <%@include file="../base_ag/_menu_administrador.jsp" %>    
-    
+        <%@include file="../base_ag/_menu_administrador.jsp" %>    
+
         <ul class="nav nav-pills nav-justified menu_anunciante" role="group" style="padding-top: 10%;">
             <li role="presentation" ><a href="../administrador/Admin_inicio.jsp">Anuncios</a></li>
             <li role="presentation" ><a href="../administrador/admin_empresas.jsp">Empresas</a></li>
             <li role="presentation" class="active" ><a href="#">Perfil</a></li>
         </ul>
-        
+
         <div id="panel">
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="#">Mi Perfil</a></li>
-
-                
-                
             </ul>
+
+            <div class="contenido">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Habilitado</td>
+                            <td>Giro</td>
+                        </tr>
+                    </thead>
+                    <% for (Giro g : giros) {%>
+                    <tr>
+                        <td><input type="checkbox" checked="" /> </td>
+                        <td><%= g.getDetalle()%></td>
+                    </tr>
+                    <%}%>
+                </table>
+            </div>
         </div>
-         <%@include file="../base_ag/_pie_pagina.jsp" %>
+        <%@include file="../base_ag/_pie_pagina.jsp" %>
     </body>
 </html>

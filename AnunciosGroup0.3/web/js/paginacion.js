@@ -2,7 +2,6 @@
 
 $(window).scroll(function(){   
     if ($(window).scrollTop() === $(document).height() - $(window).height()){
-        console.log("xapalapaxala");
         var cantidad = $('#cantidadanuncios').val();
         var ruta = $('#ruta').val();
         var nombre_difusor = $('#nombre_difusor').val();
