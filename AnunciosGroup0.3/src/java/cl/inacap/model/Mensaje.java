@@ -21,6 +21,7 @@ public class Mensaje {
     private int codigo_administrador;
     private String fecha;
     private String estado;
+    private String nombre_administrador;
 
     public int getId_mensaje() {
         return id_mensaje;
@@ -77,7 +78,7 @@ public class Mensaje {
     public void setCodigo_administrador(int codigo_administrador) {
         this.codigo_administrador = codigo_administrador;
     }
-    
+
     public String getFecha() {
         return fecha;
     }
@@ -85,7 +86,7 @@ public class Mensaje {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-    
+
     public String getTipo_remitente() {
         return tipo_remitente;
     }
@@ -102,4 +103,11 @@ public class Mensaje {
         this.estado = estado;
     }
 
+    public String getNombre_administrador() {
+        return nombre_administrador;
+    }
+
+    public void setNombre_administrador(String nombre_administrador) {
+        this.nombre_administrador = nombre_administrador;
+    }
 }

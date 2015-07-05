@@ -227,16 +227,17 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
            
             try {  
             con = cf.obtenerConexion();
+            int i = 0;
             // se crea instancia a procedimiento.
-            CallableStatement proc = con.prepareCall("{CALL SP_RESPONDER_MENSAJE(?,?,?,?,?,?,?)}"); //mandando
-            proc.setString(1, respuesta.getMensaje());
-            proc.setString(2, "ADMIN");
-            proc.setString(3, "A");
-            proc.setString(4, respuesta.getPara());
-            proc.setString(5, respuesta.getNombre_u_anunciante());
-            proc.setString(6, respuesta.getAsunto());
-            proc.setInt(7, respuesta.getCodigo_administrador());
-            
+            CallableStatement proc = con.prepareCall("{CALL SP_RESPONDER_MENSAJE(?,?,?,?,?,?,?,?)}"); //mandando
+            proc.setString(++i, respuesta.getPara());
+            proc.setString(++i, respuesta.getNombre_administrador());
+            proc.setString(++i, respuesta.getAsunto());
+            proc.setString(++i, respuesta.getMensaje());
+            proc.setString(++i, respuesta.getNombre_u_anunciante());
+            proc.setInt(++i, respuesta.getCodigo_administrador());
+            proc.setString(++i, "A");
+            proc.setString(++i, "NL");
            
             System.out.println(proc);
             //recibe el resultado de una query

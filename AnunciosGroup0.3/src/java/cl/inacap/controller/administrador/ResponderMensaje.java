@@ -6,6 +6,7 @@
 package cl.inacap.controller.administrador;
 
 import cl.inacap.dao.administrador.AdministradorDAO;
+import cl.inacap.model.Administrador;
 import cl.inacap.model.Mensaje;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,14 +41,16 @@ public class ResponderMensaje extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession sesion = request.getSession();
+            Administrador administrador = (Administrador) sesion.getAttribute("administrador");
          
-            System.out.println("llegue a servlet");
             Mensaje mensaje = new Mensaje();// creaar objeto mensaje 
-            mensaje.setMensaje(request.getParameter("InputMensaje")); //seteo parametros del jps
+            mensaje.setMensaje(request.getParameter("InputMensaje"));
             mensaje.setAsunto(request.getParameter("InputAsunto"));
             mensaje.setNombre_u_anunciante(request.getParameter("InputEmpresa"));
-            mensaje.setCodigo_administrador(1);
+            mensaje.setCodigo_administrador(administrador.getCodigo_administrador());
             mensaje.setPara(request.getParameter("InputEmpresa"));
+            mensaje.setNombre_administrador(administrador.getNombre_administrador());
             AdministradorDAO respuesta = new AdministradorDAO();
             //administradordao.respondermensaje(request.getParameter("in_mensaje"));
             //administradordao.respondermensaje(request.getParameter("in_nombre_u_anunciante"));
