@@ -63,14 +63,21 @@
             <!-- /.col-md-8 -->
             <div class="col-md-4">
                 <h1><%= anuncio.getNombre_anuncio() %></h1>
+                    <input type="hidden" id="nombre_anuncio" value="<%= anuncio.getNombre_anuncio() %>">
                 <p><%= anuncio.getDescripcion_anuncio() %></p>
                 <input type="hidden" id="nombredifusor" value="<%= difusor.getNombre_u_difusor() %>">
                 <input type="hidden" id="descripcion" value="<%= anuncio.getDescripcion_anuncio() %>">
                 <input type="hidden" id="codigoanuncio" value="<%= anuncio.getCodigo_anuncio() %>">
-                <div class="row col-md-12">  
-                    <button class="btn btn-primary btn-lg" href="#" id="share_button"  value="Publicar en Facebook">Publicar en Facebook</button>
+                <hr>
+                
+                <div>  
+                    <button class="btn btn-primary btn-sm" href="#" id="share_button"  value="Publicar en Facebook">Compartir en Facebook</button>
+
+                    <input type="button" onclick="Tweet()" id="tweet_button" class="btn btn-info btn-sm" value="Compartir en Twitter">
+
                 </div>
              
+
                  <!-- <div class="row col-lg-12" style="margin-top: 3%;">  
                     <a class="btn btn-primary btn-lg" href="#" id="share_button" >Publicar en Twitter</a>
                 </div>    --> 
@@ -107,6 +114,7 @@
                             <div class="caption">
                                  <% if(b.getNombre_anuncio().length() <= 23){ %>
                                     <h4><a href="#"><%= b.getNombre_anuncio() %></a>
+                                    
                                 </h4>
                                 <%}else{%>
                                
@@ -205,12 +213,14 @@ $(document).ready(function(){
                                 in_codigo_anuncios: codigo_anuncios
                                 },
                                 function(respuesta){
-                            $('#share_button').prop('disabled',true); 
+                            $('#share_button').prop('disabled',true);
+                            $('#tweet_button').prop('disabled',true); 
                           });
 			
 	});
 	
 	
+        
 });
 
 //-->
@@ -265,6 +275,30 @@ $(document).ready(function(){
                                 });  
                             
                         }
+                        
+                        function Agregacoin(){
+                                console.log("entrega agrega coin");
+                                var nombre_difusor = $('#nombredifusor').val();
+                                var codigo_anuncios = $('#codigoanuncio').val();
+                        $.get(
+                                "../AgregarCoin",
+                                {
+                                in_nombre_difusor: nombre_difusor,
+                                in_codigo_anuncios: codigo_anuncios
+                                },
+                                function(respuesta){
+                            $('#share_button').prop('disabled',true); 
+                            $('#tweet_button').prop('disabled',true); 
+                            
+                          });
+                      }
+                      
+                      function Tweet(){
+                          var nombre_anuncio = $('#nombre_anuncio').val();
+                          console.log(nombre_anuncio);
+                          window.open("http://twitter.com/home/?status=Me%20gust%C3%B3%20este%20producto%20en%20%23AnunciosGroup+."+nombre_anuncio+".+http://190.13.76.218:8080/AnunciosGroup0.3/", "ventana", 'width=500,height=400');
+                          Agregacoin();
+                      }
                     </script>   
         
         <%@include file="../base_ag/_pie_pagina.jsp" %>   

@@ -109,13 +109,14 @@
 
                                     <a href="#" id="login" class="btn btn-primary" style="margin-top:  1%;">Vincular Facebook </a>
                             </div>
+                             <!-- Vinculacion Twitter
                             <div class="form-group"style="padding: 2%;">
                                 <label for="InputTwitter">Twitter</label>
                                 <input type="text" class="form-control" name="InputTwitter" id="Twitter-nombre" readonly="true"   placeholder="" required="">
                                 <input type="hidden" class="form-control" name="InputTwitter-id" id="Twitter-id" placeholder="">
                                 <a href="#" id="login-twitter" class="btn btn-primary" style="margin-top:  1%;">Vincular Twitter </a>
                             </div>
-                           
+                           -->
                             </div> 
                             </div>
                                                    

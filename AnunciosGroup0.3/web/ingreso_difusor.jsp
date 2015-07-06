@@ -20,7 +20,7 @@
     </head>
     <body>
         
-        <%@include file="base_ag/_menu_difusor.jsp" %>
+        <%@include file="base_ag/_menu_general.jsp" %>
         <div class="contenido" id="ingreso">
             <ul class="nav nav-tabs">
                 <li role="presentation" ><a href="inicio.jsp">Home</a></li>
