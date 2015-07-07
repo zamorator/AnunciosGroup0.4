@@ -63,6 +63,8 @@
                     </li>
                     <li class="list-group-item">
                         <%= m.getMensaje() %>
+                        <br>
+                        <a href="enviar_mensaje.jsp" class="btn btn-primary">Responder</a>
                     </li>
                 </ul>
                 <% }%>

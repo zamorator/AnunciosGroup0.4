@@ -56,13 +56,13 @@
                             <div class="form-group">
                                 <label for="inputDe" class="col-sm-2 control-label">De</label>
                                 <div class="col-sm-6">
-                                    <input name="InputDe" type="email" class="form-control" id="InputDe" value="<%= anunciante.getEmail_anunciante()%>" required="">
+                                    <input name="InputDe" type="email" class="form-control" readonly="" id="InputDe" value="<%= anunciante.getEmail_anunciante()%>" required="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPara" class="col-sm-2 control-label">Para</label>
                                 <div class="col-sm-6">
-                                    <input name="InputPara" type="email" class="form-control" id="InputPara" placeholder="Email" value="administrador@anunciosgorup.cl" required="">
+                                    <input name="InputPara" type="email" readonly="" class="form-control" id="InputPara" placeholder="Email" value="administrador@anunciosgorup.cl" required="">
                                 </div>
                             </div>
                             <div class="form-group">
