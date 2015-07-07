@@ -124,7 +124,12 @@
                                                  <input type="checkbox"  onclick="clickCheck(<%= b.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" <%= Favorito %> class="click"> Agregar a Favorito
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-default" name="canjear" value="Canjear">
+                                          
+                                        <% if (b.getCantidad_cupones() > 0){ %>
+                                                    <input type="submit" class="btn btn-default" name="canjear" value="Canjear (<%= b.getCantidad_cupones()  %>)">
+                                        <% }else{%>
+                                                    <input disabled="true" type="submit" class="btn btn-default" name="canjear" value="Sin cupones disponibles">
+                                        <% } %>
                                             <button type="submit" class="btn btn-primary" id="publicarf<%= id_modal2 %>" name="publicar"value="Publicar"> Publicar</button>
                                         </div>
                                     </div>
@@ -204,7 +209,11 @@
                                                  <input type="checkbox"  onclick="clickCheck(<%= a.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" <%= Favorito %> class="click"> Agregar a Favorito
                                             </div>
                                             <div class="modal-footer">
-                                                <input type="submit" class="btn btn-default" name="canjear" value="Canjear">
+                                                <% if (a.getCantidad_cupones() > 0){ %>
+                                                <input type="submit" class="btn btn-default" name="canjear" value="Canjear (<%= a.getCantidad_cupones()  %>)">
+                                                <% }else{%>
+                                                    <input disabled="true" type="submit" class="btn btn-default" name="canjear" value="Sin cupones disponibles">
+                                                <% } %>
                                                 <button type="submit" class="btn btn-primary" id="publicar<%=a.getCodigo_anuncio()%>" name="publicar"value="Publicar"> Publicar</button>
                                             </div>
                                         </div>

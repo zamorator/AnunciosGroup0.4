@@ -20,20 +20,20 @@
         <link rel="stylesheet" href="../css/bootstrap-nav-wizard.css">
     </head>
     <body>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="NXKZJVCZMCX5Y">
+<table>
+<tr><td><input type="hidden" name="on0" value="Seleccione sus ShareCoins">Seleccione sus ShareCoins</td></tr><tr><td><select name="os0">
+	<option value="125 ShareCoin">125 ShareCoin $16,00 USD</option>
+	<option value="200 ShareCoin">200 ShareCoin $24,00 USD</option>
+	<option value="300 ShareCoin">300 ShareCoin $32,00 USD</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+</form>
 
-
-        <input type="button" value="Compartir en Twitter"  onclick="window.location.href='http://twitter.com/home/?status=Me%20gust%C3%B3%20este%20producto%20en%20%23PCFactory%0AMSI%C2%AE+Notebook+Gamer+GT80+TITAN+SLI+Intel+Core+i7-4720HQ+16GB+256GB+SSD+SuperRaid+%2B+1TB+18.4%22+Full+HD+NVIDIA+GTX980M+x+2+SLI+8GB+Teclado+mec%C3%A1nico+Windows+8.1%0Ahttps://www.pcfactory.cl/producto/19037';" class="btn-info btn-sm" data-lang="es" >
-     
-            Compartir en twitter
-        </input>
-        <script>!function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-        if (!d.getElementById(id)) {
-            js = d.createElement(s);
-            js.id = id;
-            js.src = p + '://platform.twitter.com/widgets.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }
-    }(document, 'script', 'twitter-wjs');</script>
     </body>
 </html>

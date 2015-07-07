@@ -54,7 +54,7 @@
 
                         <li class='active'>Paso 2</li>
 
-                        <li>Paso 3</li>
+                       
 
                     </ul>
 

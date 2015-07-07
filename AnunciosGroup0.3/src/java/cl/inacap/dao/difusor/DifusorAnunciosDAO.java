@@ -50,6 +50,7 @@ public class DifusorAnunciosDAO {
             anuncio.setFavorito(rs.getInt("ESTADO_FAVORITO"));
             anuncio.setPorcentaje_descuento(rs.getInt("PORCENTAJE_DESCUENTO"));
             anuncio.setValor_real(rs.getInt("VALOR_REAL"));
+            anuncio.setCantidad_cupones(rs.getInt("CANTIDAD_CUPONES"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {
@@ -93,6 +94,7 @@ public class DifusorAnunciosDAO {
             anuncio.setFavorito(rs.getInt("ESTADO_FAVORITO"));
             anuncio.setPorcentaje_descuento(rs.getInt("PORCENTAJE_DESCUENTO"));
             anuncio.setValor_real(rs.getInt("VALOR_REAL"));
+            anuncio.setCantidad_cupones(rs.getInt("CANTIDAD_CUPONES"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {
@@ -131,6 +133,7 @@ public class DifusorAnunciosDAO {
             anuncio.setFavorito(rs.getInt("ESTADO_FAVORITO"));
             anuncio.setPorcentaje_descuento(rs.getInt("PORCENTAJE_DESCUENTO"));
             anuncio.setValor_real(rs.getInt("VALOR_REAL"));
+            anuncio.setCantidad_cupones(rs.getInt("CANTIDAD_CUPONES"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {
@@ -512,5 +515,62 @@ public class DifusorAnunciosDAO {
         } 
          
         }
+        
+        public void quitarsharecoins(String codigo_anuncio) throws Exception {
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            boolean rs = false;
+            int total_puntos = 0;
+            Anuncio anuncio = new Anuncio();
+         try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_QUITAR_SHARE_COIN(?)}");
+            proc.setString(1,codigo_anuncio);
+            
+            
+            System.out.println(proc);
+            rs = proc.execute();
+            
+
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         
+
+         }
+        public void descontarcupon(Cupon cupon) throws Exception {
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            boolean rs = false;
+            int total_puntos = 0;
+            Anuncio anuncio = new Anuncio();
+         try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_DESCONTAR_CUPON(?)}");
+            proc.setString(1,cupon.getCodigo_anuncio());
+            
+            
+            System.out.println(proc);
+            rs = proc.execute();
+            
+
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         
+
+         }
 }
 

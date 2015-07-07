@@ -53,8 +53,8 @@ public class GeneraCupon2 extends HttpServlet {
             
             if (resp){
                  System.out.println(cupon.getPtos_utilizados());
-                boolean resp2 = difusoranunciodao.descontarcoin(cupon);
-                
+                 boolean resp2 = difusoranunciodao.descontarcoin(cupon);
+                 difusoranunciodao.descontarcupon(cupon);
                 if (resp2){
                 response.sendRedirect("difusor/difusor_cupones.jsp");
                 };

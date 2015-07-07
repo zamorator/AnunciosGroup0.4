@@ -74,7 +74,7 @@
                             </div>
                             <div class="form-group"style="padding: 2%;">
                                 <label for="InputEdad">Edad</label>
-                                <input type="number" min="0" max="100" class="form-control" name="InputEdad" id="Edad" placeholder="Ingrese Edad" required="">
+                                <input type="number" min="0" max="100" class="form-control" onkeypress="return solonumeros(event);" name="InputEdad" id="Edad" placeholder="Ingrese Edad" required="">
                             </div>
                             <div class="form-group"style="padding: 2%;">
                                 <label for="optionsRadiosSexo">Sexo</label>
@@ -186,5 +186,17 @@
                         
     </div>
         <%@include file="base_ag/_pie_pagina.jsp" %>
+        
+                <script>
+                        function solonumeros(e)
+                     {   
+                      
+                         var keynum = window.event ? window.event.keyCode : e.which;
+                         if ((keynum === 8) || (keynum === 46))
+                         return true;
+                         return /\d/.test(String.fromCharCode(keynum));
+
+                     }
+                </script>
     </body>
 </html>

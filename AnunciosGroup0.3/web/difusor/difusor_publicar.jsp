@@ -165,7 +165,7 @@
                                                  <input type="checkbox"  onclick="clickCheck(<%= b.getCodigo_anuncio() %>,' <%= nombre_difusor%>')" id ="favorito" <%= Favorito %> class="click"> Agregar a Favorito
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-default" name="canjear" value="Canjear">
+                                            <input type="submit" class="btn btn-default" name="canjear" value="Canjear (<%= b.getCantidad_cupones()  %>)">
                                             <button type="submit" class="btn btn-primary" id="publicarf<%= id_modal2 %>" name="publicar"value="Publicar"> Publicar</button>
                                         </div>
                                     </div>

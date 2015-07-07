@@ -73,6 +73,7 @@ public class AgregarCoin extends HttpServlet {
             respuesta = difusoranuncios.agregacoin(request.getParameter("in_nombre_difusor"),request.getParameter("in_codigo_anuncios"));
             if (respuesta = true){
                 difusoranuncios.agregarpublicacion(request.getParameter("in_nombre_difusor"),request.getParameter("in_codigo_anuncios"));
+                difusoranuncios.quitarsharecoins(request.getParameter("in_codigo_anuncios"));
             };
             String json = new Gson().toJson(respuesta);
             System.out.println("Se ingresa coin"+json);
