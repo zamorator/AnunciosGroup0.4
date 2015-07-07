@@ -94,7 +94,7 @@
                                         </div>
                                         <div class="modal-body">
 
-                                            <p>Si desea incluir esta Empresa como Anunciante, hacer Click en <b>Aceptar<b/>. de lo contrario hacer Click en <b>Rechazar<b/> </p>
+                                            <p>Si desea incluir esta Empresa como Anunciante, hacer Click en <b>Aceptar</b>, de lo contrario hacer Click en <b>Rechazar</b> </p>
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-success"  type="submit" name="aceptar">Aceptar</button>
