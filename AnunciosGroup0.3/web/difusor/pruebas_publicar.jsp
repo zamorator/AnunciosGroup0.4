@@ -7,8 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<script src="../js/jquery-min.js"></script>
+    <head>
+        <script src="../js/jquery-min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <!-- Optional theme -->
@@ -18,58 +18,22 @@
         <link rel="stylesheet" href="../css/Estilos_ag.css">
         <link rel="stylesheet" href="../css/anunciante.css">
         <link rel="stylesheet" href="../css/bootstrap-nav-wizard.css">
-</head>
-<body>
-    
-   <script type="text/javascript">
-<!--
-//nuevo face share btn
-$(document).ready(function(){
-	$('#share_button').click(function(e){          
-		e.preventDefault();
-		var url='https://www.pcfactory.cl/producto/'+19037+'';
-		var titulo='MSI Notebook Gamer GT80 TITAN SLI Intel Core i7-4720HQ 16GB 256GB SSD SuperRaid + 1TB 18.4" Full HD NVIDIA GTX980M x 2 SLI 8GB Teclado mecánico Windows 8.1';
-		
-		FB.ui(
-		{
-			method: 'feed',
-			name: titulo,
-			link: url,
-			picture: 'https://www.pcfactory.cl/foto/19037/1_200.jpg',
-			caption: 'PC Factory, La cadena de tiendas especializada en tecnología más grande del país.',
-			description: 'PCFactory.cl',
-			message: 'asdasdasd'
-		});
-		
-			
-	});
-	
-	
-});
+    </head>
+    <body>
 
 
-
-
-
-
-//-->
-</script>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3&appId=1596591600595494";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<a href="#" id="share_button" style="text-decoration: none; margin-right: -4px; margin-left: -3px;">
-			<img src="/img/interface/facebook.png" alt="Facebook" width="16" height="16" hspace="1" border="0">asdas
-			</a>
-
-
-<a class="twitter popup" data-lang="es" href="http://twitter.com/home/?status=Me%20gust%C3%B3%20este%20producto%20en%20%23PCFactory%0AMSI%C2%AE+Notebook+Gamer+GT80+TITAN+SLI+Intel+Core+i7-4720HQ+16GB+256GB+SSD+SuperRaid+%2B+1TB+18.4%22+Full+HD+NVIDIA+GTX980M+x+2+SLI+8GB+Teclado+mec%C3%A1nico+Windows+8.1%0Ahttps://www.pcfactory.cl/producto/19037"><img src="/img/interface/twitter.png" title="Compartir en Twitter" alt="Twitter" style="margin-right: -3px;" height="16" hspace="3" border="0" width="16">Twitter</a>
-<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet">
-Tweet</a>
-</body>
+        <input type="button" value="Compartir en Twitter"  onclick="window.location.href='http://twitter.com/home/?status=Me%20gust%C3%B3%20este%20producto%20en%20%23PCFactory%0AMSI%C2%AE+Notebook+Gamer+GT80+TITAN+SLI+Intel+Core+i7-4720HQ+16GB+256GB+SSD+SuperRaid+%2B+1TB+18.4%22+Full+HD+NVIDIA+GTX980M+x+2+SLI+8GB+Teclado+mec%C3%A1nico+Windows+8.1%0Ahttps://www.pcfactory.cl/producto/19037';" class="btn-info btn-sm" data-lang="es" >
+     
+            Compartir en twitter
+        </input>
+        <script>!function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + '://platform.twitter.com/widgets.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, 'script', 'twitter-wjs');</script>
+    </body>
 </html>

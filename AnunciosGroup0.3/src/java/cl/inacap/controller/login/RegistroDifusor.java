@@ -43,13 +43,13 @@ public class RegistroDifusor extends HttpServlet {
         System.out.println(request.getParameter("InputFacebook-id"));
         try {
             // validacion redes sociales
-            if (!request.getParameter("InputFacebook").equals("") || !request.getParameter("InputTwitter").equals("") || !request.getParameter("InputGoogleplus").equals("")) {
+            if (!request.getParameter("InputFacebook").equals("") /*|| !request.getParameter("InputTwitter").equals("") || !request.getParameter("InputGoogleplus").equals("")*/) {
                 
                 String fb = request.getParameter("InputFacebook");
-                String tw = request.getParameter("InputTwitter");
+                //String tw = request.getParameter("InputTwitter");
                 //String gl = request.getParameter("InputGoogleplus");
                 
-                boolean RedesSocialesValidas = validarExistencia(fb, tw);
+                boolean RedesSocialesValidas = validarExistencia(fb);
                 if (RedesSocialesValidas) {
                     //validacion password
                     if (!request.getParameter("InputPassword").equals("") || !request.getParameter("InputPassword2").equals("")) {
@@ -122,12 +122,12 @@ public class RegistroDifusor extends HttpServlet {
                                     creaRedSocial(difusor_redsocial);
                                     
                                 }
-                                if (!tw.equals("")) {
-                                    DifusorRedesSocialesR difusor_redsocial = new DifusorRedesSocialesR();
+                               // if (!tw.equals("")) {
+                                //    DifusorRedesSocialesR difusor_redsocial = new DifusorRedesSocialesR();
                                     
                                     
                                    // creaRedSocial(difusor.getNombre_u_difusor(), tw, 2);
-                                }
+                               // }
 
                                 response.sendRedirect("exito.jsp");
                             } else {
@@ -203,14 +203,14 @@ public class RegistroDifusor extends HttpServlet {
         dAO.AgregaRedSocialDifusor(difusorRedesSocialesR);
     }
 
-    private boolean validarExistencia(String fb, String tw) throws Exception {
+    private boolean validarExistencia(String fb) throws Exception {
         DifusorRedesSocialesDAO drsdao = new DifusorRedesSocialesDAO();
         if (drsdao.ConsultaRedSocialExistente(fb) != 0) {
             redesSocialesInvalidas += "Facebook ";
         }
-        if (drsdao.ConsultaRedSocialExistente(tw) != 0) {
-            redesSocialesInvalidas += "Twitter ";
-        }
+        //if (drsdao.ConsultaRedSocialExistente(tw) != 0) {
+        //    redesSocialesInvalidas += "Twitter ";
+       // }
         if (redesSocialesInvalidas.length() > 0) {
             return false;
         } else {
