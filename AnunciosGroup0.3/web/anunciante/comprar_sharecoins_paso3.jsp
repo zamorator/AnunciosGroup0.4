@@ -53,8 +53,9 @@
                     <li class='active'>Paso 3</li>
 
                 </ul>
-
-                <h1>workflow de compra3</h1>
+                <h4>Gracias por comprar ShareCoins</h4>
+                <h6>Tus ShareCoin ya fueron solicitados, debes esperar a que un administrador los autorice.</h6>
+                
                 <a href="mis_anuncios.jsp" class="btn btn-primary">Terminar</a>
             </div>
         </div>

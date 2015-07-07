@@ -5,6 +5,7 @@
  */
 package cl.inacap.controller.anunciante;
 
+import cl.inacap.dao.anunciante.AnuncioDAO;
 import cl.inacap.model.Anuncio;
 import cl.inacap.model.ShareCoin;
 import java.io.IOException;
@@ -47,6 +48,8 @@ public class ComprarShareCoinsPaso2 extends HttpServlet {
                 shareCoin.setCantidad_compartir(300);
                 shareCoin.setCantidad_extra_compartir(50);
             }
+            AnuncioDAO anuncioDao = new AnuncioDAO();
+            anuncioDao.AgregaShareCoins(shareCoin);
             HttpSession session_actual = request.getSession(true);
             session_actual.setAttribute("shareCoins", shareCoin);
             response.sendRedirect("anunciante/comprar_sharecoins_paso2.jsp");

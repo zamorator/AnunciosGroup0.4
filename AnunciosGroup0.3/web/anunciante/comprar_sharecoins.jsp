@@ -4,6 +4,7 @@
     Author     : zamorator <zamorator@gmail.com>
 --%>
 
+<%@page import="cl.inacap.model.ShareCoin"%>
 <%@page import="cl.inacap.model.Giro"%>
 <%@page import="cl.inacap.model.Anuncio"%>
 <%@page import="cl.inacap.model.Anunciante"%>
@@ -37,6 +38,7 @@
         <% Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
             Giro giro = (Giro) session.getAttribute("giro");
             Anuncio anuncio = (Anuncio) session.getAttribute("anuncio");
+           
         %>
     </head>
     <body>
@@ -57,7 +59,7 @@
                 </ul>
             </div>
             <div id="agregar_anuncio" class="contenido">
-              <!--  <form method="post" action="${pageContext.request.contextPath}/ComprarShareCoinsPaso2"  > -->
+              <form method="post" action="${pageContext.request.contextPath}/ComprarShareCoinsPaso2"  > 
                     <div class="workflow" >
                         <ul class="nav nav-wizard">
 
@@ -65,7 +67,7 @@
 
                             <li>Paso 2</li>
 
-                           
+                            <li>Paso 3</li>
 
                         </ul>
                     </div>
@@ -82,46 +84,43 @@
                                     <p> <%= anuncio.getDescripcion_anuncio()%> </p>
                                 </div>
                             </div>
-                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+
                             <div class="col-md-6">
                                 <div class="puntos" >
                                     <p>Seleccione la cantidad de dinero que desea invertir en anuncios, mientras más invierta mayor cantidad de sharecoins obtendrá.</p>
-                                <!--    <input type="radio" name="group1" value="10"> $10.000 Equivalente a 125 ShareCoins<br>
+                                 <input type="radio" name="group1" value="10"> $10.000 Equivalente a 125 ShareCoins<br>
                                     <input type="radio" name="group1" value="15" checked> $15.000 Equivalente a 200 ShareCoins<br>
-                                    <input type="radio" name="group1" value="20"> $20.000 Equivalente a 300 ShareCoins<br> -->
+                                    <input type="radio" name="group1" value="20"> $20.000 Equivalente a 300 ShareCoins<br>
                                 
                                
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="S5NFCEXJBLV6L">
-                                        <table>
-                                        <tr><td><input type="hidden" name="on0" value=""></td></tr><tr><td><select name="os0">
-                                                <option value="125 ShareCoin">125 ShareCoin $16,00 USD</option>
-                                                <option value="200 ShareCoin">200 ShareCoin $24,00 USD</option>
-                                                <option value="300 ShareCoin">300 ShareCoin $32,00 USD</option>
-                                        </select> </td></tr>
-                                        </table>
-                                        <input type="hidden" name="currency_code" value="USD">
+                                       
                                         
                                 
 
                                 </div>
                                 <br>
-                                <p><input type="checkbox" id="terminos" > Al comprar Sharecoins Acepto los <a href="#">términos y condiciones</a></p>    
+                                <!--<p><input type="checkbox" id="terminos" > Al comprar Sharecoins Acepto los <a href="#">términos y condiciones</a></p>     -->
                             </div>
                             <br>
-                           <!-- <button type="submit" class="btn btn-primary" disabled="" id="btnSiguiente">Siguiente</button> -->
+                         <button type="submit" class="btn btn-primary" id="btnSiguiente">Generar Solicitud de ShareCoins</button> 
                             <br>
                            </br>
                            </br>
                            </br>
-                           <input disabled="" id="btnSiguiente" type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+                          
                             </form>
                         </div>
                     </div>
-              <!--  </form> -->
+             </form> 
             </div>
         </div>                        
             <%@include file="../base_ag/_pie_pagina.jsp" %>
+            
+            <script>
+                function  solicitudsharecoin(){
+                    console.log("estoy solicitando sharecoin");
+                    window.opener();
+                }
+            </script>    
     </body>
 </html>
