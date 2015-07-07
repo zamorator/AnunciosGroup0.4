@@ -38,13 +38,20 @@ public class ActualizarAnuncianteAdmin extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
-          
-            System.out.println("llegue a servlet");
-            System.out.println(request.getParameter("in_nombre_u_anuncio"));
+            String aceptar = request.getParameter("aceptar");
+            String rechazar = request.getParameter("rechazar");
             AdministradorDAO administradordao = new AdministradorDAO();
-            boolean resp = administradordao.actualizarestadoanunciante(request.getParameter("in_nombre_u_anunciante"));
+
+            if (aceptar != null) {
+                administradordao.actualizarestadoanunciante(request.getParameter("in_nombre_u_anunciante"), "V");
+                System.out.println("aceptar");
+
+            } else {
+                administradordao.actualizarestadoanunciante(request.getParameter("in_nombre_u_anunciante"), "R");
+                System.out.println("rechazar");
+            }
             response.sendRedirect("administrador/admin_n_empresas.jsp");
-            
+
         } finally {
             out.close();
         }

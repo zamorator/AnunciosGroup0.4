@@ -37,7 +37,6 @@
             AdministradorDAO anunciantesDAO = new AdministradorDAO();
             anunciantespendientes = anunciantesDAO.buscaranuncianteadministrador();
 
-            System.out.println(anunciantespendientes);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,13 +94,11 @@
                                         </div>
                                         <div class="modal-body">
 
-                                            <p>Esta es una pequeña descripcion del anuncio.</p>
-
-
+                                            <p>Si desea incluir esta Empresa como Anunciante, hacer Click en <b>Aceptar<b/>. de lo contrario hacer Click en <b>Rechazar<b/> </p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button  class="btn btn-success"  type="submit">Aceptar</button>
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal" >Rechazar</button>
+                                            <button class="btn btn-success"  type="submit" name="aceptar">Aceptar</button>
+                                            <button class="btn btn-danger" type="submit"name="rechazar">Rechazar</button>
                                         </div>
                                     </div>
                                 </div>

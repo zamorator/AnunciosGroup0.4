@@ -310,7 +310,7 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
         }
     
     
-    public boolean  actualizarestadoanunciante(String nombreuanunciante) throws  Exception, SQLClientInfoException{
+    public boolean  actualizarestadoanunciante(String nombreuanunciante, String estado) throws  Exception, SQLClientInfoException{
             ConnectionFactory cf = new ConnectionFactory();
             Connection con = null;
             
@@ -321,8 +321,9 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             try {  
             con = cf.obtenerConexion();
             // se crea instancia a procedimiento.
-            CallableStatement proc = con.prepareCall("{CALL SP_ACTUALIZAR_ESTADO_ANUNCIANTE(?)}");
+            CallableStatement proc = con.prepareCall("{CALL SP_ACTUALIZAR_ESTADO_ANUNCIANTE(?,?)}");
             proc.setString(1, nombreuanunciante);
+            proc.setString(2, estado);
            
             System.out.println(proc);
             //recibe el resultado de una query
