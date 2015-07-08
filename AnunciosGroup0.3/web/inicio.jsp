@@ -64,7 +64,7 @@
             <div class="col-sm-4" id="acceso_usuarios">
                 <a href="inicio_difusor.jsp"><img class="img-circle img-responsive img-center" src="img/usuarios.jpg" width="300px" height="400px" alt=""> </a>
                 <h2>Acceso Usuario</h2>
-                <p>Si tienes alguna red social estas listo para comenzar a juntar coin y canejearlo por fabulosos descuentos. Accede ahora y comienza a jutarlos.</p>
+                <p>Si tienes alguna red social estas listo para comenzar a juntar coin y canejearlo por fabulosos descuentos. Accede ahora y comienza a juntarlos.</p>
             </div>
             <div class="col-sm-4" id="imagen2" >
                 <a href="inicio_anunciante.jsp"><img class="img-circle img-responsive img-center" src="img/empresas.jpg"  width="300px" height="400px" alt=""> </a>

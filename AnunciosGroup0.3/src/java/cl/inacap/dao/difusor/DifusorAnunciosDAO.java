@@ -498,6 +498,7 @@ public class DifusorAnunciosDAO {
             while(rs.next()){
              
                 anunciante.setNombre_anunciante(rs.getString("NOMBRE_ANUNCIANTE"));
+                anunciante.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
                 anunciante.setEmail_anunciante(rs.getString("EMAIL_ANUNCIANTE"));
                 anunciante.setNombre_comuna(rs.getString("COMUNA"));
                 anunciante.setNombre_privincia(rs.getString("PROVINCIA"));

@@ -112,6 +112,12 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             anuncio.setNombre_anuncio(rs.getString("NOMBRE_ANUNCIO"));
             anuncio.setImagen_anuncio(rs.getString("IMAGEN_ANUNCIO"));
             anuncio.setDescripcion_anuncio(rs.getString("DESCRIPCION_ANUNCIO"));
+            anuncio.setCantidad_cupones(rs.getInt("CANTIDAD_CUPONES"));
+            anuncio.setPorcentaje_descuento(rs.getInt("PORCENTAJE_DESCUENTO"));
+            anuncio.setEstado_anuncio(rs.getString("ESTADO_ANUNCIO"));
+            anuncio.setValor_real(rs.getInt("VALOR_REAL"));
+            anuncio.setSharecoin_listos(rs.getInt("SHARECOIN_LISTOS"));
+            anuncio.setSharecoin_pendientes(rs.getInt("SHARECOIN_PENDIENTES"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {                  
@@ -440,7 +446,36 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
 
 
     
+    public void  rechazaranuncio(int codigoanuncio) throws  Exception, SQLClientInfoException{
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            
 
+           Anuncio estadoactualizado = new Anuncio();
+           
+            try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_RECHAZAR_ANUNCIO(?)}");
+            proc.setInt(1, codigoanuncio);
+           
+            System.out.println(proc);
+            //recibe el resultado de una query
+            //rs recibe la tabla entera entera cuando se hace un slect
+            proc.execute();
+
+            } catch (SQLException x){
+                x.printStackTrace();
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+
+}
 
  
 }    

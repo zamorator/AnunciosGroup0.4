@@ -155,7 +155,17 @@
                                         </div>
                                         <div class="modal-body">
                                             <img class="img-responsive img-thumbnail" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio() %>" >
-                                            <p><%= b.getDescripcion_anuncio()%></p>
+                                                    <p></p>
+                                                    <p> </p>
+                                                    <p></p>
+                                                    <p></p>
+                                                    <p></p>
+                                                <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                             <%= b.getDescripcion_anuncio()%>
+                                                        </li>
+                                                
+                                                 </ul> 
                                             <% 
                                                     String Favorito = "";
                                                     if(b.getFavorito() == 1){

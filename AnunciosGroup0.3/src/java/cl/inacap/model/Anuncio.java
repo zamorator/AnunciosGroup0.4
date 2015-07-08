@@ -28,6 +28,25 @@ public class Anuncio {
     private int porcentaje_descuento;
     private int favorito;
     private int valor_real;
+    private int sharecoin_listos;
+    private int sharecoin_pendientes;
+    
+    public int getSharecoin_listos() {
+        return sharecoin_listos;
+    }
+
+    public void setSharecoin_listos(int sharecoin_listos) {
+        this.sharecoin_listos = sharecoin_listos;
+    }
+
+    public int getSharecoin_pendientes() {
+        return sharecoin_pendientes;
+    }
+
+    public void setSharecoin_pendientes(int sharecoin_pendientes) {
+        this.sharecoin_pendientes = sharecoin_pendientes;
+    }
+
 
     //valores para mostrar en detalle anuncio, anunciante
     private int cantidadCuponesCanjeados;

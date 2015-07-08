@@ -5,6 +5,7 @@
  */
 package cl.inacap.controller.anunciante;
 
+import cl.inacap.dao.administrador.AdministradorDAO;
 import cl.inacap.dao.anunciante.MensajeDAO;
 import cl.inacap.model.Mensaje;
 import java.io.IOException;
@@ -32,12 +33,25 @@ public class EnviarMensaje extends HttpServlet {
             mensaje.setAsunto(request.getParameter("InputAsunto"));
             mensaje.setMensaje(request.getParameter("InputMensaje"));
             mensaje.setNombre_u_anunciante(request.getParameter("InputNombreUAnunciante"));
-
+            mensaje.setTipo_remitente(request.getParameter("InputRemitente"));
+            
+            if (mensaje.getTipo_remitente() == null){
+                mensaje.setTipo_remitente("E");
+            } 
+            
             MensajeDAO mensajeDao = new MensajeDAO();
 
             mensajeDao.agregarMensaje(mensaje);
-
-            response.sendRedirect("anunciante/enviar_mensaje.jsp?message=" + URLEncoder.encode("Tu mensaje se ha enviado exitosamente", "UTF-8"));
+            
+            System.out.println(mensaje.getTipo_remitente());
+            if (mensaje.getTipo_remitente().equals("A")){
+                System.out.println("entre");
+                AdministradorDAO adao = new AdministradorDAO();
+                adao.rechazaranuncio(Integer.parseInt( request.getParameter("in_codigo_anuncio")));
+                response.sendRedirect("administrador/Admin_inicio.jsp");
+            }else{
+                response.sendRedirect("anunciante/enviar_mensaje.jsp?message=" + URLEncoder.encode("Tu mensaje se ha enviado exitosamente", "UTF-8"));
+            }
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("anunciante/enviar_mensaje.jsp?message=" + URLEncoder.encode("Error al intentar enviar tu mensaje", "UTF-8"));

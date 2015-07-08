@@ -67,7 +67,8 @@ public class MensajeDAO {
             proc.setString(++x, mensaje.getAsunto() );
             proc.setString(++x, mensaje.getMensaje() );
             proc.setString(++x, mensaje.getNombre_u_anunciante() );
-            proc.setString(++x, "E"); //E -> empresa
+            proc.setString(++x, mensaje.getTipo_remitente()); //E -> empresa
+            System.out.println(proc);
             proc.executeQuery();
             System.out.println("SPCREARMENSAJE");
 

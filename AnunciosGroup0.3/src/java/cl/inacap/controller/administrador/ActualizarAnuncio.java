@@ -6,6 +6,8 @@
 package cl.inacap.controller.administrador;
 
 import cl.inacap.dao.administrador.AdministradorDAO;
+import cl.inacap.dao.difusor.DifusorAnunciosDAO;
+import cl.inacap.model.Anuncio;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -15,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,6 +41,11 @@ public class ActualizarAnuncio extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         try {
+            
+            String aceptar = request.getParameter("aceptar");
+            String rechazar = request.getParameter("rechazar");
+            
+            if (aceptar != null){
             System.out.println("llegue a servlet");
             System.out.println(request.getParameter("in_codigo_anuncio"));
             AdministradorDAO administradordao = new AdministradorDAO();
@@ -48,7 +56,17 @@ public class ActualizarAnuncio extends HttpServlet {
             // creas obj del Dao a invocar
             // invocas metodo que actualiza
             // retornas a la pagina con mensaje de exito o error
+            }else if(rechazar != null){
             
+                Anuncio anuncio  = new Anuncio();
+                DifusorAnunciosDAO dad = new DifusorAnunciosDAO();
+                anuncio.setCodigo_anuncio(Integer.parseInt(request.getParameter("in_codigo_anuncio")));
+                anuncio = dad.buscaranuncioespecifico(anuncio);
+                
+                HttpSession session_actual = request.getSession(true);
+                session_actual.setAttribute("anuncio", anuncio);
+                response.sendRedirect("administrador/admin_rechazar_anuncio.jsp");
+            }
             
             
             

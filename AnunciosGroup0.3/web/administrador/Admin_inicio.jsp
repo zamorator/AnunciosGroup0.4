@@ -67,12 +67,13 @@
                     <div class="thumbnail" id="anuncios">
                         <img class="img-responsive img-thumbnail" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio()%>" >
                         <div class="caption">
+                            <h6><% b.getNombre_u_anunciante(); %>  </h6>
                             <% if (b.getNombre_anuncio().length() <= 23) {%>
                             <h4><%= b.getNombre_anuncio()%></h4>
                             <%} else {%>
                             <h4><%= b.getNombre_anuncio().substring(0, 23)%> ...</h4>
                             <%}%>
-
+                            
                             <!--VENTANA MODAL INICIO -->
                             <form action="${pageContext.request.contextPath}/ActualizarAnuncio" method="POST" >
                                 <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#<%= id_modal2%>">Detalle</button>
@@ -86,13 +87,49 @@
                                             </div>
                                             <div class="modal-body">
                                                 <img class="img-responsive img-thumbnail" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= b.getImagen_anuncio()%>" >
-                                                <p><%= b.getDescripcion_anuncio()%></p>
-
+                                                    <p></p>
+                                                    <p> </p>
+                                                    <p></p>
+                                                    <p></p>
+                                                    <p></p>
+                                                <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                             <%= b.getDescripcion_anuncio()%>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge"><%= b.getEstado_anuncio()%></span>
+                                                            Estado
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge">
+                                                                <%= b.getCantidad_cupones()%>
+                                                            </span>
+                                                            Cantidad cupones
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge">
+                                                                <%= b.getPorcentaje_descuento()%>%
+                                                            </span>
+                                                            Porcentaje Descuento 
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge">$<%= b.getValor_real()%></span>
+                                                            Valor Anuncio
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge"><%= b.getSharecoin_pendientes()%></span>
+                                                            ShareCoins pendientes:
+                                                        </li>
+                                                                                                                <li class="list-group-item">
+                                                            <span class="badge"><%= b.getSharecoin_listos()%></span>
+                                                            ShareCoins habilitados:
+                                                        </li>
+                                                 </ul>      
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button  class="btn btn-success"  type="submit">Aceptar</button>
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal" >Rechazar</button>
+                                                <button  class="btn btn-success"  type="submit" name="aceptar">Aceptar</button>
+                                                <button type="submit" class="btn btn-danger" name="rechazar">Rechazar</button>
                                             </div>
                                         </div>
                                     </div>
