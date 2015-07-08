@@ -85,17 +85,17 @@
                                                     <% if (sharecoin.getCantidad_compartir() == 125){ %>
                                                         <option selected="" value="125 ShareCoin">125 ShareCoin $16,00 USD</option>
                                                     <% }else{%>
-                                                        <option  value="125 ShareCoin">125 ShareCoin $16,00 USD</option>
+                                                      <!--  <option  value="125 ShareCoin">125 ShareCoin $16,00 USD</option> -->
                                                     <%} %>
                                                     <% if (sharecoin.getCantidad_compartir() == 200){ %>
                                                         <option selected="" value="200 ShareCoin">200 ShareCoin $24,00 USD</option>
                                                     <% }else{%>
-                                                        <option  value="200 ShareCoin">200 ShareCoin $24,00 USD</option>
+                                                       <!--  <option  value="200 ShareCoin">200 ShareCoin $24,00 USD</option> -->
                                                     <%} %>
                                                     <% if (sharecoin.getCantidad_compartir() == 300){ %>
-                                                        <option selected="" value="300 ShareCoin">300 ShareCoin $32,00 USD</option>
+                                                        <option selected="" value="300 ShareCoin">300 ShareCoin $32,00 USD</option> 
                                                     <% }else{%>
-                                                       <option  value="300 ShareCoin">300 ShareCoin $32,00 USD</option> 
+                                                      <!--  <option  value="300 ShareCoin">300 ShareCoin $32,00 USD</option> -->
                                                     <%} %>
                                                 </select> </td></tr>
                                         

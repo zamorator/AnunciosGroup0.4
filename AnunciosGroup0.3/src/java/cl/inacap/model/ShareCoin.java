@@ -16,6 +16,15 @@ public class ShareCoin {
     private int cantidad_compartir;
     private int cantidad_extra_compartir;
     private int id_valor_coin;
+    private String nombre_u_anunciante;
+    public String getNombre_u_anunciante() {
+        return nombre_u_anunciante;
+    }
+
+    public void setNombre_u_anunciante(String nombre_u_anunciante) {
+        this.nombre_u_anunciante = nombre_u_anunciante;
+    }
+    
 
     public int getId_share_coin() {
         return id_share_coin;

@@ -10,6 +10,7 @@ import cl.inacap.model.Administrador;
 import cl.inacap.model.Anunciante;
 import cl.inacap.model.Anuncio;
 import cl.inacap.model.Mensaje;
+import cl.inacap.model.ShareCoin;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -352,7 +353,87 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
 
             return false;
 }
+    
+     public ArrayList<ShareCoin> buscasharecoinp() throws  Exception{
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            ResultSet rs = null;
+            ArrayList<ShareCoin> sharecoin = new ArrayList<ShareCoin>();
+            try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_BUSCAR_SHARECOIN_P}");
+                   
+            System.out.println(proc);
+            rs = proc.executeQuery();
+            
+            while(rs.next()){
+            ShareCoin sc = new ShareCoin();
+            sc.setId_share_coin(rs.getInt("ID_SHARE_COIN"));
+            sc.setCodigo_anuncio(rs.getInt("CODIGO_ANUNCIO"));
+            sc.setCantidad_compartir(rs.getInt("CANTIDAD_COMPARTIR"));
+            sc.setCantidad_extra_compartir(rs.getInt("CANTIDAD_EXTRA_COMPARTIR"));
+            sc.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
+            sharecoin.add(sc);
+            }
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        } 
+         return sharecoin;
+        
+        }
+     
+     public void rechazarsharecoin(int id_share_coin) throws  Exception, SQLClientInfoException{
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            try {  
+            con = cf.obtenerConexion();
+            int i = 0;
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_RECHAZAR_SHARECOIN(?)}");        
+            System.out.println(proc);
+            proc.setInt(1, id_share_coin);
+            proc.execute();
+            } catch (SQLException x){
+                x.printStackTrace();
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        }            
+}
 
+          public void aceptarsharecoin(int id_share_coin, int codigo_anuncio) throws  Exception, SQLClientInfoException{
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            try {  
+            con = cf.obtenerConexion();
+            int i = 0;
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_ACEPTAR_SHARECOIN(?,?)}");        
+            System.out.println(proc);
+            proc.setInt(1, codigo_anuncio);
+            proc.setInt(2, id_share_coin);
+            proc.execute();
+            } catch (SQLException x){
+                x.printStackTrace();
+        }catch (Exception ex) {                  
+            System.out.println(ex);
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            con = null;
+            cf = null;
+        }            
+}
     public void respondermensaje(String parameter) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

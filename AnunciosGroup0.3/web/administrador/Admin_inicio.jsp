@@ -55,7 +55,7 @@
         <div id="panel">
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="#">Anuncios</a></li>
-
+                <li role="presentation"><a href="admin_sharecoins.jsp">ShareCoins</a></li>
 
             </ul>
 
