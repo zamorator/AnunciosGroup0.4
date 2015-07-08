@@ -43,7 +43,7 @@
                         <img width="50px" src="/AnunciosGroup0.3/img/avatar/<%=difusor.getNombre_avatar()%>">
                         <a href="../difusor/difusor_perfil.jsp"><%= difusor.getNombre_u_difusor()%> </a>
                         <input type="hidden" id="nombre_difusor" name="nombre_difusor" value="<%= difusor.getNombre_u_difusor()%>">
-                        <input type="submit"  class=" btn btn-danger" value="Cerrar sesion">
+                        <input type="submit"  class=" btn btn-danger btn-sm" value="Cerrar sesion">
                         <% }%>
                     </ul>
                 </div><!-- /.navbar-collapse -->

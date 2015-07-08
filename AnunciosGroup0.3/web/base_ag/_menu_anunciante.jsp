@@ -36,7 +36,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <%= anunciante.getNombre_u_anunciante()%> |
                             <%= giro.getDetalle() %>
-                        <button type="submit" class="btn btn-link">Cerrar Sessi&oacute;n</button>
+                        <button style="margin: 5px 5px;" type="submit" class="btn btn-danger btn-sm">Cerrar Sessi&oacute;n</button>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->

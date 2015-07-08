@@ -38,7 +38,7 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             <%= administrador.getNombre_u_administrador()%> 
-                            <button style="margin: 5px 5px;" type="submit" class="btn btn-danger">Cerrar Sessi&oacute;n</button>
+                            <button style="margin: 5px 5px;" type="submit" class="btn btn-danger btn-sm">Cerrar Sessi&oacute;n</button>
                         </ul>
 
                     </div><!-- /.navbar-collapse -->

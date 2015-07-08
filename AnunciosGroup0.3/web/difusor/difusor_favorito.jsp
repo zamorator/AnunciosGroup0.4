@@ -45,7 +45,7 @@
             <li role="presentation"><a href="difusor_perfil.jsp">Perfil</a></li>
             <li role="presentation"><a href="#">Canjear</a></li>
         </ul>
-        <div id="panel">
+        <div id="panel" class="container-fluid">
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="difusor_inicio.jsp">Todos</a></li>
                 <li role="presentation"class="active"><a href="difusor_favorito.jsp">Mis Anuncios</a></li>
@@ -138,7 +138,7 @@
                        
             
         </div>
-                    <script>
+        </div>               <script>
                         function clickCheck(codigo_anuncio,nombre_difusor){
                          console.log(codigo_anuncio);
                          console.log(nombre_difusor);
@@ -176,6 +176,7 @@
                                 });  
                             
                         }
-                    </script>     
+                    </script>   
+                   <%@include file="../base_ag/_pie_pagina.jsp" %>
     </body>
 </html>

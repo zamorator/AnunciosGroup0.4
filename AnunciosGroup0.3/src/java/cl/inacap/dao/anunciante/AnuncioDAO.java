@@ -382,7 +382,7 @@ public class AnuncioDAO {
             rs = proc.executeQuery();
             System.out.println("SPBUSCASUMASHARECOINS");
             while (rs.next()) {
-                cantidadShareCoins = (rs.getInt("sum(cantidad_compartir)"));
+                cantidadShareCoins = (rs.getInt("CANTIDAD_SHARECOINS"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
