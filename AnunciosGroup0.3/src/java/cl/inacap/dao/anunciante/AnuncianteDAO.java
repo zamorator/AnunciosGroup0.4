@@ -162,4 +162,34 @@ public class AnuncianteDAO {
         }
         return anunciante;
     }
+    
+    
+    public Boolean validarcupon(int codigo_cupon, String nombre_u_anunciante) throws Exception {
+            ConnectionFactory cf = new ConnectionFactory();
+            Connection con = null;
+            boolean rs = false;
+         try {  
+            con = cf.obtenerConexion();
+            // se crea instancia a procedimiento.
+            CallableStatement proc = con.prepareCall("{CALL SP_VALIDAR_CUPON(?,?,?)}");           
+            proc.setInt(1,codigo_cupon);
+            proc.setString(2,nombre_u_anunciante);
+            proc.registerOutParameter(3, java.sql.Types.BOOLEAN);
+            System.out.println(proc);
+            rs = proc.execute();
+            System.out.println(proc.getBoolean(3));
+            
+            return proc.getBoolean(3);
+               
+        }catch (Exception ex) {
+            cf.cerrarConexion();
+            ex.printStackTrace();
+            throw new Exception();
+       }finally {
+            cf.cerrarConexion();
+            con = null;
+            cf = null;
+        } 
+        
+        }
 }

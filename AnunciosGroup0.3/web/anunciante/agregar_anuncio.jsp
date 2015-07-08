@@ -69,6 +69,7 @@
                 <li role="presentation"><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
                 <li role="presentation" class="active"><a href="#">Agregar Anuncio</a></li>
                 <li role="presentation"><a href="#">Editar Anuncio</a></li>
+                <li role="submenu"><a href="validar_cupones.jsp">Validar Cupones</a></li>
             </ul>
 
             <div id="agregar_anuncio" class="contenido">

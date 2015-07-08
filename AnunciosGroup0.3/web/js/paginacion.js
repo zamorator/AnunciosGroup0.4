@@ -62,7 +62,18 @@ $(window).scroll(function(){
                                                                             '</div>'+
                                                                             '<div class="modal-body">'+
                                                                                 '<img class="img-responsive img-thumbnail" src="'+ ruta +'/images/anunciante/' + data[f].imagen_anuncio +'" >'+
-                                                                                '<p>'+ data[f].descripcion_anuncio+'</p>';
+                                                                                '<p></p>'+
+                                                                                '<p> </p>'+
+                                                                                '<p></p>'+
+                                                                                '<p></p>'+
+                                                                                '<p></p>'+
+                                                                            '<ul class="list-group">'+
+                                                                                    '<li class="list-group-item">'+
+                                                                                         + data[f].descripcion_anuncio+
+                                                                                    '</li>'+
+
+                                                                            ' </ul>' ;
+                                                                                
                                                                                 
                                                                                 if(data[f].favorito  === 1){
                                                                                     console.log("es" +favorito );
@@ -73,9 +84,14 @@ $(window).scroll(function(){
                                                                                 
                                  anuncios_nuevos = anuncios_nuevos +    '<input type="checkbox"  name ="favorito" class="click" onclick="clickCheck('+data[f].codigo_anuncio+' , ' +'&quot;' + nombre_difusor+'&quot;'+')"'+ favorito+' > Agregar a Favorito'+
                                                                             '</div>'+
-                                                                            '<div class="modal-footer">'+
-                                                                                '<input type="submit" class="btn btn-default" name="canjear" value="Canjear">'+
-                                                                                '<button type="submit" class="btn btn-primary" id="publicar'+ data[f].codigo_anuncio +'" name="publicar"value="Publicar"> Publicar</button>'+
+                                                                            '<div class="modal-footer">';
+                                                                            
+                                                                            if(data[f].cantidad_cupones > 0) {
+                                anuncios_nuevos = anuncios_nuevos +            '<input type="submit" class="btn btn-default" name="canjear" value="Canjear ('+ data[f].cantidad_cupones+')">';
+                                                                                }else{
+                                anuncios_nuevos = anuncios_nuevos +            '<input disabled="true" type="submit" class="btn btn-default" name="canjear" value="Sin cupones disponibles">';                                                    
+                                                                                };
+                                anuncios_nuevos = anuncios_nuevos +          '<button type="submit" class="btn btn-primary" id="publicar'+ data[f].codigo_anuncio +'" name="publicar"value="Publicar"> Publicar</button>'+
                                                                             '</div>'+
                                                                         '</div>'+
                                                                         '</div>'+

@@ -77,8 +77,8 @@
                             <h4><i class="fa fa-fw fa-check"></i>¿Aun no sabes como funciona?</h4>
                         </div>
                         <div class="panel-body">
-                            <p>Básicamente consiste en compartir distintos anuncios en tus redes sociales, cada ves que lo realices obtendrás, coins los cuales seran acumulables y equivaldrán a porcentajes de descuentos en los productos de la pagina. Comienza ya y obtén fabulosos descuentos.</p>
-                            <a href="#" class="btn btn-default">Solicitar mas informacion</a>
+                            <p>Básicamente consiste en compartir distintos anuncios en tus redes sociales, cada ves que lo realices obtendrás, coins los cuales seran acumulables y equivaldrán a porcentajes de descuentos en los productos de la pagina. Comienza ya y obtén fabulosos descuentos en los productos que tu quieras desde 1% hasta 75%.</p>
+                           
                         </div>
                     </div>
                 </div>
