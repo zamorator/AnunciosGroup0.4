@@ -15,9 +15,9 @@ import java.nio.file.Paths;
  */
 public class UploadFileUtils {
 
-    //public static final String MainPath = "/Users/macbookair/Desktop/images";
+    public static final String MainPath = "/Users/macbookair/Desktop/images";
     //public static final String MainPath = "/Users/macbookair/NetBeansProjects/AnunciosGroup0.4/AnunciosGroup0.3/web/images";
-    public static final String MainPath = "/var/lib/tomcat7/webapps/AnunciosGroup0.3/images";
+    //public static final String MainPath = "/var/lib/tomcat7/webapps/AnunciosGroup0.3/images";
     public static final String AnunciantePath = "/anunciante";
     public static final String DifusorPath = "/difusor";
     public static final String AdministradorPath = "/administrador";

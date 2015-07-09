@@ -66,14 +66,20 @@ public class EditarImagenesAnuncio extends HttpServlet {
 
                 for (FileItem item : partes) {
                     File file = new File(ubicacionArchivo, item.getName());
-
+                        file.renameTo(new File(file.getName().replace(" ","" )));
                     try {
 
                         item.write(file);
-                        String nombrearchivos = file.getName();
+                        String nombrearchivos = file.getName().trim();
                         //guardo ruta de archivo en tabla de anuncio
+                        if(nombrearchivos.contains(" ")){
+                            System.out.println("loco toy en el if");
+                            nombrearchivos = nombrearchivos.replace(" ", "");
+                        }
                         AnuncioDAO anuncioDao = new AnuncioDAO();
+                        
                         String cadena = nombreAnunciante + "/" + idAnuncio + "/" + nombrearchivos;
+                        System.out.println(cadena);
                         anuncioDao.actualizaImagenAnuncio(cadena, Integer.parseInt(idAnuncio));
 
                     } catch (Exception ex) {
