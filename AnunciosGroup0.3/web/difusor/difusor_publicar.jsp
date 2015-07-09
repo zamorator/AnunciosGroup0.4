@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-md-8">
                 <img class="img-responsive img-rounded img-thumbnail" src="${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio() %>"   style="width:400px; height: 290px; " alt="">
-                <input type="hidden" id="imagen" value="http://190.13.76.218:8080/${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio() %>">
+                <input type="hidden" id="imagen" value="${pageContext.request.contextPath}/images/anunciante/<%= anuncio.getImagen_anuncio() %>">
             </div>
             <!-- /.col-md-8 -->
             <div class="col-md-4">
