@@ -64,6 +64,7 @@
                                 <option value="No contiene toda la informacion o esta inconclusa">No contiene toda la informacion o esta inconclusa.</option>
                                 <option value="La imagen de anuncio no a sido actualizada.">La imagen de anuncio no a sido actualizada.</option>
                                 <option value="El anuncio no presenta cupones para canjeo.">El anuncio no presenta cupones para canjeo.</option>
+                                <option value="Otros.">Otros.</option>
                             </select>
                             <h4>Mensaje: </h4>
                             <textarea

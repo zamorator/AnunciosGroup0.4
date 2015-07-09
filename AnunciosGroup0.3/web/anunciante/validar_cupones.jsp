@@ -42,7 +42,7 @@
                 <li role="submenu" class="active" ><a href="#">Validar Cupones</a></li>
             </ul>
             <form action="${pageContext.request.contextPath}/ValidarCupon" method="POST">
-                <p class="alert-info">Para validar el cupón que le entrega el usuario, debe ingresar el codigo de esté y selecionar validar, si no realiza esta opracion el cupón seguirá activo.</p>
+                <p class="alert-info">Para validar el cupón que le entrega el usuario, debe ingresar el codigo de esté y selecionar validar, si no realiza esta operación el cupón seguirá activo.</p>
                 <% if (request.getParameter("mensajeexito") != null) {%>
                 <div class="alert alert-success" role="alert">${param.mensajeexito}</div>
                 <% }%>

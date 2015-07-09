@@ -118,6 +118,7 @@ public void AgregarAdministrador(Administrador administrador) throws Exception {
             anuncio.setValor_real(rs.getInt("VALOR_REAL"));
             anuncio.setSharecoin_listos(rs.getInt("SHARECOIN_LISTOS"));
             anuncio.setSharecoin_pendientes(rs.getInt("SHARECOIN_PENDIENTES"));
+            anuncio.setNombre_u_anunciante(rs.getString("NOMBRE_U_ANUNCIANTE"));
             anuncios.add(anuncio);
             }
         }catch (Exception ex) {                  

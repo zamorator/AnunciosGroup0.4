@@ -68,9 +68,11 @@
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail" id="anuncios">
                                 <% if (a.getEstado_anuncio().equals("F")) { %>
-                                <p class="text-warning">Deshabilitado</p>
-                                <% } else { %>
-                                <p class="text-info">Habilitado</p>
+                                    <p class="text-warning">Deshabilitado</p>
+                                <% } else if(a.getEstado_anuncio().equals("V"))  { %>
+                                    <p class="text-info">Habilitado</p>
+                                <% }else if (a.getEstado_anuncio().equals("R")){%>
+                                    <p class="text-danger">Rechazado</p>
                                 <% }%>
                                 <img class="img-responsive img-thumbnail" id="img_anuncios" src="${pageContext.request.contextPath}/images/anunciante/<%= a.getImagen_anuncio()%>" >
                                 <div class="caption">
@@ -108,6 +110,12 @@
                                                     <ul class="list-group">
                                                         <li class="list-group-item">
                                                             Descripci&oacute;n: <%= a.getDescripcion_anuncio()%>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <span class="badge">
+                                                             #<%= a.getCodigo_anuncio()%>
+                                                            </span>
+                                                            Codigo anuncio:
                                                         </li>
                                                         <li class="list-group-item">
                                                             <span class="badge"><%= a.getEstado_anuncio()%></span>
