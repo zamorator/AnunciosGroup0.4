@@ -50,50 +50,56 @@ public class EditarImagenesAnuncio extends HttpServlet {
             Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
             String nombreAnunciante = anunciante.getNombre_u_anunciante();
             String idAnuncio = (String) session.getAttribute("id_anuncio");
+            String validoNombreImagen = request.getParameter("file");
 
-            //valido estructura de directorios
-            if (UploadFileUtils.validaEstructuraDirectorios(UploadFileUtils.AnunciantePath, nombreAnunciante, idAnuncio)) {
-                //guardo archivo
+            System.out.println("imagen se llama " + validoNombreImagen);
 
-                String ubicacionArchivo = UploadFileUtils.getRuta(UploadFileUtils.AnunciantePath, nombreAnunciante, idAnuncio).toString();
-                DiskFileItemFactory factory = new DiskFileItemFactory();
-                factory.setSizeThreshold(1024);
-                factory.setRepository(new File(ubicacionArchivo));
+            if (!validoNombreImagen.contains(" ")) {
 
-                ServletFileUpload upload = new ServletFileUpload(factory);
+                //valido estructura de directorios
+                if (UploadFileUtils.validaEstructuraDirectorios(UploadFileUtils.AnunciantePath, nombreAnunciante, idAnuncio)) {
+                    //guardo archivo
 
-                List<FileItem> partes = upload.parseRequest(request);
+                    String ubicacionArchivo = UploadFileUtils.getRuta(UploadFileUtils.AnunciantePath, nombreAnunciante, idAnuncio).toString();
+                    DiskFileItemFactory factory = new DiskFileItemFactory();
+                    factory.setSizeThreshold(1024);
+                    factory.setRepository(new File(ubicacionArchivo));
 
-                for (FileItem item : partes) {
-                    File file = new File(ubicacionArchivo, item.getName());
-                        file.renameTo(new File(file.getName().replace(" ","" )));
-                    try {
+                    ServletFileUpload upload = new ServletFileUpload(factory);
 
-                        item.write(file);
-                        String nombrearchivos = file.getName().trim();
-                        //guardo ruta de archivo en tabla de anuncio
-                        if(nombrearchivos.contains(" ")){
-                            System.out.println("loco toy en el if");
-                            nombrearchivos = nombrearchivos.replace(" ", "");
+                    List<FileItem> partes = upload.parseRequest(request);
+
+                    for (FileItem item : partes) {
+                        File file = new File(ubicacionArchivo, item.getName());
+                        file.renameTo(new File(file.getName().replace(" ", "")));
+                        try {
+
+                            item.write(file);
+                            String nombrearchivos = file.getName().trim();
+                            //guardo ruta de archivo en tabla de anuncio
+                            if (nombrearchivos.contains(" ")) {
+                                nombrearchivos = nombrearchivos.replace(" ", "");
+                            }
+                            AnuncioDAO anuncioDao = new AnuncioDAO();
+
+                            String cadena = nombreAnunciante + "/" + idAnuncio + "/" + nombrearchivos;
+                            System.out.println(cadena);
+                            anuncioDao.actualizaImagenAnuncio(cadena, Integer.parseInt(idAnuncio));
+
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
                         }
-                        AnuncioDAO anuncioDao = new AnuncioDAO();
-                        
-                        String cadena = nombreAnunciante + "/" + idAnuncio + "/" + nombrearchivos;
-                        System.out.println(cadena);
-                        anuncioDao.actualizaImagenAnuncio(cadena, Integer.parseInt(idAnuncio));
-
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
                     }
+
+                    response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Imagen guardada con exito", "UTF-8"));
+                } else {
+                    System.out.println("error");
+                    //error al intentar guardar archivo
+                    response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Error al intentar editar imagen de anuncio", "UTF-8"));
                 }
-
-                response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Imagen guardada con exito", "UTF-8"));
             } else {
-                System.out.println("error");
-                //error al intentar guardar archivo
-                response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Error al intentar editar imagen de anuncio", "UTF-8"));
+                response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Error, imagen no debe tener espacios", "UTF-8"));
             }
-
             // imageFileName = file.getFileName().toString();
         } catch (Exception e) {
             e.printStackTrace();
