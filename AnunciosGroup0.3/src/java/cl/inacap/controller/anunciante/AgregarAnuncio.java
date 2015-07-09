@@ -59,7 +59,7 @@ public class AgregarAnuncio extends HttpServlet {
             
             //agrego valor anuncio
             anuncioDao.agregarValorAnuncio(id_anuncio,valorAnuncio );
-            response.sendRedirect("anunciante/agregar_anuncio.jsp?message=" + URLEncoder.encode("Exito al crear anunciante", "UTF-8"));
+            response.sendRedirect("anunciante/agregar_anuncio.jsp?message=" + URLEncoder.encode("Exito al crear anuncio", "UTF-8"));
         } catch (Exception ex) {
             ex.printStackTrace();
             response.sendRedirect("anunciante/agregar_anuncio.jsp?message=" + URLEncoder.encode("error al crear anunciante", "UTF-8"));

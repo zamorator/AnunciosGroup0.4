@@ -90,7 +90,7 @@
                             <h3 style="margin-left: 3%;"class="panel-title">Segmentos del Anuncio</h3>
                         </div>
                         <h4>En este panel puedes definir segmento de edad, sexo y categoria. As&iacute; podremos mostrar tus anuncios a los <b>Difusores</b> que m&aacute;s les interese</h4>
-                        <p> Si no hay una preferencia especial para este anuncio, puedes seleccionar las opciones <b>ninguno</b>.</p>
+                        <p> Si no hay una preferencia especial para este anuncio, puedes seleccionar las opciones <b>Ambos o Cualquiera</b> seg&uacute;n corresponda.</p>
                         <div class="form-group" >
                             <select required="" class="form-control" name="selectCategoria" id="selectCategoria" >
                                 <option value="" selected="selected" >Seleccione categoria</option>
