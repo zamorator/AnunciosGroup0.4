@@ -50,11 +50,11 @@ public class EditarImagenesAnuncio extends HttpServlet {
             Anunciante anunciante = (Anunciante) session.getAttribute("anunciante");
             String nombreAnunciante = anunciante.getNombre_u_anunciante();
             String idAnuncio = (String) session.getAttribute("id_anuncio");
-            String validoNombreImagen = request.getParameter("file");
+          
 
-            System.out.println("imagen se llama " + validoNombreImagen);
+           
 
-            if (!validoNombreImagen.contains(" ")) {
+            
 
                 //valido estructura de directorios
                 if (UploadFileUtils.validaEstructuraDirectorios(UploadFileUtils.AnunciantePath, nombreAnunciante, idAnuncio)) {
@@ -68,8 +68,9 @@ public class EditarImagenesAnuncio extends HttpServlet {
                     ServletFileUpload upload = new ServletFileUpload(factory);
 
                     List<FileItem> partes = upload.parseRequest(request);
-
+                     boolean pico = false;
                     for (FileItem item : partes) {
+                        if (!item.getName().contains(" ")) {
                         File file = new File(ubicacionArchivo, item.getName());
                         file.renameTo(new File(file.getName().replace(" ", "")));
                         try {
@@ -88,18 +89,28 @@ public class EditarImagenesAnuncio extends HttpServlet {
 
                         } catch (Exception ex) {
                             ex.printStackTrace();
+             
+                        }
+                        }else{
+                            pico = true;
+                           
+
                         }
                     }
-
-                    response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Imagen guardada con exito", "UTF-8"));
+                    if (pico){
+                        response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Error, imagen no debe tener espacios", "UTF-8"));
+                    }else{
+                        response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Imagen guardada con exito", "UTF-8")); 
+                    }   
+                    
                 } else {
                     System.out.println("error");
                     //error al intentar guardar archivo
                     response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Error al intentar editar imagen de anuncio", "UTF-8"));
                 }
-            } else {
-                response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Error, imagen no debe tener espacios", "UTF-8"));
-            }
+           // } else {
+             //   response.sendRedirect("anunciante/editar_imagenes_anuncio.jsp?mensaje=" + URLEncoder.encode("Error, imagen no debe tener espacios", "UTF-8"));
+            //}
             // imageFileName = file.getFileName().toString();
         } catch (Exception e) {
             e.printStackTrace();

@@ -53,7 +53,7 @@
 
             <div class="contenido" >
 
-                <form action="${pageContext.request.contextPath}/EditarImagenesAnuncio" method="post" enctype="multipart/form-data"> 
+                <form action="${pageContext.request.contextPath}/EditarImagenesAnuncio" method="POST" enctype="multipart/form-data"> 
 
                     <input type="file" name="file" required=""/> 
                     <br>
