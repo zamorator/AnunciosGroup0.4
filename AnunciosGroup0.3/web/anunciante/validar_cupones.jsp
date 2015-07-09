@@ -36,7 +36,7 @@
         </ul>
         <div id="panel">
             <ul class="nav nav-tabs ">
-                <li role="submenu" ><a href="#">Mis Anuncios</a></li>
+                <li role="submenu" ><a href="mis_anuncios.jsp">Mis Anuncios</a></li>
                 <li role="submenu"><a href="agregar_anuncio.jsp">Agregar Anuncio</a></li>
                 <li role="submenu"><a href="#">Editar Anuncio</a></li>
                 <li role="submenu" class="active" ><a href="#">Validar Cupones</a></li>
