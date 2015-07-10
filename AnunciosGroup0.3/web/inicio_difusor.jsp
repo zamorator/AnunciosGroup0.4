@@ -74,10 +74,10 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4><i class="fa fa-fw fa-check"></i>¿Aun no sabes como funciona?</h4>
+                            <h4><i class="fa fa-fw fa-check"></i>¿A&uacute;n no sabes como funciona?</h4>
                         </div>
                         <div class="panel-body">
-                            <p>Básicamente consiste en compartir distintos anuncios en tus redes sociales, cada ves que lo realices obtendrás, coins los cuales seran acumulables y equivaldrán a porcentajes de descuentos en los productos de la pagina. Comienza ya y obtén fabulosos descuentos en los productos que tu quieras desde 1% hasta 75%.</p>
+                            <p>Consiste en compartir distintos anuncios en tus redes sociales, cada ves que lo realices obtendrás <b>Coins</b>, los cuales ser&aacute;n acumulables y se convertir&aacute;n en porcentajes de descuentos en los productos de la p&aacute;gina. Comienza ya y obtén fabulosos descuentos en los productos que tu quieras desde 1% hasta 75%.</p>
                            
                         </div>
                     </div>
@@ -85,10 +85,10 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4><i class="fa fa-fw fa-gift"></i>¿Ya estas registrado?</h4>
+                            <h4><i class="fa fa-fw fa-gift"></i>¿Ya est&aacute;s registrado?</h4>
                         </div>
                         <div class="panel-body">
-                            <p>¿Que esperas? Sigue compartiendo anuncios publicitarios e invita a tus amigos para que formen parte de <b>AnunciosGroup</b>, recuerda que es totalmente gratis y puedes obtener descuentos en todos los productos anunciados en la pagina.</p>
+                            <p>¿Qu&eacute; esperas? Sigue compartiendo anuncios publicitarios e invita a tus amigos para que formen parte de <b>AnunciosGroup</b>, recuerda que es totalmente gratis y puedes obtener descuentos en todos los productos anunciados en la p&aacute;gina.</p>
                             <a href="ingreso_difusor.jsp" class="btn btn-default">Iniciar sesion</a>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                             <h4><i class="fa fa-fw fa-compass"></i> Registrate</h4>
                         </div>
                         <div class="panel-body">
-                            <p>¿Quieres comprar productos o servicios pero son demasiado caros? <b>AnunciosGroup</b> te ayuda entregándote descuentos los cuales son proporcionales a tu participación. Regístrate ahora y comienza a acumular coins y canjear descuentos fabulosos. </p>
+                            <p>¿Quieres comprar productos o servicios pero son demasiado caros? <b>AnunciosGroup</b> te ayudar&aacute; entreg&aacute;ndote descuentos, los cuales son proporcionales a tu participaci&oacute;n. Reg&iacute;strate ahora y comienza a acumular <b>Coins</b> y canjear descuentos fabulosos. </p>
                             <a href="registro_difusor.jsp" class="btn btn-default">Registrate</a>
                         </div>
                     </div>

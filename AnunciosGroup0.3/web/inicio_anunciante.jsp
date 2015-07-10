@@ -33,10 +33,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="section-heading">AnunciosGroup para empresas</h1>
-                    <p class="lead section-lead">Si eres una empresa que busca captar una mayor cantidad de clientes, esta es la solucion.</p>
-                    <p class="section-paragraph"><b>AnunciosGroup </b> mediante la integración de los consumidores de la publicidad misma, crea un canal para realizar una publicidad masificada a un bajo costo y con resultados concretos, no dudes en probar <b>AnunciosGroup </b> no te arrepentirás.</p>
-                    <p class="section-paragraph">Si ya poses cuenta en AnunciosGroup <a href="ingreso_anunciante.jsp">accede desde aquí</a></p>
-                    <p class="section-paragraph">Si eres una pequeña o mediana empresa y te interesa generar publicidad de tus productos o servicios <a href="registro_anunciante.jsp">Solicita un registro desde aquí</a> </a></p>
+                    <p class="lead section-lead">Si eres una empresa que busca captar una mayor cantidad de clientes, esta es la soluci&oacute;n.</p>
+                    <p class="section-paragraph">Por medio de los <b>Difusores</b>, AnunciosGroup te ofrece un nuevo canal de publicidad masificada en las redes sociales, a un bajo costo y con exelentes resultados, no dudes en probar <b>AnunciosGroup</b>.</p>
+                    <p class="section-paragraph">Si ya posees cuenta en AnunciosGroup <a href="ingreso_anunciante.jsp">accede desde aquí</a></p>
+                    <p class="section-paragraph">Si eres una pequeña o mediana empresa y te interesa generar publicidad para tus productos o servicios <a href="registro_anunciante.jsp">Solicita un registro desde aquí</a> </a></p>
                 </div>
             </div>
         </div>
