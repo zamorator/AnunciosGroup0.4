@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" href="https://twitter.com/">
+                        <a target="_blank" href="https://twitter.com/AnunciosGroup">
                             <img src="/AnunciosGroup0.3/img/social-icons/32px/Twitter.png" height="32px" width="32px">
                         </a>
                     </li>
