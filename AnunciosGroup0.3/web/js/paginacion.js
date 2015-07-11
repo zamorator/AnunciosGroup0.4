@@ -61,7 +61,7 @@ $(window).scroll(function(){
                                                                                  '<input type="hidden" name="codigoanuncio" value="'+data[f].codigo_anuncio+'">'+
                                                                             '</div>'+
                                                                             '<div class="modal-body">'+
-                                                                                '<img class="img-responsive img-thumbnail" src="'+ ruta +'/images/anunciante/' + data[f].imagen_anuncio +'" >'+
+                                                                                '<img class="img-responsive img-thumbnail" id="img_anuncios" src="'+ ruta +'/images/anunciante/' + data[f].imagen_anuncio +'" >'+
                                                                                 '<p></p>'+
                                                                                 '<p> </p>'+
                                                                                 '<p></p>'+
@@ -69,7 +69,7 @@ $(window).scroll(function(){
                                                                                 '<p></p>'+
                                                                             '<ul class="list-group">'+
                                                                                     '<li class="list-group-item">'+
-                                                                                         + data[f].descripcion_anuncio+
+                                                                                          data[f].descripcion_anuncio+
                                                                                     '</li>'+
 
                                                                             ' </ul>' ;
