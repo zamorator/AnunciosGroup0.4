@@ -306,7 +306,7 @@ $(document).ready(function(){
                       function Tweet(){
                           var nombre_anuncio = $('#nombre_anuncio').val();
                           console.log(nombre_anuncio);
-                          window.open("http://twitter.com/home/?status=Me%20gust%C3%B3%20este%20producto%20en%20%23AnunciosGroup+."+nombre_anuncio+".+http://190.13.76.218:8080/AnunciosGroup0.3/", "ventana", 'width=500,height=400');
+                          window.open("http://twitter.com/home/?status=Me%20gust%C3%B3%20este%20producto%20en%20%40AnunciosGroup+%22"+nombre_anuncio+"%22+http://190.13.76.218:8080/AnunciosGroup0.3/", "ventana", 'width=500,height=400');
                           Agregacoin();
                       }
                     </script>   
